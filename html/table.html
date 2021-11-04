@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+<body>
+<table border="1" width="75%">
+    <tbody>
+    <tr>
+        <th colspan="5">1</th>
+        <th rowspan="4" width="30%" valign="top">
+            <ul>
+                <li><a href="index.html#par3"> Не нумерованный список_1</a></li>
+                <li>
+                    <ul>
+                        <li><a href="index.html#par3"> Не нумерованный список 2.1</a></li>
+                        <li><a href="index.html#par3"> Не нумерованный список 2.2</a></li>
+                        <li><a href="index.html#par3"> Не нумерованный список 2.3</a></li>
+                        <li><a href="index.html#par3"> Не нумерованный список 2.4</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#par3">Не нумерованный список_3</a></li>
+                <li><a href="index.html#par3">Не нумерованный список_4</a></li>
+            </ul>
+        </th>
+        <th rowspan="4" width="30%" valign="top">
+            <ol>
+                <li>Нумерованный список_1</li>
+                <li>Нумерованный список_3</li>
+                <li>Нумерованный список_4</li>
+            </ol>
+        </th>
+    </tr>
+    <tr>
+        <td colspan="2">3</td>
+        <td rowspan="2" align="center">5</td>
+        <td colspan="2" rowspan="2" align="center">6</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>9</td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form method="POST" action="http://localhost8080/save">
+    <label for="first_name"> Ваше имя :</label><input type="text" id="first_name" name="first_name"
+                                                      placeholder="Ваше имя"><br>
+    <label for="psw">Ваш пароль:</label> <input type="password" id="psw" name="psw"><br>
+    <input type="checkbox" value="1"> Согласен с условием <br>
+    <label for="sex">Ваш пол:</label><input type="radio" id="sex" value="male" name="sex">Мужской
+    <input type="radio" value="female" name="sex">Женский<br>
+    <textarea name="comment" rows="10" cols="30">
+    </textarea><br>
+    <input type="submit" value="Отправить">
+</form>
+</body>
+</html>
