@@ -1,0 +1,35 @@
+/* Оформление параграфов */
+.default {
+    color: darkorchid;
+    font-family: "Times New Roman";
+    font-size: 24px;
+}
+body{
+    /*background-color: floralwhite;*/
+    /*background-image: url("images/101 Backgrounds/101 Jpegs/20.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: scroll;*/
+    /*background-position: right top;*/
+
+    /* Запись в одну строчку*/
+    background: floralwhite url("images/101 Backgrounds/101 Jpegs/20.jpg") repeat-x top left;
+}
+
+#page {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.red {
+    font-weight: bold;
+    color: red;
+}
+
+.blue {
+    font-weight: bolder;
+    color: blue;
+}
+
+.blue{
+    font-size: 22px;
+}
