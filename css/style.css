@@ -33,3 +33,23 @@ body{
 .blue{
     font-size: 22px;
 }
+.special_p{
+    margin-top: 400px;
+    color: rgba(111, 210, 198, 0.88);
+    /*Устанавливает жирность текста*/
+    font-weight: bold;
+    /*Устанавливает выравнивание текста по ширине*/
+    text-align: justify;
+    /*Текст становиться подчёркнутым*/
+    text-decoration: underline;
+    /*Все буквами становиться заглавными*/
+    text-transform: uppercase;
+    /*добавляет к первому строку параграфа 30 px*/
+    text-indent: 30px;
+    /*добавляет пространство между буквами 5 px*/
+    letter-spacing: 5px;
+    /*добавляет пространство между словами 10 px*/
+    word-spacing: 10px;
+    /*устанавливает какой высоты будет строка*/
+    line-height: 30px;
+}
