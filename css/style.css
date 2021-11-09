@@ -1,3 +1,6 @@
+/*Загрузка нового шрифта с сайта https://fonts.google.com */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,300&display=swap');
+
 /* Оформление параграфов */
 .default {
     color: darkorchid;
@@ -52,4 +55,48 @@ body{
     word-spacing: 10px;
     /*устанавливает какой высоты будет строка*/
     line-height: 30px;
+    /*устанавливает формат параграфа*/
+    font-family: 'Merriweather', sans-serif;
+    /*устанавливает наклон шрифта*/
+    font-style: italic;
+    /*трансформирует прописные буквы в заглавные не изменяя их размера*/
+    font-variant: small-caps;
+}
+
+#styles li{
+    color: black;
+    font-family: 'Merriweather', sans-serif;
+    /*трансформирует точку в круг*/
+    list-style-type: circle;
+    /*!*трансформирует точку в квадрат*!*/
+    /*list-style-type: square;*/
+    /*!*трансформирует точку в пустоту*!*/
+    /*list-style-type: square;*/
+    /*!*трансформирует точку в нумерованный список*!*/
+    /*list-style-type: decimal;*/
+    /*!*трансформирует точку в римские цифры*!*/
+    /*list-style-type: lower-roman;*/
+    /*!*трансформирует точку в английские буквы*!*/
+    /*list-style-type: lower-alpha;*/
+    /*!*трансформирует точку в английские буквы (Заглавные)*!*/
+    /*list-style-type: upper-alpha;*/
+
+    /*трансформирует точку в изображение*/
+    list-style-image: url("images/icons8-xbox-30.png");
+    /*размещает изображение внутри границ*/
+    list-style-position: inside;
+    border: 1px solid black;
+    padding: 5px;
+
+    /*упрощает форму записи 3ёъ строк
+    1)  list-style-type: circle;
+    2)  list-style-image: url("images/icons8-xbox-30.png");
+    3)  list-style-position: inside;
+    */
+    /*list-style: circle url("images/icons8-xbox-30.png") inside;*/
+}
+
+/*При наведении меняет фон пункта*/
+#styles li:hover {
+    background: red;
 }
