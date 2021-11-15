@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: right;
+}
+
+p {
+    text-align: justify;
+}
+
+p.two {
+    text-align: center;
+}
+
+th {
+    text-align: left;
+}
+
+td {
+    text-align: center;
+}

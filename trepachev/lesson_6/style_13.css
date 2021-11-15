@@ -1,0 +1,32 @@
+h1 {
+    color: #ee0000;
+    text-align: center
+}
+h2 {
+    color: #009600;
+    text-align: left;
+}
+
+i {
+    color: #0000ee;
+}
+
+ol {
+    color: #ee0000;
+}
+
+ul{
+    color: #924763;
+    width: 500px;
+    font-style: italic;
+}
+
+p{
+    font: 12px/25px Arial;
+    width: 500px;
+    text-align: justify;
+}
+b {
+    color: #ee0000;
+    font-size: 20px;
+}
