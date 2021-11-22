@@ -1,0 +1,16 @@
+
+/*Шаблон сайта меняет ширину в зависимости от развёрнутого экрана */
+#red {
+    width: 50%;
+    min-width: 300px;
+    max-width: 650px;
+    border-color: #ee0000;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: justify;
+}
+
+
