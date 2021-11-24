@@ -1,0 +1,17 @@
+
+#one {
+    width: 600px;
+    text-align: justify;
+}
+#one_img {
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+#two_img {
+    float: right;
+    margin-left: 20px;
+}
+

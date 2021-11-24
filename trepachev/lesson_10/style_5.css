@@ -1,0 +1,24 @@
+#one {
+    list-style-type: square;
+}
+
+#two {
+    list-style-type: circle;
+}
+
+#three {
+    list-style-type: none;
+}
+
+#four {
+    list-style-type: none;
+    list-style-image: url("images/li.gif");
+}
+
+#five {
+    list-style-type: lower-greek;
+}
+
+#six{
+    list-style-type: upper-alpha;
+}
