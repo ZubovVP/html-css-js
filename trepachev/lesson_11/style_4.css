@@ -6,7 +6,7 @@
     background: #0081e7;
 }
 
-#menu a:link, #menu a:visited{
+#menu a:link, #menu a:visited {
     text-decoration: none;
     color: white;
     font: 13px Arial;
@@ -18,7 +18,7 @@
     font-weight: bold
 }
 
-#menu a:hover, #menu a.active{
+#menu a:hover, #menu a.active {
     color: blue;
     background: #fff url(images/blue.png) no-repeat 90% center;
 }

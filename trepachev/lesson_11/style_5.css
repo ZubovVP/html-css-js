@@ -1,0 +1,23 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-right: 4px;
+    float: left;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: blue;
+    font: 13px Arial;
+    border: 1px solid #1A31A2;
+    padding: 5px;
+}
+
+a:hover, a.active {
+    color: red;
+
+}
+
