@@ -1,0 +1,40 @@
+#view {
+    background-color: #ff9600;
+    font-family: Arial;
+    width: 100%;
+    font-size: 13px;
+}
+
+#view ul {
+    margin-right: 15px;
+    padding: 0;
+}
+
+#view li {
+    display: inline-block;
+}
+
+#view a {
+    text-decoration: none;
+    display: block;
+    line-height: 35px;
+    padding: 0px 13px;
+}
+
+#view ul {
+    margin-left: 13px;
+    padding: 0px;
+}
+
+#view a:link, #menu a:visited {
+    color: white;
+
+}
+
+#view a:hover {
+background-color: #ee0000;
+}
+
+
+
+
