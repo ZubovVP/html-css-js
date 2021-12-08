@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 7</title>
+    <script>
+        "use strict";
+        // Дана строка 'abcde'. Обращаясь к отдельным символам этой строки выведите на экран символ 'a',
+        // символ 'c', символ 'e'.
+
+        let abcde = 'abcde';
+        alert(abcde[0]);
+        alert(abcde[2]);
+        alert(abcde[4]);
+
+        // Дана переменная со строкой 'abcde'. Обращаясь к отдельным символам этой строки запишите в новую
+        // переменную символы этой строки в обратном порядке, то есть 'edcba'.
+        let newLine = abcde[4] + abcde[3] + abcde[2] + abcde[1] + abcde[0];
+        alert(newLine);
+
+        // Дана переменная str со строкой 'abcde' и переменная num с номером символа. Выведите на экран символ,
+        //     номер которого хранится в переменной num.
+        let str = 'abcde';
+        let num = 2;
+        alert(str[num]);
+
+        // Дана строка. Выведите на экран ее последний символ.
+        let line = 'line';
+        alert(line[line.length - 1]);
+        // Дана строка. Выведите на экран ее предпоследний символ.
+        alert(line[line.length - 2]);
+        // Дана строка. Выведите на экран ее предпредпоследний символ.
+        alert(line[line.length - 3]);
+
+        // Дана строка '12345'. Найдите сумму цифр этой строки.
+        let a = '12345';
+        alert(Number(Number(a[0]) + Number(a[1]) + Number(a[2]) + Number(a[3]) + Number(a[4])));
+
+        // Дано число 12345. Найдите сумму цифр этого числа.
+        let b = 12345;
+        let x = String(b);
+        alert(Number(x[0]) + Number(x[1]) + Number(x[2]) + Number(x[3]) + Number(x[4]));
+
+        // Дано число 12345. Найдите сумму цифр этого числа.
+        alert(Number(x[0]) * Number(x[1]) * Number(x[2]) * Number(x[3]) * Number(x[4]));
+
+        // Дано число 12345. Переставьте цифры этого числа в обратном порядке.
+        alert(Number(x[4] + x[3] + x[2] + x[1] + x[0]));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
