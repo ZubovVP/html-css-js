@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 11</title>
+    <script>
+        "use strict";
+        // Создайте объект с ключами 1, 2 и 3 и значениями 'a', 'b' и 'c'. Выведите на экран все его
+        // элементы.
+        let obj = {1: 'a', 2: 'b', 3: 'c'};
+        alert(obj[1] + obj[2] + obj[3]);
+        console.log(obj);
+
+        // Создайте объект с ключами a, b и c и значениями 1, 2 и 3. Найдите сумму его элементов.
+        obj = {a: 1, b: 2, c: 3};
+        alert('sum = ' + Number(obj['a'] + obj['b'] + obj['c']));
+        console.log(obj);
+
+        // Создайте объект с ключами 1a, 2b и с-с и значениями 1, 2 и 3. Найдите сумму его элементов.
+        obj = {'1a': 1, '2b': 2, 'c-c': 3};
+        alert('sum = ' + Number(obj['1a'] + obj['2b'] + obj['c-c']));
+        console.log(obj);
+
+        // let obj = {key1: 1, key2: 2, key3: 3};
+        // Найдите сумму его элементов. Обращайтесь к элементам с помощью изученного точки.
+        obj = {key1: 1, key2: 2, key3: 3};
+        alert('sum = ' + Number(obj.key1 + obj.key2 + obj.key3));
+        console.log(obj);
+
+        // Создайте объект user с ключами name, surname, patronymic и какими-то произвольными значениями.
+        //     Выведите на экран фамилию, имя и отчество через пробел.
+        let user = {name: 'Duke', surname: 'Zubov', patronymic: 'Pavlovich'};
+        alert(user.surname + ' ' + user.name + ' ' + user.patronymic);
+
+        // Создайте объект date с ключами year, month и day и значениями, соответствующими текущему дню.
+        //     Выведите созданную дату на экран в формате год-месяц-день.
+        let date = {year: 2021, month: 12, day: 11};
+        alert(date.year + '-' + date.month + '-' + date.day);
+
+        // Создайте объект с ключами a, b и c и элементами 1, 2 и 3.
+        let object = {};
+        object.a = 1;
+        object.b = 2;
+        object.c = 3;
+        console.log(object);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
