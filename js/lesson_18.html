@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 18</title>
+    <script>
+        "use strict";
+
+        // В переменной arr содержится некоторый массив с числами. Напишите условие, которое проверит,
+        //     что в массиве 3 элемента. Если это так, выведите на экран сумму элементов массива.
+        let arr = [1, 2, 3];
+        if (arr.length === 3) {
+            console.log(Number(arr[0] + arr[1] + arr[2]))
+        }
+
+        // Дано целое число. Напишите условие, которое проверит, равна ли последняя цифра этого числа нулю.
+        let value = 1234567890;
+        let valueString = String(value);
+        if (valueString[valueString.length - 1]) {
+            console.log('true');
+        }
+
+        // Пусть в переменной num хранится число. Определите, четное число или нет. Число будет четным,
+        //     если последний символ равен 0, 2, 4, 6 или 8, и нечетным в противном случае.
+        let num = 12;
+        let numString = String(num);
+        let val = numString[numString.length - 1];
+        console.log(val);
+        if (val == 0 || val == 2 || val == 4 || val == 6 || val == 8) {
+            console.log('true');
+        }
+
+        // Как известно, четные числа делятся на 2 без остатка, а нечетные - с остатком. Пусть у вас дано
+        // число. С помощью оператора % и конструкции if проверьте четное это число или нет.
+        value = 43;
+        if(value % 2 == 0){
+            console.log('true')
+        } else {
+            console.log('false')
+
+        }
+
+        // Дано число. Проверьте, что оно делится на 3.
+        if(value % 3 == 0){
+            console.log('true')
+        } else {
+            console.log('false')
+
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
