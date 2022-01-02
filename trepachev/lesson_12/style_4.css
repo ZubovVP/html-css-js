@@ -1,0 +1,31 @@
+#menu li {
+    list-style: none;
+    width: 200px;
+    margin-bottom: 5px;
+    border: 1px solid #0081e7;
+    background: #0081e7;
+}
+
+#menu a:link, #menu a:visited {
+    text-decoration: none;
+    color: white;
+    font: 13px Arial;
+    border: 1px solid #0081E7;
+    display: block;
+    padding: 0px 5px;
+    line-height: 30px;
+    background-color: #0081E7;
+    font-weight: bold
+}
+
+#menu a:hover, #menu a.active {
+    color: blue;
+    background: #fff url(images/blue.png) no-repeat 90% center;
+}
+
+ul {
+    padding: 0;
+}
+
+
+

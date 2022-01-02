@@ -1,0 +1,62 @@
+#menu {
+    font-family: Arial;
+    font-size: 10pt;
+    color: blue;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-right: 4px;
+    float: left;
+}
+
+#menu a {
+    display: block;
+    padding-top: 25px;
+    min-width: 80px;
+    text-align: center;
+}
+
+#li1:link, #li1 :visited {
+    background: url("images/1.png") no-repeat top center;
+}
+
+#li1:hover {
+    background: url("images/1-h.png") no-repeat top center;
+}
+
+#li2:link, #li2:visited {
+    background: url("images/2.png") no-repeat top center;
+}
+
+#li2:hover {
+    background: url("images/2-h.png") no-repeat top center;
+}
+
+#li3:link, #li3:visited {
+    background: url("images/3.png") no-repeat top center;
+}
+
+#li3:hover {
+    background: url("images/3-h.png") no-repeat top center;
+}
+
+#li4:link, #li4:visited {
+    background: url("images/4.png") no-repeat top center;
+}
+
+#li4:hover {
+    background: url("images/4-h.png") no-repeat top center;
+}
+
+#li5:link, #li5:visited {
+    background: url("images/5.png") no-repeat top center;
+}
+
+#li5:hover {
+    background: url("images/5-h.png") no-repeat top center;
+}
+
