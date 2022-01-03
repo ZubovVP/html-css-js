@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 30</title>
+    <script>
+        "use strict";
+        // // Дан массив:
+        // //     let arr = ['a', 'b', 'c', 'd', 'e'];
+        // // Проверьте, что в этом массиве есть элемент 'c'. Если есть - выведите 'да', а если нет -
+        // // выведите 'нет'.
+        let arr = ['a', 'b', 'c', 'd', 'e'];
+        let flag = false;
+        for (let elem of arr) {
+            if (elem == 'c') {
+                flag = true;
+            }
+        }
+        flag == true ? alert('да') : alert('нет');
+
+        // Давайте напишем код, который будет проверять число на то, простое оно или нет.
+        // Простое число - это число, которое не делится ни на одно другое число (кроме как на 1 и на
+        // само себя - на это делятся все числа).
+
+        // let num = 31;
+        // flag = true;
+        // for (let i = 2; i < num; i++) {
+        //     if (num % i == 0) {
+        //         flag = false;
+        //         break; // выйдем из цикла
+        //     }
+        // }
+        // console.log(flag);
+
+        let num = 20;
+        flag = false;
+        for (let x = 2; x < num; x++) {
+            if (num % x == 0) {
+                flag = true;
+                break;
+            }
+        }
+        flag == true ? alert('да') : alert('нет');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
