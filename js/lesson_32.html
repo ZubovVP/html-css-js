@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 32</title>
+    <script>
+        "use strict";
+        // Переберите циклом числа от 10 до 1000 и выведите на экран те числа, сумма двух первых
+        // цифр которых равна 5.
+        for (let x = 10; x < 1000; x++) {
+            let i = String(x);
+            if (Number(i[0]) + Number(i[1]) == 5) {
+                console.log(x);
+            }
+        }
+
+        // Переберите циклом числа от 1 до 30 и сложите их как строки.
+        let result = '';
+
+        for (let i = 1; i < 30; i++) {
+            result += i;
+        }
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
