@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 33</title>
+    <script>
+        "use strict";
+        // С помощью двух вложенных циклов выведите на экран следующую строку:
+        // 111222333444555666777888999
+
+        let result = '';
+        for (let x = 1; x < 10; x++) {
+            for (let y = 0; y < 3; y++) {
+                result += x;
+            }
+        }
+        alert(result);
+
+        // С помощью двух вложенных циклов выведите на экран следующую строку:
+        //     11 12 13 21 22 23 31 32 33
+        result = '';
+        for (let x = 1; x < 4; x++) {
+            for (let y = 1; y < 4; y++) {
+                result += String(String(x) + String(y) + ' ');
+            }
+        }
+        alert(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

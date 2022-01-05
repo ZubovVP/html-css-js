@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 34</title>
+    <script>
+        "use strict";
+        // Объявите пустой массив, а затем заполните его числами от 1 до 10.
+        let arr = [];
+        for (let x = 0; x < 10; x++) {
+            arr[x] = x;
+        }
+        console.log(arr);
+
+        // Объявите пустой массив, а затем заполните его 5-ю буквами x.
+        arr = [];
+        for (let x = 0; x < 5; x++) {
+            arr[x] = String(x);
+        }
+        console.log(arr);
+
+        // С помощью цикла заполните массив числами от 1 до 100.
+        arr = [];
+        for (let x = 0; x < 100; x++) {
+            arr[x] = x;
+        }
+        console.log(arr);
+
+        // С помощью цикла заполните массив нечетными числами в промежутке от 1 до 99.
+        arr = [];
+        for (let x = 0, y = 1; y < 99; x++, y += 2) {
+            arr[x] = y;
+        }
+        console.log(arr);
+
+        // Дан массив с числами. Переберите этот массив циклом и возведите каждый элемент этого массива в квадрат.
+        arr = [1, 2, 3, 4, 5];
+        for (let x = 0; x < arr.length; x++) {
+           arr[x] *= arr[x];
+        }
+        console.log(arr);
+
+        // Дан массив с числами. Переберите этот массив циклом и отнимите от каждого элемента единицу.
+        for (let x = 0; x < arr.length; x++) {
+             arr[x]--;
+        }
+        console.log(arr);
+
+        // Дан массив с числами. Переберите этот массив циклом и прибавьте к каждому элементу 10.
+        for (let x = 0; x < arr.length; x++) {
+            arr[x] += 10;
+        }
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
