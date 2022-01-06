@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 35</title>
+    <script>
+        "use strict";
+        // Объявите пустой массив, а затем заполните его числами от 1 до 10. Используйте для
+        // этого метод push.
+        let arr = [];
+        for (let x = 0; x < 10; x++) {
+            arr.push(x);
+        }
+        console.log(arr);
+
+        // Используя цикл и метод push заполните массив 10-ю буквами 'x'.
+        arr = [];
+        for (let x = 0; x < 10; x++) {
+            arr.push('x');
+        }
+        console.log(arr);
+
+        // Дан массив с числами. Переберите его циклом и запишите в новый массив только положительные из чисел.
+        arr = [1, -2, 0, -10, 5, 2];
+        let result = [];
+        for (let elem of arr) {
+            if (elem >= 0) {
+                result.push(elem);
+            }
+        }
+        console.log(result);
+
+        // Дан следующий массив:
+        //     let arr = ['a', 'b', 'c', 'd', 'e'];
+        // Cделайте из него массив:
+        //     let arr = ['e', 'd', 'c', 'b', 'a'];
+
+        arr = ['a', 'b', 'c', 'd', 'e'];
+        result = [];
+        for (let x = arr.length - 1; x >= 0; x--) {
+            result.push(arr[x]);
+        }
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
