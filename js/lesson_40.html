@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 39</title>
+    <script>
+        "use strict";
+        let one = 0;
+        let two = 1;
+        for (let x = 1; x < 10; x++) {
+            let current = one + two;
+            one = two;
+            two = current;
+            console.log(current);
+        }
+
+        // Решите задачу на нахождение ряда чисел, каждое из которых равно сумме трех предыдущих,
+        // а первые три числа равны 0, 1 и 2.
+        one = 0;
+        two = 1;
+        let three = 2;
+        for (let x = 1; x < 10; x++) {
+            let current = one + two + three;
+            one = two;
+            two = three;
+            three = current;
+            console.log(current);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

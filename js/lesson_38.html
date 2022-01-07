@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 38</title>
+    <script>
+        "use strict";
+        // Дан следующий массив:
+        //     let arr = [1, 2, 3, 2, 4, 3, 5, 6, 3, 2, 3];
+        // Подсчитайте количество цифр 3 в этом массиве.
+        let arr = [1, 2, 3, 2, 4, 3, 5, 6, 3, 2, 3];
+        let count = 0;
+        for (let el of arr) {
+            if (arr[el] == 3) {
+                count++;
+            }
+        }
+        console.log(count);
+
+        // Модифицируйте предыдущую задачу так, чтобы в одном цикле одновременно подсчитывалось и
+        // количество троек, и количество двоек.
+        let count_2 = 0;
+        let count_3 = 0;
+        for (let el of arr) {
+            if (arr[el] == 3) {
+                count_3++;
+            } else if (arr[el] == 2) {
+                count_2++;
+            }
+        }
+        console.log(count_2);
+        console.log(count_3);
+
+        // Дана строка. Подсчитайте сколько раз в ней встречается каждый из ее символов.
+        let line = 'hello world'
+        let obj = {};
+        for (let x = 0; x < line.length; x++) {
+            if (line[x] == ' ') {
+                continue;
+            }
+            if (obj[line[x]] === undefined) {
+                obj[line[x]] = 1;
+            } else {
+                obj[line[x]]++;
+            }
+        }
+        console.log(obj);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

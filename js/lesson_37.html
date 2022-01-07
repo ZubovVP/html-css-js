@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 37</title>
+    <script>
+        "use strict";
+        // Дан следующий объект с работниками и их зарплатами:
+        //     let obj = {
+        //         employee1: 100,
+        //         employee2: 200,
+        //         employee3: 300,
+        //         employee4: 400,
+        //         employee5: 500,
+        //         employee6: 600,
+        //         employee7: 700,
+        //     };
+        // Увеличьте зарплату каждого работника на 10%.
+
+        let obj = {
+            employee1: 100,
+            employee2: 200,
+            employee3: 300,
+            employee4: 400,
+            employee5: 500,
+            employee6: 600,
+            employee7: 700,
+        };
+
+        for (let emp in obj) {
+            obj[emp] = obj[emp] + (obj[emp] / 100 * 10);
+        }
+        console.log(obj);
+
+        // Модифицируйте предыдущую задачу так, чтобы зарплата увеличивалась только тем работникам,
+        // у которых она меньше или равна 400.
+        obj = {
+            employee1: 100,
+            employee2: 200,
+            employee3: 300,
+            employee4: 400,
+            employee5: 500,
+            employee6: 600,
+            employee7: 700,
+        };
+
+        for (let emp in obj) {
+            if (obj[emp] <= 400) {
+                obj[emp] = obj[emp] + (obj[emp] / 100 * 10);
+            }
+        }
+        console.log(obj);
+
+        // Даны следующие массивы:
+        // let arr1 = [1, 2, 3, 4, 5];
+        // let arr2 = [6, 7, 8, 9, 10];
+        // С помощью этих массивов создайте новый объект, сделав его ключами элементы первого массива,
+        // а значениями - элементы второго.
+        let arr1 = [1, 2, 3, 4, 5];
+        let arr2 = [6, 7, 8, 9, 10];
+        let result = {};
+        for (let x = 0; x < arr1.length; x++) {
+            result[arr1[x]] = arr2[x];
+        }
+        console.log(result);
+
+        // Дан следующий объект:
+        //     let obj = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10};
+        // Найдите сумму ключей этого объекта и поделите ее на сумму значений.
+        obj = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10};
+        let keys = 0;
+        let values = 0;
+        for (let count in obj) {
+            keys += Number(count);
+            values += Number(obj[count]);
+        }
+        console.log('keys = ' + keys + ' , values = ' + values);
+
+        // Дан следующий объект:
+        //     let obj = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5};
+        // Запишите ключи этого объекта в один массив, а значения - в другой.
+
+        obj = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5};
+        arr1 = [];
+        arr2 = [];
+        for (let el in obj) {
+            arr1.push(el);
+            arr2.push(obj[el]);
+        }
+        console.log(arr1);
+        console.log(arr2);
+
+        // Дан следующий объект:
+        //     let obj = {
+        //         1: 125,
+        //         2: 225,
+        //         3: 128,
+        //         4: 356,
+        //         5: 145,
+        //         6: 281,
+        //         7: 452,
+        //     };
+        // Запишите в новый массив элементы, значение которых начинается с цифры 1 или цифры 2.
+        // То есть у вас в результате получится вот такой массив:
+        //     let arr = [
+        //         125,
+        //         225,
+        //         128,
+        //         145,
+        //         281,
+        //     ];
+
+        obj = {
+            1: 125,
+            2: 225,
+            3: 128,
+            4: 356,
+            5: 145,
+            6: 281,
+            7: 452,
+        };
+        let arr = [];
+        for (let el in obj) {
+            let val = String(obj[el]);
+            if (val[0] == '1' || val[0] == '2') {
+                arr.push(obj[el]);
+            }
+        }
+        console.log(arr);
+
+        // Дан следующий массив:
+        //     let arr = ['a', 'b', 'c', 'd', 'e'];
+        // Создайте из этого массива следующий объект:
+        //     let arr = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'};
+        arr = ['a', 'b', 'c', 'd', 'e'];
+        obj = {};
+
+        for (let x = 0; x < arr.length;) {
+            obj[arr[x]] = ++x;
+        }
+        console.log(obj);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
