@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 42</title>
+    <script>
+        "use strict";
+        // С помощью цикла сформируйте следующий массив:
+        //     ['xx', 'xxxx', 'xxxxxx', 'xxxxxxxx', 'xxxxxxxxxx']
+
+        let arr = [];
+        let line = '';
+        for (let x = 0; x < 5; x++) {
+            line += 'xx';
+            arr.push(line);
+        }
+        console.log(arr);
+
+        // С помощью цикла сформируйте следующий массив:
+        //     ['11111', '22222', '33333', '44444', '55555']
+        arr = [];
+        for (let x = 1; x <= 5; x++) {
+            let line = '';
+            for (let y = 0; y < 5; y++) {
+                line += x;
+            }
+            arr.push(line);
+        }
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

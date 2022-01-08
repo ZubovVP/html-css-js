@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 41</title>
+    <script>
+        "use strict";
+        // Выведите на экран следующую пирамидку:
+        // xx
+        // xxxx
+        // xxxxxx
+        // xxxxxxxx
+        // xxxxxxxxxx
+        let line = '';
+        for (let x = 0; x < 5; x++) {
+            line += 'xx'
+            document.write(line + '<br>')
+
+        }
+
+        // Выведите на экран следующую пирамидку:
+        // 1
+        // 333
+        // 55555
+        // 7777777
+        // 999999999
+
+        for (let x = 1; x <= 9; x = x + 2) {
+            let line = '';
+            for (let y = 1; y <= x; y++) {
+                if (x % 2 != 0) {
+                    line += x;
+                }
+            }
+            document.write(line + '<br>');
+        }
+
+        // Выведите на экран следующую пирамидку:
+        // xxxxxxxxxx
+        // xxxxxxxx
+        // xxxxxx
+        // xxxx
+        // xx
+        for (let x = 5; x > 0; x--) {
+            let line = '';
+            for (let y = 0; y < x; y++) {
+                line += 'xx'
+            }
+            document.write(line + '<br>')
+        }
+
+        // Выведите на экран следующую пирамидку:
+        // 999999999
+        // 88888888
+        // 7777777
+        // 666666
+        // 55555
+        // 4444
+        // 333
+        // 22
+        // 1
+        for (let x = 9; x > 0; x--) {
+            let line = '';
+            for (let y = 0; y < x; y++) {
+                line += x;
+            }
+            document.write(line + '<br>')
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
