@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 1</title>
+    <script>
+        "use strict";
+        // Дан следующий массив:
+        //     let arr = [
+        //         ['a', 'b', 'c'],
+        //         ['d', 'e', 'f'],
+        //         ['g', 'h', 'i'],
+        //         ['j', 'k', 'l'],
+        //     ];
+        // Выведите с его помощью элементы с текстом 'l', 'e', 'g' и 'a'.
+        let arr = [
+            ['a', 'b', 'c'],
+            ['d', 'e', 'f'],
+            ['g', 'h', 'i'],
+            ['j', 'k', 'l'],
+        ];
+        console.log(arr[3][2] + arr[1][1] + arr[2][0] + arr[0][0])
+
+        // Дан следующий массив:
+        //     let arr = [[1, 2], [3, 4], [5, 6]];
+        // Обращаясь к каждому элементу массива найдите сумму всех его элементов.
+        arr = [[1, 2], [3, 4], [5, 6]];
+        let result = 0;
+        for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+                result += arr[x][y];
+            }
+        }
+        console.log(result);
+
+        // Дан следующий массив:
+        //     let arr = [
+        //         [
+        //             [1, 2],
+        //             [3, 4],
+        //         ],
+        //         [
+        //             [5, 6],
+        //             [7, 8],
+        //         ],
+        //     ];
+        // Обращаясь к каждому элементу массива найдите сумму всех его элементов.
+        arr = [
+            [
+                [1, 2],
+                [3, 4],
+            ],
+            [
+                [5, 6],
+                [7, 8],
+            ],
+        ];
+        result = 0;
+        for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+                for (let z = 0; z < arr[x][y].length; z++) {
+                    result += arr[x][y][z];
+                }
+            }
+        }
+        console.log(result);
+
+        // Дан следующий массив:
+        //     let arr = [[1, 2, 3, [4, 5, [6,
+        //         7]]], [8, [9, 10]]];
+        // Вручную, без цикла, найдите сумму элементов этого массива.
+        arr = [
+            [1, 2, 3, [4, 5, [6, 7]]],
+            [8, [9, 10]]
+        ];
+        result = 0;
+        result += arr[0][0];
+        result += arr[0][1];
+        result += arr[0][2];
+        result += arr[0][3][0];
+        result += arr[0][3][1];
+        result += arr[0][3][2][0];
+        result += arr[0][3][2][1];
+        result += arr[1][0];
+        result += arr[1][1][0];
+        result += arr[1][1][1];
+        console.log(result);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

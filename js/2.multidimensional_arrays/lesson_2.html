@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 2</title>
+    <script>
+        "use strict";
+        // Дан двухмерный массив с числами:
+        //     let arr = [[1, 2, 3], [4, 5], [6]];
+        // С помощью вложенных циклов найдите сумму элементов этого массива.
+        let arr = [[1, 2, 3], [4, 5], [6]];
+        let result = 0;
+        for (let subArr of arr) {
+            for (let elem of subArr) {
+                result += elem;
+            }
+        }
+        console.log(result);
+
+        // Дан трехмерный массив с числами:
+        //     let arr = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+        // С помощью вложенных циклов найдите сумму элементов этого массива.
+        arr = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+        result = 0;
+        for (let subArr of arr) {
+            for (let middleElem of subArr) {
+                for (let elem of middleElem) {
+                    result += Number(elem);
+                }
+            }
+        }
+        console.log(result);
+
+        // Решите предыдущие две задачи через цикл for.
+        arr = [[1, 2, 3], [4, 5], [6]];
+        result = 0;
+        for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+                result += arr[x][y];
+            }
+        }
+        console.log(result);
+
+
+        arr = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+        result = 0;
+        for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+                for (let z = 0; z < arr[x][y].length; z++) {
+                    result += arr[x][y][z];
+                }
+            }
+        }
+        console.log(result);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
