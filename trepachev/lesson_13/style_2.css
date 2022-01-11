@@ -1,0 +1,45 @@
+.border {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 700px;
+    alignment: center;
+    text-align: justify;
+    margin-top: 15px;
+    padding-bottom: 10px;
+}
+
+img {
+    float: left;
+    margin: 7px 10px 0px 0px;
+    border: 1px solid black
+}
+
+
+h2 {
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 10px 20px;
+    font: 13px/27px Arial;
+}
+
+.link {
+    color: blue;
+    text-align: right;
+    padding-right: 15px;
+}
+
+a:link, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+
+}
