@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 4</title>
+    <script>
+        "use strict";
+        // let obj = {
+        //     key1: {
+        //         key1: 1,
+        //         key2: 2,
+        //         key3: 3,
+        //     },
+        //     key2: {
+        //         key1: 4,
+        //         key2: 5,
+        //         key3: 6,
+        //     },
+        //     key3: {
+        //         key1: 7,
+        //         key2: 8,
+        //         key3: 9,
+        //     },
+        // }
+        // Найдите сумму элементов приведенного объекта.
+        let obj = {
+            key1: {
+                key1: 1,
+                key2: 2,
+                key3: 3,
+            },
+            key2: {
+                key1: 4,
+                key2: 5,
+                key3: 6,
+            },
+            key3: {
+                key1: 7,
+                key2: 8,
+                key3: 9,
+            },
+        }
+        let result = 0;
+        result += obj.key1.key1;
+        result += obj.key1.key2;
+        result += obj.key1.key3;
+        result += obj.key2.key1;
+        result += obj.key2.key2;
+        result += obj.key2.key3;
+        result += obj.key3.key1;
+        result += obj.key3.key2;
+        result += obj.key3.key3;
+        console.log(result);
+
+        // Дан следующий объект:
+        //     let obj = {
+        //         1: {
+        //             1: 'a1',
+        //             2: 'a2',
+        //             3: 'a3',
+        //         },
+        //         2: {
+        //             1: 'b1',
+        //             2: 'b2',
+        //             3: 'b3',
+        //         },
+        //         3: {
+        //             1: 'c1',
+        //             2: 'c2',
+        //             3: 'c3',
+        //         },
+        //     }
+        // Выведите на экран элемент 'b2' и элемент 'c1'.
+        obj = {
+            1: {
+                1: 'a1',
+                2: 'a2',
+                3: 'a3',
+            },
+            2: {
+                1: 'b1',
+                2: 'b2',
+                3: 'b3',
+            },
+            3: {
+                1: 'c1',
+                2: 'c2',
+                3: 'c3',
+            },
+        }
+        alert('obj[2][2] = ' +  obj[2][2] + '; obj[3][1] = ' + obj[3][1] + ';')
+
+        // Дан следующий объект:
+        //     let obj = {
+        //         key1: {
+        //             a: 1, b: 2, c: {
+        //                 d: 3,
+        //                 e: 4,
+        //             }, f: 5,
+        //         },
+        //         key2: {
+        //             g: 6, h: 7,
+        //         },
+        //     }
+        // Найдите сумму всех элементов-чисел.
+
+        obj = {
+            key1: {
+                a: 1, b: 2, c: {
+                    d: 3,
+                    e: 4,
+                }, f: 5,
+            },
+            key2: {
+                g: 6, h: 7,
+            },
+        }
+        result = 0;
+        result += obj.key1.a;
+        result += obj.key1.b;
+        result += obj.key1.c.d;
+        result += obj.key1.c.e;
+        result += obj.key1.f;
+        result += obj.key2.g;
+        result += obj.key2.h;
+        console.log(result);
+
+        // Дан следующий объект:
+        //     let obj = {
+        //         1: {
+        //             1: 11,
+        //             2: 12,
+        //             3: 13,
+        //         },
+        //         2: {
+        //             1: 21,
+        //             2: 22,
+        //             3: 23,
+        //         },
+        //         3: {
+        //             1: 24,
+        //             2: 25,
+        //             3: 26,
+        //         },
+        //     }
+        // Используя циклы, найдите сумму элементов этого объекта.
+        obj = {
+            1: {
+                1: 11,
+                2: 12,
+                3: 13,
+            },
+            2: {
+                1: 21,
+                2: 22,
+                3: 23,
+            },
+            3: {
+                1: 24,
+                2: 25,
+                3: 26,
+            },
+        }
+        result = 0;
+        for(let key in obj){
+            let subObj = obj[key];
+            for(let subKey in subObj){
+                result += subObj[subKey];
+            }
+        }
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
