@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1</title>
+    <script>
+        "use strict";
+        //Возведите 2 в 10 степень.
+        let element = Math.pow(2, 10);
+        console.log(element);
+
+        //Найдите квадратный корень из 245.
+        element = Math.sqrt(245);
+        console.log(element);
+
+        // Дан следующий массив:
+        //     [4, 2, 5, 19, 13, 0, 10]
+        // Найдите квадратный корень из суммы кубов его элементов. Для решения воспользуйтесь циклом for.
+        let arr = [4, 2, 5, 19, 13, 0, 10];
+        element = 0;
+        for (let el of arr) {
+            element += Math.pow(el, 3);
+        }
+        console.log(Math.sqrt(element));
+
+        // Найдите квадратный корень из 379. Результат округлите до целых, до десятых, до сотых.
+        let result = Math.sqrt(379);
+        console.log(Math.round(result));
+        console.log(result.toFixed(1));
+        console.log(result.toFixed(2));
+
+        // Найдите квадратный корень из 587. Округлите результат в большую и меньшую стороны, запишите
+        // результаты округления в объект с ключами 'floor' и 'ceil'.
+        result = Math.sqrt(587);
+        let obj = {'flor': Math.floor(result), 'ceil': Math.ceil(result)};
+        console.log(obj);
+
+        // Даны числа 4, -2, 5, 19, -130, 0, 10. Найдите минимальное и максимальное число.
+        console.log(Math.max(4, -2, 5, 19, -130, 0, 10));
+        console.log(Math.min(4, -2, 5, 19, -130, 0, 10));
+
+        // Выведите на экран случайное целое число от 1 до 100.
+        function getRandomValue(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        console.log(getRandomValue(1, 100))
+
+        // С помощью цикла заполните массив 10-ю случайными целыми числами.
+        arr = [];
+        for (let x = 0; x < 10; x++) {
+            arr.push(getRandomValue(1, 100));
+        }
+        console.log(arr);
+
+        // Даны переменные a и b. Найдите модуль разности a и b.
+        // Проверьте работу скрипта самостоятельно для различных a и b.
+        let a = 0;
+        let b = 1;
+        console.log(Math.abs(a - b));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
