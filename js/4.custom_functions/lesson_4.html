@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3</title>
+    <script>
+        "use strict";
+
+        // Напишите функцию, которая будет находить сумму квадратов элементов массива.
+        function func(arr) {
+            let result = 0;
+            for (let value of arr) {
+                result += value;
+            }
+            return result;
+        }
+
+        let arr = [1, 2, 5];
+        console.log(func(arr));
+
+        // Сделайте функцию getDigitsSum, которая параметром будет принимать целое число
+        // и возвращать сумму его цифр.
+        function getDigitsSum(num) {
+            let line = String(num);
+            let result = 0;
+            for (let x = 0; x < line.length; x++) {
+                result += Number(line[x]);
+            }
+            return result;
+        }
+
+        console.log(getDigitsSum(123));
+
+
+        // Реализуйте функцию getDivisors, которая параметром будет принимать число и возвращать массив 
+        // его делителей, то есть чисел, на которое делится наше число. К примеру, если мы передадим 
+        // число 24 - мы должны получить следующий массив:
+        //     [1, 2, 3, 4, 6, 8, 12, 24]
+        function getDivisors(num) {
+            let arr = [];
+            for (let x = 1; x <= num; x++) {
+                if (num % x == 0) {
+                    arr.push(x);
+                }
+            }
+            return arr
+        }
+
+        console.log(getDivisors(24));
+
+        // Сделайте функцию reverseStr, которая параметром будет принимать строку и переворачивать ее
+        // символы в обратном порядке. Решите задачу без цикла, используя комбинацию стандартных
+        // функций JavaScript.
+        function reverseStr(line) {
+            let arr = line.split('');
+            arr = arr.reverse();
+            return arr.concat();
+        }
+
+        console.log(reverseStr('Duke'));
+
+
+        // Сделайте функцию delElem, которая параметрами будет принимать значение и массив и удалять из массива все элементы с таким значением.
+        function delElem(num, arr) {
+            let result = [];
+            for (let x = 0; x < arr.length; x++) {
+                if (arr[x] != num) {
+                    result.push(arr[x]);
+                }
+            }
+            return result;
+        }
+
+        console.log(delElem(1, [1, 2, 3, 5, 1]));
+
+        // Сделайте функцию, заполняющую массив целыми числами от 1 до заданного. Пример работы такой функции:
+        //     console.log(func(5)); // выведет [1, 2, 3, 4, 5]
+
+        function func_1(num) {
+            let result = [];
+            for (let x = 1; x <= num; x++) {
+                result.push(x);
+            }
+            return result;
+        }
+
+        console.log(func_1(5));
+
+        // Сделайте функцию, заполняющую массив целыми числами от начального до конечного заданных
+        // чисел. Пример работы такой функции:
+        //     console.log(func(3, 7)); // выведет [3, 4, 5, 6, 7]
+        function func_2(num1, num2) {
+            let result = [];
+            for (let x = num1; x <= num2; x++) {
+                result.push(x);
+            }
+            return result;
+        }
+
+        console.log(func_2(3, 7));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
