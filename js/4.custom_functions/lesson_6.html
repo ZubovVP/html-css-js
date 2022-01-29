@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_5</title>
+    <script>
+        "use strict";
+        // Дана следующая функция:
+        //     function func(a, b) {
+        //         if (a == b) {
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // Перепишите ее код в сокращенной форме.
+        function func(a, b) {
+            return a == b;
+        }
+
+        console.log(func(1, 2))     //false
+        console.log(func(2, 2))     //true
+
+        // Дана следующая функция:
+        //     function func(a, b) {
+        //         if (a != b) {
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // Перепишите ее код в сокращенной форме.
+        function func_1(a, b) {
+            return a != b;
+        }
+
+        console.log(func_1(2, 2))     //false
+        console.log(func_1(1, 2))     //true
+
+        // Дана следующая функция:
+        //     function func(a, b) {
+        //         if (a + b >= 10) {
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // Перепишите ее код в сокращенной форме согласно изученной теории.
+        function func_2(a, b) {
+            return a + b >= 10;
+        }
+
+        console.log(func_2(2, 2))     //false
+        console.log(func_2(10, 2))     //true
+
+        // Дана следующая функция:
+        //     function func(num) {
+        //         if (num >= 0) {
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //     }
+        // Перепишите ее код в сокращенной форме согласно изученной теории.
+        function func_3(num) {
+            return num >= 0;
+        }
+
+        console.log(func_3(-1))     //false
+        console.log(func_3(2))     //true
+    </script>
+</head>
+<body>
+
+</body>
+</html>
