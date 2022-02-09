@@ -17,7 +17,7 @@
             return result;
         }
 
-        console.log(getOwnDivisors(2));
+        console.log(getOwnDivisors(220));
         console.log(getOwnDivisors(7));
 
         // Реализуйте функцию getSum. Потестируйте ее работу.
@@ -50,27 +50,35 @@
         // промежутке и возвращать их в виде двухмерного массива вида следующего вида:
         //     [ [220, 284], [1184, 1210], [2620, 2924] ]
         function getFriendly(num1, num2) {
-            let objResult = {};
-            let arrResult = [];
-            for (let x = num1; x < num2; x++) {
-                let el = getSum(getOwnDivisors(x));
-                objResult[x] = el;
+            let sum1 = getSum(getOwnDivisors(num1));
+            let sum2 = getSum(getOwnDivisors(num2));
+
+            if (sum1 == num2 && sum2 == num1) {
+                return true;
+            } else {
+                return false;
             }
-            for(let x in objResult){
-                let element = objResult[x];
-                for(let y in objResult){
-                    if(element == objResult[y] && x != y){
-                        arrResult.push([element, objResult[y]])
-                    }
-                }
-            }
-            return arrResult;
         }
 
-        console.log(getFriendly(200, 300));
+        console.log(getFriendly(223, 283));
 
         // С помощью созданной функции найдите все пары дружественных чисел на промежутке от 1 до 3000.
-        console.log(getFriendly(1, 3000));
+        function getFriendlyNew(num1, num2) {
+            let arr = [];
+            let obj = {};
+            for (let x = num1; x < num2; x++) {
+                let sum1 = getSum(getOwnDivisors(x));
+                if (sum1 in obj &&  obj[sum1] == sum1) {
+                    arr.push([x, obj[sum1]]);
+                } else {
+                    obj[sum1] = x;
+                }
+            }
+            return arr;
+        }
+
+        console.log(getFriendlyNew(219, 285));
+
         // Задача 5js.Pm.FP.FrNm
         //
         // Совершенное число - целое число, равное сумме всех своих собственных делителей (то есть всех положительных делителей, отличных от самого числа). Сделайте функцию getPerfect, которая будет находить совершенные числа в заданном диапазоне. Проверьте работу функции в промежутке от 1 до 1000.
