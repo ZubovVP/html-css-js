@@ -2,10 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_9</title>
+    <title>Lesson_10</title>
     <script>
         "use strict";
+        //В двух массивов найдите пресечение массивов
+        let arr1 = [1, 2, 3];
+        let arr2 = [2, 3, 4, 5];
 
+        function getInt(arr1, arr2) {
+            let result = [];
+            for (let el of arr1) {
+                if (inArray(el, arr2)) {
+                    result.push(el);
+                }
+            }
+            return result;
+        }
+
+        function inArray(elem, arr) {
+            return arr.indexOf(elem) != -1;
+        }
+        console.log(getInt(arr1, arr2));
     </script>
 </head>
 <body>
