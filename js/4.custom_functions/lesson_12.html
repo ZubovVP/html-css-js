@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_12(94)</title>
+    <script>
+        "use strict";
+        // Реализуйте функцию getGreatestCommonDivisor, которая параметрами будет принимать два числа и
+        // возвращать НОД этих двух чисел. При решении задачи старайтесь использовать вспомогательные
+        // функции, в том числе полученные нами ранее в теоретической части.
+
+        function getGreatestCommonDivisor(num_1, num_2) {
+            return getGreatestNumber(getDivisors(num_1), getDivisors(num_2));
+        }
+
+        function getDivisors(num) {
+            let result = [];
+            for (let x = 1; x < num; x++) {
+                if (num % x == 0) {
+                    result.push(x);
+                }
+            }
+            return result;
+        }
+
+        function getGreatestNumber(arr1, arr2) {
+            let result = 0;
+            for (let el of arr1) {
+                    if (arr2.indexOf(el) != -1 && result < el) {
+                        result = el;
+                    }
+                }
+            return result;
+        }
+        console.log(getDivisors(12));
+        console.log(getDivisors(18));
+        console.log(getGreatestCommonDivisor(12, 18));
+
+        // Положительные целые числа, не имеющие общих делителей, кроме тривиальной единицы, называются
+        // взаимно простыми. Говоря другими словами, два числа можно назвать взаимно простыми, если их
+        // НОД равен единице.
+        //
+        //     Напишите функцию, которая параметрами будет принимать два числа и проверять - взаимно
+        //     простые они или нет.
+        function getCoprimeNumber(num1, num2) {
+            return getGreatestCommonDivisor(num1, num2) == 1;
+        }
+        console.log(getCoprimeNumber(2, 1000));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
