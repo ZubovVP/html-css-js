@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_14(96)</title>
+    <script>
+        "use strict";
+
+        //Реализуем функцию shuffle, параметром принимающую массив и
+        // перемешивающую его элементы в случайном порядке.
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function shuffleArr(arr) {
+            let result = [];
+            let random = 0;
+            while (arr.length > 0) {
+                random = getRandomInt(0, arr.length - 1)
+                let el = arr.splice(random, 1)[0];
+                result.push(el);
+            }
+            return result;
+        }
+        console.log(shuffleArr([1, 2, 3, 4, 5]));
+
+        // Сделайте функцию range принимающую параметрами 2 целых числа - начало и конец диапазона, и
+        // возвращающую массив, заполненный целыми числами из этого диапазона.
+
+        function range(num1, num2) {
+            let result = [];
+            for(let x = num1; x < num2; x++){
+                result.push(x);
+            }
+            return result;
+        }
+        console.log(range(1, 10));
+
+
+        // Сделайте функцию rangeRand, возвращающую массив, заполненный случайными целыми числами из
+        // заданного диапазона. При этом числа не должны повторяться. Для решения задачи используйте
+        // комбинацию функций range и shuffle.
+        function rangeRand(num1, num2) {
+            let result = [];
+            for(let x = num1; x < num2; x++){
+                result.push(x);
+            }
+            return shuffleArr(result);
+        }
+        console.log(rangeRand(1, 10));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

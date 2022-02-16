@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_13(95)</title>
+    <script>
+        "use strict";
+
+        //Реализуйте функцию, возвращающую случайный элемент из массива.
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomElement(arr) {
+            return arr[getRandomInt(0, arr.length - 1)];
+
+        }
+
+        let arr = [1, 2, 3, 4, 5];
+        console.log(getRandomElement(arr));
+
+        // Используя созданную функцию, найдите сумму трех случайных элементов из массива.
+        function getSumThreeElement(arr) {
+            let result = 0;
+            for (let x = 0; x < 3; x++) {
+                result +=getRandomElement(arr);
+            }
+            return result;
+        }
+        console.log(getSumThreeElement(arr));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
