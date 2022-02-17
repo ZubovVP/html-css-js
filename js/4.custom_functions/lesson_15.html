@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_15(97, 98)</title>
+    <script>
+        "use strict";
+        // Давайте теперь реализуем функцию randoms, возвращающую заданное количество случайных
+        // элементов из массива.
+        function randoms(arr, length) {
+            return first(first(shuffle(arr)), length);
+        }
+
+        function first(arr, length) {
+            return arr.slice(0, length);
+
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function shuffle(arr) {
+            let result = [];
+
+            while (arr.length > 0) {
+                let random = getRandomInt(0, arr.length - 1);
+                let elem = arr.splice(random, 1)[0];
+                result.push(elem);
+            }
+
+            return result;
+        }
+
+        console.log(randoms([1, 2, 3, 4, 5], 3));
+
+        // Пусть нам нужно вывести на экран все возможные счастливые автобусные билеты. Билет
+        // называется счастливым, если сумма первых трех цифр билета равна сумме вторых трех цифр
+        // (будем рассматривать только билеты, в номере которых 6 цифр).
+        function isLucky(num) {
+            let str = normalizeNum(num);
+            let sum1 = Number(str[0]) + Number(str[1]) + Number(str[2]);
+            let sum2 = Number(str[3]) + Number(str[4]) + Number(str[5]);
+
+            return sum1 == sum2;
+
+        }
+
+        function normalizeNum(num) {
+            let str = String(num);
+            if (str.length == 4) {
+                str = '00' + str;
+            } else if (str.length == 5) {
+                str = '0' + str;
+            }
+            return str;
+        }
+
+        function getLuckyTickets() {
+            let result = [];
+
+            for (let i = 1001; i <= 999999; i++) {
+                if (isLucky(i)) {
+                    result.push(i);
+                }
+            }
+
+            return result;
+        }
+
+        console.log(normalizeNum(1234));
+        console.log(normalizeNum(12345));
+        console.log(normalizeNum(123456));
+        console.log(isLucky(123006));
+        console.log(isLucky(123016));
+        console.log(getLuckyTickets());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
