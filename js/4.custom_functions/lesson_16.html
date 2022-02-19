@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_16(99)</title>
+    <script>
+        "use strict";
+        // Давайте считать, что в функцию всегда будет передаваться число с любым четным количеством
+        // цифр. Наша функция должна взять первую половину цифр, найти их сумму, затем взять вторую
+        // половину цифр, найти их сумму, а затем проверить равенство сумм.
+        function isLucky(num) {
+            let str = String(num);
+            let sum1 = 0;
+            let sum2 = 0;
+            for (let x = 0; x < str.length; x++) {
+                if (x < str.length / 2) {
+                    sum1 += Number(str[x]);
+                } else {
+                    sum2 += Number(str[x]);
+                }
+            }
+            return sum1 == sum2;
+        }
+
+        console.log(isLucky('1203'));
+        console.log(isLucky('012003'));
+        console.log(isLucky('123006'));
+        console.log(isLucky('33'));
+
+        function normalizeNum(num, digitsAmount) {
+            let str = String(num);
+            return formStr('0', digitsAmount - str.length)
+                + str;
+        }
+
+        function formStr(data, length) {
+            let str = '';
+            if (length == 0) {
+                return str;
+            }
+            if (length == 1) {
+                return str = data;
+            }
+            return data + formStr(str + data, length - 1);
+        }
+
+        console.log(normalizeNum(123, 6)); // выведет '000123'
+        console.log(normalizeNum(1234, 6)); // выведет '001234'
+        console.log(normalizeNum(12345, 6)); // выведет '012345'
+        console.log(normalizeNum(123456, 6)); // выведет '123456'
+
+        // Потестируйте совместную работу функций normalizeNum и isLucky, например, вот так:
+
+        console.log(isLucky(normalizeNum(1203, 4)));   // выведет true
+        console.log(isLucky(normalizeNum(312, 4)));    // выведет true
+
+        console.log(isLucky(normalizeNum(6123, 6)));   // выведет true
+        console.log(isLucky(normalizeNum(600123, 6))); // выведет true
+
+        console.log(isLucky(normalizeNum(700123, 6))); // выведет false
+        console.log(isLucky(normalizeNum(70123, 6)));  // выведет false
+
+        // Сделайте функцию getLast, которая параметром будет принимать число цифр в билете и возвращать
+        // число, соответствующее концу цикла. Потестируйте эту функцию на различных значениях.
+        function getLast(num) {
+            let str = '';
+            for (let x = 0; x < num; x++) {
+                str += 9;
+            }
+            return str;
+        }
+        console.log(getLast(3));
+        console.log(getLast(4));
+        console.log(getLast(5));
+        console.log(getLast(6));
+
+        // Сделайте функцию getFirst, которая параметром будет принимать число цифр в билете и
+        // возвращать число, соответствующее началу цикла. Потестируйте эту функцию на различных
+        // значениях.
+        function getFirst(num) {
+            let str = '1';
+            for (let x = 1; x < num; x++) {
+                str += 0;
+            }
+            return str;
+        }
+        console.log(getFirst(3));
+        console.log(getFirst(4));
+        console.log(getFirst(5));
+        console.log(getFirst(6));
+
+        // Соберите весь код вместе, запустите его. Потестируйте общую работу кода для билетов с
+        // различным количеством цифр.
+        function getLuckyTickets(digitsAmount) {
+            let result = [];
+
+            let first = getFirst(digitsAmount);
+            let last  = getLast(digitsAmount);
+
+            for (let i = first; i <= last; i++) {
+                let ticketNum = normalizeNum(i, digitsAmount);
+
+                if (isLucky(ticketNum)) {
+                    result.push(ticketNum);
+                }
+            }
+
+            return result;
+        }
+        console.log(getLuckyTickets(4))
+    </script>
+</head>
+<body>
+
+</body>
+</html>
