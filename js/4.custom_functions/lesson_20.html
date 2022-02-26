@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_20(104, 105)</title>
+    <script>
+        "use strict";
+
+        // Создайте функцию как Function Declaration. Проверьте то, что она будет доступна выше места своего объявления.
+        func();
+
+        function func() {
+            alert('function declaration!')
+        }
+
+        // Создайте функцию как Function Expression. Проверьте то, что она не будет доступна выше места своего объявления.
+        // func_2();
+
+        let func_2 = function () {
+            alert('Function Expression!')
+        };
+
+
+        // Расставьте точки с запятой во всех необходимых местах:
+        // let func1 = function () {
+        //     alert('!')
+        // }
+        // let func2 = function () {
+        //     alert('!')
+        // }
+        //
+        // function func3() {
+        //     alert('!')
+        // }
+        let func1 = function () {
+            alert('!');
+        };
+        let func2 = function () {
+            alert('!');
+        };
+
+        function func3() {
+            alert('!');
+        }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            let test = function func() {    //Function Expression
+                alert('!');
+            }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+
+            alert(
+                function func() {
+                    alert('!');
+                }
+            );  //Function Expression
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            +function func() {      //Function Expression
+                alert('!');
+            }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+        function func3() {      //Function Declaration
+                alert('func3');
+            }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            -
+                function func4() {       //Function Expression
+                    alert('!');
+                }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+
+            -1;
+        function func5() {      //Function Declaration
+            alert('!');
+        }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            -1
+        function func6() {      //Function Expression
+            alert('!');
+        }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+         1
+        function func7() {       //Function Expression
+            alert('!');
+        }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            -1-
+            function func8() {       //Function Expression
+                alert('!');
+            }
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            function func9() {       //Function Declaration
+                alert('!');
+            }
+        +1;
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            function func10() {     //Function Declaration
+                alert('!');
+            } + 1;
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            +function func() {      //Function Expression
+                alert('!');
+            } + 1;
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            +
+                function func() {       //Function Expression
+                    alert('!');
+                } + 1;
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+            + 1
+        function func() {       //Function Expression
+            alert('!');
+        } + 1;
+
+        // Определите, является ли представленная функция Function Declaration или Function Expression:
+         function func() {      //Function Declaration
+                alert('!');
+            } + alert('!');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
