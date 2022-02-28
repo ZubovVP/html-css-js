@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_21(106, 107)</title>
+    <script>
+        "use strict";
+
+        // Сделайте массив arr с тремя функциями. Пусть первая возвращает через return число 1, вторая - число 2, третья - число 3.
+        let arr = [function () {
+            return 1
+        }, function () {
+            return 2
+        }, function () {
+            return 3
+        }];
+        console.log(arr[0]());
+        console.log(arr[1]());
+
+        // Используя созданный вами массив arr выведите на экран число 3, вызвав соответствующую функцию.
+        console.log(arr[2]());
+
+        // Используя созданный вами массив arr найдите сумму результатов функций (без цикла).
+        let result = 0;
+        for (let x = 0; x < arr.length; x++) {
+            result += Number(arr[x]());
+        }
+        console.log(result);
+
+        // Переберите созданный вами массив arr циклом и выведите результаты работы всех функций на экран.
+        for (let f of arr) {
+            console.log(f());
+        }
+
+
+        // Сделайте объект с тремя функциями. Пусть первая возвращает через return число 1, вторая - число 2, третья - число 3.
+        // С помощью созданных функций выведите на экран сумму возвращаемых чисел.
+        let obj = {
+            func1: function () {
+                return 1
+            }, func2: function () {
+                return 2
+            }, func3: function () {
+                return 3
+            }
+        };
+        result = 0;
+        result += Number(obj.func1());
+        result += Number(obj.func2());
+        result += Number(obj.func3());
+        console.log(result);
+
+        // Переберите созданный объект циклом и выведите результаты работы функций на экран.
+        for (let el in obj) {
+            console.log(obj[el]());
+        }
+
+        // Сделайте объект с тремя функциями, каждая из которых будет принимать параметром массив с числами. Сделайте так, чтобы первая функция возвращала сумму элементов массива,
+        // вторая функция - сумму квадратов, а третья - сумму кубов.
+        let obj_2 = {
+            func1: function (arr) {
+                let result = 0;
+                for (let x = 0; x < arr.length; x++) {
+                    result += Number(arr[x]);
+                }
+                return result;
+            }, func2: function (arr) {
+                let result = 0;
+                for (let x = 0; x < arr.length; x++) {
+                    result += (Number(arr[x]) * Number(arr[x]));
+                }
+                return result;
+                return 2
+            }, func3: function (arr) {
+                let result = 0;
+                for (let x = 0; x < arr.length; x++) {
+                    result += (Number(arr[x]) * Number(arr[x]) * Number(arr[x]));
+                }
+                return result;
+            }
+        };
+
+        for (let el in obj_2) {
+            console.log(obj_2[el]([1, 2, 3]));
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
