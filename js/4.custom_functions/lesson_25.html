@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_25(113)</title>
+    <script>
+        "use strict";
+        // Самостоятельно, не подсматривая в мой код, реализуйте счетчик вызова функции,
+        // работающий на замыканиях.
+        function func() {
+            let num = 1;
+            return function test() {
+                alert(num);
+                num++;
+            }
+        }
+
+        let test = func();
+        test();
+        test();
+
+        // Пусть функция в замыкании хранит число 10. Сделайте так, чтобы каждый вызов функции
+        // уменьшал это число на 1 и выводил на экран уменьшенное число.
+        function decrement() {
+            let num = 10;
+            return function () {
+                alert(num);
+                num--;
+            }
+        }
+
+        let result = decrement();
+        result();
+        result();
+
+        // Модифицируйте предыдущую задачу так, чтобы отсчет доходил до 0, а затем каждый последующий
+        // вызов функции выводил на экран сообщение о том, что отсчет окончен.
+        function decrementNew() {
+            let num = 1;
+            return function () {
+                if (num == 0) {
+                    alert('рассчёт окончен')
+                } else {
+                    alert(num);
+                    num--;
+                }
+            }
+        }
+
+        let resultNew = decrementNew();
+        resultNew();
+        resultNew();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
