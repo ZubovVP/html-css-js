@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(121)</title>
+    <script>
+        "use strict";
+        // Дан массив с числами. Используя метод map извлеките из каждого элемента массива квадратный корень и запишите результат в новый массив.
+        let arr = [1, 2, 3, 4, 5];
+        let result = arr.map(num => Math.sqrt(num));
+        console.log(result);
+
+        // Дан массив со строками. Используя метод map в конец значению каждого элемента массива добавьте символ '!'.
+        arr = ['1', '2', '3', '4', '5'];
+        result = arr.map(str => str + '!');
+        console.log(result);
+
+        // Дан массив со строками. Используя метод map переверните символы каждой строки в обратном порядке.
+        arr = ['123', '123', '123', '123', '123'];
+        result = arr.map(str => str.split('').reverse().join(''));
+        console.log(result);
+
+        arr = ['123', '456', '789'];
+        // Используя метод map преобразуйте этот массив в следующий:
+        //     let arr = [
+        //         [1, 2, 3],
+        //         [4, 5, 6],
+        //         [7, 8, 9]
+        //     ];
+        result = arr.map(function (el) {
+            return el.split('');
+        });
+        console.log(result);
+
+        // Дан массив с числами. Используя метод map запишите в каждый элемент массива значение этого элемента, умноженное на его порядковый номер в массиве.
+        arr = [1, 2, 3, 4, 5];
+        result = arr.map(function (value, index) {
+            return value * index
+        });
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
