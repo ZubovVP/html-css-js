@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_30(120)</title>
+    <script>
+        "use strict";
+        // Дан многомерный объект произвольного уровня вложенности, например, такой:
+        // {a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}}
+        // С помощью рекурсии выведите все примитивные элементы этого объекта на экран.
+        let objs = {a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}};
+
+        function func(obj) {
+            for (let elem in obj) {
+                if (typeof obj[elem] == 'object') {
+                    func(obj[elem]);
+                } else {
+                    console.log(obj[elem]);
+                }
+            }
+        }
+
+        func(objs);
+
+        // Дан многомерный массив произвольного уровня вложенности, например, такой:
+        //
+        // [1, [2, 7, 8], [3, 4, [5, [6, 7]]]]
+        // Напишите код, который развернет наш многомерный массив в одномерный. Для приведенного выше массива это будет выглядеть вот так:
+        //
+        //     [1, 2, 7, 8, 3, 4, 5, 6, 7]
+        function func1(arr) {
+            let result = [];
+            for (let el of arr) {
+                if (typeof el == 'object') {
+                    result.push(...func1(el));
+                } else {
+                    result.push(el);
+                }
+            }
+            return result;
+        }
+
+        console.log(func1([1, [2, 7, 8], [3, 4, [5, [6, 7]]]]));
+
+        // Дан многомерный объект произвольного уровня вложенности, например, такой:
+        // {a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}}
+        // С помощью рекурсии найдите сумму элементов этого объекта.
+
+        objs = {a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}};
+
+        function func3(obj) {
+            let result = 0;
+            for (let elem in obj) {
+                if (typeof obj[elem] == 'object') {
+                    result += func3(obj[elem]);
+                } else {
+                    result += obj[elem];
+                }
+            }
+            return result;
+        }
+
+        console.log(func3(objs));
+
+        // Дан многомерный массив произвольного уровня вложенности, содержащий внутри себя строки,
+        // например, такой:
+        //
+        // ['a', ['b', 'c', 'd'], ['e', 'f', ['g', ['j','k']]]]
+        // С помощью рекурсии слейте элементы этого массива в одну строку:
+        //
+        //     'abcdefgjk'
+        function fun4(arr) {
+            let result = '';
+            for (let el of arr) {
+                if (typeof el == 'object') {
+                    result += fun4(el);
+                } else {
+                    result += el;
+                }
+            }
+            return result;
+        }
+
+        let arr = ['a', ['b', 'c', 'd'], ['e', 'f', ['g', ['j', 'k']]]];
+        console.log(fun4(arr));
+
+        function func5(arr) {
+            for (let x = 0; x < arr.length; x++) {
+                if (typeof arr[x] == 'object') {
+                    arr[x] = func5(arr[x]);
+                } else {
+                    arr[x] = arr[x] * arr[x];
+                }
+            }
+            return arr;
+        }
+
+        arr = [1, [2, 7, 8], [3, 4], [5, [6, 7]]];
+        console.log(func5(arr));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

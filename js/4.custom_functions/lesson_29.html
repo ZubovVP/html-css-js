@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_29(119)</title>
+    <script>
+        "use strict";
+        // Дан массив:
+        let arr = [1, 2, 3, 4, 5];
+
+        // С помощью рекурсии выведите элементы этого массива на экран.
+
+        function func(arr) {
+            console.log(arr.shift());
+            if (arr.length != 0) {
+                func(arr);
+            }
+        }
+
+        func(arr);
+
+        // Дан массив:
+            arr = [1, 2, 3, 4, 5];
+        // С помощью рекурсии найдите сумму квадратов элементов этого массива.
+        function func1(arr) {
+            let el = arr.shift();
+            let result = el * el;
+            if (arr.length != 0) {
+                 result += Number(func1(arr));
+            }
+            return result;
+        }
+        console.log(func1(arr));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
