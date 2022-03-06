@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(123)</title>
+    <script>
+        "use strict";
+        // Дан массив с числами. Оставьте в нем только положительные числа.
+        let arr = [-1, 0, 1, -10, 10];
+        let result = arr.filter(value => value >= 0);
+        console.log(result);
+
+        // Дан массив с числами. Оставьте в нем только отрицательные числа.
+        result = arr.filter(value => value < 0);
+        console.log(result);
+
+        // Дан массив с числами. Оставьте в нем только числа, которые больше нуля, но меньше 10.
+        result = arr.filter(value => value > 0 && value < 10);
+        console.log(result);
+
+        // Дан массив со строками. Оставьте в нем только те строки, длина которых больше 5-ти символов.
+        let str = ['abc', 'abcdefg', '123456', ''];
+        result = str.filter(value => value.length > 5);
+        console.log(result);
+
+        // Дан массив с числами. Оставьте в нем только те числа, произведение которых на их порядковый номер меньше 30.
+        result = arr.filter(function (value, index) {
+            return value * index > 30;
+        });
+        console.log(result);
+
+        // Дан массив, в нем могут быть обычные элементы и подмассивы,
+        // например [1, 2, [3, 4], 5, [6, 7]]. Оставьте в нем только обычные элементы.
+        arr = [1, 2, [3, 4], 5, [6, 7]];
+        result = arr.filter(value => typeof value != 'object');
+        console.log(result);
+
+        // Дан массив с числами. Посчитайте количество отрицательных чисел в этом массиве.
+        arr = [-1, 0, 1, -10, 10];
+        result = arr.filter(element => element < 0).length;
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
