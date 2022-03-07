@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(124)</title>
+    <script>
+        "use strict";
+        // Дан массив с числами. Проверьте то, что все элементы в массиве больше нуля.
+        let arr_1 = [1, 2, 3, 4, 5];
+        let arr_2 = [-1, 0, 1, 4, 5];
+        let result_1 = arr_1.every(element => element > 0);
+        let result_2 = arr_2.every(element => element > 0);
+        console.log(result_1);
+        console.log(result_2);
+
+        // Дан массив с числами. Проверьте то, что для всех элементов произведение их значений на их порядковый номер меньше 30.
+         result_1 = arr_1.every(function (value, index) {
+             return value * index < 30;
+         });
+         result_2 = arr_2.every(function (value, index) {
+             return value * index < 30;
+         });
+        console.log(result_1);
+        console.log(result_2);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
