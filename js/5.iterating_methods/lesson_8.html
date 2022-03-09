@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_7(131)</title>
+    <script>
+        "use strict";
+        // Напишем функцию getInt, которая будет находить пересечение любого количества массивов.
+        let result = getInt([1, 2, 3], [2, 3, 4], [4,
+            3, 2]);
+        console.log(result); // выведет [2, 3]
+
+        function getInt(...args) {
+            let arr0 = args.shift();
+            let result = [];
+            for (let elem of arr0) {
+                if (inArrays(elem, args)) {
+                    result.push(elem);
+                }
+            }
+            return result;
+        }
+
+        function inArrays(elem, args) {
+            for (let arr of args) {
+                if (!inArray(elem, arr)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function inArray(elem, arr) {
+            return arr.indexOf(elem) !== -1;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

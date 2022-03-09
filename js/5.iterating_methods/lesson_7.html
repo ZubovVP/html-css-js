@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_7(128, 129, 130)</title>
+    <script>
+        "use strict";
+        // Напишите функцию, которая будет принимать параметрами произвольное количество
+        // чисел и возвращать их среднее арифметическое (сумма делить на количество).
+        function func(...nums) {
+            let sum = 0;
+            for (let num of nums) {
+                sum += num;
+            }
+            return sum / nums.length;
+        }
+        console.log(func(1, 2, 3, 4, 5));
+
+        // Давайте теперь реализуем функцию merge, параметрами принимающую произвольное количество
+        // массивов и сливающую их элементы в один массив.
+        function merge(...arrs) {
+            return [].concat(...arrs);
+        }
+
+        let result = merge([1, 2, 3], [4, 5, 6], [7,
+            8, 9]);
+        console.log(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
