@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_10(133)</title>
+    <script>
+        "use strict";
+        // В следующем коде части объекта записываются в соответствующие переменные:
+            let options = {
+                color: 'red',
+                width:  400,
+                height: 500,
+            };
+        // let color  = options.color;
+        // let width  = options.width;
+        // let height = options.height;
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let {color, width, height} = options;
+        console.log(color);
+        console.log(width);
+        console.log(height);
+
+        // В следующем коде части объекта записываются в соответствующие переменные:
+        //     let options = {
+        //         color: 'red',
+        //         width:  400,
+        //         height: 500,
+        //     };
+        // let c = options.color;
+        // let w = options.width;
+        // let h = options.height;
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let {color : c, width : w, height : h} = options;
+        console.log(c);
+        console.log(w);
+        console.log(h);
+
+        // В следующем коде части объекта записываются в соответствующие переменные:
+            let options_1 = {
+                width_1:  400,
+                height_1: 500,
+            };
+        // let color;
+        // if (options_1.color !== undefined) {
+        //     color = options_1.color;
+        // } else {
+        //     color = 'black';
+        // }
+        // let width  = options_1.width;
+        // let height = options_1.height;
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+
+        let {color_1 = 'black', width_1, height_1} = options_1;
+        console.log(color_1);
+        console.log(width_1);
+        console.log(height_1);
+
+
+        // В следующем коде части объекта записываются в соответствующие переменные:
+        //     let options = {
+        //         width:  400,
+        //         height: 500,
+        //     };
+        // let с_1;
+        // if (options.с !== undefined) {
+        //     с_1 = options.color;
+        // } else {
+        //     с_1 = 'black';
+        // }
+        // let w_1 = options.width;
+        // let h_1 = options.height;
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let {color_1 : c_1 = 'black', width_1 : w_1, height_1 : h_1} = options_1;
+        console.log(c_1);
+        console.log(w_1);
+        console.log(h_1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

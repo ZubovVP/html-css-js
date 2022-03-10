@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_9(132)</title>
+    <script>
+        "use strict";
+        // В следующем коде части массива записываются в соответствующие переменные:
+        //     let arr = ['Иван', 'Иванов', 'отдел разработки', 'программист', 2000];
+        // let name       = arr[0];
+        // let surname    = arr[1];
+        // let department = arr[2];
+        // let position   = arr[3];
+        // let salary     = arr[4];
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let arr = ['Иван', 'Иванов', 'отдел разработки', 'программист', 2000];
+        let [name, surname, department, position, salary] = arr;
+        console.log(name);
+        console.log(surname);
+        console.log(department);
+        console.log(position);
+        console.log(salary);
+
+        // В следующем коде части массива записываются в соответствующие переменные:
+            function func() {
+                return ['Василий', 'Васильев', 'отдел разработки', 'программист',
+                    2000];
+            }
+        //
+        // let arr = func();
+        // let name       = arr[0];
+        // let surname    = arr[1];
+        // let department = arr[2];
+        // let position   = arr[3];
+        // let salary     = arr[4];
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let [name_1, surname_1, department_1, position_1, salary_1] = func();
+        console.log(name_1);
+        console.log(surname_1);
+        console.log(department_1);
+        console.log(position_1);
+        console.log(salary_1);
+
+        // В следующем коде части массива записываются в соответствующие переменные:
+        //     let arr = ['Иван', 'Иванов', 'отдел разработки', 'программист', 2000];
+        // let department = arr[2];
+        // let position   = arr[3];
+        // Переделайте этот код через деструктуризацию согласно изученной теории.
+        let [, , department_2, position_2] = func();
+        console.log(department_2);
+        console.log(position_2);
+
+        // В следующем коде части массива записываются в соответствующие переменные:
+        //     let arr = ['Иван', 'Иванов', 'отдел разработки', 'программист', 2000];
+        // let name    = arr[0];
+        // let surname = arr[1];
+        // let info = arr.slice(2); // все элементы со второго
+        // до конца массива
+
+        let [name_3, surname_3, ...info] = func();
+        console.log(name_3);
+        console.log(surname_3);
+        console.log(info);
+
+        // В следующем коде части массива записываются в соответствующие переменные:
+        //     let arr = ['Иван', 'Иванов', 'отдел разработки', 'программист'];
+        // let name       = arr[0];
+        // let surname    = arr[1];
+        // let department = arr[2];
+        // let position;
+        // if (arr[3] !== undefined) {
+        //     position = arr[3];
+        // } else {
+        //     position = 'джуниор';
+        // }
+        function func_1() {
+            return ['Василий', 'Васильев', 'отдел разработки', undefined,
+                2000];
+        }
+        let [name_4, surname_4, department_4, position_4 = 'джуниор', ...info_4] = func_1();
+        console.log(name_4);
+        console.log(surname_4);
+        console.log(department_4);
+        console.log(position_4);
+        console.log(info_4);
+
+        // Модифицируйте полученный выше код так, чтобы при отсутствии в массиве значения для
+        // месяца по умолчанию брался текущий месяц, а при отсутствии значения для года - соответственно
+        // текущий год.
+        function func_2() {
+            return (new Date).getDate();
+        }
+
+        function func_3() {
+            return (new Date).getMonth();
+        }
+
+        let [year, month = func_3(), day = func_2()] = [1992, undefined, undefined];
+        console.log(year);
+        console.log(month);
+        console.log(day);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
