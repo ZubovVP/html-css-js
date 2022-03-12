@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(135)</title>
+    <script>
+        "use strict";
+        // Выведите на экран номер текущего дня недели.
+        let date = new Date();
+        console.log('номер текущего дня недели ' + date.getDay());
+
+        // Определите, является ли текущий день недели выходным или рабочим днем.
+        function checkDate(date) {
+            if (date == 6 || date == 0) {
+                console.log('выходной день');
+            } else {
+                console.log('рабочий день');
+            }
+        }
+
+        checkDate(date.getDay());
+
+        // Определите сколько дней осталось до ближайшего воскресенья.
+        function checkNearSunday(num) {
+            return 7 - num;
+        }
+
+        console.log('До ближайшего воскресенья осталось ' + checkNearSunday(date.getDay()) + ' дней.');
+
+        // Пусть дан следующий массив:
+        let months = [
+            'янв', 'фев', 'мар', 'апр', 'май', 'июн',
+            'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'
+        ];
+        // Выведите с помощью этого массива название текущего месяца.
+        console.log('текущий месяц : ' + months[date.getMonth()]);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
