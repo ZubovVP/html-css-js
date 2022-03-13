@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(139, 140)</title>
+    <script>
+        "use strict";
+        // Узнайте, какой день недели был в ваш день рождения.
+        let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+        let date = new Date(1992, 3, 4);
+        console.log(days[date.getDay()]);
+
+        // Выведите на экран timestamp, соответствующий дате 1 января 2025 года.
+        date = new Date(2025, 1, 1);
+        console.log(date.getTime());
+
+        // Выведите на экран количество дней, прошедшее между 1 марта 1988 года и 10 января 2000 года.
+        let date_1 = new Date(1988, 3, 1);
+        let date_2 = new Date(2000, 1, 10);
+        let diff = Math.ceil((date_2 - date_1) / (1000 * 60 * 60 * 24));
+        console.log('разница дней составляется - ' + diff);
+
+        // Выведите на экран количество месяцев, прошедшее между вашим рождением и текущим моментом
+        // времени.
+        let birthday = new Date(1992, 3, 4);
+        let nowDate = new Date();
+        diff = Math.round(((nowDate - birthday) / (1000 * 60 * 60 * 24 * 30)));
+        console.log('разница месяцев составляется - ' + diff);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
