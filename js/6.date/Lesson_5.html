@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_5(141)</title>
+    <script>
+        "use strict";
+        // Выведите на экран количество миллисекунд, прошедшее между 1 сентября 2000 года и 15 февраля 2010 года.
+        let date_1 = new Date(2000, 9, 1);
+        let date_2 = new Date(2010, 2, 15);
+        let diff = date_2 - date_1;
+        console.log(diff + ' разница в миллисекундах');
+
+        // Модифицируйте предыдущую задачу так, чтобы на экран выводилась разница в днях.
+        diff = Math.ceil(diff /  (1000 * 60 * 60 * 24));
+        console.log(diff + ' разница в днях');
+
+        // Модифицируйте предыдущую задачу так, чтобы на экран выводилась разница в месяцах.
+        diff = Math.ceil(diff /  30);
+        console.log(diff + ' разница в месяцах');
+
+        // Модифицируйте предыдущую задачу так, чтобы на экран выводилась разница в годах.
+        diff = Math.ceil(diff /  12);
+        console.log(diff + ' разница в годах');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
