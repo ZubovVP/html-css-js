@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(172)</title>
+    <script>
+        "use strict";
+        // Необязательная задача для любителей покодить: допишите код представленной функции до конца.
+        // Учтите, что високосный год - это не обязательно год, который делится на 4. Погуглите его
+        // определение.
+        function getLastDay(month, year) {
+            let lastDays = [31, 28, 31, 30, 31, 30, 31,
+                31, 30, 31, 30, 31];
+
+            if (month != 1) {
+                return lastDays[month]; // если не февраль
+            } else {
+                if (year % 4 == 0 && year % 100 != 0) {
+                    return lastDays[month] + 1;
+                }
+                return lastDays[month];
+            }
+        }
+
+        console.log(getLastDay(1, 4000));
+        console.log(getLastDay(1, 4004));
+
+        // Оформите этот способ решения проблемы в виде функции, которая параметрами будет принимать
+        // месяц и год и возвращать номер последнего дня этого месяца.
+        function getLastDay_1(month, year) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        console.log(getLastDay_1(1, 4000));
+        console.log(getLastDay_1(1, 4004));
+
+        // Определите, какой день недели будет в последнем дне пятого месяца 2025 года.
+        let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+        console.log(days[new Date(2025, 6, 0).getDay()]);
+
+        // Сделайте функцию isLeap, которая параметром будет принимать год и возвращать true,
+        // если этого год високосный, и false - если нет.
+        function isLeap(year) {
+            let date = new Date(year, 2, 0);
+            if (date.getDate() == 28) {
+                return false;
+            }
+            return true;
+        }
+        console.log(isLeap(4000));
+        console.log(isLeap(4005));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

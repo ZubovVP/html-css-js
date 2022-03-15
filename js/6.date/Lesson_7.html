@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_7(173)</title>
+    <script>
+        "use strict";
+        // Сделайте функцию checkDate, которая будет выполнять проверку даты. Пусть функция
+        // возвращает true, если дата корректна и false, если нет. Пример работы этой функции для 31
+        // января и 32 января:
+        function checkDate(year, month, day) {
+            let date = new Date(year, month, day);
+            return date.getFullYear() == year && date.getMonth() == month && date.getDate() == day;
+        }
+
+        console.log(checkDate(2025, 0, 31)); // выведет true
+        console.log(checkDate(2025, 0, 32)); // выведет false
+    </script>
+</head>
+<body>
+
+</body>
+</html>
