@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_9(175)</title>
+    <script>
+        "use strict";
+        // Определите, сколько секунд прошло с начала дня до настоящего момента времени.
+        let now = new Date();
+        let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        console.log((now - date) / 1000);
+
+        // Определите, сколько секунд осталось до конца дня.
+        date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0);
+        console.log((date - now) / 1000);
+
+        // Определите, сколько дней осталось до нового года.
+        date = new Date(now.getFullYear() + 1, 0, 1);
+        console.log((date - now) / (1000 * 3600 * 24));
+
+        // Определите, сколько пятниц 13-е в текущем году.
+        let counter = 0;
+        for (let month = 0; month < 12; month++) {
+            let date = new Date(now.getFullYear(), month, 13);
+            if (date.getDay() == 5) {
+                counter++;
+            }
+        }
+        console.log('пятниц 13-е в текущем году - ' + counter);
+
+        // Определите, какой год был 3 месяца назад.
+        date = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
+        console.log(date.getFullYear());
+
+        // Определите, какой день недели будет в последнем дне текущего месяца.
+        date = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        console.log(date.getDay());
+
+        // Напишите код, который будет определять, високосный ли текущий год.
+        function check_year(year) {
+            return year % 4 == 0 && year % 100 != 0;
+        }
+
+        console.log(check_year(4000));
+        console.log(check_year(4004));
+
+        // Напишите код, который будет находить предыдущий високосный год.
+        function last_special_year(year) {
+            while (year > 0) {
+                if (check_year(year)) {
+                    return year;
+                }
+                year--;
+            }
+            return 0;
+        }
+        console.log(last_special_year(4005));
+
+        // Напишите код, который будет находить следующий високосный год.
+        function next_special_year(year) {
+            while (year > 0) {
+                if (check_year(year)) {
+                    return year;
+                }
+                year++;
+            }
+            return 0;
+        }
+        console.log(next_special_year(4005));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
