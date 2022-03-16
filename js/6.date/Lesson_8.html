@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_8(174)</title>
+    <script>
+        "use strict";
+        // Определите, какой день недели будет 31 декабря текущего года.
+        let now = new Date();
+        let date = new Date(now.getFullYear(), 11, 31);
+        console.log(date.getDay());
+
+        // Определите, какой день недели будет 1 числа текущего месяца.
+        date = new Date(now.getFullYear(), now.getMonth(), 1);
+        console.log(date.getDay());
+
+        // Определите, какой день недели будет 31 декабря следующего года.
+        date = new Date(now.getFullYear() + 1, 11, 31);
+        console.log(date.getDay());
+
+        // Определите, какой день недели будет через год в такую же дату, как сегодня.
+        date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        console.log(date.getDay());
+
+        // Определите, какой день недели был год назад в такую же дату, как сегодня.
+        date = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+        console.log(date.getDay());
+
+        // Вопрос: не будет ли проблемы, если текущий месяц январь? Ведь он имеет номер 0,
+        // и при вычитании из него единицы мы получим минус первый месяц.
+        date = new Date(now.getFullYear(), 0 - 1, now.getDate());
+        console.log(date.getDay());
+
+        // Определите, какой день недели был месяц назад в такой же день месяца, как сегодня.
+        date = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+        console.log(date.getDay());
+
+        // Определите, сколько дней между 1 января и 10 сентября текущего года.
+        let date1 = new Date(now.getFullYear(), 0, 1);
+        let date2 = new Date(now.getFullYear(), 8, 10);
+        console.log((date2 - date1) / (1000 * 60 * 60 * 24));
+
+        // Определите, сколько дней между 20 числом текущего месяца и 10 числом следующего
+        date1 = new Date(now.getFullYear(), now.getMonth(), 20);
+        date2 = new Date(now.getFullYear(), now.getMonth() + 1, 10);
+        console.log((date2 - date1) / (1000 * 3600 * 24));
+
+        // Определите, сколько часов прошло между вчерашним полднем и текущим моментом времени.
+        date1 = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1, 12);
+        date2 = new Date();
+        console.log((date2 - date1) / (1000 * 3600));
+
+        // Определите, сколько часов прошло между началом дня и текущим моментом времени.
+        date1 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
+        date2 = new Date();
+        console.log((date2 - date1) / (1000 * 3600));
+
+        // Определите, сколько часов осталось до конца дня.
+        date1 = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+        date2 = new Date();
+        console.log((date1 - date2) / (1000 * 3600));
+
+        // Рассмотрите промежуток от 2000 года до текущего года. Определите, сколько раз 1 января в
+        // этом промежутке попадало на выходной день, то есть на субботу или на воскресенье.
+         date = new Date(2000, 0, 1);
+        for (let year = date.getFullYear(); year <= now.getFullYear(); year++) {
+            let d = new Date(year, 0, 1);
+            if (d.getDay() == 0 || d.getDay() == 6) {
+                console.log('Выходной день 1 января в год ' + year);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
