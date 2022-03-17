@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_11(177)</title>
+    <script>
+        "use strict";
+        // Получите объект с датой, содержащий текущий момент времени. Получите объект с датой,
+        // содержащий полдень текущего дня. Сравните два этих объекта и определите, был ли уже
+        // полдень или нет.
+        let now = new Date();
+        let midday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0);
+        function checkDate(date){
+            if(date > midday){
+                console.log('полдень уже прошёл');
+            } else {
+                console.log('полдень ещё не прошёл');
+            }
+        }
+        checkDate(now);
+
+        // Получите объект с датой, содержащий текущий момент времени. Получите объект с датой,
+        // содержащий 15 число текущего месяца. Сравните два этих объекта и определите, прошла ли
+        // уже половина месяца или нет.
+        let midMonth = new Date(now.getFullYear(), now.getMonth(), 15);
+        function checkDate_2(date){
+            if(date > midday){
+                console.log('середина месяца уже прошла');
+            } else {
+                console.log('середина месяца не прошла');
+            }
+        }
+        checkDate_2(now);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
