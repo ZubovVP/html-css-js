@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_12(178)</title>
+    <script>
+        "use strict";
+        // Сколько дней осталось до какого-нибудь праздника, например, до ближайшего Женского дня.
+        let now = new Date();
+        let date = new Date(now.getFullYear(), 2, 8);
+
+        let diff = date - now;
+
+        if (diff > 0) {
+            console.log('до 8ого марта ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+        } else if (diff == 0) {
+            console.log('праздник 8ое марта сегодня');
+        } else {
+            date.setFullYear(now.getFullYear() + 1);
+            diff = date - now;
+            console.log('до 8ого марта ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+        }
+
+        // Пусть ваш День Рождения - первое марта. Определите, сколько дней
+        // осталось до вашего ближайшего дня рождения.
+        now = new Date();
+        date = new Date(now.getFullYear(), 2, 1);
+        diff = date - now;
+
+        if (diff > 0) {
+            console.log('до ДР ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+        } else if (diff == 0) {
+            console.log('праздник ДР сегодня');
+        } else {
+            date.setFullYear(now.getFullYear() + 1);
+            diff = date - now;
+            console.log('до ДР ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+        }
+
+        // Пусть теперь День Рождения может быть произвольным и содержится в переменных month и day.
+        // Определите, сколько дней осталось до заданного этой датой праздника. Учтите при решении,
+        // что есть счастливчики, которые родились 29 февраля. Не забудьте их учесть в вашем решении.
+
+        function checkBirthday(month, day) {
+            let now = new Date();
+            let date = new Date(now.getFullYear(), month, day);
+            if(month == 1 && day == 29){
+                let now2 = new Date();
+                let d = new Date(now2.getFullYear(), 1, 29);
+                while (d.getMonth() != 1){
+                    d = new Date(d.getFullYear() + 1, 1, 29)
+                }
+                diff = d - now;
+            }
+
+            if (diff > 0) {
+                console.log('до ДР ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+            } else if (diff == 0) {
+                console.log('праздник ДР сегодня');
+            } else {
+                date.setFullYear(now.getFullYear() + 1);
+                diff = date - now;
+                console.log('до ДР ' + Math.ceil(diff / (1000 * 3600 * 24)) + ' дней');
+            }
+        }
+        checkBirthday(1, 29);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
