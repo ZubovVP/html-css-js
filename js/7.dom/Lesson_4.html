@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(186)</title>
+</head>
+<body>
+<p id="elem">text</p>
+<input id="button" type="submit">
+
+
+<script>
+    "use strict";
+    // Дан абзац:
+    //     <p id="elem">text</p>
+    // Даны следующие функции:
+    //     function func1() {
+    //         alert('1');
+    //     }
+    // function func2() {
+    //     alert('2');
+    // }
+    // function func3() {
+    //     alert('3');
+    // }
+    // Привяжите все эти функции к нашему абзацу.
+    function func1() {
+        alert('1');
+    }
+
+    function func2() {
+        alert('2');
+    }
+
+    function func3() {
+        alert('3');
+    }
+
+    let p1 = document.querySelector('#elem');
+    p1.addEventListener('click', func1);
+    p1.addEventListener('click', func2);
+    p1.addEventListener('click', func3);
+
+    // Дана кнопка. Привяжите к ней три анонимных обработчика двойного клика по ней.
+    // Пусть первый обработчик выводит число 1, второй обработчик - число 2, а третий - число 3.
+    let button = document.querySelector('#button');
+    button.addEventListener('click', function ()  {
+        alert('1');
+    })
+    button.addEventListener('click', function ()  {
+        alert('2');
+    })
+    button.addEventListener('click', function ()  {
+        alert('3');
+    })
+
+</script>
+</body>
+</html>
