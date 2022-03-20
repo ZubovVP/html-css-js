@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_5(187)</title>
+</head>
+<body>
+<p>Даны два абзаца, содержащие своим текстом какие-то числа, и кнопка. По нажатию на кнопку выведите на экран сумму
+    хранящихся чисел.</p>
+<p id="p1">1</p>
+<p id="p2">2</p>
+<input id="button" type="submit">
+
+<br>
+<p>Даны два абзаца и две кнопки. Пусть нажатие на первую кнопку выводит текст первого абзаца, а нажатие на вторую кнопку
+    - текст второго абзаца.</p>
+<input id="button2" type="submit">
+<input id="button3" type="submit">
+
+<br>
+<p>Дан абзац и две кнопки. По нажатию на первую кнопку запишите в абзац слово 'привет', а по нажатию на вторую кнопку -
+    слово 'пока'.</p>
+<p id="p4"></p>
+<input id="button4" type="submit" value="Привет">
+<input id="button5" type="submit" value="Пока">
+
+<br>
+<p>Даны 3 абзаца с текстом. По нажатию на первый абзац запишите в его текст число 1, по нажатию на второй абзац запишите
+    в его текст число 2, а по нажатию на третий - запишите в его текст число 3.</p>
+<p id="p5">Текст_</p>
+<p id="p6">Текст_</p>
+<p id="p7">Текст_</p>
+
+<br>
+<p>Дан абзац и кнопка. В абзаце записано какое-то число. По нажатию на кнопку возведите значение абзаца в квадрат и
+    запишите его обратно.</p>
+<p id="p8">2</p>
+<input id="button8" type="submit" value="возвести в квадрат">
+
+
+<br>
+<p>Дан абзац с числом и кнопка. По нажатию на кнопку прибавьте к значению абзаца единицу и запишите полученное число
+    обратно.</p>
+<p id="p9">1</p>
+<input id="button9" type="submit" value="+1">
+
+<br>
+<p>Дан абзац с текстом и кнопка. По нажатию на кнопку запишите в конец текста абзаца восклицательный знак.</p>
+<p id="p10">Текст</p>
+<input id="button10" type="submit" value="кнопка">
+
+<br>
+<p>Модифицируйте предыдущую задачу так, чтобы восклицательный знак записывался не в конец текста, а в начало.</p>
+<p id="p11">Текст</p>
+<input id="button11" type="submit" value="кнопка">
+
+<br>
+<p>Дан абзац и кнопка. По нажатию на кнопку запишите в абзац текст '<i>hello</i>'.</p>
+<p id="p12"></p>
+<input id="button12" type="submit" value="кнопка">
+
+<br>
+<p>Дан абзац с текстом и кнопка. По нажатию на кнопку прочитайте текст абзаца, оберните этот текст в теги &lt;b&gt; и
+    запишите новый текст обратно в абзац.</p>
+<p id="p13">Текст</p>
+<input id="button13" type="submit" value="кнопка">
+<script>
+    "use strict";
+    // Даны два абзаца, содержащие своим текстом какие-то числа, и кнопка.
+    // По нажатию на кнопку выведите на экран сумму хранящихся чисел.
+    let p_1 = document.querySelector('#p1');
+    let p_2 = document.querySelector('#p2');
+    let button = document.querySelector('#button');
+    button.addEventListener('click', function () {
+        alert(Number(p_1.innerHTML) + Number(p_2.innerHTML));
+    });
+
+
+    // Даны два абзаца и две кнопки. Пусть нажатие на первую кнопку выводит текст первого абзаца,
+    // а нажатие на вторую кнопку - текст второго абзаца.
+    let button2 = document.querySelector('#button2');
+    let button3 = document.querySelector('#button3');
+    button2.addEventListener('click', function () {
+        alert(p_1.innerHTML);
+    });
+    button3.addEventListener('click', function () {
+        alert(p_2.innerHTML);
+    });
+
+    // Дан абзац и две кнопки. По нажатию на первую кнопку запишите в абзац слово 'привет',
+    // а по нажатию на вторую кнопку - слово 'пока'.
+    let p4 = document.querySelector('#p4');
+    button4.addEventListener('click', function () {
+        p4.innerHTML = 'Привет';
+    });
+    button5.addEventListener('click', function () {
+        p4.innerHTML = 'Пока';
+    });
+
+    // Даны 3 абзаца с текстом. По нажатию на первый абзац запишите в его текст число 1,
+    // по нажатию на второй абзац запишите в его текст число 2, а по нажатию на третий
+    // - запишите в его текст число 3.
+    let p_5 = document.querySelector('#p5');
+    let p_6 = document.querySelector('#p6');
+    let p_7 = document.querySelector('#p7');
+    p_5.addEventListener('click', function () {
+        p_5.innerHTML = p_5.innerHTML + '5';
+    })
+    p_6.addEventListener('click', function () {
+        p_6.innerHTML = p_6.innerHTML + '6';
+    })
+    p_7.addEventListener('click', function () {
+        p_7.innerHTML = p_7.innerHTML + '7';
+    })
+
+    // Дан абзац и кнопка. В абзаце записано какое-то число. По нажатию на кнопку возведите значение
+    // абзаца в квадрат и запишите его обратно.
+    let p_8 = document.querySelector('#p8');
+    let button_8 = document.querySelector('#button8');
+    button_8.addEventListener('click', function () {
+        p_8.innerHTML = p_8.innerHTML * p_8.innerHTML;
+    });
+
+    // Дан абзац с числом и кнопка. По нажатию на кнопку прибавьте к значению абзаца единицу и запишите
+    // полученное число обратно.
+    let p_9 = document.querySelector('#p9');
+    let button_9 = document.querySelector('#button9');
+    button_9.addEventListener('click', function () {
+        p_9.innerHTML = Number(p_9.innerHTML) + 1;
+    });
+
+    // Дан абзац с текстом и кнопка. По нажатию на кнопку запишите в конец текста абзаца восклицательный знак.
+    let p_10 = document.querySelector('#p10');
+    let button_10 = document.querySelector('#button10');
+    button_10.addEventListener('click', function () {
+        p_10.innerHTML = p_10.innerHTML + '!';
+    });
+
+    // Модифицируйте предыдущую задачу так, чтобы восклицательный знак записывался не в конец текста, а в начало.
+    let p_11 = document.querySelector('#p11');
+    let button_11 = document.querySelector('#button11');
+    button_11.addEventListener('click', function () {
+        p_11.innerHTML = '!' + p_11.innerHTML;
+    });
+
+    // Дан абзац и кнопка. По нажатию на кнопку запишите в абзац текст '<i>hello</i>'.
+    let p_12 = document.querySelector('#p12');
+    let button_12 = document.querySelector('#button12');
+    button_12.addEventListener('click', function () {
+        p_12.innerHTML = p_12.innerHTML + '<br>' + '<i>hello</i>';
+    });
+
+    // Дан абзац с текстом и кнопка. По нажатию на кнопку прочитайте текст абзаца, оберните этот
+    // текст в теги <b> и запишите новый текст обратно в абзац.
+    let p_13 = document.querySelector('#p13');
+    let button_13 = document.querySelector('#button13');
+    button_13.addEventListener('click', function () {
+        p_13.innerHTML = '<b>' + p_13.innerHTML + '</b>';
+    });
+</script>
+</body>
+</html>
