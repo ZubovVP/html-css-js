@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(188)</title>
+</head>
+<body>
+<input id="elem" type="email">
+<input id="button" type="submit">
+<input id="button_1" type="submit" value="изменить тип">
+<br><a id="a" href="https://yandex.ru/">ссылка</a>
+<p id="p"></p>
+<input id="button_2" type="submit">
+
+<br>
+<img id="img_3" src="images/i.jpg" alt="текст">
+<input id="button_3" type="submit">
+<p id="p_3"></p>
+
+<br>
+<img id="img_4" src="images/1.jpg" alt="природа">
+<input id="button_4" type="submit" value="изменить размер">
+
+<br>
+<img id="img_5" src="images/2.jpg" alt="черепаха" width="100">
+<input id="button_5" type="submit" value="изменить размер">
+
+<br>
+<img id="img_6" src="images/in_1.jpg" width="700">
+<input id="button_6" type="submit" value="добавить первую картинку">
+<input id="button_7" type="submit" value="добавить вторую картинку">
+
+<script>
+    "use strict";
+    // Дан следующий инпут:
+    //     <input id="elem" type="email">
+    //Дана также кнопка. По нажатию на кнопку выведите на экран содержимое атрибута type
+    // указанного выше инпута.
+    let button = document.querySelector('#button');
+    let elem = document.querySelector('#elem');
+    button.addEventListener('click', function () {
+        alert(elem.type);
+    });
+
+
+    // Дан следующий инпут:
+    //     <input id="elem" type="email">
+    // Дана также кнопка. По нажатию на кнопку запишите в атрибут type значение submit.
+    let button_1 = document.querySelector('#button_1');
+    button_1.addEventListener('click', function () {
+        elem.type = 'submit';
+    });
+
+    // Пусть у вас есть ссылка в виде тега a, кнопка и абзац. По нажатию на кнопку выведите
+    // в абзац содержимое атрибута href ссылки.
+    let button_2 = document.querySelector('#button_2');
+    let p = document.querySelector('p');
+    let a = document.querySelector('a');
+    button_2.addEventListener('click', function () {
+        p.innerHTML = a.href;
+    });
+
+    // Пусть у вас есть картинка. Разместите ее на странице в помощью тега img. Пусть даны также кнопка
+    // и абзац. Сделайте так, чтобы по клику на кнопку в абзац записался путь к картинки из ее атрибута
+    // src.
+    let button_3 = document.querySelector('#button_3');
+    let img_3 = document.querySelector('#img_3');
+    let p_3 = document.querySelector('#p_3');
+    button_3.addEventListener('click', function () {
+        p_3.innerHTML = img_3.src;
+    });
+
+    // Дана картинка в теге img и кнопка. По нажатию на кнопку в атрибут width запишите значение 300.
+    let button_4 = document.querySelector('#button_4');
+    let img_4 = document.querySelector('#img_4');
+    button_4.addEventListener('click', function () {
+        img_4.width = 300;
+    });
+
+    // Дана картинка в теге img и кнопка. Пусть в атрибуте width задана некоторая ширина.
+    // Сделайте кнопку, по нажатию на которую ширина картинки будет увеличиваться в 2 раза.
+    let button_5 = document.querySelector('#button_5');
+    let img_5 = document.querySelector('#img_5');
+    button_5.addEventListener('click', function () {
+        img_5.width = img_5.width * 2;
+    });
+
+    // Пусть у вас есть две картинки. Сделайте на странице тег img и две кнопки.
+    // По нажатию на первую кнопку запишите в атрибут src путь к первой картинке,
+    // а по нажатию на вторую - путь ко второй картинке.
+    let img_6 = document.querySelector('#img_6');
+    let button_6 = document.querySelector('#button_6');
+    button_6.addEventListener('click', function () {
+        img_6.src = "images/in_1.jpg"
+    });
+    let button_7 = document.querySelector('#button_7');
+    button_7.addEventListener('click', function () {
+        img_6.src = "images/in_2.jpg"
+    });
+</script>
+</body>
+</html>
