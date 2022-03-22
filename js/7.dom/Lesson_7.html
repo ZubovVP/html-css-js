@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(188)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте кнопку, нажатие на которую будет выводить текущий текст инпута. После захода на страницу нажмите
+                на кнопку, чтобы увидеть текущий текст инпута, затем поредактируйте текст в инпуте и еще раз нажмите на
+                кнопку. Убедитесь в том, что выведется новый текст инпута.</p>
+        </td>
+        <td>
+            <input id="elem" value="text">
+        </td>
+        <td>
+            <input id="button" type="submit" value="получить текст">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут и кнопка. По нажатию на кнопку запишите в инпут какой-нибудь текст.</p>
+        </td>
+        <td>
+            <input id="elem_1">
+
+        </td>
+        <td>
+            <input id="button_1" type="submit" value="записать текст">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут, абзац и кнопка. По нажатию на кнопку запишите в абзац текст из инпута.</p>
+        </td>
+        <td>
+            <input id="elem_2">
+            <br>
+            <p id="p_2"></p>
+
+        </td>
+        <td>
+            <input id="button_2" type="submit" value="записать текст">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны два инпута и кнопка. В первый инпут пользователем вводится число. По нажатию на кнопку запишите во
+                второй инпут квадрат введенного числа.</p>
+        </td>
+        <td>
+            <input id="elem_3" placeholder="запишите число">
+            <br><br>
+            <input id="elem_4" readonly>
+
+        </td>
+        <td>
+            <input id="button_3" type="submit" value="возвести в квадрат">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны два инпута и кнопка. По нажатию на кнопку запишите в первый инпут значение
+                второго инпута, а во второй инпут - значение первого. Ваш код должен работать
+                универсально, для любых значений инпутов.</p>
+        </td>
+        <td>
+            <input id="elem_5" placeholder="запишите число">
+            <br><br>
+            <input id="elem_6" placeholder="запишите число">
+
+        </td>
+        <td>
+            <input id="button_5" type="submit" value="поменять местами">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 5 инпутов, абзац и кнопка. В инпут вводятся числа. По нажатию на кнопку запишите
+                среднее арифметическое введенных чисел в абзац.</p>
+        </td>
+        <td>
+            <input id="elem_7" placeholder="запишите число">
+            <br><br>
+            <input id="elem_8" placeholder="запишите число">
+            <br><br>
+            <input id="elem_9" placeholder="запишите число">
+            <br><br>
+            <input id="elem_10" placeholder="запишите число">
+            <br><br>
+            <input id="elem_11" placeholder="запишите число">
+            <br><br>
+            <p id="p_7"></p>
+        </td>
+        <td>
+            <input id="button_7" type="submit" value="среднее арифметическое">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    //         Дан инпут:
+    //     <input id="elem" value="text">
+    //         Сделайте кнопку, нажатие на которую будет выводить текущий текст инпута.
+    //         После захода на страницу нажмите на кнопку, чтобы увидеть текущий текст инпута,
+    //         затем поредактируйте текст в инпуте и еще раз нажмите на кнопку. Убедитесь в том,
+    //         что выведется новый текст инпута.
+    let text = document.querySelector('#elem');
+    let button = document.querySelector('#button');
+    button.addEventListener('click', function () {
+        alert(text.value);
+    });
+
+
+    // Дан инпут и кнопка. По нажатию на кнопку запишите в инпут какой-нибудь текст.
+    let text_1 = document.querySelector('#elem_1');
+    let button_1 = document.querySelector('#button_1');
+    button_1.addEventListener('click', function () {
+        text_1.value = 'something text';
+    });
+
+    // Дан инпут, абзац и кнопка. По нажатию на кнопку запишите в абзац текст из инпута.
+    let text_2 = document.querySelector('#elem_2');
+    let p_2 = document.querySelector('#p_2');
+    let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', function () {
+        p_2.innerHTML = p_2.innerHTML + ' ' + text_2.value;
+    });
+
+    // Даны два инпута и кнопка. В первый инпут пользователем вводится число. По нажатию на кнопку запишите во второй инпут квадрат введенного числа.
+    let text_3 = document.querySelector('#elem_3');
+    let text_4 = document.querySelector('#elem_4');
+    let button_3 = document.querySelector('#button_3');
+    button_3.addEventListener('click', function () {
+        text_4.value = Math.pow(text_3.value, 2);
+    });
+
+    // Даны два инпута и кнопка. По нажатию на кнопку запишите в первый инпут значение второго инпута,
+    // а во второй инпут - значение первого. Ваш код должен работать универсально, для любых значений
+    // инпутов.
+    let text_5 = document.querySelector('#elem_5');
+    let text_6 = document.querySelector('#elem_6');
+    let button_5 = document.querySelector('#button_5');
+    button_5.addEventListener('click', function () {
+        let element = text_5.value;
+        text_5.value = text_6.value;
+        text_6.value = element;
+    });
+
+    // Даны 5 инпутов, абзац и кнопка. В инпут вводятся числа. По нажатию на кнопку запишите среднее
+    // арифметическое введенных чисел в абзац.
+    let text_7 = document.querySelector('#elem_7');
+    let text_8 = document.querySelector('#elem_8');
+    let text_9 = document.querySelector('#elem_9');
+    let text_10 = document.querySelector('#elem_10');
+    let text_11 = document.querySelector('#elem_11');
+
+    let p_7 = document.querySelector('#p_7');
+    let button_7 = document.querySelector('#button_7');
+    button_7.addEventListener('click', function () {
+        p_7.innerHTML = (Number(text_7.value) + Number(text_8.value) + Number(text_9.value) + Number(text_10.value) + Number(text_11.value)) / 5
+    });
+</script>
+</body>
+</html>
