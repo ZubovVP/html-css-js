@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_10(192)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Переделайте приведенный выше код так, чтобы вместо введения переменной image использовалась цепочка.</p>
+        </td>
+        <td>
+            <img id="image" src="images/1.jpg" width="900" height="500">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан следующий код:
+    //     <img id="image" src="avatar.png">
+    //         let image = document.querySelector('#image');
+    //         console.log(image.src);
+    //         Переделайте приведенный выше код так, чтобы вместо введения переменной image
+    //         использовалась цепочка.
+    console.log(document.querySelector('#image').src);
+
+    // Дан следующий код:
+    // <img id="image" src="avatar.png" width="300" height="500">
+    //     console.log(document.querySelector('#image').src);
+    //     console.log(document.querySelector('#image').width);
+    //     console.log(document.querySelector('#image').height);
+    //     Укажите на недостатки данного кода. Исправьте их.
+        let image = document.querySelector('#image');
+        console.log(image.src);
+        console.log(image.width);
+        console.log(image.height);
+
+
+</script>
+</body>
+</html>
