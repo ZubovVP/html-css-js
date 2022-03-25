@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_11(193)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут. По получению фокуса этим инпутом запишите в него число 1, а по потери фокуса - число 2. Для
+                обращения у инпуту внутри функции-обработчика используйте объект this.</p>
+        </td>
+        <td>
+            <input id="elem" value="0">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана кнопка, значением которой служит число 1. Сделайте так, чтобы по клику на эту кнопку ее значение
+                каждый раз увеличивалось на единицу.</p>
+        </td>
+        <td>
+            <input id="button" type="submit" value="0">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 5 абзацев с какими-то текстами. По клику на любой абзац запишите в конец его текста восклицательный
+                знак.</p>
+        </td>
+        <td>
+            <p id="p_1">Text</p>
+            <p id="p_2">Text</p>
+            <p id="p_3">Text</p>
+            <p id="p_4">Text</p>
+            <p id="p_5">Text</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 3 инпута, в которых записаны какие-то числа. По потери фокуса в любом из инпутов
+                возведите стоящее в нем число в квадрат.</p>
+        </td>
+        <td>
+            <input id="elem_1" value="1">
+            <input id="elem_2" value="2">
+            <input id="elem_3" value="3">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан инпут. По получению фокуса этим инпутом запишите в него число 1,
+    // а по потери фокуса - число 2. Для обращения у инпуту внутри функции-обработчика используйте
+    // объект this.
+    let elem = document.querySelector('#elem');
+
+    function focus() {
+        this.value = 1;
+    }
+
+    elem.addEventListener('focus', focus);
+
+    function unfocused() {
+        this.value = 2;
+    }
+
+    elem.addEventListener('blur', unfocused);
+
+    // Дана кнопка, значением которой служит число 1. Сделайте так,
+    // чтобы по клику на эту кнопку ее значение каждый раз увеличивалось на единицу.
+    let button = document.querySelector('#button');
+    button.addEventListener('click', increment);
+
+    function increment() {
+        this.value = ++this.value;
+    }
+
+    // Даны 5 абзацев с какими-то текстами. По клику на любой абзац запишите в конец его текста
+    // восклицательный знак.
+    let p_1 = document.querySelector('#p_1');
+    let p_2 = document.querySelector('#p_2');
+    let p_3 = document.querySelector('#p_3');
+    let p_4 = document.querySelector('#p_4');
+    let p_5 = document.querySelector('#p_5');
+
+    function addElement() {
+        this.innerHTML = this.innerHTML + '!';
+    }
+
+    p_1.addEventListener('click', addElement);
+    p_2.addEventListener('click', addElement);
+    p_3.addEventListener('click', addElement);
+    p_4.addEventListener('click', addElement);
+    p_5.addEventListener('click', addElement);
+
+    // Даны 3 инпута, в которых записаны какие-то числа. По потери фокуса в любом из инпутов
+    // возведите стоящее в нем число в квадрат.
+    let elem_1 = document.querySelector('#elem_1');
+    let elem_2 = document.querySelector('#elem_2');
+    let elem_3 = document.querySelector('#elem_3');
+
+    function pow() {
+        this.value = this.value * this.value;
+    }
+    elem_1.addEventListener('blur', pow);
+    elem_2.addEventListener('blur', pow);
+    elem_3.addEventListener('blur', pow);
+
+
+</script>
+</body>
+</html>
