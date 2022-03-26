@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_12(195)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Даны также инпуты. Сделайте так, чтобы по потери фокуса в любом из наших инпутов выполнялась приведенная выше функция.</p>
+        </td>
+        <td>
+            <input class="input_1" value="1">
+            <input class="input_1" value="2">
+            <input class="input_1" value="3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны абзацы с числами. Сделайте так, чтобы по клику на любой абзац его число в нем возводилось в квадрат.</p>
+        </td>
+        <td>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию-обработчик анонимной.</p>
+        </td>
+        <td>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дана следующая функция:
+    //     function func() {
+    //         this.value = Number(this.value) + 1;
+    //     }
+    // Даны также инпуты. Сделайте так, чтобы по потери фокуса в любом из наших инпутов выполнялась
+    // приведенная выше функция.
+    function func() {
+        this.value = Number(this.value) + 1;
+    }
+
+    let inputs = document.querySelectorAll('.input_1');
+    for(let input of inputs){
+        input.addEventListener('blur', func);
+    }
+
+    // Даны абзацы с числами. Сделайте так, чтобы по клику на любой абзац его число в нем возводилось
+    // в квадрат.
+    let elems = document.querySelectorAll('p');
+    for (let elem of elems) {
+        elem.addEventListener('click', func_1);
+    }
+    function func_1() {
+        this.innerHTML *= this.innerHTML;
+    }
+
+    // Дан следующий код:
+    // <div>1</div>
+    // <div>2</div>
+    // <div>3</div>
+    // <div>4</div>
+    // <div>5</div>
+    // let divs = document.querySelectorAll('div');
+    // for (let div of divs) {
+    //     div.addEventListener('click', func);
+    // }
+    // function func() {
+    //     this.innerHTML++;
+    // }
+    // Сделайте функцию-обработчик анонимной.
+    let divs = document.querySelectorAll('div');
+
+    for (let div of divs) {
+        div.addEventListener('click', function () {
+            this.innerHTML++
+        });
+    }
+
+</script>
+</body>
+</html>
