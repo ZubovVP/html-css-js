@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_12(194)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Даны абзацы и кнопка. По нажатию на кнопку найдите все абзацы, переберите из циклом и установите текст
+                каждого абзаца в значение 'text'.</p>
+        </td>
+        <td>
+            <p class="p"></p>
+            <p class="p"></p>
+            <p class="p"></p>
+            <input id="button" type="submit">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны абзацы с текстом и кнопка. По нажатию на кнопку запишите в конец текста каждого абзаца его
+                порядковый номер.</p>
+        </td>
+        <td>
+            <p class="p_2">Text</p>
+            <p class="p_2">Text</p>
+            <p class="p_2">Text</p>
+            <input id="button_2" type="submit">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны инпуты с числами, абзац и кнопка. По нажатию на кнопку найдите сумму чисел из инпутов и запишите эту
+                сумму в текст абзаца.</p>
+        </td>
+        <td>
+            <p id="p_3"></p>
+
+            <input class="input_3" value="1">
+            <input class="input_3" value="1">
+            <input class="input_3" value="1">
+            <input id="button_3" type="submit" value="сумма">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Даны абзацы и кнопка. По нажатию на кнопку найдите все абзацы, переберите из циклом и установите
+    // текст каждого абзаца в значение 'text'.
+    let ps = document.querySelectorAll('.p');
+    let button = document.querySelector('#button');
+    button.addEventListener('click', function () {
+        for (let p of ps) {
+            p.innerHTML = 'Text';
+        }
+    });
+
+    // Даны абзацы с текстом и кнопка. По нажатию на кнопку запишите в конец текста каждого
+    // абзаца его порядковый номер.
+    ps = document.querySelectorAll('.p_2');
+    let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', function () {
+        for (let x = 1; x <= ps.length; x++) {
+            ps[x - 1].innerHTML = ps[x - 1].innerHTML + String(x);
+        }
+    });
+
+    // Даны инпуты с числами, абзац и кнопка. По нажатию на кнопку найдите сумму чисел из инпутов и запишите эту сумму в текст абзаца.
+    let inputs = document.querySelectorAll('.input_3');
+    let p_3 = document.querySelector('#p_3');
+    document.querySelector('#button_3').addEventListener('click', summ);
+
+    function summ() {
+        let result = 0;
+        for (let input of inputs) {
+            result += Number(input.value);
+        }
+        p_3.innerHTML = result;
+    }
+</script>
+</body>
+</html>
