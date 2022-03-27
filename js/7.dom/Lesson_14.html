@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_14(196, 197)</title>
+</head>
+<style>
+    /*td {*/
+    /*    width: 100px;*/
+
+    /*}*/
+
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана ссылка. По нажатию на эту ссылку добавьте в конец ее текста содержимое ее атрибута href в круглых
+                скобках. Сделайте так, чтобы это добавление происходило лишь по первому нажатию.</p>
+        </td>
+        <td>
+            <a id="a_1" href="https://yandex.ru/">ссылка тут</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана кнопка, значением которой служит число 1. Сделайте так, чтобы по клику на эту кнопку ее значение
+                каждый раз увеличивалось на единицу. После того, как значение кнопки достигнет 10 - отвяжите обработчик
+                события, чтобы кнопка больше не реагировала на нажатие.</p>
+        </td>
+        <td>
+            <input id="button_2" type="submit" value="1">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны абзацы. По нажатию на любой из абзацев добавьте ему в конец восклицательный знак.
+                Сделайте так, чтобы это добавление происходило лишь по первому нажатию.</p>
+        </td>
+        <td>
+            <p class="p"> Text_1</p>
+            <p class="p"> Text_2</p>
+            <p class="p"> Text_3</p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дана ссылка. По нажатию на эту ссылку добавьте в конец ее текста содержимое
+    // ее атрибута href в круглых скобках. Сделайте так, чтобы это добавление происходило лишь
+    // по первому нажатию.
+    let a_1 = document.querySelector('#a_1');
+    a_1.addEventListener('click', func);
+
+    function func() {
+        this.innerHTML += (' (' + a_1.href + ')');
+        this.removeEventListener('click', func);
+    }
+
+    // Дана кнопка, значением которой служит число 1. Сделайте так, чтобы по клику на эту кнопку ее
+    // значение каждый раз увеличивалось на единицу. После того, как значение кнопки достигнет 10
+    // - отвяжите обработчик события, чтобы кнопка больше не реагировала на нажатие.
+    let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', incr);
+
+    function incr() {
+        if (this.value > 9) {
+            this.removeEventListener('click', incr)
+        } else {
+            this.value = ++this.value;
+        }
+    }
+
+    // Даны абзацы. По нажатию на любой из абзацев добавьте ему в конец восклицательный знак.
+    // Сделайте так, чтобы это добавление происходило лишь по первому нажатию.
+    let ps = document.querySelectorAll('.p');
+    for(let p of ps){
+        p.addEventListener('click', addElem);
+    }
+    function addElem() {
+        this.innerHTML += '!';
+        this.removeEventListener('click', addElem);
+    }
+</script>
+</body>
+</html>
