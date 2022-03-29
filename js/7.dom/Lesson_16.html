@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_16(200)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут с каким-то начальным значением. Дана также кнопка. По нажатию на кнопку определите, было ли изменено пользователем начальное значение инпута.</p>
+        </td>
+        <td>
+            <input id="elem_1" value="text">
+            <input id="button_1" type="submit" value="проверка">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут с каким-то начальным значением. Пусть пользователь меняет это значение. Сделайте рядом с инпутом кнопку, по нажатию на которую value инпута вернется в изначальное значение.</p>
+        </td>
+        <td>
+            <input id="elem_2" value="text_1">
+            <input id="button_2" type="submit" value="вернуть значение">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан инпут с каким-то начальным значением. Дана также кнопка. По нажатию на кнопку определите,
+    // было ли изменено пользователем начальное значение инпута.
+    let elem_1 = document.querySelector('#elem_1');
+    document.querySelector('#button_1').addEventListener('click', checkValue);
+    function checkValue(){
+        if(elem_1.getAttribute('value') == elem_1.value){
+            alert('Значение не менялось');
+        } else {
+            alert('Значение изменилось');
+        }
+    }
+
+    // Дан инпут с каким-то начальным значением. Пусть пользователь меняет это значение.
+    // Сделайте рядом с инпутом кнопку, по нажатию на которую value инпута вернется в изначальное
+    // значение.
+    let elem_2 = document.querySelector('#elem_2');
+    document.querySelector('#button_2').addEventListener('click', revertValue);
+    function revertValue(){
+       elem_2.value = elem_2.getAttribute('value');
+    }
+</script>
+</body>
+</html>
