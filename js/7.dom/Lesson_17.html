@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_17(201)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<p id="elem" class="www ggg zzz"></p>
+<script>
+    "use strict";
+    // Дан элемент:
+    //     <p id="elem" class="www ggg zzz"></p>
+    // Узнайте количество его классов.
+    console.log(document.querySelector('#elem').classList.length);
+
+    // Дан элемент:
+    //     <p id="elem" class="www ggg zzz"></p>
+    // Переберите в цикле его классы.
+    let classes = document.querySelector('#elem').classList;
+    for (let cl of classes) {
+        console.log(cl);
+    }
+
+    // Дан элемент:
+    //     <p id="elem" class="www ggg zzz"></p>
+    // Добавьте ему класс xxx.
+    document.querySelector('#elem').classList.add('xxx');
+    console.log(document.querySelector('#elem').classList.length);
+
+    // Дан элемент:
+    //     <p id="elem" class="www ggg zzz"></p>
+    // Удалите у него класс www и класс zzz.
+    let el = document.querySelector('#elem').classList;
+    el.remove('www');
+    el.remove('zzz');
+    for (let cl of classes) {
+        console.log(cl);
+    }
+
+    // Дан элемент:
+    //     <p id="elem" class="www ggg zzz"></p>
+    // Проверьте наличие у него класса ggg.
+    console.log(document.querySelector('#elem').classList.contains('ggg'));
+
+    // Дан элемент. Добавьте ему класс www, если его нет и удалите - если есть.
+    document.querySelector('#elem').classList.toggle('www');
+    for (let cl of classes) {
+        console.log(cl);
+    }
+</script>
+</body>
+</html>
