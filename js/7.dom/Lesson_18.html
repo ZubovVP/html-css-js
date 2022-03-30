@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_18(202)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан див и кнопка. По клику на кнопку добавьте диву ширину, высоту и границу.</p>
+        </td>
+        <td>
+            <div id="div_1">
+            </div>
+            <input id="button_1" type="submit" value="добавить стили">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан див с текстом и кнопка. По клику на кнопку установите диву размер шрифта в 20px, а также верхнюю
+                границу и фон.</p>
+        </td>
+        <td>
+            <div id="div_2">
+                Text
+            </div>
+            <input id="button_2" type="submit" value="изменить шрифт">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан список ul и кнопка. По клику на кнопку добавьте тегам li свойство float в значении right.</p>
+        </td>
+        <td>
+            <ul id="ul">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            <input id="button_3" type="submit" value="прижать к левому краю">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан див и кнопка. По клику на кнопку добавьте диву ширину, высоту и границу.
+    let div_1 = document.querySelector('#div_1');
+    document.querySelector('#button_1').addEventListener('click', function () {
+        div_1.style.background = 'red'
+        div_1.style.height = '100px';
+        div_1.style.width = '100px';
+        div_1.style.border = '10px solid black'
+    });
+
+    // Дан див с текстом и кнопка. По клику на кнопку установите диву размер шрифта в 20px, а также верхнюю границу и фон.
+    document.querySelector('#button_2').addEventListener('click', function () {
+        document.querySelector('#div_2').style.fontSize = '20px';
+    });
+
+    // Дан список ul и кнопка. По клику на кнопку добавьте тегам li свойство float в значении right.
+    document.querySelector('#button_3').addEventListener('click', function () {
+        document.querySelector('#ul').style.cssFloat = 'right';
+    });
+</script>
+</body>
+</html>

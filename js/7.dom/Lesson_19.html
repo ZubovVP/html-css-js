@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_19(203)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+    .colored {
+        color: red;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .cross {
+        text-decoration: line-through;
+    }
+
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан абзац. Даны кнопки 'перечеркнуть', 'сделать жирным', 'сделать красным'. Пусть по нажатию на каждую кнопку заданное действие происходит с абзацем (становится красным, например).</p>
+        </td>
+        <td>
+            <p id="p_1">Text</p>
+            <input id="button_1" type="submit" value="перечеркнуть">
+            <input id="button_2" type="submit" value="жирный">
+            <input id="button_3" type="submit" value="цвет">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы повторное нажатие на кнопку отменяло действие этой кнопки.</p>
+        </td>
+        <td>
+            <p id="p_2">Text</p>
+            <input id="button_4" type="submit" value="перечеркнуть">
+            <input id="button_5" type="submit" value="жирный">
+            <input id="button_6" type="submit" value="цвет">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан абзац. Даны кнопки 'перечеркнуть', 'сделать жирным', 'сделать красным'. Пусть по нажатию на каждую кнопку заданное действие происходит с абзацем (становится красным, например).
+    let p_1 = document.querySelector('#p_1');
+    document.querySelector('#button_1').addEventListener('click', function () {
+        p_1.classList.add('cross')
+    });
+    document.querySelector('#button_2').addEventListener('click', function () {
+        p_1.classList.add('bold')
+    });
+    document.querySelector('#button_3').addEventListener('click', function () {
+        p_1.classList.add('colored')
+    });
+
+    // Модифицируйте предыдущую задачу так, чтобы повторное нажатие на кнопку отменяло действие этой кнопки.
+    let p_2 = document.querySelector('#p_2');
+    document.querySelector('#button_4').addEventListener('click', function () {
+        p_2.classList.toggle('cross')
+    });
+    document.querySelector('#button_5').addEventListener('click', function () {
+        p_2.classList.toggle('bold')
+    });
+    document.querySelector('#button_6').addEventListener('click', function () {
+        p_2.classList.toggle('colored')
+    });
+
+</script>
+</body>
+</html>
