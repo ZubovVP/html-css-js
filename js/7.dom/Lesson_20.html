@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_20(204)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Найдите первого потомка этого элемента и сделайте его текст красного цвета.</p>
+        </td>
+        <td>
+            <ul id="elem">
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_1" type="submit" value="покрасить первый элемент">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите последнего потомка этого элемента и сделайте его текст красного цвета.</p>
+        </td>
+        <td>
+            <ul id="elem_2">
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_2" type="submit" value="покрасить последний элемент">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите последнего потомка этого элемента и сделайте его текст красного цвета.</p>
+        </td>
+        <td>
+            <ul id="elem_3">
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_3" type="submit" value="добавить элемент">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите его родителя и задайте ему красную границу.</p>
+        </td>
+        <td>
+            <div>
+                <ul>
+                    <li>text</li>
+                    <li>text</li>
+                    <li id="elem_4">text</li>
+                    <li>text</li>
+                    <li>text</li>
+                </ul>
+            </div>
+            <input id="button_4" type="submit" value="добавить красную границу">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите ближайшего родителя этого элемента, являющегося тегом div.</p>
+        </td>
+        <td>
+            <header>
+                <div class="xxx">
+                    <p>
+                        <span id="elem_5"></span>
+                    </p>
+                </div>
+            </header>
+            <input id="button_5" type="submit" value="добавить границу">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите ближайшего родителя этого элемента, являющегося элементом с классом www.</p>
+        </td>
+        <td>
+            <header>
+                <div class="www">
+                    <p class="www">
+                        <span id="elem_6"></span>
+                    </p>
+                </div>
+            </header>
+            <input id="button_6" type="submit" value="добавить текст">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите его соседа сверху и добавьте ему в конец текст '!'.</p>
+        </td>
+        <td>
+            <ul>
+                <li>text</li>
+                <li>text</li>
+                <li id="elem_7">text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_7" type="submit" value="добавить текст соседу сверху">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите его соседа снизу и добавьте ему в конец текст '!'.</p>
+        </td>
+        <td>
+            <ul>
+                <li>text</li>
+                <li>text</li>
+                <li id="elem_8">text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_8" type="submit" value="добавить текст соседу снизу">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите его соседа снизу его соседа снизу (следующий элемент за соседним) и добавьте ему в конец текст
+                '!'.</p>
+        </td>
+        <td>
+            <ul>
+                <li>text</li>
+                <li>text</li>
+                <li id="elem_9">text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_9" type="submit" value="добавить текст соседу снизу x2">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Поменяйте местами текст его соседа сверху и текст его соседа снизу.</p>
+        </td>
+        <td>
+            <ul>
+                <li>text_1</li>
+                <li>text_2</li>
+                <li id="elem_10">text_3</li>
+                <li>text_4</li>
+                <li>text_5</li>
+            </ul>
+            <input id="button_10" type="submit" value="поменять местами">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан элемент #elem:
+    //     <ul id="elem">
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите первого потомка этого элемента и сделайте его текст красного цвета.
+    let button = document.querySelector('#button_1');
+    button.addEventListener('click', function () {
+        document.querySelector('#elem').firstElementChild.style.color = 'red';
+    });
+
+    // Дан элемент #elem:
+    //     <ul id="elem">
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите всех потомков этого элемента и добавьте им в конец текст '!'.
+    let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', function () {
+        document.querySelector('#elem_2').lastElementChild.style.color = 'red';
+    });
+
+
+    // Дан элемент #elem:
+    //     <ul id="elem">
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите последнего потомка этого элемента и сделайте его текст красного цвета.
+    let button_3 = document.querySelector('#button_3');
+    button_3.addEventListener('click', function () {
+        let children = document.querySelector('#elem_3').children;
+        for (let c of children) {
+            c.innerHTML += '!';
+        }
+    });
+
+    // Дан элемент #elem:
+    //     <div>
+    //         <ul>
+    //             <li>text</li>
+    //             <li>text</li>
+    //             <li id="elem">text</li>
+    //             <li>text</li>
+    //             <li>text</li>
+    //         </ul>
+    //     </div>
+    // Найдите его родителя и задайте ему красную границу.
+    let button_4 = document.querySelector('#button_4');
+    button_4.addEventListener('click', function () {
+        document.querySelector('#elem_4').parentElement.parentElement.style.border = '10px solid red';
+    });
+
+
+    // Дан элемент:
+    //     <header>
+    //         <div>
+    //             <p>
+    //                 <span id="elem"></span>
+    //             </p>
+    //         </div>
+    //     </header>
+    // Найдите ближайшего родителя этого элемента, являющегося тегом div
+    let button_5 = document.querySelector('#button_5');
+    button_5.addEventListener('click', function () {
+        document.querySelector('#elem_5').closest('.xxx').style.border = '10px solid red';
+    });
+
+    // Дан элемент:
+    //     <header>
+    //         <div class="www">
+    //             <p class="www">
+    //                 <span id="elem"></span>
+    //             </p>
+    //         </div>
+    //     </header>
+    // Найдите ближайшего родителя этого элемента, являющегося элементом с классом www.
+    let button_6 = document.querySelector('#button_6');
+    button_6.addEventListener('click', function () {
+        document.querySelector('#elem_6').closest('.www').innerHTML += '1';
+    });
+
+    // Дан элемент #elem:
+    //     <ul>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li id="elem">text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите его соседа сверху и добавьте ему в конец текст '!'.
+    let button_7 = document.querySelector('#button_7');
+    button_7.addEventListener('click', function () {
+        document.querySelector('#elem_7').previousElementSibling.innerHTML += '!';
+    });
+
+    // Дан элемент #elem:
+    //     <ul>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li id="elem">text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите его соседа снизу и добавьте ему в конец текст '!'.
+    let button_8 = document.querySelector('#button_8');
+    button_8.addEventListener('click', function () {
+        document.querySelector('#elem_8').nextElementSibling.innerHTML += '!';
+    });
+
+    // Дан элемент #elem:
+    //     <ul>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li id="elem">text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Найдите его соседа снизу его соседа снизу (следующий элемент за соседним) и добавьте ему в конец текст '!'.
+    let button_9 = document.querySelector('#button_9');
+    button_9.addEventListener('click', function () {
+        document.querySelector('#elem_9').nextElementSibling.nextElementSibling.innerHTML += '!';
+    });
+
+    // Дан элемент #elem:
+    //     <ul>
+    //         <li>text1</li>
+    //         <li>text2</li>
+    //         <li id="elem">text3</li>
+    //         <li>text4</li>
+    //         <li>text5</li>
+    //     </ul>
+    // Поменяйте местами текст его соседа сверху и текст его соседа снизу.
+    let button_10 = document.querySelector('#button_10');
+    button_10.addEventListener('click', function () {
+        let previous = document.querySelector('#elem_10').previousElementSibling;
+        let next = document.querySelector('#elem_10').nextElementSibling;
+        let el = next.innerHTML;
+        next.innerHTML = previous.innerHTML;
+        previous.innerHTML = el;
+    });
+
+</script>
+</body>
+</html>
