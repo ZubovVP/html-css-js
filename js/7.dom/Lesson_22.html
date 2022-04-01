@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_22(206)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Найдите внутри родителя элементы с классом www и запишите их в переменную elems1. Затем найдите внутри родителя элементы с классом ggg и запишите их в переменную elems2.</p>
+        </td>
+        <td>
+            <div id="parent">
+                <p class="www">text</p>
+                <p class="www">text</p>
+                <p class="www">text</p>
+                <p class="ggg">text</p>
+                <p class="ggg">text</p>
+                <p class="ggg">text</p>
+            </div>
+            <input id="button_1" type="submit" value="получить элемент">
+        </td>
+    </tr>
+
+</table>
+<script>
+    "use strict";
+    // <div id="parent">
+    //     <p class="www">text</p>
+    //     <p class="www">text</p>
+    //     <p class="www">text</p>
+    //     <p class="ggg">text</p>
+    //     <p class="ggg">text</p>
+    //     <p class="ggg">text</p>
+    // </div>
+    // let parent = document.querySelector('#parent');
+    // Найдите внутри родителя элементы с классом www и запишите их в переменную elems1.
+    // Затем найдите внутри родителя элементы с классом ggg и запишите их в переменную elems2.
+
+    let parent = document.querySelector('#parent');
+    let elems1 = parent.querySelectorAll('.www');
+    let elems2 = document.querySelectorAll('#paren .ggg');
+    alert(elems1);
+    alert(elems2);
+
+
+</script>
+</body>
+</html>
