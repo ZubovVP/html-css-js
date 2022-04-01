@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_21(205)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+    .colored {
+        color: red;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Получите этот элемент с помощью метода getElementById и установите ему какой-нибудь текст.</p>
+        </td>
+        <td>
+            <div id="elem_1"></div>
+            <input id="button_1" type="submit" value="получить элемент">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Получите все теги li по имени тега и сделайте их текст красного цвета.</p>
+        </td>
+        <td>
+            <ul>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+            <input id="button_2" type="submit" value="получить элемент">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Получите эти элементы по имени класса и сделайте их текст красного цвета.</p>
+        </td>
+        <td>
+            <p class="www">elem 1</p>
+            <p class="www">elem 2</p>
+            <p class="www">elem 3</p>
+            <input id="button_3" type="submit" value="получить элемент">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан элемент #elem:
+    //     <div id="elem"></div>
+    // Получите этот элемент с помощью метода getElementById и установите ему какой-нибудь текст.
+    let button_1 = document.getElementById('button_1');
+    button_1.addEventListener('click', function () {
+        alert(document.getElementById('elem_1').id);
+    });
+
+    // Дан список:
+    //     <ul>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //         <li>text</li>
+    //     </ul>
+    // Получите все теги li по имени тега и сделайте их текст красного цвета.
+    let button_2 = document.getElementById('button_2');
+    button_2.addEventListener('click', function () {
+        for(let li of document.getElementsByTagName('li')){
+            li.classList.toggle('colored');
+        }
+    });
+
+    // Даны элементы:
+    //     <p class="www">elem 1</p>
+    // <p class="www">elem 2</p>
+    // <p class="www">elem 3</p>
+    // Получите эти элементы по имени класса и сделайте их текст красного цвета.
+    let button_3 = document.getElementById('button_3');
+    button_3.addEventListener('click', function () {
+        for(let www of document.getElementsByClassName('www')){
+            www.classList.toggle('colored');
+        }
+    });
+</script>
+</body>
+</html>
