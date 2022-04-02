@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_23(207)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на див в конец его текста добавилось содержимое его атрибута data-text.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_1" data-text="str">text</div>
+        </td>
+        <td>
+            <input id="button_1" type="submit" value="добавить значение">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны дивы, содержащие в атрибуте data-num свой порядковый номер</p>
+            <p>Сделайте так, чтобы по клику на любой из дивов ему в конец записывался его порядковый номер.</p>
+        </td>
+        <td>
+            <div data-num="1">text</div>
+            <div data-num="2">text</div>
+            <div data-num="3">text</div>
+            <div data-num="4">text</div>
+            <div data-num="5">text</div>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана кнопка. Сделайте так, чтобы эта кнопка считала количество кликов по ней, записывая
+                их в какой-нибудь пользовательский атрибут. Пусть по двойному клику на эту кнопку на
+                экран выводится, сколько кликов по этой кнопке было сделано.</p>
+        </td>
+        <td>
+        </td>
+        <td>
+            <input id="button_2" type="submit" value="кнопка">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В этом инпуте в атрибуте data-length содержится количество символов, которое нужно ввести в инпут.
+                Сделайте так, чтобы
+                по потери фокуса, если количество введенных символов не совпадает с заданным, выводилось сообщение об
+                этом.</p>
+        </td>
+        <td>
+        </td>
+        <td>
+            <input id="elem_4" data-length="5">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В этом инпуте атрибуты data-min и data-max содержат диапазон. Сделайте так, чтобы по потери фокуса,
+                если количество введенных символов не попадает в этот диапазон, выводилось сообщение об этом.</p>
+        </td>
+        <td>
+        </td>
+        <td>
+            <input id="elem_5" data-min="5" data-max="10">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан следующий код:
+    //     <div id="elem" data-text="str">text</div>
+    // Сделайте так, чтобы по клику на див в конец его текста добавилось
+    // содержимое его атрибута data-text.
+
+    let button_1 = document.querySelector('#button_1');
+    button_1.addEventListener('click', function () {
+        let elem_1 = document.querySelector('#elem_1');
+        elem_1.innerHTML += elem_1.dataset.text;
+    });
+
+    // Даны дивы, содержащие в атрибуте data-num свой порядковый номер:
+    //     <div data-num="1">text</div>
+    // <div data-num="2">text</div>
+    // <div data-num="3">text</div>
+    // <div data-num="4">text</div>
+    // <div data-num="5">text</div>
+    // Сделайте так, чтобы по клику на любой из дивов ему в конец записывался его порядковый номер.
+
+    for (let div of document.getElementsByTagName('div')) {
+        div.addEventListener('click', function () {
+            div.innerHTML += div.dataset.num;
+        });
+    }
+
+    // Дана кнопка. Сделайте так, чтобы эта кнопка считала количество кликов по ней,
+    // записывая их в какой-нибудь пользовательский атрибут. Пусть по двойному клику на эту кнопку
+    // на экран выводится, сколько кликов по этой кнопке было сделано.
+    let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', function () {
+        if (button_2.dataset.counter > 0) {
+            button_2.dataset.counter = Number(button_2.dataset.counter) + 1;
+        } else {
+            button_2.dataset.counter = 1;
+        }
+    });
+
+    button_2.addEventListener('dblclick', function () {
+        alert(button_2.dataset.counter);
+    });
+
+    // Дан инпут:
+    //     <input id="elem" data-length="5">
+    //         В этом инпуте в атрибуте data-length содержится количество символов, которое нужно ввести
+    //         в инпут. Сделайте так, чтобы по потери фокуса, если количество введенных символов не
+    //         совпадает с заданным, выводилось сообщение об этом.
+    let elem_4 = document.querySelector('#elem_4');
+    elem_4.addEventListener('focusout', function () {
+   if(elem_4.value != elem_4.dataset.length){
+       alert('числа не совпадают');
+   }
+    });
+
+    // Дан инпут:
+    //     <input id="elem" data-min="5" data-max="10">
+    //         В этом инпуте атрибуты data-min и data-max содержат диапазон. Сделайте так, чтобы по потери фокуса,
+    //         если количество введенных символов не попадает в этот диапазон, выводилось сообщение об этом.
+    let elem_5 = document.querySelector('#elem_5');
+    elem_5.addEventListener('focusout', function () {
+        if(elem_5.value < elem_5.dataset.min) {
+            alert('вышли интервал');
+        } else if (elem_5.value > elem_5.dataset.max) {
+            alert('вышли интервал');
+        }
+    });
+</script>
+</body>
+</html>
