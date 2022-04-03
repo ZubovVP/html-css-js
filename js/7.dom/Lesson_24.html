@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_24(209)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Напишите код, который покажет разницу между lastChild и lastElementChild.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_1">text <ol>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ol>
+                <div> </div>
+                text
+            </div>
+        </td>
+        <td>
+            <input id="button_1" type="submit" value="показать">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Напишите код, который покажет разницу между nextSibling и nextElementSibling.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_2">
+                <div>text</div>
+            </div>
+            <p> text </p>
+        </td>
+        <td>
+            <input id="button_2" type="submit" value="показать">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Напишите код, который покажет разницу между previousSibling и previousElementSibling.</p>
+        </td>
+        <td width="200px">
+            <p> text </p>
+            <div id="elem_3">
+                <div>text</div>
+            </div>
+        </td>
+        <td>
+            <input id="button_3" type="submit" value="показать">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите их в консоль.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_4">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_4" type="submit" value="перебрать">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите в консоль их названия.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_5">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_5" type="submit" value="вывести названия">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите в консоль только узлы-элементы и текстовые узлы.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_6">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_6" type="submit" value="вывести узлы элементы и текстовые узлы">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите в консоль тексты всех узлов.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_7">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_7" type="submit" value="вывести тексты всех узлов">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите в консоль тексты всех комментариев и текстовых узлов.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_8">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_8" type="submit" value="вывести тексты всех комментариев и текстовых узлов">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и выведите в консоль тексты текстовых узлов и элементов.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_9">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_9" type="submit" value="вывести тексты всех текстовых узлов и элементов">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переберите циклом все узлы этого дива и каждому узлу в конец запишите его тип.</p>
+        </td>
+        <td width="200px">
+            <div id="elem_10">txt<b>tag</b><!--com-->txt<b>tag</b><!--com--></div>
+        </td>
+        <td>
+            <input id="button_10" type="submit" value="записать тип">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Напишите код, который покажет разницу между lastChild и lastElementChild.
+
+    let button_1 = document.querySelector('#button_1');
+    button_1.addEventListener('click', function () {
+        let elem_1 = document.querySelector('#elem_1');
+        alert('lastChild - ' + elem_1.lastChild);
+        alert('lastElementChild - ' + elem_1.lastElementChild);
+    });
+
+
+    // Напишите код, который покажет разницу между nextSibling и nextElementSibling.
+        let button_2 = document.querySelector('#button_2');
+    button_2.addEventListener('click', function () {
+        let elem_2 = document.querySelector('#elem_2');
+        alert('nextSibling - ' + elem_1.nextSibling);
+        alert('nextElementSibling - ' + elem_1.nextElementSibling);
+    });
+
+    // Напишите код, который покажет разницу между previousSibling и previousElementSibling.
+    let button_3 = document.querySelector('#button_3');
+    button_3.addEventListener('click', function () {
+        let elem_3 = document.querySelector('#elem_3');
+        alert('previousSibling - ' + elem_3.previousSibling);
+        alert('previousElementSibling - ' + elem_3.previousElementSibling);
+    });
+
+    // Дан див:
+    // Переберите циклом все узлы этого дива и выведите их в консоль.
+    let button_4 = document.querySelector('#button_4');
+    button_4.addEventListener('click', function () {
+        let elem_4 = document.querySelector('#elem_4');
+        for (let node of elem_4.childNodes) {
+            alert(node);
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и выведите в консоль их названия.
+        let button_5 = document.querySelector('#button_5');
+    button_5.addEventListener('click', function () {
+        let elem_5 = document.querySelector('#elem_5');
+        for (let node of elem_5.childNodes) {
+            alert(node.tagName);
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и выведите в консоль только узлы-элементы и текстовые узлы.
+    let button_6 = document.querySelector('#button_6');
+    button_6.addEventListener('click', function () {
+        let elem_6 = document.querySelector('#elem_6');
+        for (let node of elem_6.childNodes) {
+            if(node.nodeType == 1 || node.nodeType == 3){
+                alert(node);
+            }
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и выведите в консоль тексты всех узлов.
+    button_7.addEventListener('click', function () {
+        let elem_7 = document.querySelector('#elem_7');
+        for (let node of elem_7.childNodes) {
+                alert(node.textContent);
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и выведите в консоль тексты всех комментариев и текстовых узлов.
+    button_8.addEventListener('click', function () {
+        let elem_8 = document.querySelector('#elem_8');
+        for (let node of elem_8.childNodes) {
+            //числовое: 1 для элементов, 3 для текстовых узлов, 8 для комментариев
+            if(node.nodeType == 8 || node.nodeType == 3) {
+                alert(node.textContent);
+            }
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и выведите в консоль тексты текстовых узлов и элементов.
+    button_9.addEventListener('click', function () {
+        let elem_9 = document.querySelector('#elem_9');
+        for (let node of elem_9.childNodes) {
+            //числовое: 1 для элементов, 3 для текстовых узлов, 8 для комментариев
+            if(node.nodeType == 3 || node.nodeType == 1) {
+                alert(node.textContent);
+            }
+        }
+    });
+
+    // Переберите циклом все узлы этого дива и каждому узлу в конец запишите его тип.
+    button_10.addEventListener('click', function () {
+        let elem_9 = document.querySelector('#elem_10');
+        for (let node of elem_10.childNodes) {
+            //числовое: 1 для элементов, 3 для текстовых узлов, 8 для комментариев
+
+                node.textContent += ' ' + node.nodeType;
+
+        }
+    });
+</script>
+</body>
+</html>
