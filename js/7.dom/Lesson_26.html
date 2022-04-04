@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_26(210)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Поиск ошибок в коде с DOM в JavaScript (часть 1)</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Код должен добавить текст в конец каждого абзаца:</p>
+        </td>
+        <td width="200px">
+            <p class="p">1</p>
+            <p class="p">2</p>
+            <p class="p">3</p>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на абзац его значение должно увеличиться на единицу:</p>
+        </td>
+        <td width="200px">
+            <p class="number">1</p>
+            <p class="number">2</p>
+            <p class="number">3</p>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку текст абзаца должен стать жирным:</p>
+        </td>
+        <td width="200px">
+            <p id="text">text</p>
+        </td>
+        <td>
+            <button class="button" >click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку должна вывестись сумма чисел из абзацев:</p>
+        </td>
+        <td width="200px">
+            <p class="number_4">1</p>
+            <p class="number_4">2</p>
+            <p class="number_4">3</p>
+        </td>
+        <td>
+            <button id="button_4">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на абзац ему в конец должен добавиться заданный текст:</p>
+        </td>
+        <td width="200px">
+            <p class="text_5">1</p>
+            <p class="text_5">2</p>
+            <p class="text_5">3</p>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку текст каждого абзаца должен стать жирным:</p>
+        </td>
+        <td width="200px">
+            <p class="text_6">text1</p>
+            <p class="text_6">text2</p>
+            <p class="text_6">text3</p>
+        </td>
+        <td>
+            <button id="button_6">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку в консоль должна вывестись сумма чисел из абзацев:</p>
+        </td>
+        <td width="200px">
+            <p class="number_7">1</p>
+            <p class="number_7">2</p>
+            <p class="number_7">3</p>
+        </td>
+        <td>
+            <button id="button_7">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма чисел из инпутов:</p>
+        </td>
+        <td width="200px">
+            <input class="input_8">
+            <input class="input_8">
+            <input class="input_8">
+        </td>
+        <td>
+            <button id="button_8">click</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    // Код должен добавить текст в конец каждого абзаца:
+    //     <p>1</p>
+    // <p>2</p>
+    // <p>3</p>
+    // let elems = document.querySelector('p');
+    // elems.textContent += '!';
+    let elems = document.querySelectorAll('.p');
+    for (let p of elems) {
+        p.textContent += '!';
+    }
+
+    // По клику на абзац его значение должно увеличиться на единицу:
+    //     <p>1</p>
+    // <p>2</p>
+    // <p>3</p>
+    // let elems = document.querySelectorAll('p');
+    //
+    // for (let elem of elems) {
+    //     elem.addEventListener('click', function() {
+    //         this.textContent += Number(1);
+    //     });
+    // }
+     elems = document.querySelectorAll('.number');
+
+    for (let elem of elems) {
+        elem.addEventListener('click', function() {
+            this.textContent = +this.textContent + 1;
+        });
+    }
+
+    // По клику на кнопку текст абзаца должен стать жирным:
+    //     <p>text</p>
+    // <button>click</button>
+    // let button = document.querySelector('button');
+    // let elem   = document.querySelector('p');
+    //
+    // button.addEventListener('click', function() {
+    //     elem.innerHTML = '<b>elem.innerHTML</b>';
+    // });
+    let button = document.querySelector('.button');
+    let elem   = document.getElementById('text');
+
+    button.addEventListener('click', function() {
+        elem.innerHTML = '<b>' + elem.innerHTML + '</b>';
+    });
+
+    // По клику на кнопку должна вывестись сумма чисел из абзацев:
+    //
+    //     <p>1</p>
+    // <p>2</p>
+    // <p>3</p>
+    // <button>click</button>
+    // let button = document.querySelector('button');
+    // let elems  = document.querySelector('p');
+    //
+    // button.addEventListener('click', function() {
+    //     let sum = 0;
+    //
+    //     for (let elem of elems) {
+    //         sum += Number(elems.textContent);
+    //     }
+    //
+    //     console.log(sum);
+    // });
+     button = document.querySelector('#button_4');
+     elems  = document.querySelectorAll('.number_4');
+
+    button.addEventListener('click', function() {
+        let sum = 0;
+        for (let elem of elems) {
+            sum += Number(elem.textContent);
+        }
+        console.log(sum);
+    });
+
+    // По клику на абзац ему в конец должен добавиться заданный текст:
+    //     <p>1</p>
+    // <p>2</p>
+    // <p>3</p>
+    // let elems = document.querySelectorAll('p');
+    //
+    // for (let elem of elems) {
+    //     elem.addEventListener('click', () => {
+    //         this.textContent += '!';
+    //     });
+    // }
+    elems = document.querySelectorAll('.text_5');
+
+    for (let elem of elems) {
+        elem.addEventListener('click', () => {
+            elem.textContent += '!';
+        });
+    }
+
+    // По клику на кнопку текст каждого абзаца должен стать жирным:
+    //     <p>text1</p>
+    // <p>text2</p>
+    // <p>text3</p>
+    // <button>click</button>
+    // let button = document.querySelector('button');
+    // let elems  = document.querySelectorAll('p');
+    //
+    // button.addEventListener('click', function() {
+    //     for (let elem of elems) {
+    //         elem.innerHTML = '<b>+elem.innerHTML+</b>';
+    //     }
+    // });
+     button = document.querySelector('#button_6');
+     elems  = document.querySelectorAll('.text_6');
+
+    button.addEventListener('click', function() {
+        for (let elem of elems) {
+            elem.innerHTML = '<b>' + elem.innerHTML + '</b>';
+        }
+    });
+
+    // По клику на кнопку в консоль должна вывестись сумма чисел из абзацев:
+    //     <p>1</p>
+    // <p>2</p>
+    // <p>3</p>
+    // <button>click</button>
+    // let button = document.querySelector('button');
+    // let elems  = document.querySelectorAll('p');
+    // let sum = 0;
+    //
+    // for (let elem of elems) {
+    //     sum = elem.textContent + 1;
+    //
+    //     button.addEventListener('click', function() {
+    //         console.log(sum);
+    //     });
+    // }
+     button = document.querySelector('#button_7');
+     elems  = document.querySelectorAll('.number_7');
+    let sum = 0;
+    for (let elem of elems) {
+        sum += Number(elem.textContent);
+
+        button.addEventListener('click', function() {
+            console.log(sum);
+        });
+    }
+
+    // В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма чисел из инпутов:
+    //     <input>
+    //     <input>
+    //     <input>
+    //                 <button>click</button>
+    //                 let button = document.querySelector('button');
+    //                 let elems  = document.querySelectorAll('input');
+    //                 let sum = 0;
+    //
+    //                 for (let elem of elems) {
+    //                 sum += elem.value;
+    //             }
+    //
+    //                 button.addEventListener('click', function() {
+    //                 console.log(sum);
+    //             });
+     button = document.querySelector('#button_8');
+     elems  = document.querySelectorAll('.input_8');
+    button.addEventListener('click', function() {
+        let sum = 0;
+        for (let elem of elems) {
+            sum += +elem.value;
+        }
+        console.log(sum);
+    });
+</script>
+</body>
+</html>
