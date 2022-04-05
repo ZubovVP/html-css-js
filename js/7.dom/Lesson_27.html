@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_27(210)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Поиск ошибок в коде с DOM в JavaScript (часть 2)</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих
+                чисел:</p>
+        </td>
+        <td width="200px">
+            <input id="inp1_1">
+            <input id="inp2_1">
+            <input id="inp3_1">
+        </td>
+        <td>
+            <button id="btn_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В первые два инпута вводятся числа. По клику на кнопку в абзац должна вывестись сумма этих чисел:</p>
+        </td>
+        <td width="200px">
+            <input id="inp1_2">
+            <input id="inp2_2">
+            <p id="res_2"></p>
+        </td>
+        <td>
+            <button id="btn_2">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом его data атрибута:</p>
+        </td>
+        <td width="200px">
+            <input data-text="text1">
+            <input data-text="text2">
+            <input data-text="text3">
+        </td>
+        <td>
+            <button id="btn_3">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом соответствующего
+                элемента массива:</p>
+        </td>
+        <td width="200px">
+            <input class="in_4">
+            <input class="in_4">
+            <input class="in_4">
+        </td>
+        <td>
+            <button id="btn_4">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма введенных чисел:</p>
+        </td>
+        <td width="200px">
+            <input class="in_5">
+            <input class="in_5">
+            <input class="in_5">
+        </td>
+        <td>
+            <button id="btn_5">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих чисел:</p>
+        </td>
+        <td width="200px">
+            <input id="inp1">
+            <input id="inp2">
+            <input id="inp3">
+        </td>
+        <td>
+            <button id="btn_6">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>В инпут вводится число. По потери фокуса в консоль должна вывестись сумма цифр этого числа:</p>
+        </td>
+        <td width="200px">
+            <input id="inp_7">
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих чисел:
+    //     <input id="inp1">
+    //     <input id="inp2">
+    //     <input id="inp3">
+    //         <button id="btn">click</button>
+    //                 let btn  = document.querySelector('#btn');
+    //                 let inp1 = document.querySelector('#inp1');
+    //                 let inp2 = document.querySelector('#inp2');
+    //                 let inp3 = document.querySelector('#inp3');
+    //
+    //                 btn.addEventListener('click', function() {
+    //                 inp3.textContent = inp1.textContent + inp2.textContent;
+    //             });
+    let btn = document.querySelector('#btn_1');
+    let inp1 = document.querySelector('#inp1_1');
+    let inp2 = document.querySelector('#inp2_1');
+    let inp3 = document.querySelector('#inp3_1');
+
+    btn.addEventListener('click', function () {
+        inp3.value = +inp1.value + +inp2.value;
+    });
+
+    // В первые два инпута вводятся числа. По клику на кнопку в абзац должна вывестись сумма этих чисел:
+    //     <input id="inp1">
+    //         <input id="inp2">
+    //             <p id="res"></p>
+    //             <button id="btn">click</button>
+    //             let btn  = document.querySelector('btn');
+    //             let res  = document.querySelector('res');
+    //             let inp1 = document.querySelector('inp1');
+    //             let inp2 = document.querySelector('inp2');
+    //
+    //             button.addEventListener('click', function() {
+    //             res.value = inp1.value + inp2.value;
+    //         });
+    btn = document.querySelector('#btn_2');
+    let res = document.querySelector('#res_2');
+    inp1 = document.querySelector('#inp1_2');
+    inp2 = document.querySelector('#inp2_2');
+
+    btn.addEventListener('click', function () {
+        res.textContent = +inp1.value + +inp2.value;
+    });
+
+    // По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом его data атрибута:
+    //     <input data-text="text1">
+    //     <input data-text="text2">
+    //     <input data-text="text3">
+    //                 <button id="btn">click</button>
+    //                 let inputs = document.querySelectorAll('input')
+    //                 let button = document.querySelector('#button')
+    //
+    //                 button.addEventListener('click',function() {
+    //                 for (let input of inputs) {
+    //                 if (input.value === input.dataset) {
+    //                 input.classList.add('right')
+    //             } else {
+    //                 input.classList.add('wrong')
+    //             }
+    //             }
+    //             });
+
+    let inputs = document.getElementsByTagName('input')
+    let button = document.querySelector('#btn_3')
+
+    button.addEventListener('click', function () {
+        for (let input of inputs) {
+            if (input.dataset.text != undefined) {
+                if (input.value == input.dataset.text) {
+                    input.classList.add('right')
+                } else {
+                    input.classList.add('wrong')
+                }
+            }
+        }
+    });
+
+    // По клику на кнопку нужно проверить, что текст в каждом инпуте совпадает с текстом соответствующего элемента массива:
+    /*
+ <input>
+ <input>
+ <input>
+
+ <button id="btn">click</button>
+ let inputs = document.querySelectorAll('input')
+ let button = document.querySelector('#button')
+
+ let texts = [
+     'text1',
+     'text2',
+     'text3',
+ ];
+
+ button.addEventListener('click',function() {
+     for (let input of inputs) {
+         for (let text of texts) {
+             if (input.value === text) {
+                 input.classList.add('right')
+             } else {
+                 input.classList.add('wrong')
+             }
+         }
+     }
+ });
+     */
+    inputs = document.querySelectorAll('.in_4')
+    button = document.querySelector('#btn_4')
+
+    let texts = [
+        'text1',
+        'text2',
+        'text3',
+    ];
+
+    button.addEventListener('click', function () {
+        for (let input = 0; input < inputs.length; input++) {
+            if (inputs[input].value === texts[input]) {
+                inputs[input].classList.add('right')
+            } else {
+                inputs[input].classList.add('wrong')
+            }
+        }
+    });
+
+    /*
+В инпуты вводятся числа. По клику на кнопку в консоль должна вывестись сумма введенных чисел:
+<input>
+<input>
+<input>
+<button id="btn">click</button>
+let inputs = document.querySelectorAll('inputs');
+let btn = document.querySelector('#btm');
+let sum = 0;
+
+btn.addEventListener('click', function() {
+	for (let input of inputs) {
+		sum += Number(input);
+	}
+
+	console.log(sum);
+});
+     */
+     inputs = document.querySelectorAll('.in_5');
+     btn = document.querySelector('#btn_5');
+    let sum = 0;
+
+    btn.addEventListener('click', function() {
+        for (let input of inputs) {
+            sum += Number(input.value);
+        }
+        console.log(sum);
+    });
+
+    /*
+    В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих чисел:
+<input id="inp1">
+<input id="inp2">
+<input id="inp3">
+<button id="btn">click</button>
+
+let btn  = document.querySelector('#btn');
+let inp1 = document.querySelector('#inp1');
+let inp2 = document.querySelector('#inp2');
+let inp3 = document.querySelector('#inp3');
+
+let sum  = inp1.value + inp2.value;
+
+btn.addEventListener('click', function() {
+	inp3.value = sum;
+});
+     */
+     btn  = document.querySelector('#btn_6');
+     inp1 = document.querySelector('#inp1');
+     inp2 = document.querySelector('#inp2');
+     inp3 = document.querySelector('#inp3');
+
+    btn.addEventListener('click', function() {
+        sum  = Number(inp1.value) + Number(inp2.value);
+        inp3.value = sum;
+    });
+
+    /*
+    В инпут вводится число. По потери фокуса в консоль должна вывестись сумма цифр этого числа:
+<input id="inp">
+let inp = document.querySelector('#inp').value;
+
+inp.addEventListener('blur', function() {
+	let digits = +inp.split('');
+	let sum = 0;
+
+	for (let digit of digits) {
+		sum += digit;
+	}
+	console.log(sum);
+});
+     */
+
+    let inp = document.querySelector('#inp_7');
+
+    inp.addEventListener('blur', function() {
+        let digits = inp.value.split('');
+        let sum = 0;
+
+        for (let digit of digits) {
+            sum += +digit;
+        }
+        console.log(sum);
+    });
+</script>
+</body>
+</html>
