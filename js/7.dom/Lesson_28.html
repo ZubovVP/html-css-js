@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_28(211)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Отработка изученного материала на работу с DOM (часть 1)</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>В первые два инпута вводятся числа. По клику на кнопку в третий инпут должна вывестись сумма этих
+                чисел:</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_1">
+            <p id="p_1">Абзац</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дано несколько инпутов, абзац и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и
+                запишите их сумму в абзац.</p>
+        </td>
+        <td width="200px">
+            <input id="inp_2_1">
+            <input id="inp_2_2">
+            <p id="p_2">Абзац </p>
+        </td>
+        <td>
+            <button id="but_2">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_3">
+            <p id="p_3"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите среднее
+                арифметическое этих чисел (сумма делить на количество).</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_4">
+            <p id="p_4"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 4 инпута. В первый инпут вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и
+                отчество в остальные 3 инпута.</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input class="inp_5" placeholder="ФИО">
+            <input class="inp_5" placeholder="Фамилия" readonly>
+            <input class="inp_5" placeholder="Имя" readonly>
+            <input class="inp_5" placeholder="Отчество" readonly>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса инпутом,
+                введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в этом же инпуте).</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_6" placeholder="ФИО">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_7">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан инпут и абзац. По потери фокуса в инпуте запишите значение инпута в конец текста абзаца.
+    document.querySelector('#inp_1').addEventListener('blur', function () {
+        document.querySelector('#p_1').textContent += this.value;
+    });
+
+    // Дано несколько инпутов, абзац и кнопка. По нажатию на кнопку получите числа, стоящие в этих
+    // инпутах и запишите их сумму в абзац.
+    document.querySelector('#but_2').addEventListener('click', function () {
+        let sum = Number(document.querySelector('#inp_2_1').value) + Number(document.querySelector('#inp_2_2').value);
+        document.querySelector('#p_2').textContent += +sum;
+    });
+
+    // Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.
+    document.querySelector('#inp_3').addEventListener('blur', function () {
+        let sum = 0;
+        for (let elem of this.value.split('')) {
+            sum += Number(elem);
+        }
+        document.querySelector('#p_3').textContent = sum;
+    });
+
+    // Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите среднее арифметическое
+    // этих чисел (сумма делить на количество).
+    document.querySelector('#inp_4').addEventListener('blur', function () {
+        let sum = 0;
+        for (let elem of this.value.split(',')) {
+            sum += Number(elem);
+        }
+        document.querySelector('#p_4').textContent = sum;
+    });
+
+    // Даны 4 инпута. В первый инпут вводится ФИО через пробел. По потери фокуса запишите фамилию,
+    // имя и отчество в остальные 3 инпута.
+    document.querySelector('.inp_5').addEventListener('blur', function () {
+        let fio = this.value.split(' ');
+        let inps = document.querySelectorAll('.inp_5');
+        for (let x = 1; x < inps.length; x++) {
+            inps[x].value = fio[x - 1];
+        }
+    });
+
+    // Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так,
+    // чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными
+    // с большой буквы (в этом же инпуте).
+    document.querySelector('#inp_6').addEventListener('blur', function () {
+        let fio = this.value.split(' ');
+        let result = '';
+        for(let elem of fio){
+            let word = elem.split('');
+            word[0] = word[0].toUpperCase();
+            result +=  word.join('') + ' ';
+        }
+        this.value = result;
+    });
+
+    // Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.
+    document.querySelector('#inp_7').addEventListener('blur', function () {
+        let words = this.value.split(' ');
+        alert('вы ввели ' + words.length + ' слов(а)');
+    });
+</script>
+</body>
+</html>
