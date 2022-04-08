@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_30(211)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Отработка изученного материала на работу с DOM (часть 3)</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так,
+                чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста</p>
+        </td>
+        <td>
+            <div class="div_1">ТекстТекстТекстТекстТекстТекстТекстТекстТекст</div>
+            <div class="div_1">АдресАдресАдресАдресАдресАдресАдрес</div>
+            <div class="div_1">ДомДомДомДомДомДомДомДомДомДомДом</div>
+        </td>
+        <td>
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводится число. По потери фокуса проверьте, что в нем лежит число от 1 до 100.
+                Если это так - покрасьте инпут в зеленый цвет, а если не так - в красный.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_2">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми символов и запишите в
+                инпут.</p>
+        </td>
+        <td>
+            <input id="inp_3" readonly>
+        </td>
+        <td>
+            <button id="but_3">сгенерировать</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут и кнопка. Пользователь вводит в инпут какую-то строку. По нажатию на кнопку перемешайте
+                введенные символы случайным образом и запишите ее обратно в инпут.</p>
+        </td>
+        <td>
+            <input id="inp_4">
+        </td>
+        <td>
+            <button id="but_4">перемешать</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут, кнопка и абзац. В инпут вводится температура в градусах Фаренгейта. По клику на
+                кнопку выведите в абзац температуру в градусах Цельсия.</p>
+        </td>
+        <td>
+            <input id="inp_5" placeholder="температура в Фаренгейтах">
+            <p id="p_5"></p>
+        </td>
+        <td>
+            <button id="but_5">перевести температуру</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого
+                числа.</p>
+        </td>
+        <td>
+            <input id="inp_6" placeholder="введите число для расчёта факториала">
+            <p id="p_6"></p>
+        </td>
+        <td>
+            <button id="but_6">рассчитать</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 3 инпута, кнопка и абзац. В инпуты вводятся коэффициенты квадратного уравнения.
+                По нажатию на кнопку найдите корни этого уравнения и выведите их в абзац.</p>
+        </td>
+        <td>
+            <input id="inp_7_1" placeholder="a">
+            <input id="inp_7_2" placeholder="b">
+            <input id="inp_7_3" placeholder="c">
+
+            <p id="p_7"></p>
+        </td>
+        <td>
+            <button id="but_7">рассчитать корни уравнения</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    /*
+     На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них
+     стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+     */
+    document.querySelector('#but_1').addEventListener('click', function () {
+        for (let div of document.querySelectorAll('.div_1')) {
+            div.textContent = div.textContent.substring(0, 10) + '...';
+        }
+    });
+
+    /*
+    Дан инпут. В него вводится число. По потери фокуса проверьте, что в нем лежит число от 1 до 100.
+    Если это так - покрасьте инпут в зеленый цвет, а если не так - в красный.
+     */
+    document.querySelector('#inp_2').addEventListener('blur', function () {
+        if (0 < this.value && this.value < 100) {
+            this.style.backgroundColor = 'green'
+        } else {
+            this.style.backgroundColor = 'red'
+        }
+    });
+
+    /*
+    Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми символов и
+     запишите в инпут.
+     */
+    let words = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    document.querySelector('#but_3').addEventListener('click', function () {
+        let result = '';
+        for (let step = 0; step < 8; step++) {
+            result += words[getRandomInt(0, 25)];
+        }
+        document.querySelector('#inp_3').value = result
+    });
+
+    /*
+    Дан инпут и кнопка. Пользователь вводит в инпут какую-то строку. По нажатию на кнопку перемешайте
+    введенные символы случайным образом и запишите ее обратно в инпут.
+     */
+    document.querySelector('#but_4').addEventListener('click', function () {
+        document.querySelector('#inp_4').value = document.querySelector('#inp_4').value.split('').sort(() => Math.random() - 0.5).join('');
+    });
+
+    // Дан инпут, кнопка и абзац. В инпут вводится температура в градусах Фаренгейта. По клику на кнопку
+    // выведите в абзац температуру в градусах Цельсия.
+    document.querySelector('#but_5').addEventListener('click', function () {
+        document.querySelector('#p_5').textContent = document.querySelector('#inp_5').value - 32 + ' градусов';
+    });
+
+    // Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в
+    // абзац факториал этого числа.
+    function fact(num, value) {
+        if (num == 0) {
+            return value;
+        }
+        return fact(num - 1, value * num)
+    }
+
+    document.querySelector('#but_6').addEventListener('click', function () {
+        document.querySelector('#p_6').textContent = fact(document.querySelector('#inp_6').value, 1)
+    });
+
+    // Даны 3 инпута, кнопка и абзац. В инпуты вводятся коэффициенты квадратного уравнения.
+    // По нажатию на кнопку найдите корни этого уравнения и выведите их в абзац.
+    document.querySelector('#but_7').addEventListener('click', function () {
+        let a = document.querySelector('#inp_7_1').value;
+        let b = document.querySelector('#inp_7_2').value;
+        let c = document.querySelector('#inp_7_3').value;
+        let desc = Math.pow(Number(b), 2) - 4 * a * c;
+        let resultOne = (Math.sqrt(desc) - b) / (2 * a);
+        let resultTwo = (-Math.sqrt(desc) - b) / (2 * a);
+        document.querySelector('#p_7').textContent = resultOne + ', ' + resultTwo;
+    });
+
+</script>
+</body>
+</html>
