@@ -14,7 +14,8 @@
 <table border="1">
     <tr>
         <td class="description">
-            <p>Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31.</p>
+            <p>Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту
+                дату в формате 2016-12-31.</p>
         </td>
         <td width="200px" colspan="2">
             <input id="inp_1">
@@ -22,7 +23,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).</p>
+            <p>Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с
+                конца одинаково (например, мадам).</p>
         </td>
         <td width="200px">
             <input id="inp_2">
@@ -33,7 +35,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Дан инпут. В него вводится число. Проверьте по потери фокуса, что это число содержит внутри себя цифру 3.</p>
+            <p>Дан инпут. В него вводится число. Проверьте по потери фокуса, что это число содержит внутри себя цифру
+                3.</p>
         </td>
         <td width="200px" colspan="2">
             <input id="inp_3">
@@ -41,7 +44,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Даны несколько абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер.</p>
+            <p>Даны несколько абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый
+                номер.</p>
         </td>
         <td width="200px">
             <p class="p_4">Абзац</p>
@@ -63,7 +67,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так: &rarr;).</p>
+            <p>Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так:
+                &rarr;).</p>
         </td>
         <td width="200px" colspan="2">
             <a href="https://yandex.ru" class="link_6">ссылка_1</a>
@@ -73,7 +78,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится.</p>
+            <p>Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем
+                находится.</p>
         </td>
         <td width="200px" colspan="2">
             <p class="p_7"> 1 </p>
@@ -83,10 +89,32 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату.</p>
+            <p>Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом),
+                который приходится на эту дату.</p>
         </td>
         <td width="200px" colspan="2">
-           <input id="inp_8">
+            <input id="inp_8">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1
+                значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_9">
+            <button id="but_9_1"> +1</button>
+            <button id="but_9_2"> -1</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество нажатий по этим абзацам.</p>
+        </td>
+        <td width="200px" colspan="2">
+            <input id="inp_10" value="0">
+            <p class="p_10">Абзац_1</p>
+            <p class="p_10">Абзац_2</p>
         </td>
     </tr>
 </table>
@@ -103,8 +131,8 @@
         let word = document.querySelector('#inp_2').value.split('');
         let midddle = word.length % 2 == 0 ? word.length / 2 : (word.length - 1) / 2;
         let result = true;
-        for(let x = 0; x < midddle; x++){
-            if(word[x] != word[length - x]){
+        for (let x = 0; x < midddle; x++) {
+            if (word[x] != word[length - x]) {
                 result = false;
                 break;
             }
@@ -116,8 +144,8 @@
     // себя цифру 3.
     document.querySelector('#inp_3').addEventListener('blur', function () {
         let numbers = this.value.split('');
-        for(let number of numbers){
-            if(number == 3){
+        for (let number of numbers) {
+            if (number == 3) {
                 alert('число содержит 3');
                 return;
             }
@@ -129,42 +157,66 @@
     // порядковый номер.
     document.querySelector('#but_4').addEventListener('click', function () {
         let inps = document.querySelectorAll('.p_4');
-        for(let x = 0; x < inps.length; x++){
+        for (let x = 0; x < inps.length; x++) {
             inps[x].textContent += (' ' + (x + 1));
         }
     });
 
     // Даны ссылки. Добавьте в конец каждой ссылки ее href в круглых скобках.
-    for(let link of document.querySelectorAll('.link_5')){
+    for (let link of document.querySelectorAll('.link_5')) {
         link.textContent += (' ( ' + link.href + ' )');
     }
 
     // Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так:
     // &rarr;).
-    for(let link of document.querySelectorAll('.link_6')){
-        if(link.href.substring(0, 7) == 'http://'){
+    for (let link of document.querySelectorAll('.link_6')) {
+        if (link.href.substring(0, 7) == 'http://') {
             link.textContent += '\u2192';
         }
     }
 
     // Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа,
     // которое в нем находится.
-    for(let p of document.querySelectorAll('.p_7')){
-        p.addEventListener('click', function (){
-           p.textContent = Math.pow(p.textContent, 2);
+    for (let p of document.querySelectorAll('.p_7')) {
+        p.addEventListener('click', function () {
+            p.textContent = Math.pow(p.textContent, 2);
         });
     }
 
     // Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели
     // (словом), который приходится на эту дату.
-    document.querySelector('#inp_8').addEventListener('blur', function (){
+    document.querySelector('#inp_8').addEventListener('blur', function () {
         let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
         let arr = this.value.split('.');
         let date = new Date(arr[2], arr[1], arr[0])
         alert(days[date.getDay()]);
+    });
 
-    })
+    /*
+      Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута
+      . Сделайте так, чтобы это значение не могло стать меньше нуля.
+     */
+    document.querySelector('#but_9_1').addEventListener('click', function () {
+        document.querySelector('#inp_9').value = ++document.querySelector('#inp_9').value ;
+    });
 
+    document.querySelector('#but_9_2').addEventListener('click', function () {
+        let inp = document.querySelector('#inp_9');
+        if(inp.value > 0){
+            inp.value -= 1;
+        }
+    });
+
+   /* Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество нажатий по
+   этим абзацам.
+    */
+    for(let p of document.querySelectorAll('.p_10')){
+        let inp = document.querySelector('#inp_10');
+        p.addEventListener('click', function (){
+            inp.value = ++inp.value;
+        });
+
+    }
 
 
 </script>
