@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(212)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан текстареа и абзац. По потери фокуса в текстареа запишите его текст в абзац.</p>
+        </td>
+        <td colspan="2">
+            <textarea id="ta_1"></textarea>
+            <p id="p_1"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан текстареа и абзац. По потери фокуса в текстареа запишите его текст в абзац.
+    document.querySelector('#ta_1').addEventListener('blur', function () {
+        document.querySelector('#p_1').textContent = this.value;
+    });
+</script>
+</body>
+</html>
