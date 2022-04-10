@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(213, 214)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут и кнопка. По нажатию на кнопку заблокируйте инпут.</p>
+        </td>
+        <td>
+           <input id="inp_1">
+        </td>
+        <td colspan="1">
+           <button id="but_1">block/unblock</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут и две кнопки. Пусть нажатие на первую кнопку блокирует инпут, а нажатие на вторую - отблокирует.</p>
+        </td>
+        <td>
+            <input id="inp_2">
+        </td>
+        <td>
+            <button id="but_2_1">block/unblock</button>
+            <button id="but_2_2">info</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут и кнопка. По нажатию на кнопку узнайте, заблокирован инпут или нет.</p>
+        </td>
+        <td>
+            <input id="inp_3">
+        </td>
+        <td>
+            <button id="but_3">info</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан чекбокс и две кнопки. По нажатию на первую кнопку установите чекбокс в
+                отмеченное состояние, а по нажатию на вторую - в неотмеченное.</p>
+        </td>
+        <td>
+            <input type="checkbox" id="check_4">
+        </td>
+        <td>
+            <button id="but_4_1">check</button>
+            <button id="but_4_2">uncheck</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан чекбокс, кнопка и абзац. По нажатию на кнопку, если чекбокс отмечен, выведите в абзац слово 'привет',
+                а если чекбокс не отмечен, то слово 'пока'.</p>
+        </td>
+        <td>
+            <input type="checkbox" id="check_5">
+            <p id="p_5"></p>
+        </td>
+        <td>
+            <button id="but_5">check</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан текстареа и абзац. По потери фокуса в текстареа запишите его текст в абзац.
+    document.querySelector('#but_1').addEventListener('click', function () {
+        let inp = document.querySelector('#inp_1');
+        if(inp.disabled == true){
+            inp.disabled = false;
+        } else {
+            inp.disabled = true;
+        }
+    });
+
+/*    Дан инпут и две кнопки. Пусть нажатие на первую кнопку блокирует инпут,
+а нажатие на вторую - отблокирует.
+ */
+
+    document.querySelector('#but_2_1').addEventListener('click', function (){
+        let inp = document.querySelector('#inp_2');
+        if(inp.disabled == true){
+            inp.disabled = false;
+        } else {
+            inp.disabled = true;
+        }
+    });
+
+    document.querySelector('#but_2_2').addEventListener('click', function (){
+        let inp = document.querySelector('#inp_2');
+        if(inp.disabled == true){
+            alert('инпут заблокирован');
+        } else {
+            alert('инпут не заблокирован');
+        }
+    });
+
+    //Дан инпут и кнопка. По нажатию на кнопку узнайте, заблокирован инпут или нет.
+    document.querySelector('#but_3').addEventListener('click', function (){
+        let inp = document.querySelector('#inp_3');
+        if(inp.disabled == true){
+            alert('инпут заблокирован');
+        } else {
+            alert('инпут не заблокирован');
+        }
+    });
+
+ /*   Дан чекбокс и две кнопки. По нажатию на первую кнопку установите чекбокс в
+  отмеченное состояние, а по нажатию на вторую - в неотмеченное.
+  */
+    document.querySelector('#but_4_1').addEventListener('click', function (){
+        document.querySelector('#check_4').checked = true;
+    });
+
+    document.querySelector('#but_4_2').addEventListener('click', function (){
+        document.querySelector('#check_4').checked = false;
+    });
+
+    /*    Дан чекбокс, кнопка и абзац. По нажатию на кнопку, если чекбокс отмечен,
+    выведите в абзац слово 'привет', а если чекбокс не отмечен, то слово 'пока'.
+     */
+    document.querySelector('#but_5').addEventListener('click', function (){
+       let p = document.querySelector('#p_5');
+        if(document.querySelector('#check_5').checked){
+           p.textContent = 'привет';
+       } else {
+           p.textContent = 'пока';
+       }
+    });
+</script>
+</body>
+</html>
