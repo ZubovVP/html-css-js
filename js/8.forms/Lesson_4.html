@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(217)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут и абзац. По изменению инпута выведите его текст в абзац.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_1" value="текст">
+            <p id="p_1"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан чекбокс. По изменению чебокса выведите на экран его новое состояние.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_2" type="checkbox">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. По его изменению проверьте, количество символов в нем меньше 5-ти или нет.
+                Если меньше - покрасьте границу инпута в зеленый цвет, а если больше - в красный.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_3">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    //Дан инпут и абзац. По изменению инпута выведите его текст в абзац.
+    document.querySelector('#inp_1').addEventListener('change', function () {
+        document.querySelector('#p_1').textContent = this.value;
+    });
+
+    //Дан чекбокс. По изменению чебокса выведите на экран его новое состояние.
+    document.querySelector('#inp_2').addEventListener('change', function () {
+        alert(this.checked);
+    });
+
+    /*
+     Дан инпут. По его изменению проверьте, количество символов в нем меньше 5-ти
+     или нет. Если меньше - покрасьте границу инпута в зеленый цвет, а если
+     больше - в красный.
+     */
+    document.querySelector('#inp_3').addEventListener('change', function () {
+        let word = this.value.length;
+        if(word > 5){
+            this.style.border = '1px solid red'
+        } else {
+            this.style.border = '1px solid green'
+        }
+    });
+
+
+</script>
+</body>
+</html>
