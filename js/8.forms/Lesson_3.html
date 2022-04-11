@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(215, 216)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан чекбокс и кнопка. Сделайте так, чтобы каждый клик по кнопке приводил к смене состояния чекбокса.</p>
+        </td>
+        <td>
+            <input id="check_1" type="checkbox">
+        </td>
+        <td>
+            <button id="but_1">check/uncheck</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны 3 радиокнопки, абзац и кнопка. По клику на кнопку выведите в абзац value отмеченной радиокнопки.</p>
+        </td>
+        <td>
+            <input type="radio" name="rad_1" value="1">
+            <input type="radio" name="rad_1" value="2">
+            <input type="radio" name="rad_1" value="3">
+            <p id="p_2"></p>
+        </td>
+        <td>
+            <button id="but_2">info</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Дан чекбокс и кнопка. Сделайте так, чтобы каждый клик по кнопке приводил к смене состояния чекбокса.
+    document.querySelector('#but_1').addEventListener('click', function () {
+        let elem = document.querySelector('#check_1');
+        elem.checked = !elem.checked;
+    });
+
+    // Даны 3 радиокнопки, абзац и кнопка. По клику на кнопку выведите в абзац value отмеченной радиокнопки.
+    document.querySelector('#but_2').addEventListener('click', function () {
+        //document.querySelector("input[type='radio']:checked"); - получаем отмеченный radio
+       let radios = document.querySelectorAll("input[type='radio']");
+        for(let rad of radios){
+           if(rad.checked){
+               document.querySelector('#p_2').textContent = rad.value;
+           }
+       }
+    });
+
+</script>
+</body>
+</html>
