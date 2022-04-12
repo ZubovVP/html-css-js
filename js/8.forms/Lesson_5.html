@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_5(218, 219)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Пусть в него вводится текст. Как только длина текста достигнет 5-ти, выведите на экран
+                сообщение об этом.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_1">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Пусть в него разрешено ввести 5 символов. Дан также абзац.
+                По мере ввода символов в инпут пишите, сколько еще символов можно ввести.
+                Когда количество символов превысит 5-ти, то в абзац выводите то, на
+                сколько символов превышена длина текста.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_2">
+            <p id="p_2"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны два инпута. Сделайте так, чтобы после ввода двух символов фокус ввода переходил
+                ко второму инпуту, а после ввода двух символов в этот инпут - фокус из него убирался.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_3" placeholder="введите 2 символа">
+            <input id="inp_4">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    //Дан инпут и абзац. По изменению инпута выведите его текст в абзац.
+    document.querySelector('#inp_1').addEventListener('input', function () {
+        if (this.value.length >= 5) {
+            alert(this.value)
+        }
+    });
+
+    /*
+     Дан инпут. Пусть в него разрешено ввести 5 символов. Дан также абзац. По мере ввода символов в
+     инпут пишите, сколько еще символов можно ввести. Когда количество символов превысит 5-ти, то в
+     абзац выводите то, на сколько символов превышена длина текста.
+     */
+    document.querySelector('#inp_2').addEventListener('input', function () {
+        if (this.value.length <= 5) {
+            document.querySelector('#p_2').textContent = 'осталось символов ' + (5 - this.value.length);
+        } else {
+            document.querySelector('#p_2').textContent = 'количество символов превышено на  ' + (this.value.length - 5);
+        }
+    });
+
+    /*Даны два инпута. Сделайте так, чтобы после ввода двух символов фокус ввода
+    переходил ко второму инпуту, а после ввода двух символов в этот инпут - фокус
+    из него убирался.
+     */
+    document.querySelector('#inp_3').addEventListener('input', function () {
+        if (this.value.length >= 2) {
+            document.querySelector('#inp_4').focus();
+        }
+    });
+    document.querySelector('#inp_4').addEventListener('input', function () {
+        if (this.value.length >= 2) {
+            this.blur();
+        }
+    });
+
+</script>
+</body>
+</html>
