@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(220, 221)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан селект, абзац и кнопка. По клику на кнопку выведите текст выбранного пункта списка в абзац.</p>
+        </td>
+        <td>
+            <select id="select_1">
+                <option>one</option>
+                <option selected>two</option>
+                <option>three</option>
+            </select>
+            <p id="p_1"></p>
+        </td>
+        <td>
+            <button id="but_1">показать выбранный селект</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте выпадающий список годов от 2020 до 2030. При выборе
+                какого-нибудь пункта списка выведите сообщение о том, високосный
+                этот год или нет.
+            </p>
+        </td>
+        <td colspan="2" align="center">
+            <select id="select_2">
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>2026</option>
+                <option>2027</option>
+                <option>2028</option>
+                <option>2029</option>
+                <option>2030</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте выпадающий список с названиями дней недели. В качестве
+                атрибутов value пунктов списка добавьте номера дней недели
+                от 1 до 7. По изменению списка выведите на экран сообщение о том,
+                выбран выходной день или рабочий.
+            </p>
+        </td>
+        <td colspan="2" align="center">
+            <select id="select_3">
+                <option value="1">Понедельник</option>
+                <option value="2">Вторник</option>
+                <option value="3">Среда</option>
+                <option value="4">Четверг</option>
+                <option value="5">Пятница</option>
+                <option value="6">Суббота</option>
+                <option value="7">Воскресенье</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте выпадающий список с названиями месяцев. Сделайте так,
+                чтобы по JavaScript по умолчанию выбирал в этом списке текущий
+                месяц.
+            </p>
+        </td>
+        <td colspan="2" align="center">
+            <select id="select_4">
+                <option value="0">Январь</option>
+                <option value="1">Февраль</option>
+                <option value="2">Март</option>
+                <option value="3">Апрель</option>
+                <option value="4">Май</option>
+                <option value="5">Июнь</option>
+                <option value="6">Июль</option>
+                <option value="7">Август</option>
+                <option value="8">Сентябрь</option>
+                <option value="9">Октябрь</option>
+                <option value="10">Ноябрь</option>
+                <option value="11">Декабрь</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    //Дан инпут и абзац. По изменению инпута выведите его текст в абзац.
+    document.querySelector('#but_1').addEventListener('click', function () {
+        document.querySelector('#p_1').textContent = document.querySelector('#select_1').value;
+    });
+
+    /* Сделайте выпадающий список годов от 2020 до 2030. При выборе какого-нибудь
+    пункта списка выведите сообщение о том, високосный этот год или нет.
+     */
+    document.querySelector('#select_2').addEventListener('change', function () {
+        if (Number(this.value) % 4 == 0) {
+            alert('Этот год високосный')
+        } else {
+            alert('Этот Не год високосный')
+        }
+    });
+
+    /* Сделайте выпадающий список с названиями дней недели. В качестве атрибутов
+    value пунктов списка добавьте номера дней недели от 1 до 7. По изменению
+    списка выведите на экран сообщение о том, выбран выходной день или рабочий.
+       */
+    document.querySelector('#select_3').addEventListener('change', function () {
+        if (this.value > 5) {
+            alert('Выходной день')
+        } else {
+            alert('Рабочий день')
+        }
+    });
+
+    /* Сделайте выпадающий список с названиями месяцев. Сделайте так, чтобы по
+    JavaScript по умолчанию выбирал в этом списке текущий месяц.
+       */
+   let date = new Date();
+    document.querySelector('#select_4').value = date.getMonth();
+</script>
+</body>
+</html>
