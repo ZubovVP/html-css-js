@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_7(222, 223)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Номер выбранного пункта выпадающего списка</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут и селект. В инпут вводится какое-то число. По потери фокуса сделайте выделенным пункт списка,
+                номер которого равен значению из инпута.</p>
+        </td>
+        <td colspan="2">
+            <select id="select_1">
+                <option value="one">один</option>
+                <option value="two" selected>два</option>
+                <option value="three">три</option>
+            </select>
+            <input id="inp_1" placeholder="выберите пункт">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте выпадающий список с названиями дней недели. Сделайте так, чтобы по JavaScript по
+                умолчанию выбирал в этом списке текущий день.</p>
+        </td>
+        <td colspan="2">
+            <select id="select_2">
+                <option value="0">Понедельник</option>
+                <option value="1">Вторник</option>
+                <option value="2">Среда</option>
+                <option value="3">Четверг</option>
+                <option value="4">Пятница</option>
+                <option value="5">Суббота</option>
+                <option value="6">Воскресенье</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<h1>Получение пунктов выпадающего списка на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Переберите все пункты списка циклом и в конец текста каждого пункта добавьте значение его атрибута
+                value.</p>
+        </td>
+        <td>
+            <select id="select_3">
+                <option value="one">один</option>
+                <option value="two" selected>два</option>
+                <option value="three">три</option>
+            </select>
+        </td>
+        <td>
+            <button id="but_3">перебрать</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    /*Дан инпут и селект. В инпут вводится какое-то число. По потери фокуса сделайте выделенным пункт
+    списка, номер которого равен значению из инпута.
+     */
+    document.querySelector('#inp_1').addEventListener('blur', function () {
+        let select = document.querySelector('#select_1');
+        select.selectedIndex = this.value;
+    });
+
+    /* Сделайте выпадающий список с названиями дней недели. Сделайте так, чтобы по JavaScript по
+    умолчанию выбирал в этом списке текущий день.
+     */
+    let date = new Date();
+    document.querySelector('#select_2').selectedIndex = date.getDay() - 1;
+
+    /* Переберите все пункты списка циклом и в конец текста каждого пункта добавьте
+    значение его атрибута value.
+     */
+    document.querySelector('#but_3').addEventListener('click', function () {
+       for(let op of document.querySelector('#select_3')){
+           op.textContent += '_' + op.value;
+       }
+    });
+
+
+</script>
+</body>
+</html>
