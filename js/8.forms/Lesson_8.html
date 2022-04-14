@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_8(224, 225)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+</style>
+<body>
+<h1>Работа с пунктами выпадающего списка на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Переберите пункты списка циклом и для выбранного пункта в конец текста добавьте
+                восклицательный знак, а для невыбранных пунктов - вопросительный.</p>
+        </td>
+        <td colspan="2">
+            <select multiple id="select_1">
+                <option value="one">один</option>
+                <option value="two" selected>два</option>
+                <option value="three">три</option>
+                <option value="four">четыре</option>
+                <option value="five">пять</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан выпадающий список и кнопка. По клику на кнопку сделайте отмеченным последний пункт
+                списка.</p>
+        </td>
+        <td>
+            <select id="select_2">
+                <option value="one">один</option>
+                <option value="two" selected>два</option>
+                <option value="three">три</option>
+                <option value="four">четыре</option>
+                <option value="five">пять</option>
+            </select>
+        </td>
+        <td>
+            <button id="but_2">отметить последний пункт</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан селект и кнопка. По нажатию на кнопку выведите на экран текст отмеченного пункта
+                списка.</p>
+        </td>
+        <td>
+            <select id="select_3">
+                <option value="one">один</option>
+                <option value="two">два</option>
+                <option value="three">три</option>
+                <option value="four">четыре</option>
+                <option value="five">пять</option>
+            </select>
+        </td>
+        <td>
+            <button id="but_3">вывести отмеченный пункт</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан селект и кнопка. По нажатию на кнопку добавьте в конец текста выбранного пункта
+                восклицательный знак.</p>
+        </td>
+        <td>
+            <select id="select_4">
+                <option value="one">один</option>
+                <option value="two">два</option>
+                <option value="three">три</option>
+                <option value="four">четыре</option>
+                <option value="five">пять</option>
+            </select>
+        </td>
+        <td>
+            <button id="but_4">добавить знак</button>
+        </td>
+    </tr>
+</table>
+<h1>Поиск ошибок в коде с формами в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>По потери фокуса текст из textarea должен записаться в див:</p>
+        </td>
+        <td colspan="2">
+            <textarea></textarea>
+            <div id="div_1"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку в див должно записаться или одно, или другое значение:</p>
+        </td>
+        <td colspan="2">
+            <input type="checkbox" id="inp_5">
+            <div id="div_5"></div>
+        </td>
+        <td>
+            <button id="but_5">button</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>По клику на кнопку, если чекбокс отмечен, то должно вывестись одно значение,
+                а если не отмечен - другое:</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_6" type="checkbox">
+        </td>
+        <td>
+            <button id="but_6">button</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // По потери фокуса текст из textarea должен записаться в див:
+    //     <textarea></textarea>
+    // <div></div>
+    // let textarea = document.querySelector('textarea');
+    // let div = document.querySelector('div');
+    //
+    // textarea.addEventListener('blur', function() {
+    //     div.textContent = textarea.textContent;
+    // });
+    let textarea = document.querySelector('textarea');
+    let div = document.querySelector('#div_1');
+
+    textarea.addEventListener('blur', function() {
+        div.textContent = textarea.value;
+    })
+
+    // По клику на кнопку в див должно записаться или одно, или другое значение:
+    //     <input type="checkbox">
+    //         <div></div>
+    //         <button>button</button>
+    //         let checkbox = document.querySelectorAll('#checkbox');
+    //         let button = document.querySelectorAll('#button');
+    //         let div = document.querySelectorAll('#div');
+    //
+    //         btn.addEventListener('click', function() {
+    //         if (checkbox.checked) {
+    //         div.value = '111';
+    //     } else {
+    //         div.value = '222';
+    //     }
+    //     });
+    let checkbox = document.querySelector('#inp_5');
+    let button = document.querySelector('#but_5');
+     div = document.querySelector('#div_5');
+
+    button.addEventListener('click', function() {
+        if (checkbox.checked) {
+            div.textContent = '111';
+        } else {
+            div.textContent = '222';
+        }
+    });
+
+    // По клику на кнопку, если чекбокс отмечен, то должно вывестись одно значение, а если не
+    // отмечен - другое:
+    // <input type="checkbox">
+    //     <button>button</button>
+    //     let checkbox = document.querySelector('[type="checkbox"]');
+    //     let button = document.querySelector('button');
+    //
+    //     button.addEventListener('click', function() {
+    //     if (checkbox.checked = true) {
+    //     console.log('+++');
+    // } else {
+    //     console.log('---');
+    // }
+    // });
+     checkbox = document.querySelector('#inp_6');
+     button = document.querySelector('#but_6');
+
+    button.addEventListener('click', function() {
+        if (checkbox.checked == true) {
+            console.log('+++');
+        } else {
+            console.log('---');
+        }
+    });
+</script>
+</body>
+</html>
