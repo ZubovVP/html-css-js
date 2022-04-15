@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(226, 227, 228)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Основы работы с объектом Event в JavaScript</h1>
+<button id="but_1">запись ивента в лог</button>
+<h1>Координаты события в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы при движении мышки по странице, отображались координаты курсора, подобно тому,
+                как это сделано в следующем образце: (clientX : clientY)</p>
+        </td>
+        <td colspan="2">
+            <div id="div_2">0 : 0</div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы при движении мышки по странице, отображались координаты курсора, подобно тому,
+                как это сделано в следующем образце: (pageX : pageY)</p>
+        </td>
+        <td colspan="2">
+            <div id="div_3">0 : 0</div>
+        </td>
+    </tr>
+</table>
+<h1>Тип события в объекте Event в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Допишите код функции func так, чтобы при клике на элемент этот элемент красился в
+                зеленый цвет, а при двойном клике - в красный.</p>
+        </td>
+        <td>
+            <button id="but_4">text</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    // Самостоятельно проделайте описанные манипуляции и выведите объект с
+    // событием в консоль. Изучите структуру этого объекта.
+    document.querySelector('#but_1').addEventListener('click', function (event) {
+        console.log(event);
+    });
+
+    /*Сделайте так, чтобы при движении мышки по странице, отображались координаты курсора,
+    подобно тому, как это сделано в следующем образце: (clientX : clientY)
+     */
+    document.querySelector('#div_2').addEventListener('mousemove', function (event) {
+        this.textContent = event.clientX + ' : ' + event.clientY;
+    });
+
+    /*Сделайте так, чтобы при движении мышки по странице, отображались координаты курсора, подобно тому,
+                    как это сделано в следующем образце: (pageX : pageY)
+    */
+    document.querySelector('#div_3').addEventListener('mousemove', function (event) {
+        this.textContent = event.pageX + ' : ' + event.pageY;
+    });
+
+    // Допишите код функции func так, чтобы при клике на элемент этот элемент красился в зеленый
+    // цвет, а при двойном клике - в красный.
+    let elem = document.querySelector('#but_4');
+    elem.addEventListener('click', func);
+    elem.addEventListener('dblclick', func);
+
+    function func(event) {
+        if (event.type == 'click') {
+            this.style.background = 'green';
+            this.style.color = 'white';
+        } else if (event.type == 'dblclick') {
+            this.style.background = 'red';
+            this.style.color = 'white';
+        }
+    }
+</script>
+</body>
+</html>
