@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(229, 230)</title>
+</head>
+<style>
+    ul {
+        padding: 30px;
+        border: 1px solid red;
+    }
+
+    li {
+        list-style-type: none;
+        margin-bottom: 20px;
+        border: 1px dashed black;
+    }
+</style>
+<body>
+<h1>Элемент события в объекте Event в JavaScript</h1>
+<ul id="elem">
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+</ul>
+<h1>Получение нажатых клавиш в JavaScript</h1>
+<div id="div_2">
+    <input id="inp_2">
+    <p id="p_2"></p>
+</div>
+
+<script>
+    "use strict";
+    /*Привяжите к тегу ul обработчик клика. В этом обработчике проверяйте с помощью свойства tagName,
+    по какому тегу был клик. Если клик был по тегу li - добавьте в конец текста этого тега восклицательный знак. А если клик был по тегу ul - добавьте ему в конец еще один пункт списка.
+     */
+    document.querySelector('#elem').addEventListener('click', function (event) {
+        if (event.target.tagName == 'LI') {
+            event.target.textContent += '!';
+        } else if (event.target.tagName == 'UL') {
+            let liLast = document.createElement('li');
+            liLast.innerHTML = 'text';
+            this.append(liLast);
+        }
+    });
+
+    /*Дан абзац и инпут. В него вводится текст и нажимается клавиша Enter. Сделайте так, чтобы по
+    нажатию Enter введенный текст попадал в абзац под инпутом, а содержимое инпута очищалось.
+     */
+    document.querySelector('#inp_2').onkeypress = func;
+    function func(event) {
+        if (event.code === 'Enter') {
+            document.querySelector('#p_2').textContent = this.value;
+            this.value = '';
+        }
+    }
+
+</script>
+</body>
+</html>
