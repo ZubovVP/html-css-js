@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(232)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 300px;
+    }
+</style>
+<body>
+<h1>Отмена действия по умолчанию в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Даны ссылки. Сделайте так, чтобы по клику на ссылку ей в конец записывался ее href, а перехода по ссылке не происходило.</p>
+        </td>
+        <td colspan="2">
+            <a href="https://yandex.ru" class="a">яндекс</a>
+            <br>
+            <a href="https://google.com" class="a">google</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны два инпута, абзац и ссылка. Пусть в инпуты вводятся числа. Сделайте так, чтобы по клику на ссылку в
+                абзац записалась сумма введенных чисел.</p>
+        </td>
+        <td colspan="2">
+            <input class="inp">
+            <input class="inp">
+            <br>
+            <a id="a_2" href="/">рассчитать сумму</a>
+            <br>
+            <p id="p_2"></p>
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+    /*
+    Даны ссылки. Сделайте так, чтобы по клику на ссылку ей в конец записывался ее href,
+    а перехода по ссылке не происходило.
+     */
+    for(let a of document.getElementsByClassName('a')){
+        a.addEventListener('click', function (event) {
+           this.textContent = this.href;
+           event.preventDefault();
+        });
+    }
+
+    document.getElementById('a_2').addEventListener('click', function (event) {
+        let result = 0;
+        for(let inp of document.getElementsByClassName('inp')){
+            result += +inp.value;
+        }
+        document.getElementById('p_2').textContent = result;
+        event.preventDefault();
+    })
+
+
+</script>
+</body>
+</html>
