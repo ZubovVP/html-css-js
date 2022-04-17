@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(231)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 300px;
+    }
+</style>
+<body>
+<h1>Отслеживание клавиш-модификаторов в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан элемент. Сделайте так, чтобы по клику на него он красился в красный цвет,
+                но только если в момент клика нажата клавиша Alt.</p>
+        </td>
+        <td colspan="2">
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на любую li, в конец ее текста добавлялось число 1, если
+                нажата клавиша Ctrl, и число 2, если нажата клавиша Shift.</p>
+        </td>
+        <td colspan="2">
+            <div>
+                <ul id="elem">
+                    <li>text</li>
+                    <li>text</li>
+                    <li>text</li>
+                    <li>text</li>
+                    <li>text</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+    /* Дан элемент. Сделайте так, чтобы по клику на него он красился в красный цвет, но только если в
+     момент клика нажата клавиша Alt.
+     */
+    document.querySelector('#but_1').addEventListener('click', function (event) {
+        if (event.altKey) {
+            this.style.backgroundColor = 'red';
+            this.style.color = 'white';
+        } else {
+            this.style.backgroundColor = 'white';
+            this.style.color = 'black';
+        }
+    });
+
+    /*  Сделайте так, чтобы по клику на любую li, в конец ее текста добавлялось число 1, если нажата
+    клавиша Ctrl, и число 2, если нажата клавиша Shift.
+     */
+    for (let li of document.querySelectorAll('#elem li')) {
+        li.addEventListener('click', function (event) {
+            if (event.shiftKey) {
+                this.textContent += '2';
+            } else if (event.ctrlKey) {
+                this.textContent += '1';
+            }
+        });
+    }
+</script>
+</body>
+</html>
