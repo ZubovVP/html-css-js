@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(234)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div, ul, li {
+        padding: 20px;
+    }
+
+    div {
+        border: 1px solid red;
+    }
+    ul {
+        border: 1px solid orange;
+    }
+    li {
+        border: 1px solid green;
+    }
+
+</style>
+<body>
+<h1>Всплытие событий в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Навешайте на див обработчик клика. В этом обработчике определите,
+                в каком из тегов сработало событие.</p>
+        </td>
+        <td colspan="2" >
+            <div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу. Сделайте так, чтобы при клике на li, ей в конец
+                добавлялся восклицательный знак, а при клике на ul - ей в конец добавлялась новая li.
+            </p>
+        </td>
+        <td colspan="2" >
+            <div id="div_2">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+    /*
+    Навешайте на див обработчик клика. В этом обработчике определите, в каком из тегов сработало
+    событие.
+     */
+    document.querySelector('div').addEventListener('click', function (event) {
+        alert(event.target);
+    });
+
+    document.querySelector('#div_2').addEventListener('click', function (event) {
+        if(event.target.tagName === 'LI') {
+            event.target.textContent += '!';
+        } else if(event.target.tagName === 'UL'){
+            let liLast = document.createElement('li');
+            liLast.innerHTML = 'text';
+            event.target.append(liLast);
+        }
+    });
+</script>
+</body>
+</html>
