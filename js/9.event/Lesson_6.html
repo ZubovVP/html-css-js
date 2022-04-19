@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_6(234)</title>
+    <title>Lesson_6(234, 235, 236)</title>
 </head>
 <style>
     .description {
@@ -22,7 +22,38 @@
     li {
         border: 1px solid green;
     }
+    #block:not(.active) {
+        display: none;
+    }
+    .div_1 {
+        width: 300px;
+        height: 300px;
+        background-color: green;
+        top: 0;
+        left: 0;
+        overflow: auto;
+    }
 
+    .div_2 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        align-content: center;
+        margin-top: 25px;
+        margin-left: 25px;
+        overflow: auto;
+
+    }
+
+    .div_3 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        align-content: center;
+        margin-top: 25px;
+        margin-left: 25px;
+        overflow: auto;
+    }
 </style>
 <body>
 <h1>Всплытие событий в JavaScript</h1>
@@ -60,6 +91,21 @@
         </td>
     </tr>
 </table>
+<h1>Прекращение всплытия событий в JavaScript</h1>
+<div id="parent">
+    <button id="button">click me</button>
+    <div id="block">
+        text
+    </div>
+</div>
+<h1>Погружение событий в JavaScript</h1>
+<div id="div_3_1" class="div_1">
+    <div id="div_3_2" class="div_2">
+        <div id="div_3_3" class="div_3">
+
+        </div>
+    </div>
+</div>
 
 <script>
     "use strict";
@@ -80,6 +126,48 @@
             event.target.append(liLast);
         }
     });
+
+    // Самостоятельно реализуйте корректную работу описанной задачи.
+    let parent = document.querySelector('#parent');
+    let button = document.querySelector('#button');
+    let block = document.querySelector('#block');
+
+    button.addEventListener('click', function (event) {
+        block.classList.add('active');
+        //вызывается блок родителя, который удалит видимость блока
+        //решение - остановить всплытие событий родителя
+        event.stopImmediatePropagation();
+    });
+
+    parent.addEventListener('click', function () {
+        block.classList.remove('active');
+    });
+
+    //Погружение событий в JavaScript
+    let elem1 = document.querySelector('#div_3_1');
+    let elem2 = document.querySelector('#div_3_2');
+    let elem3 = document.querySelector('#div_3_3');
+
+    elem1.addEventListener('click', function() {
+        alert('зеленый - погружение');
+    }, true);
+    elem1.addEventListener('click', function() {
+        alert('зеленый - всплытие');
+    }, false);
+
+    elem2.addEventListener('click', function() {
+        alert('голубой - погружение');
+    }, true);
+    elem2.addEventListener('click', function() {
+        alert('голубой - всплытие');
+    }, false);
+
+    elem3.addEventListener('click', function() {
+        alert('красный - погружение');
+    }, true);
+    elem3.addEventListener('click', function() {
+        alert('красный- всплытие');
+    }, false);
 </script>
 </body>
 </html>
