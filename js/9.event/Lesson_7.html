@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(237, 238)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+    ul {
+        border: 1px solid orange;
+    }
+    li {
+        border: 1px solid green;
+    }
+    td{
+        width: 400px;
+    }
+</style>
+<body>
+<h1>Делегирование событий в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на любую li ей в конец добавлялся восклицательный знак.
+                Сделайте так, чтобы по нажатию на кнопку в конец списка добавлялся новая li.</p>
+        </td>
+        <td colspan="2">
+            <ul id="ul_1">
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<h1>Универсальное делегирование событий</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Используя closest модифицируйте прошлое решение</p>
+        </td>
+        <td colspan="2">
+            <ul id="ul_2">
+                <li>item <i>italic</i> item</li>
+                <li>item <i>italic</i> item</li>
+                <li>item <i>italic</i> item</li>
+                <li>item <i>italic</i> item</li>
+                <li>item <i>italic</i> item</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    /*
+        Сделайте так, чтобы по клику на любую li ей в конец добавлялся восклицательный знак.
+         Сделайте так, чтобы по нажатию на кнопку в конец списка добавлялся новая li.
+     */
+    document.querySelector('#ul_1').addEventListener('click', function (event) {
+       if(event.target.tagName === 'LI'){
+           event.target.textContent += '!';
+       } else if(event.target.tagName === 'UL'){
+           let li = document.createElement('li');
+           li.textContent = 'text';
+           this.appendChild(li);
+       }
+    });
+
+    //Используя closest модифицируйте прошлое решение
+    document.querySelector('#ul_2').addEventListener('click', function (event) {
+        if(event.target.tagName === 'UL'){
+            let li = document.createElement('li');
+            li.innerHTML += 'item <i>italic</i> tem';
+            this.appendChild(li);
+        } else {
+            event.target.closest('li').innerHTML  = event.target.closest('li').innerHTML  + '!';
+        }
+    });
+</script>
+</body>
+</html>
