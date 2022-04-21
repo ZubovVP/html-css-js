@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(243)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Привязывание контекста через метод call в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>С помощью метода call и функции func выведите на экран value
+                каждого из инпутов.</p>
+        </td>
+        <td colspan="2">
+            <input id="elem1" value="text1">
+            <input id="elem2" value="text2">
+            <input id="elem3" value="text3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Добавьте в последнюю строчку метод call так, чтобы на экран вывелось 'привет, Иванов
+                Иван'. Слово 'привет' должно взяться из value инпута, а 'Иванов' и 'Иван' должны быть
+                параметрами функциями</p>
+        </td>
+        <td colspan="2">
+            <input id="elem_4" value="привет">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    function func() {
+        console.log(this.value);
+    }
+    func.call(document.querySelector('#elem1'));
+    func.call(document.querySelector('#elem2'));
+    func.call(document.querySelector('#elem3'));
+
+    let elem = document.querySelector('#elem4')
+
+    function func(elem, surname, name) {
+        console.log(elem.value + ', ' + surname + ' ' + name);
+    }
+
+    func.call(elem, 'Иванов', 'Иван'); // тут должно вывести 'привет, Иванов Иван'
+</script>
+</body>
+</html>
