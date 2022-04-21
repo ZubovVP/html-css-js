@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(239 - 242)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Потеря контекста в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Пусть теперь в одной и во второй функции мы будем выводить value инпута. Определите,
+                что выведется в строчках кода, отмеченных комментариями:</p>
+        </td>
+        <td colspan="2">
+            <input id="elem" value="text">
+        </td>
+    </tr>
+</table>
+<h1>Решение проблемы с контекстом в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Автор кода хотел, чтобы по потери фокуса на экран вывелся квадрат числа из value инпута.
+                Однако, почему-то при потери фокуса в консоль выдается ошибка. Исправьте ошибку автора
+                кода. Напишите текст, в котором вы дадите объяснение автору кода, почему возникла его
+                ошибка.</p>
+        </td>
+        <td colspan="2">
+            <input id="elem_1" value="3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Возьмите код из предыдущей задачи и исправьте проблему кода с помощью изученного второго
+                способа.
+            </p>
+        </td>
+        <td colspan="2">
+            <input id="elem_2" value="3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Возьмите код из предыдущей задачи и исправьте проблему кода с помощью изученного
+                третьего способа.
+            </p>
+        </td>
+        <td colspan="2">
+            <input id="elem_3" value="3">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+   /*
+   Пусть теперь в одной и во второй функции мы будем выводить value инпута. Определите, что
+   выведется в строчках кода, отмеченных комментариями:
+    */
+    let elem = document.querySelector('#elem');
+    elem.addEventListener('blur', parent);
+
+    function parent() {
+        console.log(this.value); // что выведет?    : text
+
+        function child() {
+            console.log(this.value); // что выведет?    : ошибка
+        }
+        child();
+    }
+
+    /*
+    Автор кода хотел, чтобы по потери фокуса на экран вывелся квадрат числа из value инпута.
+    Однако, почему-то при потери фокуса в консоль выдается ошибка. Исправьте ошибку автора кода.
+    Напишите текст, в котором вы дадите объяснение автору кода, почему возникла его ошибка.
+     */
+    let elem_1 = document.querySelector('#elem_1');
+    elem_1.addEventListener('blur', func);
+
+    function func() {
+        let self = this;
+        alert( square() );
+
+        function square() {
+            return self.value * self.value;
+        }
+    }
+
+    //Возьмите код из предыдущей задачи и исправьте проблему кода с помощью изученного второго способа.
+    let elem_2 = document.querySelector('#elem_2');
+    elem_2.addEventListener('blur', func_2);
+
+    function func_2() {
+        let self = this;
+        alert( square_2(self) );
+
+        function square_2(param) {
+            return param.value * param.value;
+        }
+    }
+
+   // Возьмите код из предыдущей задачи и исправьте проблему кода с помощью изученного третьего способа.
+    let elem_3 = document.querySelector('#elem_3');
+    elem_3.addEventListener('blur', func_3);
+
+    function func_3() {
+        let square = () => {
+            alert(this.value * this.value)
+        }
+        square();
+    }
+
+</script>
+</body>
+</html>
