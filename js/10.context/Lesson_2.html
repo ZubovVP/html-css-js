@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_2(243)</title>
+    <title>Lesson_2(243, 244, 245)</title>
 </head>
 <style>
     .description {
@@ -39,22 +39,62 @@
         </td>
     </tr>
 </table>
+<h1>Привязывание контекста через метод apply в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Добавьте в последнюю строчку метод apply так, чтобы на экран вывелось 'привет,
+                Иванов Иван'. Слово 'привет' должно взяться из value инпута, а 'Иванов' и 'Иван'
+                должны быть параметрами функциями.</p>
+        </td>
+        <td colspan="2">
+            <input id="elem_5" value="привет">
+        </td>
+    </tr>
+</table>
+<h1>Привязывание контекста через метод bind в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Напишите в указанном месте конструкцию с методом bind так, чтобы this внутри функции
+                func всегда указывал на инпут из переменной elem.</p>
+        </td>
+        <td colspan="2">
+            <input id="elem_6" value="привет">
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
+
     function func() {
         console.log(this.value);
     }
+
     func.call(document.querySelector('#elem1'));
     func.call(document.querySelector('#elem2'));
     func.call(document.querySelector('#elem3'));
 
-    let elem = document.querySelector('#elem4')
+    let elem = document.querySelector('#elem_4');
 
-    function func(elem, surname, name) {
-        console.log(elem.value + ', ' + surname + ' ' + name);
+    function func(surname, name) {
+        console.log(this.value + ', ' + surname + ' ' + name);
     }
 
-    func.call(elem, 'Иванов', 'Иван'); // тут должно вывести 'привет, Иванов Иван'
+    func.call(elem, 'Иванов', 'Иван');
+
+    elem = document.querySelector('#elem_5');
+    func.apply(elem, ['Иванов ', 'Иван']);
+
+
+
+    elem = document.getElementById('elem_6');
+
+    // Привязываем this к методу с помощью bind()
+    func = func.bind(elem);
+
+    func('Иванов', 'Иван'); // тут должно вывести 'привет,Иванов Иван'
+    func('Петров', 'Петр'); // тут должно вывести 'привет,Петров Петр'
 </script>
 </body>
 </html>
