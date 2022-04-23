@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(249)</title>
+</head>
+<body>
+<h1>Кнопка для запуска таймера на JavaScript</h1>
+<button id="start">Запуск таймера</button>
+<h1>Кнопки для запуска и остановки таймера на JavaScript</h1>
+<button id="start_1">start</button>
+<button id="stop_1">stop</button>
+<br>
+<h3>Некоторый программист написал код, который по нажатию на кнопку запускает таймер, выводящий в
+    консоль текущий момент времени. После запуска кода, однако, оказалось, что кнопка остановки не
+    работает. Исправьте ошибку автора кода.</h3>
+<input type="submit" id="start_2" value="start">
+<input type="submit" id="stop_2" value="stop">
+<br>
+<h3>Еще один программист также написал код для решения предыдущей задачи. После запуска кода, однако,
+    опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.</h3>
+<input type="submit" id="start_3" value="start">
+<input type="submit" id="stop_3" value="stop">
+
+<br>
+<h3>Еще один программист также написал код для решения предыдущей задачи. После запуска кода, однако,
+    опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.</h3>
+<input type="submit" id="start_4" value="start">
+<input type="submit" id="stop_4" value="stop">
+
+<br>
+<h3>Еще один программист также написал код для решения предыдущей задачи. После запуска кода, однако,
+    опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.</h3>
+<input type="submit" id="start_5" value="start">
+<input type="submit" id="stop_5" value="stop">
+<script>
+    "use strict";
+    // Сделайте кнопку, по нажатию на которую в консоль будет выводится обратный отсчет, начиная с 100.
+    let button = document.querySelector('#start');
+    button.addEventListener('click', function func() {
+        let value = 100;
+        setInterval(() => console.log(value--), 1000);
+        this.removeEventListener('click', func);
+    });
+
+    /*
+      Пусть дана переменная, в которой изначально хранится число 100. Даны также две кнопки. По нажатию
+      на первую кнопку запустите таймер, который каждую секунду будет уменьшать значение переменной на 1
+      и выводить новое значение в консоль. Как только значение переменной достигнет нуля - остановите
+      таймер.
+
+      По нажатию на вторую кнопку остановите таймер. Также остановите таймер, если вторая кнопка не была
+      нажата, но значение переменной достигло нуля.
+     */
+    let count = 100;
+    let butStart = document.querySelector('#start_1');
+    let butStop = document.querySelector('#stop_1');
+    let timerId;
+    butStart.addEventListener('click', function func() {
+        timerId = setInterval(function () {
+            console.log(count--);
+            if (count < 0) {
+                clearInterval(timerId);
+
+            }
+        }, 1000);
+        this.removeEventListener('click', func);
+    });
+
+    butStop.addEventListener('click', function () {
+        clearInterval(timerId);
+        butStart.addEventListener('click', function func() {
+            timerId = setInterval(function () {
+                console.log(count--);
+                if (count < 0) {
+                    clearInterval(timerId);
+
+                }
+            }, 1000);
+            this.removeEventListener('click', func);
+        });
+    });
+
+    /*
+       Некоторый программист написал код, который по нажатию на кнопку запускает таймер,
+       выводящий в консоль текущий момент времени:
+
+           <input type="submit" id="start" value="start">
+               <input type="submit" id="stop"  value="stop">
+                   let start = document.querySelector('#start');
+                   let stop  = document.querySelector('#stop');
+
+                   start.addEventListener('click', function() {
+                   let timerId = setInterval(function() {
+                   let date = new Date;
+                   console.log(date.getMinutes() + ' ' + date.getSeconds()
+                   );
+               }, 1000);
+               });
+
+                   stop.addEventListener('click', function() {
+                   clearInterval(timerId);
+               });
+                   После запуска кода, однако, оказалось, что кнопка остановки не работает.
+                   Исправьте ошибку автора кода.
+     */
+    let start_1 = document.querySelector('#start_2');
+    let stop_1 = document.querySelector('#stop_2');
+    let timerId2;
+
+    start_1.addEventListener('click', function func() {
+        timerId2 = setInterval(function () {
+            let date = new Date;
+            console.log(date.getMinutes() + ' ' + date.getSeconds()
+            );
+        }, 1000);
+        this.removeEventListener('click', func);
+    });
+
+    stop_1.addEventListener('click', function del() {
+        clearInterval(timerId2);
+        start_1.addEventListener('click', function () {
+            timerId2 = setInterval(function () {
+                let date = new Date;
+                console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+            }, 1000);
+            this.removeEventListener('click', del);
+        });
+    });
+
+
+    /*
+    Еще один программист также написал код для решения предыдущей задачи:
+
+    <input type="submit" id="start" value="start">
+    <input type="submit" id="stop"  value="stop">
+    let start = document.querySelector('#start');
+    let stop  = document.querySelector('#stop');
+
+    let timerId;
+
+    start.addEventListener('click', function() {
+        let timerId = setInterval(function() {
+            let date = new Date;
+            console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+        }, 1000);
+    });
+
+    stop.addEventListener('click', function() {
+        clearInterval(timerId);
+    });
+    После запуска кода, однако, опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.
+     */
+    let start_2 = document.querySelector('#start_3');
+    let stop_2 = document.querySelector('#stop_3');
+
+    let timerId3;
+
+    start_2.addEventListener('click', function func() {
+        timerId3 = setInterval(function () {
+            let date = new Date;
+            console.log(date.getMinutes() + ' ' + date.getSeconds()
+            );
+        }, 1000);
+        this.removeEventListener('click', func);
+    });
+
+    stop_2.addEventListener('click', function del() {
+        clearInterval(timerId3);
+        start_2.addEventListener('click', function() {
+            timerId3 = setInterval(function () {
+                let date = new Date;
+                console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+            }, 1000);
+            this.removeEventListener('click', del);
+        });
+    });
+
+    /*
+    Еще один программист также написал код для решения предыдущей задачи:
+
+        <input type="submit" id="start" value="start">
+            <input type="submit" id="stop"  value="stop">
+                let start = document.querySelector('start');
+                let stop  = document.querySelector('stop');
+
+                let timerId;
+
+                start.addEventListener('click', function() {
+                setInterval(function() {
+                    let date = new Date;
+                    console.log(date.getMinutes() + ' ' + date.getSeconds()
+                    );
+                }, 1000);
+            });
+
+                stop.addEventListener('click', function() {
+                clearInterval(timerId);
+            });
+                После запуска кода, однако, опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.
+*/
+    let start_3 = document.querySelector('#start_4');
+    let stop_3 = document.querySelector('#stop_4');
+
+    let timerId4;
+
+    start_3.addEventListener('click', function func() {
+        timerId4 = setInterval(function () {
+            let date = new Date;
+            console.log(date.getMinutes() + ' ' + date.getSeconds()
+            );
+        }, 1000);
+        this.removeEventListener('click', func);
+    });
+
+    stop_3.addEventListener('click', function del() {
+        clearInterval(timerId4);
+        start_3.addEventListener('click', function() {
+            timerId4 = setInterval(function () {
+                let date = new Date;
+                console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+            }, 1000);
+            this.removeEventListener('click', del);
+        });
+    });
+
+    /*
+    Еще один программист также написал код для решения предыдущей задачи:
+
+        <input type="submit" id="start" value="start">
+            <input type="submit" id="stop"  value="stop">
+                let start = document.querySelector('start');
+                let stop  = document.querySelector('stop');
+
+                let timerId;
+
+                start.addEventListener('click', function() {
+                let timerId = setInterval(function() {
+                let date = new Date;
+                console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+            }, 1000);
+            });
+
+                stop.addEventListener('click', function() {
+                clearInterval();
+            });
+                После запуска кода, однако, опять оказалось, что кнопка остановки не работает. Исправьте ошибку автора кода.
+*/
+     let start_4 = document.querySelector('#start_5');
+     let stop_4  = document.querySelector('#stop_5');
+
+    let timerId5;
+
+    start_4.addEventListener('click', function func() {
+        timerId5 = setInterval(function() {
+            let date = new Date;
+            console.log(date.getMinutes() + ' ' + date.getSeconds()
+            );
+        }, 1000);
+        this.removeEventListener('click', func);
+    });
+
+    stop_4.addEventListener('click', function del() {
+        clearInterval(timerId5);
+        start_4.addEventListener('click', function() {
+            timerId5 = setInterval(function() {
+                let date = new Date;
+                console.log(date.getMinutes() + ' ' + date.getSeconds()
+                );
+            }, 1000);
+            this.removeEventListener('click', del);
+        });
+    });
+</script>
+</body>
+</html>
