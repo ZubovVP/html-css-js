@@ -104,29 +104,27 @@
                    После запуска кода, однако, оказалось, что кнопка остановки не работает.
                    Исправьте ошибку автора кода.
      */
+    let startTimer = function() {
+        let date = new Date;
+        console.log(date.getMinutes() + ' ' + date.getSeconds()
+        );
+    };
     let start_1 = document.querySelector('#start_2');
     let stop_1 = document.querySelector('#stop_2');
     let timerId2;
 
     start_1.addEventListener('click', function func() {
-        timerId2 = setInterval(function () {
-            let date = new Date;
-            console.log(date.getMinutes() + ' ' + date.getSeconds()
-            );
-        }, 1000);
+        timerId2 = setInterval(startTimer, 1000);
         this.removeEventListener('click', func);
     });
 
     stop_1.addEventListener('click', function del() {
         clearInterval(timerId2);
-        start_1.addEventListener('click', function () {
-            timerId2 = setInterval(function () {
-                let date = new Date;
-                console.log(date.getMinutes() + ' ' + date.getSeconds()
-                );
-            }, 1000);
-            this.removeEventListener('click', del);
+        start_1.addEventListener('click', function func() {
+            timerId2 = setInterval(startTimer, 1000);
+            start_1.removeEventListener('click', func);
         });
+        this.removeEventListener('click', del);
     });
 
 
@@ -159,24 +157,17 @@
     let timerId3;
 
     start_2.addEventListener('click', function func() {
-        timerId3 = setInterval(function () {
-            let date = new Date;
-            console.log(date.getMinutes() + ' ' + date.getSeconds()
-            );
-        }, 1000);
+        timerId3 = setInterval(startTimer, 1000);
         this.removeEventListener('click', func);
     });
 
     stop_2.addEventListener('click', function del() {
         clearInterval(timerId3);
-        start_2.addEventListener('click', function() {
-            timerId3 = setInterval(function () {
-                let date = new Date;
-                console.log(date.getMinutes() + ' ' + date.getSeconds()
-                );
-            }, 1000);
-            this.removeEventListener('click', del);
+        start_2.addEventListener('click', function func() {
+            timerId3 = setInterval(startTimer, 1000);
+            start_2.removeEventListener('click', func);
         });
+        this.removeEventListener('click', del);
     });
 
     /*
@@ -208,24 +199,17 @@
     let timerId4;
 
     start_3.addEventListener('click', function func() {
-        timerId4 = setInterval(function () {
-            let date = new Date;
-            console.log(date.getMinutes() + ' ' + date.getSeconds()
-            );
-        }, 1000);
+        timerId4 = setInterval(startTimer, 1000);
         this.removeEventListener('click', func);
     });
 
     stop_3.addEventListener('click', function del() {
         clearInterval(timerId4);
-        start_3.addEventListener('click', function() {
-            timerId4 = setInterval(function () {
-                let date = new Date;
-                console.log(date.getMinutes() + ' ' + date.getSeconds()
-                );
-            }, 1000);
-            this.removeEventListener('click', del);
+        start_3.addEventListener('click', function func() {
+            timerId4 = setInterval(startTimer, 1000);
+            start_3.removeEventListener('click', func);
         });
+            this.removeEventListener('click', del);
     });
 
     /*
@@ -257,23 +241,15 @@
     let timerId5;
 
     start_4.addEventListener('click', function func() {
-        timerId5 = setInterval(function() {
-            let date = new Date;
-            console.log(date.getMinutes() + ' ' + date.getSeconds()
-            );
-        }, 1000);
+        timerId5 = setInterval(startTimer, 1000);
         this.removeEventListener('click', func);
     });
 
     stop_4.addEventListener('click', function del() {
         clearInterval(timerId5);
-        start_4.addEventListener('click', function() {
-            timerId5 = setInterval(function() {
-                let date = new Date;
-                console.log(date.getMinutes() + ' ' + date.getSeconds()
-                );
-            }, 1000);
-            this.removeEventListener('click', del);
+        start_4.addEventListener('click', function func() {
+            timerId5 = setInterval(startTimer, 1000);
+            start_4.removeEventListener('click', func);
         });
     });
 </script>
