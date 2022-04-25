@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(251, 252)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Практика на таймеры и работу с DOM в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Пусть в инпуте в атрибуте value изначально записано число 10. Запустите таймер, который каждую секунду
+                будет уменьшать это число на единицу.</p>
+        </td>
+        <td>
+            <input id="inp_1" value="10">
+        </td>
+        <td>
+            <button id="but_1">запустить счётчик</button>
+        </td>
+    </tr>
+</table>
+<h1>Таймеры и потеря контекста в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Автор кода хотел, чтобы по нажатию на кнопку, значение этой кнопки каждую секунду
+                увеличивалось на 1. Однако, по нажатию на кнопку вообще ничего не происходит.
+                Исправьте ошибку автора кода. Напишите текст, в котором вы дадите объяснение автору
+                кода, почему возникла его ошибка.</p>
+        </td>
+        <td>
+            <input type="button" id="elem" value="1">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Исправьте проблему предыдущей задачи через стрелочную функцию.</p>
+        </td>
+        <td>
+            <input type="button" id="elem_2" value="1">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let inp_1 = document.querySelector('#inp_1');
+    let but_1 = document.querySelector('#but_1');
+    let timerId;
+    but_1.addEventListener('click', function () {
+        timerId = setInterval(function () {
+            if (inp_1.value <= 0) {
+                clearInterval(timerId);
+            } else {
+                inp_1.value = Number(inp_1.value) - 1;
+            }
+        }, 1000);
+    });
+
+    let elem = document.querySelector('#elem');
+
+    elem.addEventListener('click', function() {
+        let self = this;
+        setInterval(function() {
+            self.value = Number(elem.value) + 1;
+        }, 1000);
+    });
+
+    let elem_2 = document.querySelector('#elem_2');
+
+    elem_2.addEventListener('click', function() {
+        setInterval(() =>
+            this.value = Number(elem_2.value) + 1
+        , 1000);
+    });
+</script>
+</body>
+</html>
