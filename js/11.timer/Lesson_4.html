@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(253, 254)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Передача контекста параметром функции setInterval</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Автор кода хотел, чтобы по нажатию на кнопку, значение этой кнопки каждую секунду
+                уменьшалось на 1. Однако, по нажатию на кнопку вообще ничего не происходит. Исправьте
+                ошибку автора кода, используя изученный в данном уроке способ.</p>
+        </td>
+        <td cospan="2">
+            <input type="button" id="elem" value="10">
+        </td>
+    </tr>
+</table>
+<h1>Практика на таймеры и работу с DOM в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана кнопка. Дан абзац, текстом которого является число. По нажатию на кнопку запустите
+                таймер, который каждую секунду будет увеличивать текст абзаца на 1.</p>
+        </td>
+        <td>
+            <input id="inp_1" value="10">
+        </td>
+        <td>
+            <button id="but_1">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана кнопка. Дан абзац, текстом которого является число, например, 10. По нажатию на
+                кнопку запустите таймер, который каждую секунду будет уменьшать текст абзаца на 1.
+                Как только значение абзаца станет равно нулю - остановите таймер.</p>
+        </td>
+        <td>
+            <input id="inp_2" value="10">
+        </td>
+        <td>
+            <button id="but_2">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут с числом. Сделайте так, чтобы каждую секунду в нем появлялся квадрат того
+                числа, которое в нем записано.</p>
+        </td>
+        <td>
+            <input id="inp_3" value="2">
+        </td>
+        <td>
+            <button id="but_3">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы в абзаце ниже
+                начал тикать обратный отсчет, начиная с введенного числа. Когда отсчет дойдет до
+                нуля - он должен закончится.</p>
+        </td>
+        <td colspan="2">
+            <input id="inp_4" placeholder="write number">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let elem = document.querySelector('#elem');
+    let timerId;
+
+    elem.addEventListener('click', function () {
+        timerId = setInterval(function (elem) {
+            if (elem.value == 0) {
+                clearInterval(timerId);
+                return;
+            }
+            elem.value--;
+        }, 1000, elem);
+    });
+
+    let inp = document.querySelector('#inp_1');
+    let but = document.querySelector('#but_1');
+    but.addEventListener('click', function () {
+        setInterval(function (inp) {
+            inp.value++;
+        }, 1000, inp);
+    });
+
+    let inp2 = document.querySelector('#inp_2');
+    let but2 = document.querySelector('#but_2');
+    let timerId2;
+    but2.addEventListener('click', function () {
+        timerId2 = setInterval(function (inp) {
+            if (inp.value < 1) {
+                clearInterval(timerId2);
+                return;
+            }
+            inp2.value--;
+        }, 1000, inp2);
+    });
+
+    let inp3 = document.querySelector('#inp_3');
+    let but3 = document.querySelector('#but_3');
+    but3.addEventListener('click', function () {
+        setInterval(function (inp) {
+            inp.value = inp.value * inp.value;
+        }, 1000, inp3);
+    });
+
+    let inp4 = document.querySelector('#inp_4');
+    let timerId4;
+    inp4.addEventListener('blur', function () {
+        timerId4 = setInterval(function (inp) {
+            if (inp.value == 0) {
+                clearInterval(timerId4);
+                return;
+            }
+            inp.value--;
+        }, 1000, inp4);
+    });
+
+
+</script>
+</body>
+</html>
