@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(255)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .elements {
+        width: 300px;
+
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Функция setTimeout в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан абзац. Напишите код, который выведет сообщение в этот абзац через 10 секунд после
+                загрузки страницы.</p>
+        </td>
+        <td colspan="2" class="elements">
+            <p id="p_1"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description" colspan="3">
+            <p>Выведите в консоль число 0. Через секунду выведите число 1, через две секунды выведите
+                число 2, через 3 секунды выведите число 3. И так далее до бесконечности.
+            </p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let p_1 = document.querySelector('#p_1');
+    setTimeout(function () {
+        p_1.textContent = 'Текс с задержкой';
+    }, 10000);
+
+    let counter = 0;
+
+    function timer() {
+        console.log(counter++);
+        setTimeout(timer, counter * 1000);
+    }
+    timer();
+</script>
+</body>
+</html>

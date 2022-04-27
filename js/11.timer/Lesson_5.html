@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_5(254)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Практика на таймеры и работу с DOM в JavaScript (часть 2)</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут, кнопка и абзац. В инпут вводится какое-то число. По нажатию на кнопку запишите
+                введенное число в текст абзаца и запустите обратный отсчет в абзаце: пусть каждую секунду
+                число в абзаце уменьшается на единицу, пока не дойдет до нуля.</p>
+        </td>
+        <td>
+            <input id="inp_1" value="10">
+            <p id="p_1"></p>
+        </td>
+        <td>
+            <button id="but_1">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан абзац и две кнопки. Сделайте так, чтобы по нажатию на первую кнопку в абзаце начал тикать
+                таймер от 1 до бесконечности, а по нажатию на вторую таймер останавливался.</p>
+        </td>
+        <td>
+            <p id="p_2">0</p>
+        </td>
+        <td>
+            <button id="but_2_1">Start</button>
+            <button id="but_2_2">Stop</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан абзац. Сделайте так, чтобы каждую секунду он менял свой цвет с красного на
+                зеленый и наоборот.
+            </p>
+        </td>
+        <td colspan="2">
+            <p id="p_3" align="center">Text</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Если выводить на экран каждую секунду текущий момент времени, то можно сделать тикающие
+                часы. Реализуйте такие же часики</p>
+        </td>
+        <td colspan="2">
+            <p id="p_4" align="center"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let inp_1 = document.querySelector('#inp_1');
+    let but_1 = document.querySelector('#but_1');
+    let p_1 = document.querySelector('#p_1');
+    let timerId_1;
+
+    but_1.addEventListener('click', function () {
+        p_1.textContent = inp_1.value;
+        timerId_1 = setInterval(function () {
+            if (p_1.textContent == 0) {
+                clearInterval(timerId_1);
+                return
+            }
+            p_1.textContent = --p_1.textContent;
+        }, 1000);
+    });
+
+    let but_2_1 = document.querySelector('#but_2_1');
+    let but_2_2 = document.querySelector('#but_2_2');
+    let p_2 = document.querySelector('#p_2');
+    let timerId_2;
+
+    but_2_2.addEventListener('click', function () {
+        clearInterval(timerId_2);
+    });
+
+    but_2_1.addEventListener('click', function () {
+        timerId_2 = setInterval(function () {
+            p_2.textContent++;
+        }, 1000);
+    });
+
+    let p_3 = document.querySelector('#p_3');
+    setInterval(function () {
+        if (p_3.style.color == 'green') {
+            p_3.style.color = 'red';
+        } else {
+            p_3.style.color = 'green';
+        }
+    }, 1000);
+
+    let p_4 = document.querySelector('#p_4');
+    setInterval(function () {
+        let date = new Date();
+        p_4.textContent = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+    }, 100);
+</script>
+</body>
+</html>
