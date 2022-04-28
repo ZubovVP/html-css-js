@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_1(256, 257, 258)</title>
+    <title>Lesson_1(256, 257, 258, 259)</title>
 </head>
 <style>
     .description {
@@ -60,6 +60,24 @@
         </td>
     </tr>
 </table>
+<h1>Навешивание обработчиков в цикле на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан див. Запустите цикл, который добавит в наш див 5 инпутов. Пусть дан также абзац.
+                Сделайте так, чтобы каждый из новых инпутов по потери фокуса записывал свой текст в
+                абзац.</p>
+        </td>
+        <td>
+            <div id="div_4">
+
+            </div>
+        </td>
+        <td>
+            <button id="but_4">добавить 5 инпутов</button>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     document.querySelector('#but_1').addEventListener('click', () => {
@@ -85,7 +103,19 @@
             li.textContent = 'пункт ' + counter++;
             elem.appendChild(li);
         }
+    });
 
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let elem = document.querySelector('#div_4');
+        let p = document.createElement('p');
+        for(let x = 0; x < 5; x++){
+            let inp = document.createElement('input');
+            inp.addEventListener('blur', () =>{
+               p.textContent = inp.value;
+            });
+            elem.appendChild(inp);
+        }
+        elem.appendChild(p);
     });
 </script>
 </body>
