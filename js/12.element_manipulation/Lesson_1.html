@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(256, 257, 258)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Создание и вставка элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на кнопку в конец списка добавлялся li с текстом 'пункт'.</p>
+        </td>
+        <td>
+            <ol id="elem_1"></ol>
+        </td>
+        <td>
+            <button id="but_1">добавить пункт</button>
+        </td>
+    </tr>
+</table>
+<h1>Привязывание событий при вставке элементов</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан ol и кнопка. Сделайте так, чтобы по клику на кнопку в конец ol добавлялся тег li.
+                Сделайте так, чтобы по клику на любой из добавленных li в конец его текста записывался
+                восклицательный знак.</p>
+        </td>
+        <td>
+            <ol id="elem_2"></ol>
+        </td>
+        <td>
+            <button id="but_2">добавить пункт</button>
+        </td>
+    </tr>
+</table>
+<h1>Создание элементов в цикле на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан пустой ul. Запустите цикл, который вставит в него 10 тегов li.
+                Сделайте так, чтобы текстом каждой li был ее порядковый номер.</p>
+        </td>
+        <td>
+            <ul id="elem_3"></ul>
+        </td>
+        <td>
+            <button id="but_3">добавить 10 пунктов</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let elem = document.querySelector('#elem_1');
+        let li = document.createElement('li');
+        li.textContent = 'пункт';
+        elem.appendChild(li);
+    });
+    document.querySelector('#but_2').addEventListener('click', () => {
+        let elem = document.querySelector('#elem_2');
+        let li = document.createElement('li');
+        li.textContent = 'пункт';
+        elem.appendChild(li);
+        li.addEventListener('click', () => {
+            li.innerHTML += '!';
+        });
+    });
+    let counter = 1;
+    document.querySelector('#but_3').addEventListener('click', () => {
+        let elem = document.querySelector('#elem_3');
+        for(let x = 0; x < 10; x++){
+            let li = document.createElement('li');
+            li.textContent = 'пункт ' + counter++;
+            elem.appendChild(li);
+        }
+
+    });
+</script>
+</body>
+</html>
