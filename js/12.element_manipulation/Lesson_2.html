@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(260)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Создание элементов из массива на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Модифицируйте код так, чтобы по клику на абзац к его содержимому прибавлялась единица.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent"></div>
+        </td>
+    </tr>
+</table>
+<h1>Практика на создание списков ul на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li.</p>
+        </td>
+        <td colspan="2">
+            <div>
+                <ul id="elem_1"></ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по клику на любой из вставленных элементов
+                на экран выводился текст этого элемента.</p>
+        </td>
+        <td colspan="2">
+            <div>
+                <ul id="elem_2"></ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по клику на li ей в конец добавлялся '!'.</p>
+        </td>
+        <td colspan="2">
+            <div>
+                <ul id="elem_3"></ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по повторное нажатие на li не приводило к добавлению второго '!'.</p>
+        </td>
+        <td colspan="2">
+            <div>
+                <ul id="elem_4"></ul>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let parent = document.querySelector('#parent');
+
+    let arr = [1, 2, 3, 4, 5];
+
+    for (let elem of arr) {
+        let p = document.createElement('p');
+        p.innerHTML = elem;
+        p.addEventListener('click', () => {
+            p.textContent = ++p.textContent;
+        });
+
+        parent.appendChild(p);
+    }
+
+    let elem_1 = document.querySelector('#elem_1');
+    for (let el of arr) {
+        let li = document.createElement('li');
+        li.textContent = el;
+        elem_1.appendChild(li);
+    }
+
+    let elem_2 = document.querySelector('#elem_2');
+    for (let el of arr) {
+        let li = document.createElement('li');
+        li.textContent = el;
+        li.addEventListener('click', () => {
+           alert(li.textContent);
+        });
+        elem_2.appendChild(li);
+    }
+
+    let elem_3 = document.querySelector('#elem_3');
+    for (let el of arr) {
+        let li = document.createElement('li');
+        li.textContent = el;
+        li.addEventListener('click', () => {
+            li.textContent += '!';
+        });
+        elem_3.appendChild(li);
+    }
+
+    let elem_4 = document.querySelector('#elem_4');
+    for (let el of arr) {
+        let li = document.createElement('li');
+        li.textContent = el;
+        li.addEventListener('click', function func () {
+            li.textContent += '!';
+            li.removeEventListener('click', func);
+        });
+        elem_4.appendChild(li);
+    }
+
+</script>
+</body>
+</html>
