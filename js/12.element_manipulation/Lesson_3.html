@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(260)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+<h1>Создание HTML таблиц на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана пустая HTML таблица. С помощью двух вложенных циклов for
+                заполните эту таблицу 5-ю рядами с 5-ю колонками.</p>
+        </td>
+        <td>
+            <table id="table_1"></table>
+        </td>
+        <td>
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы таблица создавалась размером 10 рядов на 5
+                колонок.
+            </p>
+        </td>
+        <td>
+            <table id="table_2"></table>
+        </td>
+        <td>
+            <button id="but_2">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в каждую td добавлялся текст 'x'.</p>
+        </td>
+        <td>
+            <table id="table_3"></table>
+        </td>
+        <td>
+            <button id="but_3">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в каждую td добавлялся текст 'x'.</p>
+        </td>
+        <td>
+            <input id="weight" placeholder="ширина таблицы">
+            <input id="height" placeholder="высота таблицы">
+            <table id="table_4"></table>
+        </td>
+        <td>
+            <button id="but_4">click</button>
+        </td>
+    </tr>
+</table>
+<h1>Последовательное заполнение HTML таблиц</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Выведите на экран таблицу table размером 5 рядов на 5 колонок так, чтобы в ее ячейках
+                последовательно стояли числа от 1 до 25.</p>
+        </td>
+        <td>
+            <table id="table_5"></table>
+        </td>
+        <td>
+            <button id="but_5">click</button>
+        </td>
+    </tr>
+</table>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в ячейках таблицы были записаны четные числа
+                в промежутке от 2 до 50.</p>
+        </td>
+        <td>
+            <table id="table_6"></table>
+        </td>
+        <td>
+            <button id="but_6">click</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('#but_2').addEventListener('click', () => {
+        let table = document.querySelector('#table_2');
+        for (let x = 0; x < 10; x++) {
+            let tr = document.createElement('tr');
+            for (let y = 0; y < 5; y++) {
+                let td = document.createElement('td');
+                td.textContent = y;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    });
+
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let table = document.querySelector('#table_1');
+        for (let x = 0; x < 5; x++) {
+            let tr = document.createElement('tr');
+            for (let y = 0; y < 5; y++) {
+                let td = document.createElement('td');
+                td.textContent = y;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    });
+
+    document.querySelector('#but_3').addEventListener('click', () => {
+        let table = document.querySelector('#table_3');
+        for (let x = 0; x < 10; x++) {
+            let tr = document.createElement('tr');
+            for (let y = 0; y < 5; y++) {
+                let td = document.createElement('td');
+                td.textContent = 'x';
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    });
+
+    document.querySelector('#but_4').addEventListener('click', function func () {
+        let height = document.querySelector('#height').value;
+        let weight = document.querySelector('#weight').value;
+        let table = document.querySelector('#table_4');
+        for (let x = 0; x < height; x++) {
+            let tr = document.createElement('tr');
+            for (let y = 0; y < weight; y++) {
+                let td = document.createElement('td');
+                td.textContent = 'x';
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        this.removeEventListener('click', func);
+    });
+
+    document.querySelector('#but_6').addEventListener('click', () => {
+        let counter = 2;
+        let table = document.querySelector('#table_6');
+        for (let x = 0; x < 5; x++) {
+            let tr = document.createElement('tr');
+            for (let y = 0; y < 5; y++) {
+                let td = document.createElement('td');
+                td.textContent = counter;
+                counter = counter + 2;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    });
+</script>
+</body>
+</html>
