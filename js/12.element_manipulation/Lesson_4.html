@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(264, 265)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+</style>
+<body>
+<h1>Создание HTML таблицы из массива на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Выведите элементы приведенного массива в виде HTML таблицы table.</p>
+        </td>
+        <td>
+            <table id="table_1"></table>
+        </td>
+        <td>
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в таблицу записывались не элементы,
+                а квадраты этих элементов.</p>
+        </td>
+        <td>
+            <table id="table_2"></table>
+        </td>
+        <td>
+            <button id="but_2">click</button>
+        </td>
+    </tr>
+</table>
+<h1>Создание HTML таблицы из массива объектов</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Выведите элементы этого массива в виде HTML таблицы.</p>
+        </td>
+        <td>
+            <table id="table_3"></table>
+        </td>
+        <td>
+            <button id="but_3">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по клику на любую ячейку с возрастом ее
+                содержимое увеличивалось на 1.</p>
+        </td>
+        <td>
+            <table id="table_4"></table>
+        </td>
+        <td>
+            <button id="but_4">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по клику на любую ячейку с зарплатой ее
+                содержимое увеличивалось на 10%.</p>
+        </td>
+        <td>
+            <table id="table_5"></table>
+        </td>
+        <td>
+            <button id="but_5">click</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
+
+    document.querySelector('#but_1').addEventListener('click', function f () {
+        let table = document.querySelector('#table_1');
+
+        for (let subArr of arr) {
+            let tr = document.createElement('tr');
+            for (let el of subArr) {
+                let td = document.createElement('td');
+                td.textContent = el;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+
+        this.removeEventListener('click', f);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', function f () {
+        let table = document.querySelector('#table_2');
+
+        for (let subArr of arr) {
+            let tr = document.createElement('tr');
+            for (let el of subArr) {
+                let td = document.createElement('td');
+                td.textContent = el * el;
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+
+        this.removeEventListener('click', f);
+    });
+
+    let employees = [
+        {name: 'employee1', age: 30, salary: 400},
+        {name: 'employee2', age: 31, salary: 500},
+        {name: 'employee3', age: 32, salary: 600},
+    ];
+    document.querySelector('#but_3').addEventListener('click', function f () {
+        let table = document.querySelector('#table_3');
+        let tr = document.createElement('tr');
+
+        let td = document.createElement('td');
+        td.innerHTML = 'name';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'age';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'salary';
+        tr.appendChild(td);
+
+        table.appendChild(tr);
+
+        for (let elem of employees) {
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
+            td.innerHTML = elem.name;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = elem.age;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = elem.salary;
+            tr.appendChild(td);
+
+            table.appendChild(tr);
+        }
+
+        this.removeEventListener('click', f);
+    });
+
+    document.querySelector('#but_4').addEventListener('click', function f () {
+        let table = document.querySelector('#table_4');
+        let tr = document.createElement('tr');
+
+        let td = document.createElement('td');
+        td.innerHTML = 'name';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'age';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'salary';
+        tr.appendChild(td);
+
+        table.appendChild(tr);
+
+        for (let elem of employees) {
+            let tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            tdName.innerHTML = elem.name;
+            tr.appendChild(tdName);
+
+            let tdAge = document.createElement('td');
+            tdAge.innerHTML = elem.age;
+            tr.appendChild(tdAge);
+            tdAge.addEventListener('click', () => {
+                tdAge.textContent = Number(tdAge.textContent) + 1;
+            });
+
+            let tdSalary = document.createElement('td');
+            tdSalary.innerHTML = elem.salary;
+            tr.appendChild(tdSalary);
+
+            table.appendChild(tr);
+        }
+
+        this.removeEventListener('click', f);
+    });
+
+    document.querySelector('#but_5').addEventListener('click', function f () {
+        let table = document.querySelector('#table_5');
+        let tr = document.createElement('tr');
+
+        let td = document.createElement('td');
+        td.innerHTML = 'name';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'age';
+        tr.appendChild(td);
+
+        td = document.createElement('td');
+        td.innerHTML = 'salary';
+        tr.appendChild(td);
+
+        table.appendChild(tr);
+
+        for (let elem of employees) {
+            let tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            tdName.innerHTML = elem.name;
+            tr.appendChild(tdName);
+
+            let tdAge = document.createElement('td');
+            tdAge.innerHTML = elem.age;
+            tr.appendChild(tdAge);
+
+            let tdSalary = document.createElement('td');
+            tdSalary.innerHTML = elem.salary;
+            tdSalary.addEventListener('click', () => {
+               tdSalary.textContent = Math.round(Number(tdSalary.textContent) * 1.1);
+            });
+            tr.appendChild(tdSalary);
+
+            table.appendChild(tr);
+        }
+
+        this.removeEventListener('click', f);
+    });
+
+</script>
+</body>
+</html>
