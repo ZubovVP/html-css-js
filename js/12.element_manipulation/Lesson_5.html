@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_4(266, 267, 268, 269)</title>
+    <title>Lesson_4(266, 267, 268, 269, 270, 271)</title>
 </head>
 <style>
     .description {
@@ -137,9 +137,68 @@
         </td>
     </tr>
 </table>
+<h1>Порядковый номер ячейки по клику на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана HTML таблица. Сделайте так, чтобы по клику на любую ячейку в эту ячейку записывался
+                порядковый номер этой ячейки с конца таблицы.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_6">
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<h1>Порядковый номер клика в ячейке HTML таблицы</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Модифицируйте код теоретической части урока так, чтобы повторное нажатие по ячейке не
+                приводило к увеличению счетчика.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_7">
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте описанную в теоретической части урока задачу так, чтобы при кликах на
+                ячейки чередовались числа 1, 2 и 3.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_8">
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
-
     document.querySelector('#but_1').addEventListener("click", () => {
         let table = document.querySelector('#table_1');
         let tr = document.createElement('tr');
@@ -188,6 +247,39 @@
 
         }
     });
+    let tds = document.querySelectorAll('#table_6 td');
+
+    for (let x = 0; x < tds.length; x++) {
+        tds[x].addEventListener('click', function () {
+            this.innerHTML = tds.length - x;
+        });
+    }
+
+    tds = document.querySelectorAll('#table_7 td');
+    let i = 1;
+    for (let td of tds) {
+        td.addEventListener('dblclick', function() {
+            this.innerHTML = i;
+            i++;
+        });
+    }
+
+    tds = document.querySelectorAll('#table_8 td');
+
+    let counter = 1;
+    for (let td of tds) {
+        td.addEventListener('click', function() {
+            this.innerHTML = counter;
+
+            if (counter == 1) {
+                counter = 2;
+            } else if( counter == 2){
+                counter = 3;
+            } else {
+                counter = 1;
+            }
+        });
+    }
 </script>
 </body>
 </html>
