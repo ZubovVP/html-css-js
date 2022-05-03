@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_6(272, 273, 274, 275)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Удаление элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по нажатию на кнопку удалялся элемент #elem.</p>
+        </td>
+        <td>
+            <ul id="parent_1">
+                <li>1</li>
+                <li id="elem_1">2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_1" value="click">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по каждому клику на кнопку удалялся последний элемент из #parent.</p>
+        </td>
+        <td>
+            <ul id="parent_2">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_2" value="click">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по нажатию на #elem этот элемент удалился.</p>
+        </td>
+        <td>
+            <ul>
+                <li>1</li>
+                <li id="elem_3">2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_3" value="click">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по нажатию на #elem этот элемент удалился.</p>
+        </td>
+        <td>
+            <ul>
+                <li>1</li>
+                <li id="elem_4">2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_4" value="click">
+        </td>
+    </tr>
+</table>
+<h1>Самоудаление элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы любая li удалялась по клику на нее.</p>
+        </td>
+        <td>
+            <ul id="parent_5">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_5" value="click">
+        </td>
+    </tr>
+</table>
+<h1>Самоудаление новых элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на кнопку в список добавлялся новый элемент. Сделайте так,
+                чтобы любая li удалялась по клику на нее. Речь идет как о тех li, которые уже есть в
+                списке, так о новых, созданных после нажатия на кнопку.</p>
+        </td>
+        <td>
+            <ul id="parent_6">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </td>
+        <td>
+            <input type="submit" id="button_6" value="add">
+        </td>
+    </tr>
+</table>
+<h1>Ссылка на удаление элемента на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделать ссылку, с помощью которой этот абзац можно будет удалить.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_7">
+                <p id="elem_7">text</p>
+                <a href="#" id="remove_7">remove</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('#button_1').addEventListener('click', () => {
+        let ul = document.querySelector('#parent_1');
+        let li = ul.querySelector('#elem_1');
+        ul.removeChild(li);
+    });
+
+    document.querySelector('#button_2').addEventListener('click', () => {
+        let ul = document.querySelector('#parent_2');
+        let lis = ul.querySelectorAll('li');
+        ul.removeChild(lis[lis.length - 1]);
+    });
+
+    document.querySelector('#button_3').addEventListener('click', () => {
+        let li = document.querySelector('#elem_3');
+        li.parentElement.removeChild(li);
+    });
+
+    document.querySelector('#button_4').addEventListener('click', () => {
+        document.querySelector('#elem_4').remove();
+    });
+
+
+    let parent = document.querySelector('#parent_5');
+    for (let li of parent.querySelectorAll('li')) {
+        li.addEventListener('click', () => {
+            li.remove();
+        });
+    }
+
+    let parent_f = document.querySelector('#parent_6');
+    for (let li of document.querySelectorAll('#parent_6 li')) {
+        li.addEventListener('click', () => {
+            parent_f.removeChild(li);
+        });
+    }
+    document.querySelector('#button_6').addEventListener('click', () => {
+        let parent = document.querySelector('#parent_6');
+        let li = document.createElement('li');
+        li.textContent = 'text';
+        li.addEventListener('click', () => {
+            parent.removeChild(li);
+        });
+        parent.appendChild(li);
+    });
+
+    let remove_7 = document.querySelector('#remove_7');
+    remove_7.addEventListener('click', function f(event) {
+        let elem = document.querySelector('#elem_7');
+        elem.parentElement.removeChild(elem);
+        event.preventDefault(); // отменяем переход по ссылке
+        this.removeEventListener('click', f);
+    });
+</script>
+</body>
+</html>
