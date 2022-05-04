@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_7(277)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Вставка элементов в начало или в конец на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Вставьте ему в начало элемент с текстом 'start', а в конец - элемент с текстом 'finish'.</p>
+        </td>
+        <td colspan="2">
+            <ul id="elem_1">
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Вставьте перед этим элементом элемент с текстом 'new'.</p>
+        </td>
+        <td colspan="2">
+            <ul id="parent_2">
+                <li>text</li>
+                <li>text</li>
+                <li id="elem_2">text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы клик на вставленный элемент приводил к тому, что в конец его
+                текста будет добавляться '!'.</p>
+        </td>
+        <td colspan="2">
+            <ul id="parent_3">
+                <li>text</li>
+                <li>text</li>
+                <li id="elem_3">text</li>
+                <li>text</li>
+                <li>text</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let elem_1 = document.querySelector('#elem_1');
+    let start = document.createElement('li');
+    start.innerHTML = 'start';
+    elem_1.prepend(start);
+    let finish = document.createElement('li');
+    finish.innerHTML = 'finish';
+    elem_1.append(finish);
+
+    let elem_2 = document.querySelector('#elem_2');
+    let parent_2 = document.querySelector('#parent_2');
+    let newElem = document.createElement('li');
+    newElem.innerHTML = 'new';
+    parent_2.insertBefore(newElem, elem_2);
+
+    let elem_3 = document.querySelector('#elem_3');
+    let parent_3 = document.querySelector('#parent_3');
+    let newElem_3 = document.createElement('li');
+    newElem_3.innerHTML = 'new';
+    newElem_3.addEventListener('click', () => {
+        newElem_3.innerHTML += '!';
+    });
+    parent_3.insertBefore(newElem_3, elem_3);
+</script>
+</body>
+</html>
