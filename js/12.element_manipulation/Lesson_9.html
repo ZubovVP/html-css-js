@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_9(279, 280)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Клонирование элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.</p>
+        </td>
+        <td>
+            <input id="inp_1">
+        </td>
+        <td>
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+</table>
+<h1>Проверка элементов в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.</p>
+        </td>
+        <td>
+            <div id="elem_2" class="www"></div>
+        </td>
+        <td>
+            <button id="but_2">check</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан элемент. Проверьте, является ли этот элемент абзацем.</p>
+        </td>
+        <td>
+            <p id="elem_3">абзац</p>
+            <br>
+            <a id="elem_3_1">не абзац</a>
+        </td>
+        <td>
+            <button id="but_3">check</button>
+            <br>
+            <button id="but_3_1">check</button>
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Проверьте, является ли элемент из elem2 потомком элемента из elem1.</p>
+        </td>
+        <td>
+            <div id="elem_4">
+                <p id="elem4_1"></p>
+            </div>
+        </td>
+        <td>
+            <button id="but_4">check</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let inp_1 = document.querySelector('#inp_1');
+        let newInp = inp_1.cloneNode(true);
+        inp_1.parentElement.appendChild(newInp);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', () => {
+        let elem_2 = document.querySelector('#elem_2');
+        alert(elem_2.matches('.www'));
+    });
+
+    document.querySelector('#but_3').addEventListener('click', () => {
+        let elem_3 = document.querySelector('#elem_3');
+        alert(elem_3.matches('p'));
+    });
+    document.querySelector('#but_3_1').addEventListener('click', () => {
+        let elem_3 = document.querySelector('#elem_3_1');
+        alert(elem_3.matches('p'));
+    });
+
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let elem_4 = document.querySelector('#elem_4');
+        let elem_4_1 = document.querySelector('#elem4_1');
+        alert(elem_4.contains(elem_4_1));
+    });
+</script>
+</body>
+</html>
