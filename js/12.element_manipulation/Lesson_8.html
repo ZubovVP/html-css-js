@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_8(278)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Смежная вставка элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Вставьте перед ним абзац с текстом '!!!'.</p>
+        </td>
+        <td>
+            <div id="elem_1" style="border: 1px solid red;">
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+        <td>
+            <button id="but_1">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Вставьте после него абзац с текстом '!!!'.</p>
+        </td>
+        <td>
+            <div id="elem_2" style="border: 1px solid red;">
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+        <td>
+            <button id="but_2">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Вставьте ему в начало абзац с текстом '!!!'.</p>
+        </td>
+        <td>
+            <div id="elem_3" style="border: 1px solid red;">
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+        <td>
+            <button id="but_3">click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Вставьте ему в начало абзац с текстом '!!!'.</p>
+        </td>
+        <td>
+            <div id="elem_4" style="border: 1px solid red;">
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+        <td>
+            <button id="but_4">click</button>
+        </td>
+    </tr>
+</table>
+<h1>Смежная вставка тегов</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Вставьте перед ним абзац с текстом '!!!'.</p>
+        </td>
+        <td>
+            <div id="elem_5" style="border: 1px solid red;">
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+        <td>
+            <button id="but_5">click</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let elem_1 = document.querySelector('#elem_1');
+        let p = document.createElement('p');
+        p.innerHTML = '!!!';
+        elem_1.insertAdjacentElement('beforebegin', p);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', () => {
+        let elem_2 = document.querySelector('#elem_2');
+        let p = document.createElement('p');
+        p.innerHTML = '!!!';
+        elem_2.insertAdjacentElement('afterend', p);
+    });
+
+    document.querySelector('#but_3').addEventListener('click', () => {
+        let elem_3 = document.querySelector('#elem_3');
+        let p = document.createElement('p');
+        p.innerHTML = '!!!';
+        elem_3.insertAdjacentElement('afterbegin', p);
+    });
+
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let elem_4 = document.querySelector('#elem_4');
+        let p = document.createElement('p');
+        p.innerHTML = '!!!';
+        elem_4.insertAdjacentElement('beforeend', p);
+    });
+
+    document.querySelector('#but_5').addEventListener('click', () => {
+        let elem_5 = document.querySelector('#elem_5');
+        let insert = '<div className="www"><p>text</p><p>text</p> <input></div>';
+    elem_5.insertAdjacentHTML('beforebegin', insert);
+    });
+</script>
+</body>
+</html>
