@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_10(281)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Редактирование отдельного элемента на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Модифицируйте приведенный выше код так, чтобы текст абзаца менялся не по потери фокуса,
+                а по мере ввода текста в инпут.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_1">
+                <p id="elem_1">text</p>
+                <input id="input_1">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Инпута изначально не было на странице, а он появлялся по клику на абзац.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_2">
+                <p id="elem_2">text</p>
+            </div>
+        </td>
+    </tr>
+</table>
+<h1>Прячем текст при редактировании элемента на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы при редактировании инпут появлялся в самом абзаце - вместо текста
+                этого абзаца. Пусть затем при окончании редактирования инпут будет убираться, а вместо
+                него опять появляться текст абзаца.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_3">
+                <p id="elem_3">text</p>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let elem = document.querySelector('#elem_1');
+    let input = document.querySelector('#input_1');
+
+    input.value = elem.innerHTML; // записываем в инпут текст абзаца
+
+    input.addEventListener('input', function () {
+        elem.innerHTML = this.value;
+    });
+
+    let elem_2 = document.querySelector('#elem_2');
+    elem_2.addEventListener('click', () => {
+        let input = document.createElement('input');
+        input.value = elem_2.innerHTML;
+
+        input.addEventListener('blur', () => {
+            elem_2.innerHTML = input.value;
+            input.remove();
+        });
+        elem_2.parentElement.appendChild(input);
+    })
+
+    let elem_3 = document.querySelector('#elem_3');
+    elem_3.addEventListener('click', function func() {
+        let input = document.createElement('input');
+        input.value = elem_3.innerHTML;
+        elem_3.innerHTML = '';
+        input.addEventListener('blur', function () {
+            elem_3.innerHTML = this.value;
+            elem_3.addEventListener('click', func); // повесим событие обратно
+        });
+        elem_3.appendChild(input);
+        elem_3.removeEventListener('click', func); // отвяжем событие
+    })
+</script>
+</body>
+</html>
