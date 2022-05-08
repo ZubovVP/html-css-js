@@ -111,6 +111,19 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>Оберните сначала текст абзаца в теги span, добавьте к этим тегам возможность
+                редактирования, а затем добавьте в конец каждого абзаца ссылку на удаление.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_7">
+                <p>text1</p>
+                <p>text2</p>
+                <p>text3</p>
+            </div>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -185,9 +198,10 @@
         let a = document.createElement('a');
         a.innerHTML = 'remove';
         a.href = '#';
-        p.appendChild(a);
+        p.parentElement.appendChild(a);
         a.addEventListener('click', function func(event) {
-            p.remove();
+            p.innerHTML = '';
+            a.remove();
             event.preventDefault();
         });
 
@@ -197,13 +211,47 @@
             input.addEventListener('blur', function func_3() {
                 p.innerHTML = this.value;
                 p.addEventListener('click', func_2);
+                this.remove();
             });
 
             p.innerHTML = '';
-            p.appendChild(input);
+            p.parentElement.appendChild(input);
             p.removeEventListener('click', func_2);
         });
     }
+
+    let ps_7 = document.querySelectorAll('#parent_7 p');
+    for (let p of ps_7) {
+        p.innerHTML = '<span>' + p.innerHTML + '</span>';
+    }
+
+    ps = document.querySelectorAll('#parent_7 span');
+    for (let p of ps) {
+        let a = document.createElement('a');
+        a.innerHTML = 'remove';
+        a.href = '#';
+        p.parentElement.appendChild(a);
+        a.addEventListener('click', function func(event) {
+            p.innerHTML = '';
+            a.remove();
+            event.preventDefault();
+        });
+
+        p.addEventListener('click', function func_2() {
+            let input = document.createElement('input');
+            input.value = p.innerHTML;
+            input.addEventListener('blur', function func_3() {
+                p.innerHTML = this.value;
+                p.addEventListener('click', func_2);
+                this.remove();
+            });
+
+            p.innerHTML = '';
+            p.parentElement.appendChild(input);
+            p.removeEventListener('click', func_2);
+        });
+    }
+
 </script>
 </body>
 </html>
