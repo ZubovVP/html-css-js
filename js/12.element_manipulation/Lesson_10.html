@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_10(281, 282, 283, 284)</title>
+    <title>Lesson_10(281, 282, 283, 284, 285)</title>
 </head>
 <style>
     .description {
@@ -16,8 +16,16 @@
 
     table, th, td {
         padding: 10px;
-        border: 1px solid black;
+        border: 1px solid;
         border-collapse: collapse;
+    }
+
+    .text_line-through {
+        text-decoration: line-through;
+    }
+
+    .green {
+        background-color: #009600;
     }
 
 </style>
@@ -122,6 +130,73 @@
                 <p>text2</p>
                 <p>text3</p>
             </div>
+        </td>
+    </tr>
+</table>
+<h1>Стилизация элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Добавьте в конец каждого абзаца ссылку, по клику на которую текст абзаца будет
+                перечеркиваться (а ссылка - нет).</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_8">
+                <p>text1</p>
+                <p>text2</p>
+                <p>text3</p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы после нажатия на ссылку эта ссылка
+                удалялась из абзаца (а текст абзаца становился перечеркнутым).</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_9">
+                <p>text1</p>
+                <p>text2</p>
+                <p>text3</p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана некоторая HTML таблица. Добавьте в эту таблицу еще одну колонку со ссылкой.
+                По нажатию на эту ссылку ряд с этой ссылкой должен стать зеленого фона.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_10">
+                <tr>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы первое нажатие по ссылке красило ряд в
+                зеленый фон, а второе нажатие отменяло это действие.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_11">
+                <tr>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                </tr>
+            </table>
         </td>
     </tr>
 </table>
@@ -252,6 +327,63 @@
         });
     }
 
+
+    ps = document.querySelectorAll('#parent_8 p');
+    for (let p of ps) {
+        p.innerHTML = '<span>' + p.innerHTML + '</span>';
+        let a = document.createElement('a');
+        a.innerHTML = 'through';
+        a.href = '#';
+        p.appendChild(a);
+        a.addEventListener('click', function func(event) {
+            p.querySelector('span').classList.toggle('text_line-through');
+            event.preventDefault();
+        });
+    }
+
+    ps = document.querySelectorAll('#parent_9 p');
+    for (let p of ps) {
+        p.innerHTML = '<span>' + p.innerHTML + '</span>';
+        let a = document.createElement('a');
+        a.innerHTML = 'through';
+        a.href = '#';
+        p.appendChild(a);
+        a.addEventListener('click', function func(event) {
+            p.querySelector('span').classList.toggle('text_line-through');
+            a.remove();
+            event.preventDefault();
+        });
+    }
+
+    let trs = document.querySelectorAll('#table_10 tr');
+    for (let tr of trs) {
+        let td = document.createElement('td');
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = 'paint';
+        td.appendChild(a);
+        tr.appendChild(td);
+
+        a.addEventListener('click', function (event) {
+            tr.classList.add('green');
+            event.preventDefault();
+        })
+    }
+
+    trs = document.querySelectorAll('#table_11 tr');
+    for (let tr of trs) {
+        let td = document.createElement('td');
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = 'paint';
+        td.appendChild(a);
+        tr.appendChild(td);
+
+        a.addEventListener('click', function (event) {
+            tr.classList.toggle('green');
+            event.preventDefault();
+        })
+    }
 </script>
 </body>
 </html>
