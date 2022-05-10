@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_11(286, 287)</title>
+    <title>Lesson_11(286, 287, 288, 289)</title>
 </head>
 <style>
     .description {
@@ -22,6 +22,22 @@
 
     .hidden {
         display: none;
+    }
+
+    .active {
+        background: red;
+    }
+
+    .color1 {
+        background: red;
+    }
+
+    .color2 {
+        background: green;
+    }
+
+    .color3 {
+        background: yellow;
     }
 </style>
 <body>
@@ -89,6 +105,118 @@
         </td>
     </tr>
 </table>
+<h1>Активация элементов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана HTML список ul. Сделайте так, чтобы по нажатию на любой пункт списка он активировался красным
+                фоном.</p>
+        </td>
+        <td colspan="2">
+            <ul id="ul_4">
+                <li>text_1</li>
+                <li>text_2</li>
+                <li>text_3</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по нажатию на активированный пункт списка
+                активация с него снималась.</p>
+        </td>
+        <td colspan="2">
+            <ul id="ul_5">
+                <li>text_1</li>
+                <li>text_2</li>
+                <li>text_3</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<h1>Чередование стилей активации на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы происходило чередование цветов: пусть первая ячейка красится в красный, вторая - в
+                зеленый, третья - опять в красный и так далее.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_6">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы происходило чередование цветов: пусть первая ячейка красится в красный, вторая - в
+                зеленый, третья - опять в красный, а третья в жёлтый</p>
+        </td>
+        <td colspan="2">
+            <table id="table_7">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<h1>Активация ограниченного количества элементов</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы в одном ряду таблице можно было активировать не более 5-ти ячеек.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_8">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let elem = document.querySelector('#elem');
@@ -121,6 +249,59 @@
         b.addEventListener('click', () => {
             b.previousElementSibling.classList.toggle('hidden');
         });
+    }
+
+    let lis = document.querySelectorAll('#ul_4 li');
+    for (let li of lis) {
+        li.addEventListener('click', () => {
+            li.classList.add('active');
+        });
+    }
+
+    lis = document.querySelectorAll('#ul_5 li');
+    for (let li of lis) {
+        li.addEventListener('click', () => {
+            li.classList.toggle('active');
+        });
+    }
+
+    let color = 'color1';
+    let tds = document.querySelectorAll('#table_6 td');
+    for (let li of tds) {
+        li.addEventListener('click', () => {
+            if (color == 'color1') {
+                color = 'color2'
+            } else {
+                color = 'color1'
+            }
+            li.classList.add(color);
+        });
+    }
+
+    let colors = ['color1', 'color2', 'color3'];
+    let counter = 0;
+    tds = document.querySelectorAll('#table_7 td');
+    for (let li of tds) {
+        li.addEventListener('click', () => {
+
+            if (counter == colors.length) {
+                counter = 0;
+            }
+            li.classList.add(colors[counter++]);
+        });
+    }
+
+    let trs = document.querySelectorAll('#table_8 tr');
+
+    for (let tr of trs) {
+        for(let td of tr.querySelectorAll('td')) {
+            td.addEventListener('click', function() {
+                let activeTds = document.querySelectorAll('#table_8 td.active');
+                if (activeTds.length < 4) {
+                    this.classList.add('active');
+                }
+            });
+        }
     }
 </script>
 </body>
