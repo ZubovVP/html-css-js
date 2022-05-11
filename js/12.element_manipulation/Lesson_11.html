@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_11(286, 287, 288, 289)</title>
+    <title>Lesson_11(286, 287, 288, 289, 290)</title>
 </head>
 <style>
     .description {
@@ -216,6 +216,73 @@
             </table>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы для активированной ячейки нельзя было активировать ее соседей слева и справа.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_9">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы в для активированной ячейки нельзя было активировать ее соседей
+                сверху и снизу.</p>
+        </td>
+        <td colspan="2">
+            <table id="table_10">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -292,13 +359,52 @@
     }
 
     let trs = document.querySelectorAll('#table_8 tr');
+    for (let x = 0; x < trs.length; x++) {
+        trs[x].addEventListener('click', function (event) {
+            let activeTds = trs[x].querySelectorAll('td.active');
+            if (activeTds.length < 5) {
+                console.log(activeTds.length);
+                event.target.classList.add('active');
+            }
+        });
+    }
 
-    for (let tr of trs) {
-        for(let td of tr.querySelectorAll('td')) {
-            td.addEventListener('click', function() {
-                let activeTds = document.querySelectorAll('#table_8 td.active');
-                if (activeTds.length < 4) {
-                    this.classList.add('active');
+    let tds_2 = document.querySelectorAll('#table_9 td');
+    for (let td of tds_2) {
+        td.addEventListener('click', function (event) {
+            let activeTds = td.parentElement.querySelectorAll('td.active');
+            if (activeTds.length < 5) {
+                console.log(activeTds.length);
+                let previous = event.target.previousElementSibling == null;
+                let next = event.target.nextElementSibling == null;
+                let finalResult = false;
+                if (!previous) {
+                    finalResult = event.target.previousElementSibling.classList.contains('active');
+                }
+                if (!next && !finalResult) {
+                    finalResult = event.target.nextElementSibling.classList.contains('active');
+                }
+                if (!finalResult) {
+                    event.target.classList.add('active');
+                }
+            }
+        });
+    }
+
+    let trs_2 = document.querySelectorAll('#table_10 tr');
+    for (let x = 0; x < trs_2.length; x++) {
+        let tds_2 = trs_2[x].querySelectorAll('td');
+        for (let y = 0; y < tds_2.length; y++) {
+            tds_2[y].addEventListener('click', function f() {
+                let activeTds = trs_2[x].querySelectorAll('td.active');
+                if (activeTds.length < 5) {
+                    let previous = this.previousElementSibling == null ? false : this.previousElementSibling.classList.contains('active');  //проверяем ячейку до
+                    let next = this.nextElementSibling == null ? false : this.nextElementSibling.classList.contains('active');              //проверяем ячейку после
+                    let up = x > 0 ? trs_2[x - 1].querySelectorAll('td')[y].classList.contains('active') : false;                      // проверяем ячейку сверху
+                    let down = x < trs_2.length - 1 ? trs_2[x + 1].querySelectorAll('td')[y].classList.contains('active') : false;         //проверяем ячейку снизу
+                    if (!previous && !next && !up && !down) {
+                        this.classList.add('active');
+                    }
                 }
             });
         }
