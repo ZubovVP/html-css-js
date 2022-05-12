@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_12(291)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Кнопки для скрытия и показа элемента на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан массив. Выведите его элементы в виде списка ul.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_1">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы по клику на любую li в ней появлялся инпут,
+                с помощью которого ее можно будет поредактировать.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_2">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы под списком был инпут, с помощью которого можно будет добавить
+                новый элемент в конец списка ul. Сделайте так, чтобы новые li также можно было редактировать.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_3">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в конце каждой li стояла ссылка 'удалить', с помощью которой
+                можно будет удалить эту li из ul.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_4">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в конце каждой li также стояла ссылка 'перечеркнуть', с помощью
+                которой можно будет перечеркнуть текст данного тега li.</p>
+        </td>
+        <td colspan="2">
+            <div id="parent_5">
+
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let arr = [1, 2, 3, 4];
+    let ul = document.createElement('ul');
+    for (let elem of arr) {
+        let li = document.createElement('li');
+        li.innerHTML = elem;
+        ul.appendChild(li);
+    }
+    document.querySelector('#parent_1').appendChild(ul);
+
+    let ul_2 = document.createElement('ul');
+    for (let elem of arr) {
+        let li = document.createElement('li');
+        li.innerHTML = elem;
+        li.addEventListener('click', function func_1() {
+            let input = document.createElement('input');
+
+            input.value = li.innerHTML;
+            input.addEventListener('blur', function func_2() {
+                li.innerHTML = input.value;
+                li.addEventListener('click', func_1);
+            });
+            li.innerHTML = '';
+            li.appendChild(input);
+            li.removeEventListener('click', func_1);
+        });
+        ul_2.appendChild(li);
+    }
+    document.querySelector('#parent_2').appendChild(ul_2);
+
+
+    let ul_3 = document.createElement('ul');
+    for (let elem of arr) {
+        let li = document.createElement('li');
+        li.innerHTML = elem;
+        li.addEventListener('click', function func_1() {
+            let input = document.createElement('input');
+
+            input.value = li.innerHTML;
+            input.addEventListener('blur', function func_2() {
+                li.innerHTML = input.value;
+                li.addEventListener('click', func_1);
+            });
+            li.innerHTML = '';
+            li.appendChild(input);
+            li.removeEventListener('click', func_1);
+        });
+        ul_3.appendChild(li);
+    }
+    document.querySelector('#parent_3').appendChild(ul_3);
+    let input = document.createElement('input');
+    input.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            let li = document.createElement('li');
+            li.innerHTML = input.value;
+            li.addEventListener('click', function func_1() {
+                let input = document.createElement('input');
+
+                input.value = li.innerHTML;
+                input.addEventListener('blur', function func_2() {
+                    li.innerHTML = input.value;
+                    li.addEventListener('click', func_1);
+                });
+                li.innerHTML = '';
+                li.appendChild(input);
+                li.removeEventListener('click', func_1);
+            });
+            this.insertAdjacentElement('beforebegin', li);
+            input.value='';
+        }
+    });
+    ul_3.appendChild(input);
+
+
+    let ul_4 = document.createElement('ul');
+    for (let elem of arr) {
+        let li = document.createElement('li');
+        li.innerHTML = '<span>' + elem + '</span>';
+        li.addEventListener('click', function func_1() {
+            let input = document.createElement('input');
+            input.value = li.querySelector('span').innerHTML;
+            input.addEventListener('blur', function func_2() {
+                li.innerHTML = '<span>' + input.value + '</span>';
+                li.addEventListener('click', func_1);
+            });
+            li.innerHTML = '';
+            li.appendChild(input);
+            li.removeEventListener('click', func_1);
+        });
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = 'remove';
+        a.addEventListener('click', function (event) {
+            li.remove();
+            a.remove();
+            event.preventDefault();
+        })
+        li.appendChild(a);
+        ul_4.appendChild(li);
+    }
+    document.querySelector('#parent_4').appendChild(ul_4);
+    let input_4 = document.createElement('input');
+    input_4.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            let li = document.createElement('li');
+            li.innerHTML = '<span>' + this.value + '</span>';
+            let a = document.createElement('a');
+            a.href = '#';
+            a.innerHTML = 'remove';
+            a.addEventListener('click', function (event) {
+                li.remove();
+                a.remove();
+                event.preventDefault();
+            });
+            li.appendChild(a);
+            li.addEventListener('click', function func_1() {
+                let input = document.createElement('input');
+
+                input.value = li.querySelector('span').innerHTML;
+                input.addEventListener('blur', function func_2() {
+                    li.innerHTML = '<span>' + input.value + '</span>';
+                    li.addEventListener('click', func_1);
+                    let a = document.createElement('a');
+                    a.href = '#';
+                    a.innerHTML = 'remove';
+                    a.addEventListener('click', function (event) {
+                        li.remove();
+                        a.remove();
+                        event.preventDefault();
+                    });
+                });
+                li.innerHTML = '';
+                li.appendChild(input);
+                li.removeEventListener('click', func_1);
+            });
+
+            this.insertAdjacentElement('beforebegin', li);
+            input.value='';
+        }
+    });
+    ul_4.appendChild(input_4);
+
+
+    let ul_5 = document.createElement('ul');
+    for (let elem of arr) {
+        let li = document.createElement('li');
+        li.innerHTML = '<span>' + elem + '</span>';
+        li.addEventListener('click', function func_1() {
+            let input = document.createElement('input');
+            input.value = li.querySelector('span').innerHTML;
+            input.addEventListener('blur', function func_2() {
+                li.innerHTML = '<span>' + input.value + '</span>';
+                li.addEventListener('click', func_1);
+            });
+            li.innerHTML = '';
+            li.appendChild(input);
+            li.removeEventListener('click', func_1);
+        });
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = 'remove';
+        a.addEventListener('click', function (event) {
+            li.remove();
+            a.remove();
+            event.preventDefault();
+        })
+        li.appendChild(a);
+        ul_5.appendChild(li);
+    }
+    document.querySelector('#parent_5').appendChild(ul_5);
+    let input_5 = document.createElement('input');
+    input_5.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            let li = document.createElement('li');
+            li.innerHTML = '<span>' + this.value + '</span>';
+            let a = document.createElement('a');
+            a.href = '#';
+            a.innerHTML = 'remove';
+            a.addEventListener('click', function (event) {
+                li.remove();
+                a.remove();
+                event.preventDefault();
+            });
+            li.appendChild(a);
+            li.addEventListener('click', function func_1() {
+                let input = document.createElement('input');
+
+                input.value = li.querySelector('span').innerHTML;
+                input.addEventListener('blur', function func_2() {
+                    li.innerHTML = '<span>' + input.value + '</span>';
+                    li.addEventListener('click', func_1);
+                });
+                li.innerHTML = '';
+                li.appendChild(input);
+                li.removeEventListener('click', func_1);
+            });
+
+            this.insertAdjacentElement('beforebegin', li);
+            input.value='';
+        }
+    });
+    ul_5.appendChild(input_5);
+</script>
+</body>
+</html>
