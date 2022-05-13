@@ -20,6 +20,10 @@
         border-collapse: collapse;
     }
 
+    .line-through {
+        text-decoration: line-through;
+    }
+
 </style>
 <body>
 <h1>Кнопки для скрытия и показа элемента на JavaScript</h1>
@@ -69,7 +73,8 @@
     </tr>
     <tr>
         <td class="description">
-            <p>Модифицируйте предыдущую задачу так, чтобы в конце каждой li также стояла ссылка 'перечеркнуть', с помощью
+            <p>Модифицируйте предыдущую задачу так, чтобы в конце каждой li также стояла ссылка 'перечеркнуть', с
+                помощью
                 которой можно будет перечеркнуть текст данного тега li.</p>
         </td>
         <td colspan="2">
@@ -148,7 +153,7 @@
                 li.removeEventListener('click', func_1);
             });
             this.insertAdjacentElement('beforebegin', li);
-            input.value='';
+            input.value = '';
         }
     });
     ul_3.appendChild(input);
@@ -158,17 +163,6 @@
     for (let elem of arr) {
         let li = document.createElement('li');
         li.innerHTML = '<span>' + elem + '</span>';
-        li.addEventListener('click', function func_1() {
-            let input = document.createElement('input');
-            input.value = li.querySelector('span').innerHTML;
-            input.addEventListener('blur', function func_2() {
-                li.innerHTML = '<span>' + input.value + '</span>';
-                li.addEventListener('click', func_1);
-            });
-            li.innerHTML = '';
-            li.appendChild(input);
-            li.removeEventListener('click', func_1);
-        });
         let a = document.createElement('a');
         a.href = '#';
         a.innerHTML = 'remove';
@@ -176,7 +170,19 @@
             li.remove();
             a.remove();
             event.preventDefault();
-        })
+        });
+        li.addEventListener('click', function func_1() {
+            let input = document.createElement('input');
+            input.value = li.querySelector('span').innerHTML;
+            input.addEventListener('blur', function func_2() {
+                li.innerHTML = '<span>' + input.value + '</span>';
+                li.addEventListener('click', func_1);
+                li.appendChild(a);
+            });
+            li.innerHTML = '';
+            li.appendChild(input);
+            li.removeEventListener('click', func_1);
+        });
         li.appendChild(a);
         ul_4.appendChild(li);
     }
@@ -215,9 +221,7 @@
                 li.appendChild(input);
                 li.removeEventListener('click', func_1);
             });
-
             this.insertAdjacentElement('beforebegin', li);
-            input.value='';
         }
     });
     ul_4.appendChild(input_4);
@@ -227,6 +231,22 @@
     for (let elem of arr) {
         let li = document.createElement('li');
         li.innerHTML = '<span>' + elem + '</span>';
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = 'remove';
+        a.addEventListener('click', function (event) {
+            li.remove();
+            a.remove();
+            event.preventDefault();
+        });
+        let cross = document.createElement('a');
+        cross.href = '#';
+        cross.innerHTML = ' cross-out';
+        cross.addEventListener('click', function (event) {
+            li.querySelector('span').classList.toggle('line-through')
+            event.preventDefault();
+            event.stopPropagation();
+        });
         li.addEventListener('click', function func_1() {
             let input = document.createElement('input');
             input.value = li.querySelector('span').innerHTML;
@@ -238,15 +258,8 @@
             li.appendChild(input);
             li.removeEventListener('click', func_1);
         });
-        let a = document.createElement('a');
-        a.href = '#';
-        a.innerHTML = 'remove';
-        a.addEventListener('click', function (event) {
-            li.remove();
-            a.remove();
-            event.preventDefault();
-        })
         li.appendChild(a);
+        li.appendChild(cross);
         ul_5.appendChild(li);
     }
     document.querySelector('#parent_5').appendChild(ul_5);
@@ -271,14 +284,29 @@
                 input.addEventListener('blur', function func_2() {
                     li.innerHTML = '<span>' + input.value + '</span>';
                     li.addEventListener('click', func_1);
+                    let a = document.createElement('a');
+                    a.href = '#';
+                    a.innerHTML = 'remove';
+                    a.addEventListener('click', function (event) {
+                        li.remove();
+                        a.remove();
+                        event.preventDefault();
+                    });
                 });
                 li.innerHTML = '';
                 li.appendChild(input);
                 li.removeEventListener('click', func_1);
             });
-
+            let cross = document.createElement('a');
+            cross.href = '#';
+            cross.innerHTML = ' cross-out';
+            cross.addEventListener('click', function (event) {
+                li.querySelector('span').classList.toggle('line-through')
+                event.preventDefault();
+                event.stopPropagation();
+            });
+            li.appendChild(cross);
             this.insertAdjacentElement('beforebegin', li);
-            input.value='';
         }
     });
     ul_5.appendChild(input_5);
