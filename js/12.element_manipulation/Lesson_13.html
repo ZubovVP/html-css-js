@@ -9,9 +9,12 @@
         width: 600px;
     }
 
+    .view {
+        width: 300px;
+    }
+
     div {
         width: 200px;
-        height: 200px;
     }
 
     table, th, td {
@@ -29,8 +32,40 @@
             <p>Дан следующий массив с работниками.Выведите этих работников в HTML таблице.
             </p>
         </td>
-        <td colspan="2">
+        <td colspan="2" class="view">
             <div id="parent_1">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Добавьте ячейкам созданной таблицы возможность редактирования.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_2">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Добавьте в вашу таблицу новую колонку со ссылкой на удаления ряда из таблицы.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_3">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте под таблицей 3 инпута и кнопку для добавление нового работника. Пусть в инпуты
+                вводятся имя, возраст и зарплата, и по нажатию на кнопку новый работник добавляется в таблицу.
+                Реализуйте редактирование ячеек для вновь добавленных работников.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_4">
 
             </div>
         </td>
@@ -43,20 +78,105 @@
         {name: 'employee2', age: 31, salary: 500},
         {name: 'employee3', age: 32, salary: 600},
     ];
-    let div = document.querySelector('#parent_1');
-    let table = document.createElement('table');
-    let tr = document.createElement('tr');
-    div.appendChild(table);
-    let th = document.createElement('th')
-    th.innerHTML = 'name';
-    tr.appendChild(th);
-    th = document.createElement('th')
-    th.innerHTML = 'age';
-    tr.appendChild(th);
-    th = document.createElement('th')
-    th.innerHTML = 'salary';
-    tr.appendChild(th);
-    table.appendChild(tr);
+
+    function addInput(elem) {
+        let input = document.createElement('input');
+        input.value = elem.innerHTML;
+        elem.innerHTML = '';
+        input.addEventListener('blur', function () {
+            elem.innerHTML = this.value;
+            elem.addEventListener('click', add);
+        });
+        elem.appendChild(input);
+    }
+
+    function add_remove_line(div) {
+        let trs = document.querySelectorAll('#' + div + ' tr');
+        for (let x = 1; x < trs.length; x++) {
+            let td = document.createElement('td');
+            let a = document.createElement('a');
+            a.href = '#'
+            a.innerHTML = 'Remove line';
+            a.addEventListener('click', function remove(event) {
+                trs[x].remove();
+                event.preventDefault();
+            });
+            td.appendChild(a);
+            trs[x].appendChild(td);
+        }
+    }
+
+    function createActions(parent) {
+        let arr = ['name', 'age', 'salary'];
+        let div = document.querySelector('#' + parent);
+        let input_name = document.createElement('input');
+        input_name.placeholder = arr[0];
+        div.appendChild(input_name);
+        let input_age = document.createElement('input');
+        input_age.placeholder = arr[1];
+        div.appendChild(input_age);
+        let input_salary = document.createElement('input');
+        input_salary.placeholder = arr[2];
+        div.appendChild(input_salary);
+
+        let button = document.createElement('button');
+        button.innerHTML = 'add element';
+        button.addEventListener('click', () => fillTable(div.querySelector('table'), input_name.value, input_age.value, input_salary.value));
+        div.appendChild(button);
+    }
+
+    function fillTable(table, name, age, salary) {
+        let tr = document.createElement('tr');
+        let td_name = document.createElement('td');
+        td_name.innerHTML = name;
+        tr.appendChild(td_name);
+
+        let td_age = document.createElement('td');
+        td_age.innerHTML = age;
+        tr.appendChild(td_age);
+
+        let td_salary = document.createElement('td');
+        td_salary.innerHTML = salary;
+        tr.appendChild(td_salary);
+
+        let td = document.createElement('td');
+        let a = document.createElement('a');
+        a.href = '#'
+        a.innerHTML = 'Remove line';
+        a.addEventListener('click', function remove(event) {
+            tr.remove();
+            event.preventDefault();
+        });
+        td.appendChild(a);
+        tr.appendChild(td);
+
+        table.appendChild(tr);
+    }
+
+    function add() {
+        addInput(this);
+        this.removeEventListener('click', add);
+    }
+
+    let create_table = function (name) {
+        let div = document.querySelector('#' + name);
+        let table = document.createElement('table');
+        let tr = document.createElement('tr');
+        div.appendChild(table);
+        let th = document.createElement('th')
+        th.innerHTML = 'name';
+        tr.appendChild(th);
+        th = document.createElement('th')
+        th.innerHTML = 'age';
+        tr.appendChild(th);
+        th = document.createElement('th')
+        th.innerHTML = 'salary';
+        tr.appendChild(th);
+        table.appendChild(tr);
+        return table;
+    }
+
+    let table = create_table('parent_1');
     for (let emp in employees) {
         let tr = document.createElement('tr');
         let td_name = document.createElement('td');
@@ -70,6 +190,66 @@
         tr.appendChild(td_salary);
         table.appendChild(tr);
     }
+
+    table = create_table('parent_2');
+    for (let emp in employees) {
+        let tr = document.createElement('tr');
+        let td_name = document.createElement('td');
+        td_name.innerHTML = employees[emp].name;
+        td_name.addEventListener('click', add);
+        let td_age = document.createElement('td');
+        td_age.innerHTML = employees[emp].age;
+        td_age.addEventListener('click', add);
+        let td_salary = document.createElement('td');
+        td_salary.innerHTML = employees[emp].salary;
+        td_salary.addEventListener('click', add);
+        tr.appendChild(td_name);
+        tr.appendChild(td_age);
+        tr.appendChild(td_salary);
+        table.appendChild(tr);
+    }
+
+    table = create_table('parent_3');
+    for (let emp in employees) {
+        let tr = document.createElement('tr');
+        let td_name = document.createElement('td');
+        td_name.innerHTML = employees[emp].name;
+        td_name.addEventListener('click', add);
+        let td_age = document.createElement('td');
+        td_age.innerHTML = employees[emp].age;
+        td_age.addEventListener('click', add);
+        let td_salary = document.createElement('td');
+        td_salary.innerHTML = employees[emp].salary;
+        td_salary.addEventListener('click', add);
+        tr.appendChild(td_name);
+        tr.appendChild(td_age);
+        tr.appendChild(td_salary);
+        table.appendChild(tr);
+    }
+    add_remove_line('parent_3');
+
+
+    table = create_table('parent_4');
+    for (let emp in employees) {
+        let tr = document.createElement('tr');
+        let td_name = document.createElement('td');
+        td_name.innerHTML = employees[emp].name;
+        td_name.addEventListener('click', add);
+        let td_age = document.createElement('td');
+        td_age.innerHTML = employees[emp].age;
+        td_age.addEventListener('click', add);
+        let td_salary = document.createElement('td');
+        td_salary.innerHTML = employees[emp].salary;
+        td_salary.addEventListener('click', add);
+        tr.appendChild(td_name);
+        tr.appendChild(td_age);
+        tr.appendChild(td_salary);
+        table.appendChild(tr);
+    }
+    add_remove_line('parent_4');
+    createActions('parent_4');
+
+
 </script>
 </body>
 </html>
