@@ -90,20 +90,17 @@
         elem.appendChild(input);
     }
 
-    function add_remove_line(div) {
-        let trs = document.querySelectorAll('#' + div + ' tr');
-        for (let x = 1; x < trs.length; x++) {
-            let td = document.createElement('td');
-            let a = document.createElement('a');
-            a.href = '#'
-            a.innerHTML = 'Remove line';
-            a.addEventListener('click', function remove(event) {
-                trs[x].remove();
-                event.preventDefault();
-            });
-            td.appendChild(a);
-            trs[x].appendChild(td);
-        }
+    function addRemoveLine(tr) {
+        let td = document.createElement('td');
+        let a = document.createElement('a');
+        a.href = '#'
+        a.innerHTML = 'Remove line';
+        a.addEventListener('click', function remove(event) {
+            tr.remove();
+            event.preventDefault();
+        });
+        td.appendChild(a);
+        tr.appendChild(td);
     }
 
     function createActions(parent) {
@@ -139,17 +136,7 @@
         td_salary.innerHTML = salary;
         tr.appendChild(td_salary);
 
-        let td = document.createElement('td');
-        let a = document.createElement('a');
-        a.href = '#'
-        a.innerHTML = 'Remove line';
-        a.addEventListener('click', function remove(event) {
-            tr.remove();
-            event.preventDefault();
-        });
-        td.appendChild(a);
-        tr.appendChild(td);
-
+        addRemoveLine(tr);
         table.appendChild(tr);
     }
 
@@ -224,9 +211,9 @@
         tr.appendChild(td_name);
         tr.appendChild(td_age);
         tr.appendChild(td_salary);
+        addRemoveLine(tr);
         table.appendChild(tr);
     }
-    add_remove_line('parent_3');
 
 
     table = create_table('parent_4');
@@ -244,9 +231,9 @@
         tr.appendChild(td_name);
         tr.appendChild(td_age);
         tr.appendChild(td_salary);
+        addRemoveLine(tr);
         table.appendChild(tr);
     }
-    add_remove_line('parent_4');
     createActions('parent_4');
 
 
