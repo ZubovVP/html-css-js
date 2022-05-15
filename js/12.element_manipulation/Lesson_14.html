@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_14(291)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+
+</style>
+<body>
+<h1>Кнопки для скрытия и показа элемента на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан следующий массив с работниками. Выведите на экран каждого работника в своем теге li тега ul</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_1">
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте так, чтобы по клику на имя, возраст или зарплату работника появлялся инпут для редактирования
+                этого поля</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_2">
+
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let employees = [
+        {name: 'employee1', age: 30, salary: 400},
+        {name: 'employee2', age: 31, salary: 500},
+        {name: 'employee3', age: 32, salary: 600},
+    ];
+
+    function reedEmployee(arr, div) {
+        for (let empl of arr) {
+            let ul = fillUl(empl);
+            div.appendChild(ul);
+        }
+    }
+
+    function fillUl(empl) {
+        let ul = document.createElement('ul');
+        let li_name = document.createElement('li');
+        li_name.innerHTML = empl.name;
+        ul.appendChild(li_name);
+
+        let li_age = document.createElement('li');
+        li_age.innerHTML = empl.age;
+        ul.appendChild(li_age);
+
+        let li_salary = document.createElement('li');
+        li_salary.innerHTML = empl.salary;
+        ul.appendChild(li_salary);
+        return ul;
+    }
+
+    function addInput(elem) {
+        let input = document.createElement('input');
+        input.value = elem.innerHTML;
+        elem.innerHTML = '';
+        input.addEventListener('blur', function () {
+            elem.innerHTML = this.value;
+            elem.addEventListener('click', change);
+        });
+        elem.appendChild(input);
+    }
+
+    function change() {
+        add_input_for_change(this);
+        this.removeEventListener('click', change);
+    }
+
+    function add_correctForm(div) {
+        let lis = document.querySelectorAll(div + ' li');
+        lis.forEach(li => li.addEventListener('click', change));
+
+    }
+
+    function add_input_for_change(li) {
+        let input = document.createElement('input');
+        input.value = li.innerHTML;
+        input.addEventListener('blur', () => {
+            li.innerHTML = input.value;
+            li.addEventListener('click', change);
+        });
+    }
+
+    //Task_1
+    reedEmployee(employees, document.querySelector('#parent_1'));
+
+    //Task_2
+    let div = document.querySelector('#parent_2');
+    reedEmployee(employees, div);
+    add_correctForm(employees, '#parent_2');
+
+
+</script>
+</body>
+</html>
