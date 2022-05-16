@@ -48,6 +48,16 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>Добавьте в конец каждого тега li ссылку на удаление этого li из списка</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_3">
+
+            </div>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -80,35 +90,41 @@
         return ul;
     }
 
-    function addInput(elem) {
-        let input = document.createElement('input');
-        input.value = elem.innerHTML;
-        elem.innerHTML = '';
-        input.addEventListener('blur', function () {
-            elem.innerHTML = this.value;
-            elem.addEventListener('click', change);
-        });
-        elem.appendChild(input);
-    }
-
     function change() {
         add_input_for_change(this);
-        this.removeEventListener('click', change);
     }
 
     function add_correctForm(div) {
-        let lis = document.querySelectorAll(div + ' li');
-        lis.forEach(li => li.addEventListener('click', change));
-
+        for (let li of div.querySelectorAll('li')) {
+            li.addEventListener('click', change);
+        }
     }
 
     function add_input_for_change(li) {
         let input = document.createElement('input');
         input.value = li.innerHTML;
+        li.innerHTML = '';
         input.addEventListener('blur', () => {
             li.innerHTML = input.value;
             li.addEventListener('click', change);
         });
+        li.removeEventListener('click', change);
+        li.appendChild(input);
+    }
+
+
+    function add_remove_li(div) {
+        for (let li of div.querySelectorAll('li')) {
+            let a = document.createElement('a');
+            a.href='#';
+            a.innerHTML = '  remove';
+            a.addEventListener('click', (event) =>{
+                event.preventDefault();
+                event.stopPropagation();
+                li.remove();
+            });
+            li.appendChild(a);
+        }
     }
 
     //Task_1
@@ -117,9 +133,13 @@
     //Task_2
     let div = document.querySelector('#parent_2');
     reedEmployee(employees, div);
-    add_correctForm(employees, '#parent_2');
+    add_correctForm(div);
 
-
+    //Task3
+    div = document.querySelector('#parent_3');
+    reedEmployee(employees, div);
+    add_correctForm(div);
+    add_remove_li(div);
 </script>
 </body>
 </html>
