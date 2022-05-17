@@ -58,6 +58,16 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>Под списком сделайте форму для добавления нового работника</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_4">
+
+            </div>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -69,25 +79,8 @@
 
     function reedEmployee(arr, div) {
         for (let empl of arr) {
-            let ul = fillUl(empl);
-            div.appendChild(ul);
+            add(empl.name, empl.age, empl.salary, div);
         }
-    }
-
-    function fillUl(empl) {
-        let ul = document.createElement('ul');
-        let li_name = document.createElement('li');
-        li_name.innerHTML = empl.name;
-        ul.appendChild(li_name);
-
-        let li_age = document.createElement('li');
-        li_age.innerHTML = empl.age;
-        ul.appendChild(li_age);
-
-        let li_salary = document.createElement('li');
-        li_salary.innerHTML = empl.salary;
-        ul.appendChild(li_salary);
-        return ul;
     }
 
     function change() {
@@ -102,29 +95,85 @@
 
     function add_input_for_change(li) {
         let input = document.createElement('input');
-        input.value = li.innerHTML;
+        input.value = li.querySelector('span').innerHTML;
         li.innerHTML = '';
         input.addEventListener('blur', () => {
-            li.innerHTML = input.value;
+            li.innerHTML = '<span>' + input.value + '</span>';
             li.addEventListener('click', change);
+            add_remove_li(li);
         });
         li.removeEventListener('click', change);
         li.appendChild(input);
     }
 
 
-    function add_remove_li(div) {
-        for (let li of div.querySelectorAll('li')) {
-            let a = document.createElement('a');
-            a.href='#';
-            a.innerHTML = '  remove';
-            a.addEventListener('click', (event) =>{
-                event.preventDefault();
-                event.stopPropagation();
-                li.remove();
-            });
-            li.appendChild(a);
+    function add_remove_li(li) {
+        let a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = '  remove';
+        a.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            li.remove();
+        });
+        li.appendChild(a);
+    }
+
+    function add_input_for_add_empl(div) {
+        let form = document.createElement('form');
+
+        let input_name = document.createElement('input');
+        input_name.placeholder = 'name';
+        form.appendChild(input_name);
+
+        let input_age = document.createElement('input');
+        input_age.placeholder = 'age';
+        form.appendChild(input_age);
+
+        let input_salary = document.createElement('input');
+        input_salary.placeholder = 'salary';
+        form.appendChild(input_salary);
+
+        let button = document.createElement('button');
+        button.innerHTML = 'Add';
+        button.addEventListener('click', add_emp);
+        form.appendChild(button);
+
+        div.appendChild(form);
+    }
+
+    function add_emp(event) {
+        let inputs = this.parentElement.querySelectorAll('input');
+        let ul = add(inputs[0].value, inputs[1].value, inputs[2].value, this.parentElement.parentElement);
+        inputs.forEach(inp => inp.value = '');
+        event.preventDefault();
+        for (let li of ul.querySelectorAll('li')) {
+            add_correctForm(li);
+            add_remove_li(li);
         }
+    }
+
+    function add(name, age, salary, div) {
+        let ul = document.createElement('ul');
+        let li_name = document.createElement('li');
+        li_name.innerHTML = '<span>' + name + '</span>';
+        ul.appendChild(li_name);
+
+        let li_age = document.createElement('li');
+        li_age.innerHTML = '<span>' + age + '</span>';
+        ul.appendChild(li_age);
+
+        let li_salary = document.createElement('li');
+        li_salary.innerHTML = '<span>' + salary + '</span>';
+        ul.appendChild(li_salary);
+
+        let uls = div.querySelectorAll('ul');
+        if (uls.length > 1) {
+            uls[uls.length - 1].insertAdjacentElement('afterend', ul);
+        } else {
+            div.appendChild(ul);
+        }
+        return ul;
     }
 
     //Task_1
@@ -139,7 +188,18 @@
     div = document.querySelector('#parent_3');
     reedEmployee(employees, div);
     add_correctForm(div);
-    add_remove_li(div);
+    for (let li of div.querySelectorAll('li')) {
+        add_remove_li(li);
+    }
+
+    //Task4
+    div = document.querySelector('#parent_4');
+    reedEmployee(employees, div);
+    add_correctForm(div);
+    for (let li of div.querySelectorAll('li')) {
+        add_remove_li(li);
+    }
+    add_input_for_add_empl(div);
 </script>
 </body>
 </html>
