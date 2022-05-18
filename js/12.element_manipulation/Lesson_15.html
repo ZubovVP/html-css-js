@@ -101,12 +101,8 @@
     let row = 3;
     let but_2 = document.querySelector('#but_2');
     but_2.addEventListener('click', () => {
-        let tds = document.querySelectorAll('#table_2 td[data-col="' + col + '"]');
-        for (let td of tds) {
-            if (td.getAttribute('data-row') == row) {
-                td.classList.toggle('color');
-            }
-        }
+        let td = document.querySelector('#table_2 td[data-row="' + row + '"]' +'[data-col="' + col + '"]');
+        td.classList.toggle('color');
     });
 </script>
 </body>
