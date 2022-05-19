@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_14(291)</title>
+    <title>Lesson_14(292, 293)</title>
 </head>
 <style>
     .description {
@@ -24,7 +24,15 @@
     }
 
     .color {
-        border-color: red;
+        background: red;
+    }
+
+    .color_red {
+        background: red;
+    }
+
+    .color_green {
+        background: green;
     }
 
 </style>
@@ -88,6 +96,118 @@
         </td>
     </tr>
 </table>
+<h1>Добавление номера колонки и ряда в таблицу</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Напишите скрипт, который добавит в каждую ячейку таблицы атрибут data-col с номером колонки таблицы, в
+                которой находится эта ячейка</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_3">
+                <table id="table_3">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Модифицируйте предыдущую задачу так, чтобы в ячейку добавлялся еще и номер ее ряда</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_4">
+                <table id="table_4">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана некоторая таблица. Сделайте так, чтобы по клику на любую ячейку в ее текст выводился номер ряда и
+                номер колонки этой ячейки.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_5">
+                <table id="table_5">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть у нас есть некоторая квадратная HTML таблица. В такой таблице есть две диагонали. Назовем главной
+                диагональ, идущую от верхнего левого угла к нижнему правому. Сделайте так, чтобы по клику на любую
+                ячейку главной диагонали эта ячейка красилась в красный цвет фона, а по клику любую другую ячейку - она
+                красилась в зеленый.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_6">
+                <table id="table_6">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     for (let td of document.querySelectorAll('#table_1 td')) {
@@ -101,9 +221,73 @@
     let row = 3;
     let but_2 = document.querySelector('#but_2');
     but_2.addEventListener('click', () => {
-        let td = document.querySelector('#table_2 td[data-row="' + row + '"]' +'[data-col="' + col + '"]');
+        let td = document.querySelector('#table_2 td[data-row="' + row + '"]' + '[data-col="' + col + '"]');
         td.classList.toggle('color');
     });
+
+    function fill_col(table) {
+        for (let tr of table.querySelectorAll('tr')) {
+            let tds = tr.querySelectorAll('td');
+            for (let x = 1; x <= tds.length; x++) {
+                tds[x - 1].dataset.col = x;
+            }
+        }
+    }
+
+    function fill_row(table) {
+        let trs = table.querySelectorAll('tr');
+        for (let row = 1; row <= trs.length; row++) {
+            let tds = trs[row - 1].querySelectorAll('td');
+            for (let x = 1; x <= tds.length; x++) {
+                tds[x - 1].dataset.row = row;
+            }
+        }
+    }
+
+    function fill_actions(table) {
+        for (let td of table.querySelectorAll('td')) {
+            td.addEventListener('click', function info() {
+                let col = this.dataset.col;
+                let row = this.dataset.row;
+                this.innerHTML = 'row = ' + row + ' col = ' + col;
+                this.removeEventListener('click', info);
+            });
+        }
+    }
+
+    function fill_special_actions(table) {
+        for (let td of table.querySelectorAll('td')) {
+            td.addEventListener('click', function info() {
+                let col = this.dataset.col;
+                let row = this.dataset.row;
+                if (col == row) {
+                    this.classList.toggle('color_green');
+                } else {
+                    this.classList.toggle('color_red');
+                }
+            });
+        }
+    }
+
+    let table = document.querySelector('#table_3')
+
+    fill_col(table);
+
+    table = document.querySelector('#table_4');
+    fill_col(table);
+    fill_row(table);
+
+    table = document.querySelector('#table_5');
+
+    fill_col(table);
+    fill_row(table);
+    fill_actions(table);
+
+    table = document.querySelector('#table_6');
+    fill_col(table);
+    fill_row(table);
+    fill_special_actions(table);
+
 </script>
 </body>
 </html>
