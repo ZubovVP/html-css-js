@@ -208,6 +208,87 @@
         </td>
     </tr>
 </table>
+<h1>Поиск ячеек таблицы через селектор CSS на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Найдите все ячейки третьего столбца и покрасьте их в красный фон.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_7">
+                <table id="table_7">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите третью ячейку первого ряда и покрасьте ее в красный фон.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_8">
+                <table id="table_8">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Найдите все четные ряды и покрасьте в них все нечетные ячейки.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_9">
+                <table id="table_9">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     for (let td of document.querySelectorAll('#table_1 td')) {
@@ -288,6 +369,15 @@
     fill_row(table);
     fill_special_actions(table);
 
+    for (let td of document.querySelectorAll('#table_7 tr:nth-child(3)')) {
+        td.classList.add('color_red');
+    }
+
+    document.querySelector('#table_8 tr:nth-child(3) td:nth-child(1)').classList.add('color_red');
+
+    for (let td of document.querySelectorAll('#table_9 tr:nth-child(even) td:nth-child(odd)')) {
+        td.classList.add('color_red');
+    }
 </script>
 </body>
 </html>
