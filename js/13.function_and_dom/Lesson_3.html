@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(301)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Функция для создания HTML таблиц на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию createTable, которая будет будет создавать таблицу заданного размера
+                и добавлять ее в конец заданного элемента</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_1">
+
+            </div>
+            <div id="parent_2">
+
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    function createTable(rows, cols, parent) {
+        let table = document.createElement('table');
+        for (let row = 0; row < rows; row++) {
+            let tr = document.createElement('tr');
+            for (let col = 0; col < cols; col++) {
+                let td = document.createElement('td');
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        parent.appendChild(table);
+    }
+
+    createTable(2, 2, document.querySelector('#parent_1'));
+    createTable(3, 4, document.querySelector('#parent_2'));
+</script>
+</body>
+</html>

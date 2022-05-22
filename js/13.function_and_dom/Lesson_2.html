@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_2(297, 298)</title>
+    <title>Lesson_2(297, 298, 299, 300)</title>
 </head>
 <style>
     .description {
@@ -90,8 +90,51 @@
         </td>
         <td colspan="2" class="view">
             <div id="parent_4">
-               <input class="inp_4">
                 <input class="inp_4">
+                <input class="inp_4">
+            </div>
+        </td>
+    </tr>
+</table>
+<h1>Передача DOM группы элементов параметрами функций</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию appendsText, которая первым параметром будет принимать массив DOM
+                элементов, а вторым - текст. Сделайте так, чтобы данная функция добавляла текст в
+                конец переданных элементов</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_5">
+                <p class="p_5">1</p>
+                <p class="p_5">2</p>
+                <p class="p_5">3</p>
+                <p class="p_5">4</p>
+                <p class="p_5">5</p>
+                <p class="p_5">6</p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию appendElem, которая первым параметром будет принимать ссылку DOM
+                объект, в котором лежит тег ul, а вторым - текст. Сделайте так, чтобы данная функция
+                создавала новую li с переданным текстом и добавляла ее в конец переданного тега ul</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_6">
+                <ul id="ul_6"></ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан массив и ul. С помощью функции appendElem, созданной в предыдущей задаче, запишите
+                каждый элемент массива в отдельную li в этом ul</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_7">
+                <ul id="ul_7"></ul>
             </div>
         </td>
     </tr>
@@ -134,8 +177,31 @@
     function setValue(inp, text) {
         inp.value = text;
     }
+
     for (let inp of document.querySelectorAll('input.inp_4')) {
         setValue(inp, 'input');
+    }
+
+    function appendsText(elems, text) {
+        for (let el of elems) {
+            appendText(el, text);
+        }
+    }
+
+    appendsText(document.querySelectorAll('p.p_5'), 'text123');
+
+    function appendElem(ul, text) {
+        let li = document.createElement('li');
+        li.innerHTML = text;
+        ul.appendChild(li);
+    }
+
+    appendElem(document.querySelector('#ul_6'), 'text123');
+
+    let arr = ['123', '1234', '12345'];
+    let ul = document.querySelector('#ul_7');
+    for (let el of arr) {
+        appendElem(ul, el);
     }
 </script>
 </body>
