@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_3(301, 302, 303, 304)</title>
+    <title>Lesson_3(301, 302, 303, 304, 305)</title>
 </head>
 <style>
     .description {
@@ -78,6 +78,40 @@
         <td colspan="2" class="view">
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>С помощью комбинаций функций createTableByArr и convertArr создайте из приведенного массива таблицу
+                размером 4 колонки.
+                Добавьте созданную таблицу в какой-нибудь див.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="elem_3">
+
+            </div>
+        </td>
+    </tr>
+</table>
+<h1>Нехватка элементов в массиве при создании таблицы</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Реализуйте описанную функцию normalizeArr. Потестируйте ее работу.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>С помощью комбинаций функций createTableByArr, normalizeArr и convertArr создайте из
+                приведенного массива таблицу размером 5 колонок. Добавьте созданную таблицу в
+                какой-нибудь див.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="elem_4">
+
+            </div>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -137,18 +171,56 @@
     function convertArr(arr, cols) {
         let result = [];
         let counter = 0;
-        for (let x = 0; x < arr.length % cols; x) {
+        for (let x = 0; x < arr.length / cols; x++) {
+            result[x] = [];
             for (let y = 0; y < cols; y++) {
-                result[x][y] = arr[counter];
+                result[x][y] = arr[counter++];
             }
         }
         return result;
     }
+
     let arrs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         11, 12];
     let cols = 3;
     console.log(convertArr(arrs, cols));
 
+
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12];
+    table = createTableByArr(convertArr(arr, 4));
+    document.querySelector('#elem_3').appendChild(table);
+
+
+    function normalizeArr(twoDimArr, cols, filler) {
+        for (let x = 0; x < twoDimArr.length; x++) {
+            for (let y = 0; y < cols; y++) {
+                if (twoDimArr[x][y] == undefined) {
+                    twoDimArr[x][y] = filler;
+                }
+            }
+        }
+        return twoDimArr;
+    }
+
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    cols = 4;
+
+    let twoDimArr = convertArr(arr, cols);
+    let normalTwoDimArr = normalizeArr(twoDimArr, cols, '-');
+
+    table = createTableByArr(normalTwoDimArr);
+    console.log(table);
+
+
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12];
+    cols = 5;
+    twoDimArr = convertArr(arr, cols);
+     normalTwoDimArr = normalizeArr(twoDimArr, cols, '-');
+
+    table = createTableByArr(normalTwoDimArr);
+    document.querySelector('#elem_4').appendChild(table);
 </script>
 </body>
 </html>
