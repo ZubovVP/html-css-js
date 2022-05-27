@@ -41,11 +41,49 @@
         </td>
     </tr>
 </table>
+<h1>Экспорт переменных и функций в модулях через замыкания в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Эскортируйте наружу одну из переменных и две любые функции.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Эскортируйте наружу объект с первыми пятью функциями и первыми двумя переменными.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h1>Библиотеки через замыкания в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Эскортируйте наружу одну из переменных и две любые функции.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Изучите библиотеку underscore. Сделайте свою аналогичную библиотеку, повторив в ней 5-10 функций
+                оригинальной библиотеки.</p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script src="math.js"></script>
+<script src="my_underscore.js"></script>
 <script>
     "use strict";
     let config = {
-        selector_but: '#btn_1',
-        selector_inp: '.inp_1'
+            selector_but: '#btn_1',
+            selector_inp: '.inp_1'
         }
     ;(function ({selector_but, selector_inp}) {
         let button = document.querySelector(selector_but);
@@ -63,6 +101,138 @@
             console.log(sum(inputs));
         })
     })(config);
+
+    ;(function () {
+        let str1 = 'переменная модуля';
+        let str2 = 'переменная модуля';
+        let str3 = 'переменная модуля';
+
+        function func1() {
+            alert('функция модуля');
+        }
+
+        function func2() {
+            alert('функция модуля');
+        }
+
+        function func3() {
+            alert('функция модуля');
+        }
+
+        window.str1 = str1;
+        window.func1 = func1;
+        window.func3 = func3;
+
+    })();
+
+    console.log('переменная из модуля ' + str1);
+    func1();
+    func3();
+
+    ;(function () {
+        let module = {};
+        let str1 = 'переменная модуля_1';
+        let str2 = 'переменная модуля_2';
+        let str3 = 'переменная модуля_3';
+
+        module.str1 = str1;
+        module.str3 = str3;
+
+        module.func1 = function func1() {
+            alert('функция модуля_1');
+        }
+        module.func2 = function func2() {
+            alert('функция модуля_2');
+        }
+        module.func3 = function func3() {
+            alert('функция модуля_3');
+        }
+        module.func4 = function func4() {
+            alert('функция модуля_4');
+        }
+        module.func5 = function func5() {
+            alert('функция модуля_5');
+        }
+        window.module = module;
+    })();
+
+    module.func3();
+    alert(module.str1);
+
+    ;(function () {
+        function avg1(arr) {
+            return sum(arr, 1) / arr.length;
+        }
+
+        function avg2(arr) {
+            return sum(arr, 2) / arr.length;
+        }
+
+        function avg3(arr) {
+            return sum(arr, 3) / arr.length;
+        }
+
+        // вспомогательная функция
+        function sum(arr, pow) {
+            let res = 0;
+
+            for (let elem of arr) {
+                res += elem ** pow;
+            }
+
+            return res;
+        }
+
+        window.math = {avg1, avg2, avg3};
+    })();
+    let arr = [1, 2, 3];
+    console.log('функция из библиотеке 1 ' + math.avg1(arr));
+    console.log('функция из библиотеке 2 ' + math.avg2(arr));
+    console.log('функция из библиотеке 3 ' + math.avg3(arr));
+
+    ;(function () {
+
+        function reduceSum(arr) {
+            let res = 0;
+            arr.map(el => res += el);
+            return res
+        }
+
+        function contains(arr, element) {
+            let result = false;
+            arr.forEach(el => {
+                if (el === element) {
+                    result = true;
+                }
+            });
+            return result;
+        }
+
+        function size(arr){
+            return arr.length;
+        }
+
+        function toArray(collection){
+            let col = [];
+            let counter = 0;
+            for(let key in collection){
+                col[counter++] = collection[key];
+            }
+            return col;
+        }
+
+
+
+
+    window.my_underscore = {reduceSum, contains, size, toArray};
+    })
+    ();
+
+    let obj = {'a':1, 'b':2, 'c':3}
+    console.log('функция из библиотеке my_underscore - rediceSum ' + my_underscore.reduceSum(arr));
+    console.log('функция из библиотеке my_underscore - contains ' + my_underscore.contains(arr, 2));
+    console.log('функция из библиотеке my_underscore - toArray ' + my_underscore.toArray(obj));
+
 
 </script>
 </body>
