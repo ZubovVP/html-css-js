@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(1, 2)</title>
+</head>
+<script>
+    "use strict";
+    //Введение в регулярные выражения в JavaScrip
+    //Дана строка:
+        let str = 'ahb acb aeb aeeb adcb axeb';
+    //Напишите регулярку, которая найдет строки 'ahb', 'acb', 'aeb' по шаблону: буква 'a', любой символ, буква 'b'.
+    alert(str.replace(/a.b/g, 'find'));
+
+    //Дана строка:
+     str = 'aba aca aea abba adca abea';
+    //Напишите регулярку, которая найдет строки 'abba', 'adca', 'abea' по шаблону: буква 'a', 2 любых символа, буква 'a'.
+    alert(str.replace(/a..a/g, 'find2'));
+
+    //Дана строка:
+    str = 'aba aca aea abba adca abea';
+    //Напишите регулярку, которая найдет строки 'abba' и 'abea', не захватив 'adca'.
+    alert(str.replace(/ab.a/g, 'find3'));
+
+    //Операторы повторения символов в регулярках
+    // Дана строка:
+
+         str = 'aa aba abba abbba abca abea';
+    // Напишите регулярку, которая найдет строки 'aba', 'abba', 'abbba' по шаблону: буква 'a', буква 'b' любое количество раз, буква 'a'.
+    alert(str.replace(/ab+a/g, 'find4'));
+
+    //Дана строка:
+         str = 'aa aba abba abbba abca abea';
+    //Напишите регулярку, которая найдет строки 'aa', 'aba', 'abba', 'abbba' по шаблону: буква 'a', буква 'b' любое количество раз (в том числе ниодного раза), буква 'a'.
+    alert(str.replace(/ab*a/g, 'find5'));
+
+    //Дана строка:
+        str = 'aa aba abba abbba abca abea';
+    //Напишите регулярку, которая найдет строки 'aa', 'aba' по шаблону: буква 'a', буква 'b' один раз или ниодного, буква 'a'.
+    alert(str.replace(/ab?a/g, 'find6'));
+
+    //Дана строка:
+         str = 'aa aba abba abbba abca abea';
+    //Напишите регулярку, которая найдет строки 'aa', 'aba', 'abba', 'abbba', не захватив 'abca' и 'abea'.
+    alert(str.replace(/a+b*a/g, 'find7'));
+
+</script>
+</body>
+</html>
