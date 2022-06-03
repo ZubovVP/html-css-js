@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(16, 17)</title>
+</head>
+<body>
+<script>
+    "use strict";
+    //Начало и конец строки в регулярках JavaScript
+    // Дана строка:
+        let str = 'abc def xyz';
+    // Напишите регулярку, которая найдет первую подстроку из букв.
+    console.log(str.replace(/^abc/g, '!'));
+
+    // Дана строка:
+        str = 'abc def xyz';
+    // Напишите регулярку, которая найдет последнюю подстроку из букв.
+    console.log(str.replace(/xyz$/, '!'));
+
+    //Команда 'или' в регулярных выражениях JavaScript
+    // Дана строка:
+     str = 'aeeea aeea aea axa axxa axxxa awa';
+    // Напишите регулярку, которая найдет строки по шаблону: по краям стоят буквы 'a',
+    // а между ними - или буква 'e' любое количество раз или буква 'x' любое количество раз.
+    console.log(str.replace(/a(e+|x+)a/g,'!'));
+
+    // Дана строка:
+        str = 'aeeea aeea aea axa axxa axxxa';
+    // Напишите регулярку, которая найдет строки по шаблону: по краям стоят буквы 'a', а между
+    // ними - или буква 'e' два раза или буква 'x' любое количество раз.
+    console.log(str.replace(/a(e{2}|x+)a/g,'!'));
+
+</script>
+</body>
+</html>
