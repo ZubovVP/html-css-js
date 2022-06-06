@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_3(16, 17, 18)</title>
+    <title>Lesson_3(16, 17, 18, 19, 20, 21, 22, 23)</title>
 </head>
 <body>
 <script>
@@ -156,6 +156,37 @@
     res = str.replace(/(\d+)(\.\d+\.)(\d+)/g, '$3$2$1');
     console.log('Преобразуйте эту дату ' + res);
 
+    //Карманы по умолчанию в методе replace в JavaScript
+    // Дана строка:
+        str = 'a1b2c3';
+    // Напишите регулярку, которая рядом с каждой цифрой напишет такую же.
+    res = str.replace(/\d/g, '$&$&');
+    console.log(res);
+
+    // Дана строка:
+        str = 'sss site.ru zzz site.com kkk';
+    // Замените домены на ссылки вида: <a href="http://site.ru">site.ru</a>
+    res = str.replace(/\w+\.\w{2}/g, '<a href="$&">$&</a>');
+    console.log(res);
+
+    // Карманы в самой регулярке в JavaScript
+    // Дана строка:
+        str = 'aaa bbb ccc xyz';
+    // Найдите все подстроки, в которых есть три одинаковые буквы подряд.
+     res = str.replace(/([a-z])([a-z])\2/g, '!');
+    console.log(res);
+
+    // Дана строка:
+        str = 'a aa aaa aaaa aaaaa';
+    // Найдите все подстроки, в которых есть две и более одинаковые буквы подряд.
+    res = str.replace(/([a-z])+\1/g, 'x');
+    console.log(res);
+
+    // Дана строка:
+        str = 'aaa aaa bbb bbb ccc ddd';
+    // Найдите все подстроки, в которых есть два одинаковых слова подряд.
+    res = str.replace(/(\w+) \1/g, 'x');
+    console.log(res);
 </script>
 </body>
 </html>
