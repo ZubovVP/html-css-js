@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_3(16, 17, 18, 19, 20, 21, 22, 23)</title>
+    <title>Lesson_3(16, 17, 18, 19, 20, 21, 22, 23, 24)</title>
 </head>
 <body>
 <script>
@@ -187,6 +187,20 @@
     // Найдите все подстроки, в которых есть два одинаковых слова подряд.
     res = str.replace(/(\w+) \1/g, 'x');
     console.log(res);
+
+    // Позитивный и негативный просмотр в JavaScript
+    // Дана строка, содержащая имена функций:
+        str = 'func1() func2() func3()';
+    // Получите массив имен функций из строки.
+    res = str.match(/func\d(?=\(\))/g);
+
+    res.forEach(el => console.log(el));
+
+    // Дана строка с тегом:
+        str = '<a href="" class="eee" id="zzz">';
+    // Получите массив имен атрибутов этого тега.
+    res = str.match(/\w+(?==")/g);
+    res.forEach(el => console.log(el));
 </script>
 </body>
 </html>
