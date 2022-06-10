@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(30, 31, 32, 33)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Преобразование псевдомассивов в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Каким-нибудь способом получите псевдомассив элементов. Преобразуйте его в массив тремя описанными
+                способами.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_1">
+                <input type="number" class="inp_1">
+                <input type="number" class="inp_1">
+                <input type="number" class="inp_1">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны абзацы. С помощью метода slice получите все абзацы, кроме первого и последнего.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent_2">
+                <p class="p">1</p>
+                <p class="p">2</p>
+                <p class="p">3</p>
+                <p class="p">4</p>
+                <p class="p">5</p>
+            </div>
+        </td>
+    </tr>
+</table>
+<h1>Типы псевдомассивов в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Проверьте, какой тип коллекции будет в свойстве childNodes и в свойстве children.</p>
+        </td>
+        <td colspan="2" class="view">
+            <div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </td>
+    </tr>
+</table>
+<h1>Коллекции Map в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Пусть даны 3 массива. Создайте коллекцию Map, сделайте ключами коллекции эти массивы, а значениями - какие-нибудь строки.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть даны 3 объекта и 3 массива. Создайте коллекцию Map, сделайте ключами коллекции объекты, а значениями - соответствующие массивы.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let elems = document.querySelectorAll('.inp_1');
+    let arr = [];
+    //1
+    for (let el of elems) {
+        arr.push(el);
+    }
+    //2
+    arr = [...elems];
+    //3
+    arr = Array.from(elems);
+
+    elems = document.querySelectorAll('.p');
+    for (let p of Array.from(elems).slice(1, 4)) {
+        console.log(p.textContent);
+    }
+
+
+    let children = document.children;
+    let childNodes = document.childNodes;
+    console.log('children - ' + children);
+    console.log('childNodes - ' + childNodes);
+
+    let map = new Map;
+    let arr_1 = [1,2];
+    let arr_2 = [3,4];
+    let arr_3 = [5,6];
+    map.set(arr_1, 'text_1');
+    map.set(arr_2, 'text_2');
+    map.set(arr_3, 'text_3');
+    console.log(map.get(arr_3));
+    console.log(map.get(arr_2));
+    console.log(map.get(arr_1));
+
+    map = new Map;
+    let obj1 = {1:'1', 2:'2'};
+    let obj2 = {3:'3', 4:'4'};
+    let obj3 = {5:'5', 6:'6'};
+    map.set(obj1, arr_1);
+    map.set(obj2, arr_2);
+    map.set(obj3, arr_3);
+    console.log(map.get(obj1));
+    console.log(map.get(obj2));
+    console.log(map.get(obj3));
+</script>
+</body>
+</html>
