@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_1(30, 31, 32, 33)</title>
+    <title>Lesson_1(30, 31, 32, 33, 34, 35, 36, 37)</title>
 </head>
 <style>
     .description {
@@ -73,16 +73,60 @@
 <table border="1">
     <tr>
         <td class="description">
-            <p>Пусть даны 3 массива. Создайте коллекцию Map, сделайте ключами коллекции эти массивы, а значениями - какие-нибудь строки.</p>
+            <p>Пусть даны 3 массива. Создайте коллекцию Map, сделайте ключами коллекции эти массивы, а значениями -
+                какие-нибудь строки.</p>
         </td>
         <td colspan="2" class="view">
         </td>
     </tr>
     <tr>
         <td class="description">
-            <p>Пусть даны 3 объекта и 3 массива. Создайте коллекцию Map, сделайте ключами коллекции объекты, а значениями - соответствующие массивы.</p>
+            <p>Пусть даны 3 объекта и 3 массива. Создайте коллекцию Map, сделайте ключами коллекции объекты, а
+                значениями - соответствующие массивы.</p>
         </td>
         <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть дана коллекция Map. Получите массив ее ключей и переберите их циклом for-of.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть дана коллекция Map. Получите массив ее элементов и переберите их циклом for-of.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h1>Применение коллекций Map</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Даны инпуты. Переберите эти инпуты циклом и создайте коллекцию Map, ключами в которой будут инпуты, а
+                значением - их порядковый номер на странице. Сделайте так, чтобы по клику на любой инпут ему в value
+                записывался его порядковый номер.</p>
+        </td>
+        <td colspan="2" class="view">
+            <input class="inp_2">
+            <input class="inp_2">
+            <input class="inp_2">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны инпуты. В каждый инпут можно ввести число. Пусть по нажатию на Enter инпут
+                запоминает введенное число. Сделайте так, чтобы по потери фокуса в инпуте в консоль выводился массив
+                всех введенных ранее в инпут чисел.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input class="inp_3">
+            <input class="inp_3">
+            <input class="inp_3">
         </td>
     </tr>
 </table>
@@ -111,9 +155,9 @@
     console.log('childNodes - ' + childNodes);
 
     let map = new Map;
-    let arr_1 = [1,2];
-    let arr_2 = [3,4];
-    let arr_3 = [5,6];
+    let arr_1 = [1, 2];
+    let arr_2 = [3, 4];
+    let arr_3 = [5, 6];
     map.set(arr_1, 'text_1');
     map.set(arr_2, 'text_2');
     map.set(arr_3, 'text_3');
@@ -122,15 +166,58 @@
     console.log(map.get(arr_1));
 
     map = new Map;
-    let obj1 = {1:'1', 2:'2'};
-    let obj2 = {3:'3', 4:'4'};
-    let obj3 = {5:'5', 6:'6'};
+    let obj1 = {1: '1', 2: '2'};
+    let obj2 = {3: '3', 4: '4'};
+    let obj3 = {5: '5', 6: '6'};
     map.set(obj1, arr_1);
     map.set(obj2, arr_2);
     map.set(obj3, arr_3);
     console.log(map.get(obj1));
     console.log(map.get(obj2));
     console.log(map.get(obj3));
+
+    let keys = map.keys();
+    for (let val of keys) {
+        console.log(val);
+    }
+
+    let entries = map.entries();
+    for (let en of entries) {
+        console.log('key - ' + en[0] + '| value - ' + en[1]);
+    }
+
+    let inputs = document.querySelectorAll('input.inp_2');
+    map.clear();
+    let i = 1;
+    for (let inp of inputs) {
+        map.set(inp, i++);
+    }
+    for (let e of map.entries()) {
+        e[0].addEventListener('click', function () {
+            if (e[0].value === '') {
+                e[0].value = e[1];
+            }
+        });
+    }
+
+
+    inputs = document.querySelectorAll('input.inp_3');
+    map.clear();
+    for (let inp of inputs) {
+        let arr = [];
+        map.set(inp, arr);
+
+        inp.addEventListener('keydown', function (e) {
+            if (e.keyCode === 13) {
+                map.get(this).push(this.value);
+            }
+        });
+
+        inp.addEventListener('blur', function () {
+            this.value = map.get(this).join(' ');
+        });
+    }
+
 </script>
 </body>
 </html>
