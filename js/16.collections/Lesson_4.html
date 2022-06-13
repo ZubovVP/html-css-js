@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(45)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Введение в формат JSON в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан массив. Вручную преобразуйте этот массив в строку в формате JSON.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан объект. Вручную преобразуйте этот массив в строку в формате JSON..</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан объект. Вручную преобразуйте этот массив в строку в формате JSON..</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+
+    function IsJsonString(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
+    let arr = [1, 2, 3, 'a', 'b', 'c'];
+    let json = '[1, 2, 3, "a", "b", "c"]';
+    console.log(IsJsonString(json));
+
+    let obj = {
+        a: 1,
+        b: 2,
+        c: 'eee',
+        d: true,
+    };
+    json = '{"a": 1,' +
+        '"b": 2,' +
+        '"c": "eee",' +
+        '"d": true' +
+        '}';
+    console.log(IsJsonString(json));
+
+    obj = {
+        a: ['a', 'b', 'c',],
+        b: '111',
+        c: 'eee',
+    };
+    json = '{' +
+        '"a": ["a", "b", "c"],' +
+        '"b": "111",' +
+        '"c": "eee"' +
+        '}';
+    console.log(IsJsonString(json));
+</script>
+</body>
+</html>
