@@ -34,12 +34,151 @@
         </td>
     </tr>
 </table>
-<h1>Итераторы на JavaScript</h1>
+<h1>Тип Symbol</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Пусть дан объект. Создайте символ и добавьте в объект еще один элемент, ключом которого будет созданный
+                символ, а значением - какая-нибудь строка. Переберите объект через цикл for-in, убедитесь в том, что
+                новый элемент не появляется при переборе.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть дан объект. Добавьте в него еще один элемент, значением которого будет функция, выводящая на экран
+                '!', а ключом - созданный вами символ.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть дан объект, ключами которого являются какие-то строки, а значением - числа. Добавьте в наш объект
+                функцию, которая будучи вызванной будет возвращать сумму элементов нашего объекта.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h1>Symbol.for</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Пусть дан массив с числами. Добавьте в этот массив функцию, которая будет возвращать сумму элементов
+                этого массива. Сделайте так, чтобы наша функция имела символьный ключ.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Переделайте предыдущую задачу так, чтобы ключ-символ для функции задавался через Symbol.for.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Пусть у нас есть скрипт. В этом скрипте есть функция, которая возвращает массив, заполненный случайными
+                числами от 1 до 10. В этом скрипте также есть функция, которая параметром принимает два массива с
+                числами и возвращает массив элементов, которые есть в обоих массивах.
 
+                Сделайте так, чтобы массивы, возвращаемые любой из функций нашего скрипта, содержали функцию,
+                возвращающую сумму чисел этого массива. Ключ этой функции должен быть одинаковым для всех массивов,
+                то есть созданным через Symbol.for.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let buffer = new ArrayBuffer(32);
     console.log(buffer);
+
+    let obj = {1: 'a', 2: 'b', 3: 'c'};
+    let sumb = Symbol.for('test');
+    obj[sumb] = 'line';
+
+    for (let key in obj) {
+        console.log(obj[key]);
+    }
+
+    let symb2 = Symbol.for('func');
+    obj[symb2] = function () {
+        alert('!');
+    };
+    //вызываем полученную функцию
+    obj[symb2]();
+
+    obj = {'a': 1, 'b': 2, 'c': 3};
+    sumb = Symbol.for('sum');
+    obj[sumb] = function () {
+        let sum = 0;
+        for (let key in this) {
+            sum += Number(this[key]);
+        }
+        return sum;
+    };
+    console.log(obj[sumb]());
+
+    let arr = [1, 2, 2];
+
+    function sum() {
+        let sum = 0;
+        for (let val of this) {
+            sum += Number(val);
+        }
+        return sum;
+    }
+
+    arr['sum'] = sum;
+    console.log(arr['sum']());
+
+
+    function sum2() {
+        let sum = 0;
+        for (let val of this) {
+            sum += Number(val);
+        }
+        return sum;
+    }
+
+    arr[Symbol.for('sum2')] = sum2;
+    console.log(arr[Symbol.for('sum2')]());
+
+
+    function createArray() {
+        let arr = [];
+        for (let step = 0; step < 10; step++) {
+            arr.push(getRandomIntInclusive(1, 10));
+        }
+    }
+
+    function mergeArr(arr1, arr2) {
+        let arr = new Set;
+        for (let el of arr1) {
+            for (let el2 of arr2) {
+                if (el == el2) {
+                    arr.add(el);
+                }
+            }
+            return Array.from(arr);
+        }
+
+    }
+
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
 </script>
 </body>
