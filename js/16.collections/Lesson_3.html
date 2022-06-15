@@ -159,19 +159,22 @@
         for (let step = 0; step < 10; step++) {
             arr.push(getRandomIntInclusive(1, 10));
         }
+        arr[Symbol.for('sum')] = sum2;
+        return arr;
     }
 
     function mergeArr(arr1, arr2) {
         let arr = new Set;
         for (let el of arr1) {
             for (let el2 of arr2) {
-                if (el == el2) {
+                if (el === el2) {
                     arr.add(el);
                 }
             }
-            return Array.from(arr);
         }
-
+        let result = Array.from(arr);
+        result[Symbol.for('sum')] = sum2;
+        return result;
     }
 
     function getRandomIntInclusive(min, max) {
@@ -180,6 +183,8 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    console.log(' ответ ' + createArray()[Symbol.for('sum')]())';'
+    console.log(' ответ ' + mergeArr([1, 2, 3], [1, 2, 3, 4, 5, 6, 7])[Symbol.for('sum')]())
 </script>
 </body>
 </html>

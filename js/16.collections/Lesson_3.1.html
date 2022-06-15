@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3.1</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Итераторы и генераторы</h1>
+<h2>Цикл for-of и введение в понятие итератора</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан массив. Переберите его элементы через for-of, выведите их на экран.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Даны абзацы. Получите их через querySelectorAll, переберите через цикл for-of, добавьте каждому абзацу
+                в конец текста восклицательный знак.</p>
+        </td>
+        <td colspan="2" class="view">
+            <p class="p_1">text_1</p>
+            <p class="p_1">text_2</p>
+            <p class="p_1">text_3</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан массив. Обратитесь к его элементу с ключом Symbol.iterator и выведите результат в консоль.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+    let arr = [1, 2, 3, 4, 5];
+    for (let el of arr) {
+        console.log(el);
+    }
+
+    let ps = document.querySelectorAll('p.p_1');
+    for (let p of ps) {
+        p.textContent += '!';
+    }
+
+    console.log(arr[Symbol.iterator]);
+
+</script>
+</body>
+</html>
