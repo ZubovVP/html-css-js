@@ -112,6 +112,27 @@
         </td>
     </tr>
 </table>
+<h2>Создаем итератор объекта с помощью генератора ES6</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан объект. С помощью функции-генератора создайте его итератор, переберите элементы этого объекта
+                с помощью цикла for-of.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h2>Создание итерируемых объектов на ES6</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан объект. Сделайте так, чтобы его элементы можно было перебрать с помощью цикла for-of.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let arr = [1, 2, 3, 4, 5];
@@ -187,6 +208,28 @@
     for (let el of createGeneratorFibonacci([1, 2, 3, 4])) {
         console.log(el);
     }
+
+    let obj = {1: 'a', 2: 'b', 3: 'c'};
+
+    function* createIteratorObj(obj) {
+        for (let key in obj) {
+            yield obj[key];
+        }
+    }
+
+    for (let el of createIteratorObj(obj)) {
+        console.log(el);
+    }
+
+    obj[Symbol.iterator] = function* (){
+        for(let key in this){
+           yield this[key];
+        }
+    }
+    for (let el of  obj[Symbol.iterator]()) {
+        console.log(el);
+    }
+
 </script>
 </body>
 </html>
