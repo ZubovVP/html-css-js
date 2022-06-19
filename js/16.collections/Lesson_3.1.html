@@ -185,6 +185,72 @@
         </td>
     </tr>
 </table>
+<h2>Оператор spread и итераторы</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию, которая параметром будет принимать строку, а возвращать массив ее символов.</p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан объект. Сделайте так, чтобы к нему можно было применить оператор spread и при этом
+                возвращались значения объекта.</p>
+        </td>
+        <td colspan="2" class="view" id="task_20">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан объект. Сделайте так, чтобы к нему можно было применить оператор spread и при этом возвращались
+                ключи объекта.</p>
+        </td>
+        <td colspan="2" class="view" id="task_21">
+        </td>
+    </tr>
+</table>
+<h2>Оператор spread и строки</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию, которая параметром будет принимать строку, а возвращать массив ее символов.</p>
+        </td>
+        <td colspan="2" class="view" id="task_22">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Сделайте функцию, которая параметром будет принимать строку и выполнять переворот этой строки так,
+                чтобы символы шли в обратном порядке.</p>
+        </td>
+        <td colspan="2" class="view" id="task_23">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дано число. Найдите сумму цифр этого числа.</p>
+        </td>
+        <td colspan="2" class="view" id="task_24">
+        </td>
+    </tr>
+</table>
+<h2>Применение</h2>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Даны абзацы и кнопка. Сделайте так, чтобы по нажатию на кнопку в конец каждого абзаца добавился его
+                порядковый номер.</p>
+        </td>
+        <td colspan="2" class="view" id="task_25">
+            <p>абзац_1</p>
+            <p>абзац_2</p>
+            <p>абзац_3</p>
+            <button>добавить порядковый номер</button>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let arr = [1, 2, 3, 4, 5];
@@ -327,6 +393,83 @@
     let p = document.createElement('p');
     p.textContent = 'сумма цифр = ' + sum;
     document.querySelector('#task_18').appendChild(p);
+
+    let colElem = new Set();
+    let li = document.createElement('li');
+    li.textContent = 'text1';
+    colElem.add(li);
+    p = document.createElement('p');
+    p.textContent = 'text2';
+    colElem.add(p);
+    let p2 = document.createElement('p');
+    p2.textContent = 'text3';
+    colElem.add(p2);
+
+    arr = [...colElem];
+    console.log(arr);
+
+    obj = {
+        1: 'a',
+        2: 'b',
+        3: 'c',
+        [Symbol.iterator]: function* () {
+            for (let key in this) {
+                yield this[key];
+            }
+        }
+    };
+    p = document.createElement('p');
+    arr = [...obj];
+    p.innerHTML = arr;
+    document.querySelector('#task_20').appendChild(p);
+
+    obj = {
+        1: 'a',
+        2: 'b',
+        3: 'c',
+        [Symbol.iterator]: function* () {
+            for (let key in this) {
+                yield key;
+            }
+        }
+    };
+    p = document.createElement('p');
+    arr = [...obj];
+    p.innerHTML = arr;
+    document.querySelector('#task_21').appendChild(p);
+
+    function lineToArray(line) {
+        return [...line];
+    }
+
+    p = document.createElement('p');
+    p.innerHTML = lineToArray('text!');
+    document.querySelector('#task_22').appendChild(p);
+
+    function lineToReverseArray(line) {
+        return [...line].reverse();
+    }
+
+    p = document.createElement('p');
+    p.innerHTML = lineToReverseArray('text!');
+    document.querySelector('#task_23').appendChild(p);
+
+
+    number = 123;
+    sum = 0;
+    p = document.createElement('p');
+    [...String(number)].forEach(el => sum += +el);
+    p.innerHTML = sum
+    document.querySelector('#task_24').appendChild(p);
+
+    let td = document.querySelector('#task_25');
+    let button = td.querySelector('button');
+    ps = td.querySelectorAll('p');
+    button.addEventListener('click', () => {
+        for (let [key, {innerHTML}] of ps.entries()) {
+            ps[key].innerHTML = innerHTML + ' key - ' + key;
+        }
+    });
 </script>
 </body>
 </html>
