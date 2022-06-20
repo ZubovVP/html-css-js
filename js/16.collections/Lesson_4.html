@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_4(45)</title>
+    <title>Lesson_4(45, 46)</title>
 </head>
 <style>
     .description {
@@ -48,7 +48,80 @@
         </td>
     </tr>
 </table>
-
+<h1>Преобразование JSON в структуру данных JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дана строка в формате JSON, содержащая массив с числами: </p>
+            <p>
+                let json = '[1,2,3,4,5]';
+            </p>
+            <p>
+                Преобразуйте эту строку в настоящий массив JavaScript и найдите сумму чисел этого массива.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_1">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана строка в формате JSON, содержащая объект с данными: </p>
+            <p>
+                let json = `{
+                "data1": [1,2,3],
+                "data2": [4,5,6],
+                "data3": [7,8,9]
+                }`;
+            </p>
+            <p>
+                Найдите сумму чисел из представленных данных.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_2">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана строка в формате JSON, содержащая имена юзеров:
+            <p>
+                let json = '["user1","user2","user3","user4","user5"]'; </p>
+            <p>
+                Выведите эти имена в виде списка ul.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дана строка в формате JSON, содержащая массив с данными работников:</p>
+            <p>
+                let json = `[
+                {
+                "name": "user1",
+                "age": 25,
+                "salary": 1000
+                },
+                {
+                "name": "user2",
+                "age": 26,
+                "salary": 2000
+                },
+                {
+                "name": "user3",
+                "age": 27,
+                "salary": 3000
+                }
+                ]`;
+            </p>
+            <p>
+                Выведите этих работников на экран в виде HTML таблицы.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_4">
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
 
@@ -89,6 +162,68 @@
         '"c": "eee"' +
         '}';
     console.log(IsJsonString(json));
+
+    json = '[1,2,3,4,5]';
+
+    arr = JSON.parse(json);
+    let p = document.createElement('p');
+    let sum = 0;
+    arr.forEach(el => sum += +el);
+    p.textContent = sum;
+    document.querySelector('#task_1').appendChild(p);
+
+    json = `{
+	"data1": [1,2,3],
+	"data2": [4,5,6],
+	"data3": [7,8,9]
+	}`;
+    sum = 0;
+    obj = JSON.parse(json);
+    for (let key in obj) {
+        obj[key].forEach(value => sum += +value);
+    }
+    p = document.createElement('p');
+    p.textContent = sum;
+    document.querySelector('#task_2').appendChild(p);
+
+    let ul = document.createElement('ul');
+    json = '["user1","user2","user3","user4","user5"]';
+    JSON.parse(json).forEach(user => {
+        let li = document.createElement('li');
+        li.textContent = user;
+        ul.appendChild(li);
+    });
+    document.querySelector('#task_3').appendChild(ul);
+
+    let table = document.createElement('table');
+    json = `[
+	{
+		"name": "user1",
+		"age": 25,
+		"salary": 1000
+	},
+	{
+		"name": "user2",
+		"age": 26,
+		"salary": 2000
+	},
+	{
+		"name": "user3",
+		"age": 27,
+		"salary": 3000
+	}
+]`;
+    for (let emp of JSON.parse(json)) {
+        let td = document.createElement('td');
+        for (let key in emp) {
+            let li = document.createElement('li');
+            li.textContent = emp[key];
+            td.appendChild(li);
+        }
+        table.appendChild(td);
+    }
+    document.querySelector('#task_4').appendChild(table);
+
 </script>
 </body>
 </html>
