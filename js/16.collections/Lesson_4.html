@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_4(45, 46)</title>
+    <title>Lesson_4(45, 46, 47, 48)</title>
 </head>
 <style>
     .description {
@@ -122,6 +122,132 @@
         </td>
     </tr>
 </table>
+<h1>Преобразование структур данных JavaScript в формат JSON</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан следующий массив:</p>
+            <p>
+                let json = ['user1', 'user2', 'user3', 'user4', 'user5'];
+            </p>
+            <p>
+                Преобразуйте этот массив в формат JSON.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_5">
+        </td>
+    </tr>
+    <tr>
+        <td class="description" id="task_6_desc">
+            <p>Дан следующий HTML:</p>
+            <p>
+            <ul>
+                <li>city1</li>
+                <li>city2</li>
+                <li>city3</li>
+                <li>city4</li>
+            </ul>
+            </p>
+            <p>
+                Получите список городов в формате JSON.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_6">
+        </td>
+    </tr>
+    <tr>
+        <td class="description" id="task_7_desc">
+            <p>Дан следующий HTML:</p>
+            <p>
+            <table>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                </tr>
+                <tr>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                </tr>
+                <tr>
+                    <td>Петров</td>
+                    <td>Петр</td>
+                    <td>Петрович</td>
+                </tr>
+                <tr>
+                    <td>Сидоров</td>
+                    <td>Сидр</td>
+                    <td>Сидорович</td>
+                </tr>
+            </table>
+            </p>
+            <p>
+                Получите список городов в формате JSON.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_7">
+        </td>
+    </tr>
+</table>
+<h1>Изменение данных в JSON на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>Дан следующий JSON:</p>
+            <p>
+                let json = '["user1","user2","user3","user4","user5"]';
+            </p>
+            <p>
+                Добавьте в конец строки еще одного юзера.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_8">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан следующий JSON:</p>
+            <p>
+                let json = '["user1","user2","user3","user4","user5"]';
+            </p>
+            <p>
+                Поменяйте имя второго юзера.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_9">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>Дан следующий JSON:</p>
+            <p>
+                let json = `[
+                {
+                "name": "user1",
+                "age": 25,
+                "salary": 1000
+                },
+                {
+                "name": "user2",
+                "age": 26,
+                "salary": 2000
+                },
+                {
+                "name": "user3",
+                "age": 27,
+                "salary": 3000
+                }
+                ]`;
+            </p>
+            <p>
+                Добавьте в эту строку еще одного работника.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_10">
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
 
@@ -223,6 +349,80 @@
         table.appendChild(td);
     }
     document.querySelector('#task_4').appendChild(table);
+
+    json = ['user1', 'user2', 'user3', 'user4', 'user5'];
+    p = document.createElement('p');
+
+    p.textContent = JSON.stringify(json).toString();
+    document.querySelector('#task_5').appendChild(p);
+
+    p = document.createElement('p');
+
+    arr = [];
+    for (let city of document.querySelector('#task_6_desc').querySelectorAll('li')) {
+        arr.push(city.textContent);
+    }
+    p = document.createElement('p');
+
+    p.textContent = JSON.stringify(arr).toString();
+    document.querySelector('#task_6').appendChild(p);
+
+    arr = [];
+    let trs = document.querySelector('#task_7_desc').querySelectorAll('tr');
+    for (let i = 1; i < trs.length; i++) {
+        let tds = trs[i].querySelectorAll('td');
+        let obj = {
+            surname: tds[0].textContent,
+            name: tds[1].textContent,
+            patronymic: tds[2].textContent
+        }
+        arr.push(obj);
+    }
+    p = document.createElement('p');
+    p.textContent = JSON.stringify(arr).toString();
+    document.querySelector('#task_7').appendChild(p);
+
+    json = '["user1","user2","user3","user4","user5"]';
+    arr = JSON.parse(json);
+    arr.push('user6');
+    p = document.createElement('p');
+    p.textContent = JSON.stringify(arr).toString();
+    document.querySelector('#task_8').appendChild(p);
+
+    json = '["user1","user2","user3","user4","user5"]';
+    arr = JSON.parse(json);
+    arr[1] = 'user222';
+    p = document.createElement('p');
+    p.textContent = JSON.stringify(arr).toString();
+    document.querySelector('#task_9').appendChild(p);
+
+    json = `[
+	{
+		"name": "user1",
+		"age": 25,
+		"salary": 1000
+	},
+	{
+		"name": "user2",
+		"age": 26,
+		"salary": 2000
+	},
+	{
+		"name": "user3",
+		"age": 27,
+		"salary": 3000
+	}
+]`;
+    arr = JSON.parse(json);
+    obj = {
+        name: 'user4',
+        age: '30',
+        salary: '5000',
+    };
+    arr.push(obj);
+    p = document.createElement('p');
+    p.textContent = JSON.stringify(arr).toString();
+    document.querySelector('#task_10').appendChild(p);
 
 </script>
 </body>
