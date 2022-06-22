@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(49)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Основы работы с локальным хранилищем в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Напишите скрипт, который сохранит в локальном хранилище три числа под тремя разными ключами. Запустите
+                этот скрипт, чтобы данные сохранились. Затем напишите скрипт, который получит ваши три числа из
+                локального хранилища и найдет их сумму. Запустите второй скрипт и убедитесь в его работоспособности.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_1">
+            <p>Инпуты на ввод</p>
+            <input id="input_1" placeholder="введите число №1">
+            <input id="input_2" placeholder="введите число №2">
+            <input id="input_3" placeholder="введите число №3">
+            <button id="but_1">Записать инпуты в хранилище</button>
+            <p>Инпуты на вывод</p>
+            <input id="input_4" placeholder="результат" readonly>
+            <input id="input_5" placeholder="результат" readonly>
+            <input id="input_6" placeholder="результат" readonly>
+            <button id="but_2">Получить инпуты из хранилища</button>
+        </td>
+    </tr>
+</table>
+<h1>Однократное сохранение</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                По заходу пользователя на сайт запишите в локальное хранилище текущий момент времени. Затем по
+                повторному заходу выведите, сколько прошло времени с предыдущего захода пользователя на сайт.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_2">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                По заходу пользователя на сайт спросите у него дату рождения. При следующем заходе пользователя на сайт,
+                если у него в этот день будет День Рождения - поздравьте его с этим праздником.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_3">
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан инпут. По потери фокуса в этом инпуте сохраните его значение в локальное хранилище. При следующем
+                заходе пользователя на страницу установите в инпуте сохраненный ранее текст.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_4">
+            <input id="input_4_1">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let td = document.querySelector('#task_1');
+    td.querySelector('#but_1').addEventListener('click', () => {
+        let inp_1 = td.querySelector('#input_1');
+        let inp_2 = td.querySelector('#input_2');
+        let inp_3 = td.querySelector('#input_3');
+        if (inp_1.value != null && inp_1.value != "") {
+            localStorage.setItem('inp1', inp_1.value);
+        }
+        if (inp_2.value != null && inp_2.value != "") {
+            localStorage.setItem('inp2', inp_2.value);
+        }
+        if (inp_3.value != null && inp_3.value != "") {
+            localStorage.setItem('inp3', inp_3.value);
+        }
+    });
+
+    td.querySelector('#but_2').addEventListener('click', () => {
+        let inp_4 = td.querySelector('#input_4');
+        let inp_5 = td.querySelector('#input_5');
+        let inp_6 = td.querySelector('#input_6');
+        inp_4.value = localStorage.getItem('inp1');
+        inp_5.value = localStorage.getItem('inp2');
+        inp_6.value = localStorage.getItem('inp3');
+    });
+
+    function checkTime(p) {
+        let time = localStorage.getItem('time');
+        let now = new Date();
+        if (!time) {
+            localStorage.setItem('time', now.getTime());
+            p.textContent = 'Первый заход на сайт ' + now.getTime();
+        } else {
+            p.textContent = ('После первого захода прошло ' + (now.getTime() - time) / 1000 + ' секунд с предыдущего захода.');
+        }
+    }
+
+    let p = document.createElement('p');
+    document.querySelector('#task_2').appendChild(p);
+    checkTime(p);
+
+
+    if (!localStorage.getItem('bd')) {
+        let years = prompt('Сколько вам лет?');
+        localStorage.setItem('bd', years);
+    }
+    let date = localStorage.getItem('bd');
+    p = document.createElement('p');
+    p.textContent = date;
+    document.querySelector('#task_3').appendChild(p);
+    let d1 = new Date(date);
+    let d2 = new Date(date);
+    if (d1.getFullYear() == d2.getFullYear() && d1.getMonth() == d2.getMonth() && d1.getDate() == d2.getDate()) {
+        alert('Поздравляем с днём рождения!');
+    }
+
+    let inp = document.querySelector('#input_4_1');
+    if(localStorage.getItem('save_input') != null){
+        inp.value = localStorage.getItem('save_input');
+    }
+    inp.addEventListener('blur', function () {
+        localStorage.setItem('save_input', this.value);
+    });
+</script>
+</body>
+</html>
