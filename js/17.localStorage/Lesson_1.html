@@ -82,6 +82,46 @@
         </td>
     </tr>
 </table>
+<h1>Перезапись данных</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                По заходу пользователя на сайт запишите в локальное хранилище текущий момент времени. Затем по
+                повторному заходу выведите, сколько прошло времени с предыдущего захода пользователя на сайт.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_5">
+            <p>Количество обновления страницы </p>
+        </td>
+    </tr>
+</table>
+<h1>Удаление данных</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу. Сделайте так, чтобы счетчик обнулялся после того, как дойдет до 100.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_6">
+            <p>Количество обновления страницы </p>
+        </td>
+    </tr>
+</table>
+<h1>Удаление всех данных</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу. Сделайте так, чтобы счетчик обнулялся после того, как дойдет до 100.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_7">
+            <button>Очистить хранилище</button>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let td = document.querySelector('#task_1');
@@ -126,7 +166,7 @@
 
 
     if (!localStorage.getItem('bd')) {
-        let years = prompt('Сколько вам лет?');
+        let years = prompt('Дата рождения?');
         localStorage.setItem('bd', years);
     }
     let date = localStorage.getItem('bd');
@@ -140,12 +180,40 @@
     }
 
     let inp = document.querySelector('#input_4_1');
-    if(localStorage.getItem('save_input') != null){
+    if (localStorage.getItem('save_input') != null) {
         inp.value = localStorage.getItem('save_input');
     }
     inp.addEventListener('blur', function () {
         localStorage.setItem('save_input', this.value);
     });
+
+    let count = localStorage.getItem('count');
+    if (count === null) {
+        localStorage.setItem('count', 1);
+        count = 1;
+    } else {
+        localStorage.setItem('count', Number(count) + 1);
+    }
+
+    p = document.querySelector('#task_5 p');
+    p.textContent += count;
+
+    let countModify = localStorage.getItem('countModify');
+    if (countModify === null || countModify >= 100) {
+        localStorage.setItem('countModify', 1);
+        countModify = 1;
+    } else {
+        localStorage.setItem('countModify', Number(countModify) + 1);
+    }
+
+    p = document.querySelector('#task_6 p');
+    p.textContent += countModify;
+
+    document.querySelector('#task_7 button').addEventListener('click', () => {
+        localStorage.clear();
+        location.reload();
+    });
+
 </script>
 </body>
 </html>
