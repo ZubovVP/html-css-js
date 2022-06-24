@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(50)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Хранение массивов и объектов в локальном хранилище</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Даны инпуты и кнопка. По нажатию на кнопку получите тексты всех инпутов в виде массива и сохраните
+                этот массив в локальное хранилище.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_1">
+            <input placeholder="введите число №1">
+            <input placeholder="введите число №2">
+            <input placeholder="введите число №3">
+            <button id="but_1">Записать инпуты в хранилище</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу. Сделайте так, чтобы при следующем заходе на страницу в инпутах
+                стояли сохраненные в локальном хранилище значения.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_2">
+            <input placeholder="введите число №1">
+            <input placeholder="введите число №2">
+            <input placeholder="введите число №3">
+            <button id="but_2">Записать инпуты в хранилище</button>
+        </td>
+    </tr>
+</table>
+<h1>Модификация хранимых структур</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан следующий массив с юзерами:
+            </p>
+            <p>
+                let users = [
+                {
+                surname: 'surname1',
+                name: 'name1',
+                age: 31,
+                },
+                {
+                surname: 'surname2',
+                name: 'name2',
+                age: 32,
+                },
+                {
+                surname: 'surname3',
+                name: 'name3',
+                age: 33,
+                },
+                ];
+            </p>
+            <p>
+                Сохраните его в локальное хранилище. Затем сделайте 3 инпута и кнопку. Пусть в инпуты вводятся фамилия,
+                имя и возраст. По нажатию на кнопку запишите нового юзера в конец сохраненного в хранилище массива.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_3">
+            <input placeholder="surname">
+            <input placeholder="name">
+            <input placeholder="age">
+            <button id="but_3">Записать пользователя</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let inputs = document.querySelectorAll('#task_1 input');
+    let but = document.querySelector('#but_1');
+    but.addEventListener('click', () => {
+        let arr = [];
+        inputs.forEach(inp => arr.push(inp.value));
+        localStorage.setItem('inputs_value', JSON.stringify(arr));
+        location.reload();
+    });
+    console.log('inputs values = ' + JSON.parse(localStorage.getItem('inputs_value')));
+
+    inputs = document.querySelectorAll('#task_2 input');
+    let arr = JSON.parse(localStorage.getItem('inputs_value_new'));
+    if (arr != null) {
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = arr[i];
+        }
+    }
+
+    but = document.querySelector('#but_2');
+    but.addEventListener('click', () => {
+        let arr = [];
+        inputs.forEach(inp => arr.push(inp.value));
+        localStorage.setItem('inputs_value_new', JSON.stringify(arr));
+        location.reload();
+    });
+
+    let users = [
+        {
+            surname: 'surname1',
+            name: 'name1',
+            age: 31,
+        },
+        {
+            surname: 'surname2',
+            name: 'name2',
+            age: 32,
+        },
+        {
+            surname: 'surname3',
+            name: 'name3',
+            age: 33,
+        },
+    ];
+
+    if (localStorage.getItem('users') == null) {
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    inputs = document.querySelectorAll('#task_3 input');
+    but = document.querySelector('#but_3');
+    but.addEventListener('click', () => {
+        let arr = [];
+        inputs.forEach(inp => arr.push(inp.value));
+        let old_users = JSON.parse(localStorage.getItem('users'));
+        let obj = {
+            surname: inputs[0].value,
+            name: inputs[1].value,
+            age: inputs[2].value,
+        };
+        old_users.push(obj);
+        localStorage.setItem('users', JSON.stringify(old_users));
+        location.reload();
+    });
+    console.log(JSON.parse(localStorage.getItem('users')));
+
+
+</script>
+</body>
+</html>
