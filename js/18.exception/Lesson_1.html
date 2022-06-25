@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(51)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Обработка исключительных ситуаций в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан код, который записывает некоторую строку в локальное хранилище:
+            </p>
+            <p>
+                let str = 'некая строка';
+                localStorage.setItem('key', str);
+            </p>
+            <p>
+                Оберните этот код в конструкцию try-catch. В блоке catch выведите сообщение о переполнении хранилища.
+                Проверьте работу вашего кода для строки размером менее 5 мб и для строки большего размера.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_1">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан JSON, внутри которого хранится массив. Если этот JSON корректный, то выведите элементы массива в
+                виде списка
+                ul. Если же JSON не корректный, выведите на экран сообщение о том, что на странице случилась ошибка.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_2">
+
+        </td>
+    </tr>
+</table>
+<h1>Как разрабатывать с try-catch</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан следующий код:
+            </p>
+            <p>
+                let str = 'некая строка';
+                localStorage.setItem('key', str);
+                alert('успешно сохранено!');
+            </p>
+            <p>
+                Что не так с этим кодом? Исправьте недостатки этого кода.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_3">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан следующий код:
+            </p>
+            <p>
+                let json = '[1,2,3,4,5]';
+                let arr = JSON.parse(json);
+                let sum = 0;
+                for (let elem of arr) {
+                sum += +elem;
+                }
+                alert(sum);
+            </p>
+            <p>
+                Что не так с этим кодом? Исправьте недостатки этого кода.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_4">
+
+        </td>
+    </tr>
+</table>
+<h1>Вложенность кода</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дана функция, преобразующая JSON в массив:
+            </p>
+            <p>
+                function getArr(json) {
+                return JSON.parse(json);
+                }
+            </p>
+            <p>
+                В следующем коде из JSON получают массив:
+            </p>
+            <p>
+                let arr = getArr('[1,2,3,4,5]');
+                console.log(arr);
+            </p>
+            <p>
+                Оберните вызов функции в конструкцию try-catch.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_5">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let str = '+'
+    for (let x = 0; x <= 6 * 10 ** 6; x++) {
+        str += '+';
+    }
+    let p = document.createElement('p');
+    try {
+        p.textContent = str;
+        localStorage.setItem('test', str);
+    } catch (error) {
+        p.textContent = 'невозможно довить в локальное хранилище информацию более 5 мбайт';
+    }
+    document.querySelector('#task_1').appendChild(p);
+
+
+    try {
+        let arr = JSON.parse('[1, 2, 3, 4, 5, "a", "b"]');
+        let ul = document.createElement('ul');
+        for (el of arr) {
+            let li = document.createElement('li');
+            li.textContent = el;
+            ul.appendChild(li);
+            document.querySelector('#task_2').appendChild(ul);
+        }
+    } catch (error) {
+        let p = document.createElement('p');
+        p.textContent = 'невозможно выполнить операцию разбора JSON';
+        document.querySelector('#task_2').appendChild(p);
+    }
+
+
+    str = 'некая строка';
+    p = document.createElement('p');
+    try {
+        localStorage.setItem('key', str);
+        p.textContent = 'успешно сохранено!';
+    } catch (error) {
+        p.textContent = 'невозможно довить в локальное хранилище информацию более 5 мбайт';
+    }
+    document.querySelector('#task_3').appendChild(p);
+
+
+    let json = '[1,2,3,4,5]';
+    p = document.createElement('p');
+    try {
+        let arr = JSON.parse(json);
+        let sum = 0;
+        for (let elem of arr) {
+            sum += +elem;
+        }
+        p.textContent = sum;
+    } catch (error) {
+        p.textContent = 'невозможно выполнить операцию разбора JSON';
+    }
+    document.querySelector('#task_4').appendChild(p);
+
+    function getArr(json) {
+        return JSON.parse(json);
+    }
+    p = document.createElement('p');
+    try {
+        arr = getArr('[1,2,3,4,5]');
+        p.textContent = arr;
+    } catch (error) {
+        p.textContent = 'невозможно выполнить операцию разбора JSON в методе getArr';
+    }
+    document.querySelector('#task_5').appendChild(p);
+</script>
+</body>
+</html>
