@@ -128,6 +128,57 @@
         </td>
     </tr>
 </table>
+<h1>Объект с ошибкой</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Специально создайте исключительную ситуацию, связанную с попыткой разбора некорректного JSON.
+                Выведите в консоль имя и текст этой ошибки.
+            </p>
+
+        </td>
+        <td colspan="2" class="view" id="task_6">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Специально создайте исключительную ситуацию, связанную с переполнением локального хранилища.
+                Выведите в консоль имя и текст этой ошибки.
+            </p>
+
+        </td>
+        <td colspan="2" class="view" id="task_7">
+
+        </td>
+    </tr>
+</table>
+<h1>Применение типа исключения</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Используйте функцию saveData, а затем не подсматривая в код реализуйте описанную мною обработку ошибок.
+            </p>
+
+        </td>
+        <td colspan="2" class="view" id="task_8">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Специально по очереди создайте исключительные ситуации, которые могут возникнуть в функции saveData.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_9">
+
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
     let str = '+'
@@ -188,6 +239,7 @@
     function getArr(json) {
         return JSON.parse(json);
     }
+
     p = document.createElement('p');
     try {
         arr = getArr('[1,2,3,4,5]');
@@ -196,6 +248,66 @@
         p.textContent = 'невозможно выполнить операцию разбора JSON в методе getArr';
     }
     document.querySelector('#task_5').appendChild(p);
+
+    p = document.createElement('p');
+    try {
+        arr = getArr('[1,2,3,4,5]');
+        p.textContent = arr;
+    } catch (error) {
+        p.textContent = 'имя ошибки - ' + error.name + '. Текст ошибки ' + error.message;
+    }
+    document.querySelector('#task_6').appendChild(p);
+
+    str = '+'
+    for (let x = 0; x <= 6 * 10 ** 6; x++) {
+        str += '+';
+    }
+    p = document.createElement('p');
+    try {
+        p.textContent = str;
+        localStorage.setItem('test', str);
+    } catch (error) {
+        p.textContent = 'имя ошибки - ' + error.name + '. Текст ошибки ' + error.message;
+    }
+    document.querySelector('#task_7').appendChild(p);
+
+    function saveData(json) {
+        let arr = JSON.parse(json);
+
+        for (let i = 0; i < arr.length; i++) {
+            localStorage.setItem(i, arr[i]);
+        }
+    }
+
+    p = document.createElement('p');
+    try {
+        saveData('[1,2,3,4,5]');
+        p.textContent = 'удалось сохранить данные JSON';
+    } catch (error) {
+        if (error.name == 'QuotaExceededError') {
+            p.textContent = 'закончилось место в хранилище';
+
+        }
+        if (error.name == 'SyntaxError') {
+            p.textContent = 'некорректный JSON';
+        }
+    }
+    document.querySelector('#task_8').appendChild(p);
+
+    p = document.createElement('p');
+    try {
+        saveData('[1,2,3,4,5}');
+        p.textContent = 'удалось сохранить данные JSON';
+    } catch (error) {
+        if (error.name == 'QuotaExceededError') {
+            p.textContent = 'закончилось место в хранилище';
+
+        }
+        if (error.name == 'SyntaxError') {
+            p.textContent = 'некорректный JSON';
+        }
+    }
+    document.querySelector('#task_9').appendChild(p);
 </script>
 </body>
 </html>
