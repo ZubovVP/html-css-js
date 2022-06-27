@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(52)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Выбрасывание исключительных ситуаций в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                В JavaScript попытка извлечь корень из отрицательного числа не приводит к выбрасыванию исключения:
+            </p>
+            <p>
+                let result = Math.sqrt(-1);
+                console.log(result); // выведет NaN
+            </p>
+            <p>
+                Напишите свою функцию, которая будет извлекать корень из числа и при этом выбрасывать исключение,
+                если корень извлекается из отрицательного числа.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_1">
+            <input type="number">
+            <button id="but_1">извлечь</button>
+        </td>
+    </tr>
+</table>
+<h1>Типы исключений</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Выбросите исключение с типом TypeError.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_2">
+            <button id="but_2">Выбросить исключение</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Выбросите исключение с типом SyntaxError и RangeError.
+                Поймайте эти исключения с помощью одного блока try.
+                В блоке catch выведите разные сообщения об ошибке для исключений разных типов.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_3">
+            <button id="but_3_1">Выбросить исключение SyntaxError</button>
+            <button id="but_3_2">Выбросить исключение RangeError</button>
+
+        </td>
+    </tr>
+</table>
+
+<script>
+    "use strict";
+
+
+    function mySqrt(number) {
+        if (number < 0) {
+            throw new Error('Нельзя извлекать квадратный корень из отрицательного числа');
+        } else {
+            return Math.sqrt(number);
+        }
+    }
+
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let n = document.querySelector('#task_1 input').value;
+        let p = document.createElement('p');
+        p.textContent = mySqrt(n);
+        document.querySelector('#task_1').appendChild(p);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', () => {
+        try {
+            throw new TypeError('Исключение!');
+        } catch (error) {
+            console.log(error.name);
+            console.log(error.message);
+        }
+    });
+
+    function testException(arr) {
+        try {
+            if (!Array.isArray(arr)) {
+                throw new SyntaxError('Был передан не массив');
+            }
+
+            for (let i = 0; i < 5; i++) {
+                let n = arr[i];
+                if (n == undefined) {
+                    throw new RangeError('Недостаточно элементов в массиве');
+                }
+            }
+        } catch (error) {
+            if (error.name == 'SyntaxError') {
+                console.log('SyntaxError');
+                console.log(error.message);
+            } else if (error.name == 'RangeError') {
+                console.log('RangeError');
+                console.log(error.message);
+            } else {
+                console.log(error.name);
+                console.log(error.message);
+            }
+        }
+    }
+
+    document.querySelector('#but_3_1').addEventListener('click', () => {
+        testException({1: 1, 2: 2, 3: 3});
+    });
+    document.querySelector('#but_3_2').addEventListener('click', () => {
+        let arr = [1, 2, 3];
+        testException(arr);
+    });
+</script>
+</body>
+</html>
