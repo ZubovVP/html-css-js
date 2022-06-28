@@ -69,15 +69,41 @@
         <td colspan="2" class="view" id="task_3">
             <button id="but_3_1">Выбросить исключение SyntaxError</button>
             <button id="but_3_2">Выбросить исключение RangeError</button>
-
         </td>
     </tr>
 </table>
-
+<h1>Свои типы исключений</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Выше я мы сделали функцию, выбрасывающую исключение при делении на ноль.
+                Переделайте эту функцию так, чтобы она выбрасывала исключение с каким-нибудь придуманными
+                нами типом, например, DivisionByZeroError.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_4">
+            <input type="number" id="one">
+            <input type="number" id="two">
+            <button id="but_4">Разделить</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Выше вы делали функцию, выбрасывающую исключение при попытке извлечь корень из отрицательного числа.
+                Переделайте вашу функцию так, чтобы она выбрасывала исключение с придуманным вами типом. Хорошо
+                подумайте над названием исключения, чтобы это название было удачным.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_5">
+            <input type="number" id="three">
+            <button id="but_5">Вычислить квадратный корень</button>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
-
-
     function mySqrt(number) {
         if (number < 0) {
             throw new Error('Нельзя извлекать квадратный корень из отрицательного числа');
@@ -134,6 +160,46 @@
     document.querySelector('#but_3_2').addEventListener('click', () => {
         let arr = [1, 2, 3];
         testException(arr);
+    });
+
+    function div(a, b) {
+        if (b != 0) {
+            return a / b;
+        } else {
+            throw {name: 'DivisionByZeroError', message: 'делить на ноль нельзя'};
+        }
+    }
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let p = document.createElement('p');
+        let one = document.querySelector('#one');
+        let two = document.querySelector('#two');
+        try {
+            p.textContent = div(one.value, two.value);
+            document.querySelector('#task_4').appendChild(p);
+
+        } catch (error) {
+            p.textContent = error.name + ' ' + error.message;
+            document.querySelector('#task_4').appendChild(p);
+        }
+    });
+
+    function mySqrtNew(number) {
+        if (number < 0) {
+            throw {name: 'ImpossibleException', message:'Нельзя извлекать квадратный корень из отрицательного числа'};
+        } else {
+            return Math.sqrt(number);
+        }
+    }
+    document.querySelector('#but_5').addEventListener('click', () => {
+        let p = document.createElement('p');
+        let number = document.querySelector('#three');
+        try {
+            p.textContent = mySqrtNew(number.value);
+            document.querySelector('#task_5').appendChild(p);
+        } catch (error) {
+            p.textContent = error.name + ' ' + error.message;
+            document.querySelector('#task_5').appendChild(p);
+        }
     });
 </script>
 </body>
