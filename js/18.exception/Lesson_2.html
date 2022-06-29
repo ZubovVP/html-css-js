@@ -151,6 +151,39 @@
         </td>
     </tr>
 </table>
+<h1>Проброс исключений</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан следующий код:
+            </p>
+            <p>
+                try {
+                let arr = JSON.parse(json);
+
+                for (let i = 0; i < arr.length; i++) {
+                localStorage.setItem(i, arr[i]);
+                }
+                } catch (error) {
+                if (error.name == 'QuotaExceededError') {
+                alert('закончилось место в хранилище');
+                }
+
+                if (error.name == 'SyntaxError') {
+                alert('некорректный JSON');
+                }
+                }
+            </p>
+            <p>
+                Что не так с этим кодом? Исправьте его на более удачный.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_8">
+
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
 
@@ -313,7 +346,7 @@
     }
     document.querySelector('#task_7').appendChild(p);
 
-    function isArray(elem){
+    function isArray(elem) {
         if (elem != null) {
             if (!Array.isArray(elem)) {
                 throw {
@@ -324,7 +357,22 @@
         }
     }
 
+    try {
+        let arr = JSON.parse(json);
 
+        for (let i = 0; i < arr.length; i++) {
+            localStorage.setItem(i, arr[i]);
+        }
+    } catch (error) {
+        if (error.name == 'QuotaExceededError') {
+            alert('закончилось место в хранилище');
+        } else if (error.name == 'SyntaxError') {
+            alert('некорректный JSON');
+        } else {
+            throw error;
+        }
+
+    }
 </script>
 </body>
 </html>
