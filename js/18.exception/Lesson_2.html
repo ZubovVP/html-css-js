@@ -102,8 +102,58 @@
         </td>
     </tr>
 </table>
+<h1>Пример применения</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Переделайте мой код так, чтобы функция getCost выбрасывала два типа исключений: если отсутствует цена
+                и если отсутствует количество. Хорошо подумайте над названиями этих исключений. В блоке catch выведите
+                разные сообщения об ошибке для исключений разных типов.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_6">
+            <div id="product" data-product="яблоко" data-price="1000">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Пусть к вам приходит JSON вот такого вида:
+            </p>
+            <p>
+                let json = `[
+                {
+                "name": "user1",
+                "age": 25,
+                "salary": 1000
+                },
+                {
+                "name": "user2",
+                "age": 26,
+                "salary": 2000
+                },
+                {
+                "name": "user3",
+                "age": 27,
+                "salary": 3000
+                }
+                ]`;
+            </p>
+            <p>
+                Проверьте этот JSON на общую корректность при разборе, а после разбора проверьте, что в результате
+                получается массив, а не что-то другое. Если в результате получается не массив - выбросите исключение.
+            </p>
+        </td>
+        <td colspan="2" class="view" id="task_7">
+
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
+
     function mySqrt(number) {
         if (number < 0) {
             throw new Error('Нельзя извлекать квадратный корень из отрицательного числа');
@@ -169,6 +219,7 @@
             throw {name: 'DivisionByZeroError', message: 'делить на ноль нельзя'};
         }
     }
+
     document.querySelector('#but_4').addEventListener('click', () => {
         let p = document.createElement('p');
         let one = document.querySelector('#one');
@@ -185,11 +236,12 @@
 
     function mySqrtNew(number) {
         if (number < 0) {
-            throw {name: 'ImpossibleException', message:'Нельзя извлекать квадратный корень из отрицательного числа'};
+            throw {name: 'ImpossibleException', message: 'Нельзя извлекать квадратный корень из отрицательного числа'};
         } else {
             return Math.sqrt(number);
         }
     }
+
     document.querySelector('#but_5').addEventListener('click', () => {
         let p = document.createElement('p');
         let number = document.querySelector('#three');
@@ -201,6 +253,78 @@
             document.querySelector('#task_5').appendChild(p);
         }
     });
+
+    function getCost(elem) {
+        if (elem.dataset.price !== undefined && elem.dataset.amount
+            !== undefined) {
+            return elem.dataset.price * elem.dataset.amount;
+        } else {
+            if (elem.dataset.price == undefined) {
+                throw {
+                    name: 'ProductPriceError',
+                    message: 'отсутствует цена у продукта'
+                };
+            } else {
+                throw {
+                    name: 'ProductAmountError',
+                    message: 'отсутствует количество у продукта'
+                };
+            }
+        }
+    }
+
+    let product = document.querySelector('#product');
+    let p = document.createElement('p');
+    try {
+        p.textContent = getCost(product);
+    } catch (error) {
+        p.textContent = error.name + ' ' + error.message;
+    }
+    document.querySelector('#task_6').appendChild(p);
+
+    let json = `[
+	{
+		"name": "user1",
+		"age": 25,
+		"salary": 1000
+	},
+	{
+		"name": "user2",
+		"age": 26,
+		"salary": 2000
+	},
+	{
+		"name": "user3",
+		"age": 27,
+		"salary": 3000
+	}
+]`;
+    p = document.createElement('p');
+    let arr;
+    try {
+        arr = JSON.parse(json);
+    } catch (error) {
+        p.textContent = error.name + ' ' + error.message;
+    }
+    try {
+        isArray(arr);
+    } catch (e) {
+        p.textContent = error.name + ' ' + error.message;
+    }
+    document.querySelector('#task_7').appendChild(p);
+
+    function isArray(elem){
+        if (elem != null) {
+            if (!Array.isArray(elem)) {
+                throw {
+                    name: 'NoArrayError',
+                    message: 'Полученный элемент не массив'
+                };
+            }
+        }
+    }
+
+
 </script>
 </body>
 </html>
