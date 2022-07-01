@@ -24,7 +24,136 @@
     }
 </style>
 <body>
-<h1>Обработка исключительных ситуаций в JavaScript</h1>
+<h1>Основы работы с терминалом</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Вручную создайте где-нибудь папку test, а в ней - папку dir и файл file.txt.
+                Разместите в подпапке какие-нибудь файлы и папки.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Запустите командную строку в папке test.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\Users\Asus>cd ..</p>
+            <p>C:\Users>cd ..</p>
+            <p>C:\>cd projects</p>
+            <p>C:\projects>cd html-css-js</p>
+            <p>C:\projects\html-css-js>cd js</p>
+            <p>C:\projects\html-css-js\js>cd 19.tools</p>
+            <p>C:\projects\html-css-js\js\19.tools>cd test</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды перейдите в папку dir.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>cd dir</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды просмотрите содержимое папки dir.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test\dir>dir</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды выйдите обратно в папку test.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test\dir>cd .. </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды удалите папку dir
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>rd /s dir</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды сделайте копию файла file.txt в файл copy.text.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>copy file.txt copy.txt</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды удалите файл file.txt.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>del file.txt</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды переименуйте файл copy.text в файл file.txt.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>rename copy.txt file.txt</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды создайте папку dir.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>mkdir dir</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды переместите файл file.txt в папку dir.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test>move file.txt dir</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                С помощью соответствующей команды создайте в папке dir файл test.txt.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>C:\projects\html-css-js\js\19.tools\test\dir>type nul > test.txt</p>
+        </td>
+    </tr>
+</table>
 <script>
     "use strict";
 </script>
