@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькуляторы фигур на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Основы работы с терминалом</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте калькулятор, который будет находить площадь и периметр квадрата.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_1" placeholder="введите сторону квадрата">
+            <button id="but_1">рассчитать</button>
+            <p id="perimeter_1"></p>
+            <p id="square_1"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте калькулятор, который будет находить площадь и периметр прямоугольника.
+
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_2_1" placeholder="сторона 1">
+            <input id="inp_2_2" placeholder="сторона 2">
+
+            <button id="but_2">рассчитать</button>
+            <p id="perimeter_2"></p>
+            <p id="square_2"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте калькулятор, который будет находить площадь круга и длину окружности.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_3" placeholder="радиус">
+            <button id="but_3">рассчитать</button>
+            <p id="perimeter_3"></p>
+            <p id="square_3"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    function calc_perimeter(side) {
+        if (side > 0) {
+            return side * 4;
+        }
+        return 0;
+    }
+
+    function calc_perimeter_rectangle(side_1, side_2) {
+        if (side_1 > 0 && side_2 > 0) {
+            return side_1 * 2 + side_2 * 2;
+        }
+        return 0;
+    }
+
+    function calc_square(side) {
+        if (side > 0) {
+            return side * side;
+        }
+        return 0;
+    }
+
+    function calc_square_rectangle(side_1, side_2) {
+        if (side_1 > 0 && side_2 > 0) {
+            return side_1 * side_2;
+        }
+        return 0;
+    }
+
+    function calc_square_circle(radius) {
+        if (radius > 0) {
+            return 3.14 * Math.sqrt(radius);
+        }
+        return 0;
+    }
+
+    function calc_length_circle(radius) {
+        if (radius > 0) {
+            return 2 * 3.14 * radius;
+        }
+        return 0;
+    }
+
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let perimeter_1 = document.querySelector('#perimeter_1');
+        let square_1 = document.querySelector('#square_1');
+        let inp_1 = document.querySelector('#inp_1');
+        perimeter_1.textContent = 'Периметр - ' + calc_perimeter(inp_1.value);
+        square_1.textContent ='Площадь - ' + calc_square(inp_1.value);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', () => {
+        let perimeter_2 = document.querySelector('#perimeter_2');
+        let square_2 = document.querySelector('#square_2');
+        let inp_2_1 = document.querySelector('#inp_2_1');
+        let inp_2_2 = document.querySelector('#inp_2_2');
+
+        perimeter_2.textContent = 'Периметр - ' + calc_perimeter_rectangle(inp_2_1.value, inp_2_2.value);
+        square_2.textContent ='Площадь - ' + calc_square_rectangle(inp_2_1.value, inp_2_2.value);
+    });
+
+    document.querySelector('#but_3').addEventListener('click', () => {
+        let perimeter_3 = document.querySelector('#perimeter_3');
+        let square_3 = document.querySelector('#square_3');
+        let inp_3 = document.querySelector('#inp_3');
+        perimeter_3.textContent = 'Площадь круга - ' + calc_square_circle(inp_3.value);
+        square_3.textContent ='Длина окружности - ' + calc_length_circle(inp_3.value);
+    });
+
+</script>
+</body>
+</html>
