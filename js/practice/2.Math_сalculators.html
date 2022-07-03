@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Математические калькуляторы на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Математические калькуляторы на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Напишите скрипт, который будет находить корни квадратного уравнения. Для этого сделайте 3 инпута,
+                в которые будут вводиться коэффициенты уравнения.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_1_1" type="number" placeholder="a">
+            <input id="inp_1_2" type="number" placeholder="b">
+            <input id="inp_1_3" type="number" placeholder="c">
+            <button id="but_1">рассчитать корни</button>
+            <p id="square_root_1"></p>
+            <p id="square_root_2"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    function discriminant(a, b, c) {
+        return Math.pow(Number(b), 2) - 4 * Number(a) * Number(c);
+    }
+
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let a = document.querySelector('#inp_1_1').value;
+        let b = document.querySelector('#inp_1_2').value;
+        let c = document.querySelector('#inp_1_3').value;
+
+        let root_1 = 'Коэффициент уравнения 1 = ' + (Math.sqrt(discriminant(a, b, c)) - b) / 2 * a;
+        let root_2 = 'Коэффициент уравнения 2  = ' + (-1 * Math.sqrt(discriminant(a, b, c)) - b) / 2 * a;
+
+        document.querySelector('#square_root_1').textContent = root_1;
+        document.querySelector('#square_root_2').textContent = root_2;
+    });
+
+</script>
+</body>
+</html>

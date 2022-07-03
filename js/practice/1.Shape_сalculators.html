@@ -33,7 +33,7 @@
             </p>
         </td>
         <td colspan="2" class="view">
-            <input id="inp_1" placeholder="введите сторону квадрата">
+            <input id="inp_1" type="number" placeholder="введите сторону квадрата">
             <button id="but_1">рассчитать</button>
             <p id="perimeter_1"></p>
             <p id="square_1"></p>
@@ -47,8 +47,8 @@
             </p>
         </td>
         <td colspan="2" class="view">
-            <input id="inp_2_1" placeholder="сторона 1">
-            <input id="inp_2_2" placeholder="сторона 2">
+            <input id="inp_2_1" type="number" placeholder="сторона 1">
+            <input id="inp_2_2" type="number" placeholder="сторона 2">
 
             <button id="but_2">рассчитать</button>
             <p id="perimeter_2"></p>
@@ -62,10 +62,24 @@
             </p>
         </td>
         <td colspan="2" class="view">
-            <input id="inp_3" placeholder="радиус">
+            <input id="inp_3" type="number" placeholder="радиус">
             <button id="but_3">рассчитать</button>
             <p id="perimeter_3"></p>
             <p id="square_3"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте калькулятор, который будет находить площадь треугольника по трем сторонам.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_4_1" type="number" placeholder="сторона 1">
+            <input id="inp_4_2" type="number" placeholder="сторона 2">
+            <input id="inp_4_3" type="number" placeholder="сторона 3">
+            <button id="but_4">рассчитать</button>
+            <p id="square_4"></p>
         </td>
     </tr>
 </table>
@@ -119,7 +133,7 @@
         let square_1 = document.querySelector('#square_1');
         let inp_1 = document.querySelector('#inp_1');
         perimeter_1.textContent = 'Периметр - ' + calc_perimeter(inp_1.value);
-        square_1.textContent ='Площадь - ' + calc_square(inp_1.value);
+        square_1.textContent = 'Площадь - ' + calc_square(inp_1.value);
     });
 
     document.querySelector('#but_2').addEventListener('click', () => {
@@ -129,7 +143,7 @@
         let inp_2_2 = document.querySelector('#inp_2_2');
 
         perimeter_2.textContent = 'Периметр - ' + calc_perimeter_rectangle(inp_2_1.value, inp_2_2.value);
-        square_2.textContent ='Площадь - ' + calc_square_rectangle(inp_2_1.value, inp_2_2.value);
+        square_2.textContent = 'Площадь - ' + calc_square_rectangle(inp_2_1.value, inp_2_2.value);
     });
 
     document.querySelector('#but_3').addEventListener('click', () => {
@@ -137,9 +151,30 @@
         let square_3 = document.querySelector('#square_3');
         let inp_3 = document.querySelector('#inp_3');
         perimeter_3.textContent = 'Площадь круга - ' + calc_square_circle(inp_3.value);
-        square_3.textContent ='Длина окружности - ' + calc_length_circle(inp_3.value);
+        square_3.textContent = 'Длина окружности - ' + calc_length_circle(inp_3.value);
     });
 
+    function calc_square_triangle(a, b, c) {
+        if (a > 0 && b > 0 && c > 0) {
+            return Math.sqrt(semi_perimeter(a, b, c) * (semi_perimeter(a, b, c) - a) * (semi_perimeter(a, b, c) - b) * (semi_perimeter(a, b, c) - c));
+        }
+        return 0;
+    }
+
+    function semi_perimeter(a, b, c) {
+        if (a > 0 && b > 0 && c > 0) {
+            return (Number(a) + Number(b) + Number(c)) / 2;
+        }
+        return 0;
+    }
+
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let square_3 = document.querySelector('#square_4');
+        let inp_4_1 = document.querySelector('#inp_4_1').value;
+        let inp_4_2 = document.querySelector('#inp_4_2').value;
+        let inp_4_3 = document.querySelector('#inp_4_3').value;
+        square_3.textContent = 'Площадь треугольника - ' + calc_square_triangle(inp_4_1, inp_4_2, inp_4_3);
+    });
 </script>
 </body>
 </html>
