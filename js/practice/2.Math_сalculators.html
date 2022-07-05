@@ -69,6 +69,51 @@
             <p id="result_3"></p>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите список
+                общих делителей этих двух чисел.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_4_1" type="number">
+            <input id="inp_4_2" type="number">
+
+            <button id="but_4">Показать делителей двух чисел</button>
+            <p id="result_4"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите наибольший общий
+                делитель этих двух чисел.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_5_1" type="number">
+            <input id="inp_5_2" type="number">
+
+            <button id="but_5">Показать максимальный делитель двух чисел</button>
+            <p id="result_5"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Даны 2 инпута и кнопка. В инпуты вводятся числа. По нажатию на кнопку выведите наименьшее число,
+                которое делится и на одно, и на второе из введенных чисел.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_6_1" type="number">
+            <input id="inp_6_2" type="number">
+
+            <button id="but_6">Показать наименьший делитель двух чисел</button>
+            <p id="result_6"></p>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -127,6 +172,52 @@
         p.textContent = divider(number);
     });
 
+    function combine_devider(num_1, num_2) {
+        let result = '';
+        let line_1 = divider(num_1).split(', ');
+        let line_2 = divider(num_2).split(', ');
+        for (let l of line_1) {
+            if (line_2.includes(l)) {
+                result += l + ' ';
+            }
+        }
+        return result;
+    }
+
+    document.querySelector('#but_4').addEventListener('click', () => {
+        let p = document.querySelector('#result_4');
+        p.textContent = '';
+        let number_1 = document.querySelector('#inp_4_1').value;
+        let number_2 = document.querySelector('#inp_4_2').value;
+        p.textContent = combine_devider(number_1, number_2);
+    });
+
+    function get_max_devider(line) {
+        return Math.max(...line.split(' '));
+    }
+
+    document.querySelector('#but_5').addEventListener('click', () => {
+        let p = document.querySelector('#result_5');
+        p.textContent = '';
+        let number_1 = document.querySelector('#inp_5_1').value;
+        let number_2 = document.querySelector('#inp_5_2').value;
+        p.textContent = get_max_devider(combine_devider(number_1, number_2));
+    });
+
+    function get_min_devider(line) {
+        let arr = line.split(' ');
+        arr.pop();
+        let min = Math.min(...arr);
+        return min;
+    }
+
+    document.querySelector('#but_6').addEventListener('click', () => {
+        let p = document.querySelector('#result_6');
+        p.textContent = '';
+        let number_1 = document.querySelector('#inp_6_1').value;
+        let number_2 = document.querySelector('#inp_6_2').value;
+        p.textContent = get_min_devider(combine_devider(number_1, number_2));
+    });
 </script>
 </body>
 </html>
