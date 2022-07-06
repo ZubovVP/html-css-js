@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализатор текста на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Математические калькуляторы на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан textarea. Пусть в него вводится текст. Сделайте так, чтобы по потери фокуса под текстареа вывелось
+                сообщение о том, сколько в этом тексте слов.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <textarea id="text_1"></textarea>
+            <p id="count_words"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу так, чтобы также вывелось сообщение о том, сколько в тексте символов.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <textarea id="text_2"></textarea>
+            <p id="count_words_2"></p>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу так, чтобы также вывелось сообщение о том, сколько в тексте символов
+                за вычетом пробелов.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <textarea id="text_3"></textarea>
+            <p id="count_words_3"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    function text_separator(text) {
+        return text.split(' ').length;
+    }
+
+    function symbol_separator_without_space(text) {
+        let arr = text.split(' ');
+        let counter = 0;
+        arr.forEach(word => counter += word.length);
+        return counter;
+    }
+
+    function symbol_separator(text) {
+        return text.length;
+    }
+
+    document.querySelector('#text_1').addEventListener('blur', () => {
+        let text = document.querySelector('#text_1');
+        let p = document.querySelector('#count_words');
+        p.textContent = text_separator(text.value) + ' слов(а)';
+    });
+
+    document.querySelector('#text_2').addEventListener('blur', () => {
+        let text = document.querySelector('#text_2');
+        let p = document.querySelector('#count_words_2');
+        p.textContent = text_separator(text.value)
+            + ' слов(а). символов с учётом пробела ' + symbol_separator(text.value);
+    });
+
+    document.querySelector('#text_3').addEventListener('blur', () => {
+        let text = document.querySelector('#text_3');
+        let p = document.querySelector('#count_words_3');
+        p.textContent = text_separator(text.value)
+            + ' слов(а). символов с учётом пробела ' + symbol_separator(text.value)
+            + ' без учёта пробела ' + symbol_separator_without_space(text.value);
+    });
+</script>
+</body>
+</html>
