@@ -61,11 +61,25 @@
             <p id="count_words_3"></p>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу так, чтобы также вывелось сообщение о процентном содержании каждого
+                символа в тексте.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <textarea id="text_4"></textarea>
+            <p id="count_words_4"></p>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
+
     function text_separator(text) {
-        return text.split(' ').length;
+        let arr = text.split(' ');
+        return arr.length;
     }
 
     function symbol_separator_without_space(text) {
@@ -79,26 +93,66 @@
         return text.length;
     }
 
+    function getSymbols(line) {
+        let map = new Map;
+        let arr = line.split('');
+        arr.forEach(symbol => {
+            let count = map.get(symbol);
+            if (symbol != ' ') {
+                if (count == undefined) {
+                    map.set(symbol, 1);
+                } else {
+                    map.set(symbol, ++count);
+                }
+            }
+        });
+        return map;
+    }
+
+    function calc_percent(map, value) {
+        let counter = 0;
+        for (let amount of map.values()) {
+            counter = counter + amount
+        }
+        return value / counter * 100;
+    }
+
     document.querySelector('#text_1').addEventListener('blur', () => {
-        let text = document.querySelector('#text_1');
+        let text = document.querySelector('#text_1').value;
         let p = document.querySelector('#count_words');
-        p.textContent = text_separator(text.value) + ' слов(а)';
+        p.textContent = text_separator(text) + ' слов(а)';
     });
 
     document.querySelector('#text_2').addEventListener('blur', () => {
-        let text = document.querySelector('#text_2');
+        let text = document.querySelector('#text_2').value;
         let p = document.querySelector('#count_words_2');
-        p.textContent = text_separator(text.value)
-            + ' слов(а). символов с учётом пробела ' + symbol_separator(text.value);
+        p.textContent = text_separator(text)
+            + ' слов(а). символов с учётом пробела ' + symbol_separator(text);
     });
 
     document.querySelector('#text_3').addEventListener('blur', () => {
-        let text = document.querySelector('#text_3');
+        let text = document.querySelector('#text_3').value;
         let p = document.querySelector('#count_words_3');
-        p.textContent = text_separator(text.value)
-            + ' слов(а). символов с учётом пробела ' + symbol_separator(text.value)
-            + ' без учёта пробела ' + symbol_separator_without_space(text.value);
+        p.textContent = text_separator(text)
+            + ' слов(а). символов с учётом пробела ' + symbol_separator(text)
+            + ' без учёта пробела ' + symbol_separator_without_space(text);
     });
+
+    document.querySelector('#text_4').addEventListener('blur', () => {
+        let text = document.querySelector('#text_4').value;
+        let p = document.querySelector('#count_words_4');
+        let map = getSymbols(text);
+        p.textContent = text_separator(text)
+            + ' слов(а). символов с учётом пробела ' + symbol_separator(text)
+            + ' без учёта пробела ' + symbol_separator_without_space(text);
+        for (let [key, value] of map.entries()) {
+            let percent = calc_percent(map, value);
+            p.innerHTML += '<br>' + key + ' - ' + percent + '%';
+        }
+
+    });
+
+
 </script>
 </body>
 </html>
