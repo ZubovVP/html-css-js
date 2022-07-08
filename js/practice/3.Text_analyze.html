@@ -73,6 +73,22 @@
             <p id="count_words_4"></p>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                В предыдущих задачах мы сделали так, что для нашего текста выводятся 4 параметра. Сделайте 4 чекбокса,
+                которые будут регулировать, какие именно параметры показывать.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <textarea id="text_5"></textarea>
+            <br> <input type="checkbox" id="words"> Количество слов
+            <br> <input type="checkbox" id="symbols"> Количество символов
+            <br> <input type="checkbox" id="symbols_without_space"> Количество символов без пробелов
+            <br> <input type="checkbox" id="percent"> Процентное содержание символов
+            <p id="count_words_5"></p>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -149,8 +165,39 @@
             let percent = calc_percent(map, value);
             p.innerHTML += '<br>' + key + ' - ' + percent + '%';
         }
-
     });
+
+    document.querySelector('#text_5').addEventListener('blur', () => check());
+    document.querySelector('#words').addEventListener('click', () => check());
+    document.querySelector('#symbols').addEventListener('click', () => check());
+    document.querySelector('#symbols_without_space').addEventListener('click', () => check());
+    document.querySelector('#percent').addEventListener('click', () => check());
+
+    function check() {
+        let text = document.querySelector('#text_5').value;
+        let p = document.querySelector('#count_words_5');
+        p.textContent = '';
+        let words = document.querySelector('#words').checked;
+        let symbols = document.querySelector('#symbols').checked;
+        let symbols_without_space = document.querySelector('#symbols_without_space').checked;
+        let percent = document.querySelector('#percent').checked;
+        if (words) {
+            p.innerHTML += '<br>' + 'Предложение содержит ' + text_separator(text) + ' слов(а).';
+        }
+        if (symbols) {
+            p.innerHTML += '<br>' + 'Предложение содержит ' + symbol_separator(text) + ' символов.';
+        }
+        if (symbols_without_space) {
+            p.innerHTML += '<br>' + 'Предложение содержит ' + symbol_separator_without_space(text) + ' символов не считая пробел.';
+        }
+        if (percent) {
+            let map = getSymbols(text);
+            for (let [key, value] of map.entries()) {
+                let percent = calc_percent(map, value);
+                p.innerHTML += '<br>' + key + ' - ' + percent + '%';
+            }
+        }
+    }
 
 
 </script>
