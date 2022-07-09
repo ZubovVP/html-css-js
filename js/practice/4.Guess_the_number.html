@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра угадай число на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Математические калькуляторы на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дан textarea. Пусть в него вводится текст. Сделайте так, чтобы по потери фокуса под текстареа вывелось
+                сообщение о том, сколько в этом тексте слов.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_1" type="number">
+            <p id="p_1"></p>
+            <button id="but_1">Проверить число</button>
+            <button id="but_2">Загадать новое число</button>
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    function guessNumber(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function checkNumber(num) {
+        if (num > number) {
+            return 'Введите число поменьше';
+        } else if (num < number) {
+            return 'Введите число побольше';
+        } else {
+            return 'Угадали!';
+        }
+
+    }
+
+    let number = guessNumber(100);
+
+    document.querySelector('#but_1').addEventListener('click', () => {
+        let num = document.querySelector('#inp_1').value;
+        let p = document.querySelector('#p_1');
+        p.textContent = checkNumber(num);
+    });
+
+    document.querySelector('#but_2').addEventListener('click', () => {
+        number = guessNumber(100);
+        document.querySelector('#p_1').textContent = '';
+    });
+
+
+</script>
+</body>
+</html>
