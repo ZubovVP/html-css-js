@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра угадай число на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Математические калькуляторы на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                В этой игре будет дана таблица 10 на 10. Компьютер случайным образом запоминает 10 ячеек из этой
+                таблицы. Игроку нужно кликать на клетки пока он не найдет все загаданные компьютером клетки.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <table id="table">
+                <tr class="row_0">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_1">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_2">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_3">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_4">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_5">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_6">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_7">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_8">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row_9">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <p id="text_1"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let tds = document.querySelectorAll('#table td');
+    let point = 0;
+
+    function guessNumber(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function chooseCell(num) {
+        if (tds[num].dataset.cell == 'true') {
+            chooseCell(guessNumber(100));
+        } else {
+            tds[num].dataset.cell = 'true';
+        }
+    }
+
+    function checkCell() {
+        if (this.dataset.cell == 'true') {
+            this.style.backgroundColor = 'green';
+            point++;
+        } else {
+            this.style.backgroundColor = 'red';
+        }
+
+        if (point == 10) {
+            document.querySelector('#text_1').textContent = 'Вы выиграли!'
+            tds.forEach(td => td.removeEventListener('click', checkCell));
+        }
+    }
+
+    for (let i = 0; i < 10; i++) {
+        chooseCell(guessNumber(100));
+    }
+
+    tds.forEach(td => td.addEventListener('click', checkCell));
+
+
+</script>
+</body>
+</html>
