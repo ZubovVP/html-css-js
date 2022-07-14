@@ -8,17 +8,19 @@
     .description {
         width: 600px;
     }
-    button{
+
+    button {
         width: 39px;
         height: 30px;
         padding: 0px 0px 0px 0px;
     }
 
-    button.big{
+    button.big {
         width: 700px;
         height: 30px;
         padding: 0px 0px 0px 0px;
     }
+
     .view {
         width: 300px;
     }
@@ -42,69 +44,174 @@
                 Реализуйте экранную клавиатуру. Пусть эта клавиатура будет привязана к какому-нибудь инпуту, то есть
                 кликая по ней, мы будем вводить данные в этот инпут.
             </p>
+            <p>
+                Сделайте на вашей клавиатуре кнопку Caps Lock, которая будет делать так, чтобы все буквы переводились в
+                верхний регистр.
+            </p>
         </td>
         <td colspan="2" class="view">
-            <textarea id="text" style="width: 715px; height: 200px; resize: vertical"> </textarea>
+            <textarea id="text" style="width: 775px; height: 200px; resize: vertical"> </textarea>
 
             <table id="table">
                 <tr class="row_0">
-                    <td><button id="one">1</button></td>
-                    <td><button id="two">2</button></td>
-                    <td><button id="three">3</button></td>
-                    <td><button id="four">4</button></td>
-                    <td><button id="five">5</button></td>
-                    <td><button id="six">6</button></td>
-                    <td><button id="seven">7</button></td>
-                    <td><button id="eight">8</button></td>
-                    <td><button id="nine">9</button></td>
-                    <td><button id="zero">0</button></td>
-                    <td><button id="minus">-</button></td>
-                    <td><button id="equal">=</button></td>
+                    <td>
+                        <button id="one">1</button>
+                    </td>
+                    <td>
+                        <button id="two">2</button>
+                    </td>
+                    <td>
+                        <button id="three">3</button>
+                    </td>
+                    <td>
+                        <button id="four">4</button>
+                    </td>
+                    <td>
+                        <button id="five">5</button>
+                    </td>
+                    <td>
+                        <button id="six">6</button>
+                    </td>
+                    <td>
+                        <button id="seven">7</button>
+                    </td>
+                    <td>
+                        <button id="eight">8</button>
+                    </td>
+                    <td>
+                        <button id="nine">9</button>
+                    </td>
+                    <td>
+                        <button id="zero">0</button>
+                    </td>
+                    <td>
+                        <button id="minus">-</button>
+                    </td>
+                    <td>
+                        <button id="equal">=</button>
+                    </td>
                 </tr>
                 <tr class="row_0">
-                    <td><button id="q">q</button></td>
-                    <td><button id="w">w</button></td>
-                    <td><button id="e">e</button></td>
-                    <td><button id="r">r</button></td>
-                    <td><button id="t">t</button></td>
-                    <td><button id="y">y</button></td>
-                    <td><button id="u">u</button></td>
-                    <td><button id="i">i</button></td>
-                    <td><button id="o">o</button></td>
-                    <td><button id="p">p</button></td>
-                    <td><button id="bracketOpen">[</button></td>
-                    <td><button id="bracketClose">]</button></td>
+                    <td>
+                        <button id="q">q</button>
+                    </td>
+                    <td>
+                        <button id="w">w</button>
+                    </td>
+                    <td>
+                        <button id="e">e</button>
+                    </td>
+                    <td>
+                        <button id="r">r</button>
+                    </td>
+                    <td>
+                        <button id="t">t</button>
+                    </td>
+                    <td>
+                        <button id="y">y</button>
+                    </td>
+                    <td>
+                        <button id="u">u</button>
+                    </td>
+                    <td>
+                        <button id="i">i</button>
+                    </td>
+                    <td>
+                        <button id="o">o</button>
+                    </td>
+                    <td>
+                        <button id="p">p</button>
+                    </td>
+                    <td>
+                        <button id="bracketOpen">[</button>
+                    </td>
+                    <td>
+                        <button id="bracketClose">]</button>
+                    </td>
                 </tr>
                 <tr class="row_1">
-                    <td><button id="a">a</button></td>
-                    <td><button id="s">s</button></td>
-                    <td><button id="d">d</button></td>
-                    <td><button id="f">f</button></td>
-                    <td><button id="g">g</button></td>
-                    <td><button id="h">h</button></td>
-                    <td><button id="j">j</button></td>
-                    <td><button id="k">k</button></td>
-                    <td><button id="l">l</button></td>
-                    <td><button id="semicolon">;</button></td>
-                    <td><button id="apostrophe">'</button></td>
-                    <td><button id="slash">\</button></td>
+                    <td>
+                        <button id="a">a</button>
+                    </td>
+                    <td>
+                        <button id="s">s</button>
+                    </td>
+                    <td>
+                        <button id="d">d</button>
+                    </td>
+                    <td>
+                        <button id="f">f</button>
+                    </td>
+                    <td>
+                        <button id="g">g</button>
+                    </td>
+                    <td>
+                        <button id="h">h</button>
+                    </td>
+                    <td>
+                        <button id="j">j</button>
+                    </td>
+                    <td>
+                        <button id="k">k</button>
+                    </td>
+                    <td>
+                        <button id="l">l</button>
+                    </td>
+                    <td>
+                        <button id="semicolon">;</button>
+                    </td>
+                    <td>
+                        <button id="apostrophe">'</button>
+                    </td>
+                    <td>
+                        <button id="slash">\</button>
+                    </td>
                 </tr>
                 <tr class="row_2">
-                    <td><button id="z">z</button></td>
-                    <td><button id="x">x</button></td>
-                    <td><button id="c">c</button></td>
-                    <td><button id="v">v</button></td>
-                    <td><button id="b">b</button></td>
-                    <td><button id="n">n</button></td>
-                    <td><button id="m">m</button></td>
-                    <td><button id="comma">,</button></td>
-                    <td><button id="dot">.</button></td>
-                    <td><button id="reverseSlash">/</button></td>
-                    <td><button id="enter">enter</button></td>
-                    <td><button id="back">back</button></td>
+                    <td>
+                        <button id="z">z</button>
+                    </td>
+                    <td>
+                        <button id="x">x</button>
+                    </td>
+                    <td>
+                        <button id="c">c</button>
+                    </td>
+                    <td>
+                        <button id="v">v</button>
+                    </td>
+                    <td>
+                        <button id="b">b</button>
+                    </td>
+                    <td>
+                        <button id="n">n</button>
+                    </td>
+                    <td>
+                        <button id="m">m</button>
+                    </td>
+                    <td>
+                        <button id="comma">,</button>
+                    </td>
+                    <td>
+                        <button id="dot">.</button>
+                    </td>
+                    <td>
+                        <button id="reverseSlash">/</button>
+                    </td>
+                    <td>
+                        <button id="enter">enter</button>
+                    </td>
+                    <td>
+                        <button id="back">back</button>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="12"><button class="big" id="space">space</button></td>
+                    <td colspan="11">
+                        <button class="big" id="space">space</button>
+                    </td>
+                    <td colspan="12">
+                        <button id="caps">caps</button>
+                    </td>
                 </tr>
             </table>
             <p id="text_1"></p>
@@ -114,6 +221,8 @@
 <script>
     "use strict";
     let text = document.querySelector('#text');
+    let caps = false;
+
     document.querySelector('#one').addEventListener('click', () => text.textContent += 1);
     document.querySelector('#two').addEventListener('click', () => text.textContent += 2);
     document.querySelector('#three').addEventListener('click', () => text.textContent += 3);
@@ -124,49 +233,134 @@
     document.querySelector('#eight').addEventListener('click', () => text.textContent += 8);
     document.querySelector('#nine').addEventListener('click', () => text.textContent += 9);
     document.querySelector('#zero').addEventListener('click', () => text.textContent += 0);
-    document.querySelector('#minus').addEventListener('click', () => text.textContent += '-');
-    document.querySelector('#equal').addEventListener('click', () => text.textContent += '=');
+    document.querySelector('#minus').addEventListener('click', () => text.textContent += caps == true ? '_' : '-');
+    document.querySelector('#equal').addEventListener('click', () => text.textContent += caps == true ? '+' : '=');
 
-    document.querySelector('#q').addEventListener('click', () => text.textContent += 'q');
-    document.querySelector('#w').addEventListener('click', () => text.textContent += 'w');
-    document.querySelector('#e').addEventListener('click', () => text.textContent += 'e');
-    document.querySelector('#r').addEventListener('click', () => text.textContent += 'r');
-    document.querySelector('#t').addEventListener('click', () => text.textContent += 't');
-    document.querySelector('#y').addEventListener('click', () => text.textContent += 'y');
-    document.querySelector('#u').addEventListener('click', () => text.textContent += 'u');
-    document.querySelector('#i').addEventListener('click', () => text.textContent += 'i');
-    document.querySelector('#o').addEventListener('click', () => text.textContent += 'o');
-    document.querySelector('#p').addEventListener('click', () => text.textContent += 'p');
-    document.querySelector('#bracketOpen').addEventListener('click', () => text.textContent += '[');
-    document.querySelector('#bracketClose').addEventListener('click', () => text.textContent += ']');
+    document.querySelector('#q').addEventListener('click', () => text.textContent += caps == true ? 'Q' : 'q');
+    document.querySelector('#w').addEventListener('click', () => text.textContent += caps == true ? 'W' : 'w');
+    document.querySelector('#e').addEventListener('click', () => text.textContent += caps == true ? 'E' : 'e');
+    document.querySelector('#r').addEventListener('click', () => text.textContent += caps == true ? 'R' : 'r');
+    document.querySelector('#t').addEventListener('click', () => text.textContent += caps == true ? 'T' : 't');
+    document.querySelector('#y').addEventListener('click', () => text.textContent += caps == true ? 'Y' : 'y');
+    document.querySelector('#u').addEventListener('click', () => text.textContent += caps == true ? 'U' : 'u');
+    document.querySelector('#i').addEventListener('click', () => text.textContent += caps == true ? 'I' : 'i');
+    document.querySelector('#o').addEventListener('click', () => text.textContent += caps == true ? 'O' : 'o');
+    document.querySelector('#p').addEventListener('click', () => text.textContent += caps == true ? 'P' : 'p');
+    document.querySelector('#bracketOpen').addEventListener('click', () => text.textContent += caps == true ? '{' : '[');
+    document.querySelector('#bracketClose').addEventListener('click', () => text.textContent += caps == true ? '}' : ']');
 
-    document.querySelector('#a').addEventListener('click', () => text.textContent += 'a');
-    document.querySelector('#s').addEventListener('click', () => text.textContent += 's');
-    document.querySelector('#d').addEventListener('click', () => text.textContent += 'd');
-    document.querySelector('#f').addEventListener('click', () => text.textContent += 'f');
-    document.querySelector('#g').addEventListener('click', () => text.textContent += 'g');
-    document.querySelector('#h').addEventListener('click', () => text.textContent += 'h');
-    document.querySelector('#j').addEventListener('click', () => text.textContent += 'j');
-    document.querySelector('#k').addEventListener('click', () => text.textContent += 'k');
-    document.querySelector('#l').addEventListener('click', () => text.textContent += 'l');
-    document.querySelector('#semicolon').addEventListener('click', () => text.textContent += ';');
-    document.querySelector('#apostrophe').addEventListener('click', () => text.textContent += '\'');
-    document.querySelector('#slash').addEventListener('click', () => text.textContent += '\\');
+    document.querySelector('#a').addEventListener('click', () => text.textContent += caps == true ? 'A' : 'a');
+    document.querySelector('#s').addEventListener('click', () => text.textContent += caps == true ? 'S' : 's');
+    document.querySelector('#d').addEventListener('click', () => text.textContent += caps == true ? 'D' : 'd');
+    document.querySelector('#f').addEventListener('click', () => text.textContent += caps == true ? 'F' : 'f');
+    document.querySelector('#g').addEventListener('click', () => text.textContent += caps == true ? 'G' : 'g');
+    document.querySelector('#h').addEventListener('click', () => text.textContent += caps == true ? 'H' : 'h');
+    document.querySelector('#j').addEventListener('click', () => text.textContent += caps == true ? 'J' : 'j');
+    document.querySelector('#k').addEventListener('click', () => text.textContent += caps == true ? 'K' : 'k');
+    document.querySelector('#l').addEventListener('click', () => text.textContent += caps == true ? 'L' : 'l');
+    document.querySelector('#semicolon').addEventListener('click', () => text.textContent += caps == true ? ':' : ';');
+    document.querySelector('#apostrophe').addEventListener('click', () => text.textContent += caps == true ? '"' : '\'');
+    document.querySelector('#slash').addEventListener('click', () => text.textContent += caps == true ? '|' : '\\');
 
-    document.querySelector('#z').addEventListener('click', () => text.textContent += 'z');
-    document.querySelector('#x').addEventListener('click', () => text.textContent += 'x');
-    document.querySelector('#c').addEventListener('click', () => text.textContent += 'c');
-    document.querySelector('#v').addEventListener('click', () => text.textContent += 'v');
-    document.querySelector('#b').addEventListener('click', () => text.textContent += 'b');
-    document.querySelector('#n').addEventListener('click', () => text.textContent += 'n');
-    document.querySelector('#m').addEventListener('click', () => text.textContent += 'm');
-    document.querySelector('#comma').addEventListener('click', () => text.textContent += ',');
-    document.querySelector('#dot').addEventListener('click', () => text.textContent += '.');
-    document.querySelector('#reverseSlash').addEventListener('click', () => text.textContent += '/');
+    document.querySelector('#z').addEventListener('click', () => text.textContent += caps == true ? 'Z' : 'z');
+    document.querySelector('#x').addEventListener('click', () => text.textContent += caps == true ? 'X' : 'x');
+    document.querySelector('#c').addEventListener('click', () => text.textContent += caps == true ? 'C' : 'c');
+    document.querySelector('#v').addEventListener('click', () => text.textContent += caps == true ? 'V' : 'v');
+    document.querySelector('#b').addEventListener('click', () => text.textContent += caps == true ? 'B' : 'b');
+    document.querySelector('#n').addEventListener('click', () => text.textContent += caps == true ? 'N' : 'n');
+    document.querySelector('#m').addEventListener('click', () => text.textContent += caps == true ? 'M' : 'm');
+    document.querySelector('#comma').addEventListener('click', () => text.textContent += caps == true ? '<' : ',');
+    document.querySelector('#dot').addEventListener('click', () => text.textContent += caps == true ? '>' : '.');
+    document.querySelector('#reverseSlash').addEventListener('click', () => text.textContent += caps == true ? '?' : '/');
     document.querySelector('#enter').addEventListener('click', () => text.innerHTML += '\r\n');
     document.querySelector('#back').addEventListener('click', () => text.textContent = text.textContent.slice(0, -1));
 
     document.querySelector('#space').addEventListener('click', () => text.textContent += ' ');
+    document.querySelector('#caps').addEventListener('click', () => {
+        caps = !caps
+        if (caps) {
+            document.querySelector('#minus').textContent = '_';
+            document.querySelector('#equal').textContent = '+';
+
+            document.querySelector('#q').textContent = 'Q';
+            document.querySelector('#w').textContent = 'W';
+            document.querySelector('#e').textContent = 'E';
+            document.querySelector('#r').textContent = 'R';
+            document.querySelector('#t').textContent = 'T';
+            document.querySelector('#y').textContent = 'Y';
+            document.querySelector('#u').textContent = 'Y';
+            document.querySelector('#i').textContent = 'U';
+            document.querySelector('#o').textContent = 'I';
+            document.querySelector('#p').textContent = 'O';
+            document.querySelector('#bracketOpen').textContent = '{';
+            document.querySelector('#bracketClose').textContent = '}';
+
+            document.querySelector('#a').textContent = 'A';
+            document.querySelector('#s').textContent = 'S';
+            document.querySelector('#d').textContent = 'D';
+            document.querySelector('#f').textContent = 'F';
+            document.querySelector('#g').textContent = 'G';
+            document.querySelector('#h').textContent = 'H';
+            document.querySelector('#j').textContent = 'J';
+            document.querySelector('#k').textContent = 'K';
+            document.querySelector('#l').textContent = 'L';
+            document.querySelector('#semicolon').textContent = ':';
+            document.querySelector('#apostrophe').textContent = '\"';
+            document.querySelector('#slash').textContent = '\|';
+
+            document.querySelector('#z').textContent = 'Z';
+            document.querySelector('#x').textContent = 'X';
+            document.querySelector('#c').textContent = 'C';
+            document.querySelector('#v').textContent = 'V';
+            document.querySelector('#b').textContent = 'B';
+            document.querySelector('#n').textContent = 'N';
+            document.querySelector('#m').textContent = 'M';
+            document.querySelector('#comma').textContent = '<';
+            document.querySelector('#dot').textContent = '>';
+            document.querySelector('#reverseSlash').textContent = '?';
+        } else {
+            document.querySelector('#minus').textContent = '-';
+            document.querySelector('#equal').textContent = '=';
+
+            document.querySelector('#q').textContent = 'q';
+            document.querySelector('#w').textContent = 'w';
+            document.querySelector('#e').textContent = 'e';
+            document.querySelector('#r').textContent = 'r';
+            document.querySelector('#t').textContent = 't';
+            document.querySelector('#y').textContent = 'y';
+            document.querySelector('#u').textContent = 'u';
+            document.querySelector('#i').textContent = 'i';
+            document.querySelector('#o').textContent = 'o';
+            document.querySelector('#p').textContent = 'p';
+            document.querySelector('#bracketOpen').textContent = '[';
+            document.querySelector('#bracketClose').textContent = ']';
+
+            document.querySelector('#a').textContent = 'a';
+            document.querySelector('#s').textContent = 's';
+            document.querySelector('#d').textContent = 'd';
+            document.querySelector('#f').textContent = 'f';
+            document.querySelector('#g').textContent = 'g';
+            document.querySelector('#h').textContent = 'h';
+            document.querySelector('#j').textContent = 'j';
+            document.querySelector('#k').textContent = 'k';
+            document.querySelector('#l').textContent = 'l';
+            document.querySelector('#semicolon').textContent = ';';
+            document.querySelector('#apostrophe').textContent = '\'';
+            document.querySelector('#slash').textContent = '\\';
+
+            document.querySelector('#z').textContent = 'z';
+            document.querySelector('#x').textContent = 'x';
+            document.querySelector('#c').textContent = 'c';
+            document.querySelector('#v').textContent = 'v';
+            document.querySelector('#b').textContent = 'b';
+            document.querySelector('#n').textContent = 'n';
+            document.querySelector('#m').textContent = 'm';
+            document.querySelector('#comma').textContent = ',';
+            document.querySelector('#dot').textContent = '.';
+            document.querySelector('#reverseSlash').textContent = '/';
+        }
+    });
+
 
 </script>
 </body>
