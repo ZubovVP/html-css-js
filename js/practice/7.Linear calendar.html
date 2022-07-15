@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Линейный календарь на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+
+    ul li {
+        display: inline;
+    }
+
+    table, th, td {
+        padding: 10px;
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+<h1>Линейный календарь на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Выведите в виде списка ul все числа текущего месяца. Средствами CSS поставьте пункты списка в ряд.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="calendar">
+
+            </div>
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let div = document.querySelector('#calendar');
+    let ul = document.createElement('ul');
+    let now = new Date();
+    let days = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    for (let day = 1; day <= days; day++) {
+        let li = document.createElement('li');
+        li.textContent = day +  ' ';
+        ul.appendChild(li);
+    }
+    div.appendChild(ul);
+
+
+</script>
+</body>
+</html>
