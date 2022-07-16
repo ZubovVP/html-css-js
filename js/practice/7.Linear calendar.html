@@ -35,6 +35,12 @@
             <p>
                 Выведите в виде списка ul все числа текущего месяца. Средствами CSS поставьте пункты списка в ряд.
             </p>
+            <p>
+                Сделайте так, чтобы текущий день в календаре был выделен каким-нибудь цветом.
+            </p>
+            <p>
+                Сделайте так, чтобы над списком было написано название текущего месяца по-русски и номер года.
+            </p>
         </td>
         <td colspan="2" class="view">
             <div id="calendar">
@@ -46,17 +52,35 @@
 </table>
 <script>
     "use strict";
+    let months = [
+        'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+        'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+    ];
     let div = document.querySelector('#calendar');
     let ul = document.createElement('ul');
     let now = new Date();
     let days = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     for (let day = 1; day <= days; day++) {
         let li = document.createElement('li');
-        li.textContent = day +  ' ';
+        li.textContent = day + ' ';
+        if (day == now.getDate()) {
+            li.style.backgroundColor = 'red';
+        }
         ul.appendChild(li);
     }
+    let p = document.createElement('p');
+    p.textContent = getMonth(now) + ' ' + getYear(now);
+    p.style.textAlign = 'center';
+    div.appendChild(p);
     div.appendChild(ul);
 
+    function getMonth(now) {
+        return months[now.getMonth()];
+    }
+
+    function getYear(now) {
+        return now.getFullYear();
+    }
 
 </script>
 </body>
