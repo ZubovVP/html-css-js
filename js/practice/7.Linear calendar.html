@@ -26,6 +26,13 @@
         border: 1px solid;
         border-collapse: collapse;
     }
+
+    button {
+        margin-left: 10px;
+        display: inline-block;
+        border: 1px solid white;
+        padding: 5px 0;
+    }
 </style>
 <body>
 <h1>Линейный календарь на JavaScript</h1>
@@ -41,12 +48,15 @@
             <p>
                 Сделайте так, чтобы над списком было написано название текущего месяца по-русски и номер года.
             </p>
+            <p>
+                Сделайте так, чтобы над календарем появились ссылки вперед и назад, позволяющие менять месяц. Месяц и год, выводимые над календарем, должны соответствовать отображаемому месяцу.
+            </p>
         </td>
         <td colspan="2" class="view">
+            <button id="prevMonth">предыдущий месяц</button>
+            <button id="nextMonth">следующий месяц</button>
             <div id="calendar">
-
             </div>
-
         </td>
     </tr>
 </table>
@@ -57,22 +67,29 @@
         'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
     ];
     let div = document.querySelector('#calendar');
-    let ul = document.createElement('ul');
     let now = new Date();
-    let days = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    for (let day = 1; day <= days; day++) {
-        let li = document.createElement('li');
-        li.textContent = day + ' ';
-        if (day == now.getDate()) {
-            li.style.backgroundColor = 'red';
+
+    function filCalendar(div, date) {
+        let ul = document.createElement('ul');
+        let days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+        let now = new Date();
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
         }
-        ul.appendChild(li);
+        for (let day = 1; day <= days; day++) {
+            let li = document.createElement('li');
+            li.textContent = day + ' ';
+            if (day == date.getDate() && date.getMonth() == now.getMonth() && date.getFullYear() == now.getFullYear()) {
+                li.style.backgroundColor = 'red';
+            }
+            ul.appendChild(li);
+        }
+        let p = document.createElement('p');
+        p.textContent = getMonth(date) + ' ' + getYear(date);
+        p.style.textAlign = 'center';
+        div.appendChild(p);
+        div.appendChild(ul);
     }
-    let p = document.createElement('p');
-    p.textContent = getMonth(now) + ' ' + getYear(now);
-    p.style.textAlign = 'center';
-    div.appendChild(p);
-    div.appendChild(ul);
 
     function getMonth(now) {
         return months[now.getMonth()];
@@ -81,6 +98,17 @@
     function getYear(now) {
         return now.getFullYear();
     }
+    filCalendar(div, now);
+
+    document.querySelector('#nextMonth').addEventListener('click', function () {
+        now.setMonth(now.getMonth() + 1);
+        filCalendar(div, now);
+    });
+
+    document.querySelector('#prevMonth').addEventListener('click', function () {
+        now.setMonth(now.getMonth() - 1);
+        filCalendar(div, now);
+    });
 
 </script>
 </body>
