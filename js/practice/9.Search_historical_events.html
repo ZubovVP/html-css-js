@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск исторических события на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #parent {
+        margin: 0 auto;
+        width: 600px;
+    }
+
+    #input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    #table {
+        width: 100%;
+    }
+
+    #table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+</style>
+<body>
+<h1>Поиск исторических события на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Пусть год будет вводится в инпут.
+                По нажатию Enter давайте выведем таблицу событий, случившихся в этот год. Пусть в качестве информации
+                о событии мы хотим видеть дату, название и описание события. Реализуйте описанный сайт.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <input id="input" placeholder="введите год и нажмите Enter">
+                <table id="table"></table>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let map = new Map();
+    let set_1 = new Set();
+    let event_1 = {
+        date: '01.03.2021',
+        name: 'Событие_1',
+        description: 'Описание события_1'
+    };
+    let event_2 = {
+        date: '10.05.2021',
+        name: 'Событие_2',
+        description: 'Описание события_2'
+    };
+    set_1.add(event_1);
+    set_1.add(event_2);
+    map.set('2021', set_1);
+
+    let set_2 = new Set();
+    let event_3 = {
+        date: '01.03.2022',
+        name: 'Событие_3',
+        description: 'Описание события_3'
+    };
+    let event_4 = {
+        date: '10.05.2022',
+        name: 'Событие_4',
+        description: 'Описание события_4'
+    };
+    set_2.add(event_3);
+    set_2.add(event_4);
+    map.set('2022', set_2);
+    let table = document.querySelector('#table');
+    document.querySelector('#input').addEventListener('keypress', function (e) {
+        while (table.firstChild) {
+            table.removeChild(table.firstChild);
+        }
+        if (e.key === 'Enter') {
+            let events = map.get(document.querySelector('#input').value);
+            events.forEach(elem => {
+                    let tr = document.createElement('tr');
+                    let date = document.createElement('td');
+                    date.textContent = elem.date;
+                    tr.appendChild(date);
+
+                    let name = document.createElement('td');
+                    name.textContent = elem.name;
+                    tr.appendChild(name);
+
+                    let description = document.createElement('td');
+                    description.textContent = elem.description;
+                    tr.appendChild(description);
+                    table.appendChild(tr);
+                }
+            )
+        }
+    });
+
+</script>
+</body>
+</html>
