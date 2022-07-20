@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Гороскоп на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #parent {
+        margin: 0 auto;
+        width: 600px;
+    }
+
+    #input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    #table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+</style>
+<body>
+<h1>Гороскоп на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Этот сайт будет выдавать гороскопы на сегодня. Пусть пользователь по заходу на сайт видит инпут,
+                в который нужно вбить дату своего рождения. Пусть по нажатию Enter наш сайт выдаст пользователю
+                гороскоп на текущий день за его знак Зодиака.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <input id="input" placeholder="введите месяц-дату и нажмите Enter">
+                <p id="text"></p>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let mapToday = new Map();
+    mapToday.set('Водолей', 'Сегодня всё будет хорошо');
+    mapToday.set('Рыбы', 'Сегодня всё будет плохо');
+    mapToday.set('Овен', 'Сегодня всё будет нейтрально');
+    mapToday.set('Телец', 'Сегодня всё будет хорошо');
+    mapToday.set('Близнецы', 'Сегодня всё будет плохо');
+    mapToday.set('Рак', 'Сегодня всё будет нейтрально');
+    mapToday.set('Лев', 'Сегодня всё будет хорошо');
+    mapToday.set('Дева', 'Сегодня всё будет плохо');
+    mapToday.set('Весы', 'Сегодня всё будет нейтрально');
+    mapToday.set('Скорпион', 'Сегодня всё будет хорошо');
+    mapToday.set('Стрелец', 'Сегодня всё будет плохо');
+    mapToday.set('Козерог', 'Сегодня всё будет нейтрально');
+
+    document.querySelector('#input').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            let inp = document.querySelector('#input').value;
+            let date = new Date();
+            date.setMonth(inp.split('-')[0]);
+            date.setDate(inp.split('-')[1])
+
+            let el = addZero(date.getMonth()) + '-' + addZero(date.getDate());
+
+            let sign;
+            if (el >= '01-20' && el <= '02-18') {
+                sign = 'Водолей';
+            } else if (el >= '02-19' && el <= '03-20') {
+                sign = 'Рыбы';
+            } else if (el >= '03-21' && el <= '04-19') {
+                sign = 'Овен';
+            } else if (el >= '04-20' && el <= '05-20') {
+                sign = 'Телец';
+            } else if (el >= '05-21' && el <= '06-21') {
+                sign = 'Близнецы';
+            } else if (el >= '06-22' && el <= '07-22') {
+                sign = 'Рак';
+            } else if (el >= '07-23' && el <= '08-22') {
+                sign = 'Лев';
+            } else if (el >= '08-23' && el <= '09-22') {
+                sign = 'Дева';
+            } else if (el >= '09-23' && el <= '10-23') {
+                sign = 'Весы';
+            } else if (el >= '10-23' && el <= '11-22') {
+                sign = 'Скорпион';
+            } else if (el >= '11-23' && el <= '12-21') {
+                sign = 'Стрелец';
+            } else if (el >= '12-22' && el <= '01-19') {
+                sign = 'Козерог';
+            }
+            document.querySelector('#text').textContent = sign + ': ' + mapToday.get(sign);
+        }
+    });
+
+
+    function addZero(num) {
+        if (num <= 9) {
+            num = '0' + num;
+        }
+
+        return num;
+    }
+
+
+</script>
+</body>
+</html>
