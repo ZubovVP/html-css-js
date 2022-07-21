@@ -44,9 +44,25 @@
                 в который нужно вбить дату своего рождения. Пусть по нажатию Enter наш сайт выдаст пользователю
                 гороскоп на текущий день за его знак Зодиака.
             </p>
+            <p>
+                Реализуйте работу радиокнопок, позволяющих выбрать день, за который нужно показать гороскоп.
+            </p>
         </td>
         <td colspan="2" class="view">
-            <div id="parent">
+            <div>
+                <div>
+                    <input type="radio" id="today"
+                           name="day" value="today" checked>
+                    <label for="today">Сегодня</label>
+
+                    <input type="radio" id="tomorrow"
+                           name="day" value="tomorrow">
+                    <label for="tomorrow">Завтра</label>
+
+                    <input type="radio" id="day_after_tomorrow"
+                           name="day" value="day_after_tomorrow">
+                    <label for="day_after_tomorrow">После завтра</label>
+                </div>
                 <input id="input" placeholder="введите месяц-дату и нажмите Enter">
                 <p id="text"></p>
             </div>
@@ -69,12 +85,43 @@
     mapToday.set('Стрелец', 'Сегодня всё будет плохо');
     mapToday.set('Козерог', 'Сегодня всё будет нейтрально');
 
+
+    let mapDay_after_tomorrow = new Map();
+    mapDay_after_tomorrow.set('Водолей', 'После завтра всё будет хорошо');
+    mapDay_after_tomorrow.set('Рыбы', 'После завтра всё будет плохо');
+    mapDay_after_tomorrow.set('Овен', 'После завтра всё будет нейтрально');
+    mapDay_after_tomorrow.set('Телец', 'После завтра всё будет хорошо');
+    mapDay_after_tomorrow.set('Близнецы', 'После завтра всё будет плохо');
+    mapDay_after_tomorrow.set('Рак', 'После завтра всё будет нейтрально');
+    mapDay_after_tomorrow.set('Лев', 'После завтра всё будет хорошо');
+    mapDay_after_tomorrow.set('Дева', 'После завтра всё будет плохо');
+    mapDay_after_tomorrow.set('Весы', 'После завтра всё будет нейтрально');
+    mapDay_after_tomorrow.set('Скорпион', 'После завтра всё будет хорошо');
+    mapDay_after_tomorrow.set('Стрелец', 'После завтра всё будет плохо');
+    mapDay_after_tomorrow.set('Козерог', 'После завтра всё будет нейтрально');
+
+    let mapTomorrow = new Map();
+    mapTomorrow.set('Водолей', 'Завтра всё будет хорошо');
+    mapTomorrow.set('Рыбы', 'Завтра всё будет плохо');
+    mapTomorrow.set('Овен', 'Завтра всё будет нейтрально');
+    mapTomorrow.set('Телец', 'Завтра всё будет хорошо');
+    mapTomorrow.set('Близнецы', 'Завтра всё будет плохо');
+    mapTomorrow.set('Рак', 'Завтра всё будет нейтрально');
+    mapTomorrow.set('Лев', 'Завтра всё будет хорошо');
+    mapTomorrow.set('Дева', 'Завтра всё будет плохо');
+    mapTomorrow.set('Весы', 'Завтра всё будет нейтрально');
+    mapTomorrow.set('Скорпион', 'Завтра всё будет хорошо');
+    mapTomorrow.set('Стрелец', 'Завтра всё будет плохо');
+    mapTomorrow.set('Козерог', 'Завтра всё будет нейтрально');
+
     document.querySelector('#input').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             let inp = document.querySelector('#input').value;
             let date = new Date();
             date.setMonth(inp.split('-')[0]);
             date.setDate(inp.split('-')[1])
+
+            let radio = document.querySelector('input[name="day"]:checked').value;
 
             let el = addZero(date.getMonth()) + '-' + addZero(date.getDate());
 
@@ -104,7 +151,15 @@
             } else if (el >= '12-22' && el <= '01-19') {
                 sign = 'Козерог';
             }
-            document.querySelector('#text').textContent = sign + ': ' + mapToday.get(sign);
+            let text;
+            if (radio == 'today') {
+                text = mapToday.get(sign);
+            } else if (radio == 'tomorrow') {
+                text = mapTomorrow.get(sign);
+            } else {
+                text = mapDay_after_tomorrow.get(sign);
+            }
+            document.querySelector('#text').textContent = sign + ': ' + text;
         }
     });
 
