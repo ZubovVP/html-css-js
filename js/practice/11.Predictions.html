@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт предсказаний на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #parent {
+        text-align: center;
+    }
+
+    #parent > * {
+        margin-bottom: 10px;
+    }
+
+    #timer {
+        font-size: 18px;
+    }
+
+    #text {
+        font-size: 17px;
+        font-style: italic;
+    }
+
+    button {
+        padding: 5px 10px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    button:not(.active) {
+        display: none;
+    }
+
+    #table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+</style>
+<body>
+<h1>Сайт предсказаний на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Пусть на этом сайте будет кнопка, по нажатию на которую будет запускаться таймер, который будет каждые
+                0.1 секунд выводить в какой-нибудь див случайное число от 1 до некоторого максимального.
+            </p>
+
+            <p>
+                Под дивом пусть будет другая кнопка, по нажатию на которую пользователь нашего сайта может остановить
+                таймер и зафиксировать некоторое число в диве. Это число будет номером предсказания. После этого
+                покажите пользователю предсказание с этим номером, а все лишние кнопки уберите с экрана, чтобы
+                пользователь не мог получить еще одно предсказание. То есть на один заход на сайт - одно предсказание.
+            </p>
+
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <div id="timer">?</div>
+                <div id="text"></div>
+                <button id="start" class="active">узнать свою судьбу</button>
+                <button id="stop">получить предсказание</button>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let predictions = [
+        'у вас сегодня будет замечательный день',
+        'сегодня лучше не выходите из дома',
+        'сегодня вас ждет удача и успех во всех начинаниях',
+        'сегодня вас ждет успех при изучении JavaScript',
+        'сегодня лучше полежите весь день на диване',
+        'сегодня вы рискуете что-нибудь забыть при выходе из дома',
+        'устройте сегодня себе выходной - пусть весь мир подождет'
+    ];
+    let counter = 0;
+    let timerId;
+
+    document.querySelector('#start').addEventListener('click', function () {
+        runCounter(document.querySelector('#timer'));
+        document.querySelector('#stop').classList.toggle('active');
+        this.classList.toggle('active');
+    });
+
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearInterval(timerId);
+        document.querySelector('#timer').textContent = '';
+        document.querySelector('#text').textContent = predictions[counter];
+
+        this.classList.toggle('active');
+
+    });
+
+    function runCounter(text) {
+        timerId = setInterval(function () {
+            changeNumber(text);
+        }, 1000);
+    }
+
+    function changeNumber(text) {
+        if (counter >= predictions.length) {
+            text.textContent = 0;
+            counter = 0;
+        } else {
+            text.textContent = ++counter;
+        }
+    }
+
+
+</script>
+</body>
+</html>
