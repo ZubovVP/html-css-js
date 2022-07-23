@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Автодополнение на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    #parent {
+        position: relative;
+    }
+
+    #elem {
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    #parent ul {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        background-color: white;
+    }
+
+    #parent li {
+        border: 1px solid gray;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    #parent li:hover {
+        border: 1px solid black;
+        cursor: pointer;
+    }
+</style>
+<body>
+<h1>Автодополнение на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуем автодополнение. Под этим термином понимается выпадающая подсказка при вводе текста в инпут.
+                Давайте посмотрим на примере. Ниже я сделал инпут, в который можно ввести название страны. При этом,
+                если ввести какие-то буквы, то под инпутом появится список стран, которые начинаются на введенную
+                строку.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <input id="elem">
+                <ul id="list"></ul>
+            </div>
+            text text text text text
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let arr = ['Belarus', 'Belgium', 'Bulgaria'];
+    let elem = document.querySelector('#elem');
+
+    elem.addEventListener('input', function () {
+        let text = this.value;
+        let maybe_country = arr.filter(el => el.startsWith(text));
+        let ul = document.querySelector('#list');
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+        maybe_country.forEach(el => {
+            let new_li = document.createElement('li');
+            new_li.textContent = el;
+            new_li.addEventListener('click', function () {
+                elem.value = this.textContent;
+                let parent = this.parentElement;
+                while (parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
+            });
+            ul.appendChild(new_li);
+        });
+    });
+</script>
+</body>
+</html>
