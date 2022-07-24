@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Спойлер на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    .spoiler:not(.active) {
+        display: none;
+    }
+</style>
+<body>
+<h1>Спойлер на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуем автодополнение. Под этим термином понимается выпадающая подсказка при вводе текста в инпут.
+                Давайте посмотрим на примере. Ниже я сделал инпут, в который можно ввести название страны. При этом,
+                если ввести какие-то буквы, то под инпутом появится список стран, которые начинаются на введенную
+                строку.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p>
+                абзац с текстом
+                <a href="" class="toggle">развернуть</a>
+            </p>
+            <p class="spoiler">
+                скрытый спойлер
+            </p>
+            <p>
+                абзац с текстом
+            </p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    document.querySelector('.toggle').addEventListener('click', function func(e) {
+        e.preventDefault();
+        document.querySelector('.spoiler').classList.toggle('active');
+    });
+</script>
+</body>
+</html>
