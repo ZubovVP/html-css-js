@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вкладки на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    #parent {
+        margin: 0 auto;
+        width: 400px;
+    }
+
+    .menu a {
+        margin-right: 5px;
+        display: inline-block;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        border: 1px solid gray;
+    }
+
+    .menu a:hover {
+        background: #f8f8f8;
+    }
+
+    .menu a.active {
+        border-color: transparent;
+        background: #f2f2f2;
+    }
+
+    .tabs .tab:not(.active) {
+        display: none;
+    }
+
+    .tabs .tab {
+        padding: 10px;
+        background: #f2f2f2;
+        height: 300px;
+    }
+</style>
+<body>
+<h1>Вкладки на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуйте вкладки.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <div class="menu">
+                    <a href="">вкладка 1</a>
+                    <a href="">вкладка 2</a>
+                    <a href="">вкладка 3</a>
+                </div>
+                <div class="tabs">
+                    <div class="tab">
+                        текст вкладки 1
+                    </div>
+                    <div class="tab">
+                        текст вкладки 2
+                    </div>
+                    <div class="tab">
+                        текст вкладки 3
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let menus = document.querySelectorAll('a');
+    let tabs = document.querySelectorAll('.tab');
+    for (let i = 0; i < menus.length; i++) {
+        menus[i].addEventListener('click', function func(e) {
+            e.preventDefault();
+            nonDisplay();
+            menus[i].classList.add('active');
+            tabs[i].classList.add('active');
+        });
+    }
+
+    function nonDisplay() {
+        menus.forEach(val => val.classList.remove('active'));
+        tabs.forEach(val => val.classList.remove('active'));
+    }
+</script>
+</body>
+</html>
