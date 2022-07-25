@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккордион на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+    #parent {
+        margin: 0 auto;
+        width: 400px;
+    }
+    .tab {
+        margin-bottom: 10px;
+    }
+
+    .tab .link a {
+        display: block;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        background: #f8f8f8;
+        border: 1px solid gray;
+    }
+    .tab .link:hover a {
+        background: #f2f2f2;
+    }
+
+    .tab:not(.active) .text {
+        display: none;
+    }
+    .tab .text {
+        border: 1px dashed gray;
+        border-top: none;
+
+        padding: 10px;
+        height: 300px;
+    }
+
+</style>
+<body>
+<h1>Аккордион на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуйте вкладки.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <div class="tab active">
+                    <div class="link">
+                        <a href="#" >вкладка 1</a>
+                    </div>
+                    <div class="text">
+                        текст вкладки 1
+                    </div>
+                </div>
+                <div class="tab">
+                    <div class="link">
+                        <a href="#" >вкладка 2</a>
+                    </div>
+                    <div class="text">
+                        текст вкладки 2
+                    </div>
+                </div>
+                <div class="tab">
+                    <div class="link">
+                        <a href="#" >вкладка 3</a>
+                    </div>
+                    <div class="text">
+                        текст вкладки 3
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let menus = document.querySelectorAll('a');
+    let tabs = document.querySelectorAll('.tab');
+    for (let i = 0; i < menus.length; i++) {
+        menus[i].addEventListener('click', function func(e) {
+            e.preventDefault();
+            nonDisplay();
+            menus[i].classList.add('active');
+            tabs[i].classList.add('active');
+        });
+    }
+
+    function nonDisplay() {
+        menus.forEach(val => val.classList.remove('active'));
+        tabs.forEach(val => val.classList.remove('active'));
+    }
+</script>
+</body>
+</html>
