@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра в города на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+</style>
+<body>
+<h1>Игра в города на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Распишите текстом подзадачи, которые нужно решить для реализации данного проекта.
+            </p>
+            <ul>
+                <li>Организовать считывание города при нажатии Enter и записать город в хранилище</li>
+                <li>Организовать проверку города на валидность и записывать город если он валиден</li>
+                <li>Организовать проверку на ранее введённые города</li>
+            </ul>
+            <p>Реализуйте игру в соответствии с описанным алгоритмом.</p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="field">
+            <div id="message"></div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let cities = [];
+    let field = document.querySelector('#field');
+    let message = document.querySelector('#message');
+
+    field.addEventListener('keypress', function (ev) {
+        if (ev.key === 'Enter') {
+            if (cities.length == 0) {
+                cities.push(this.value);
+                message.innerHTML += '<br>' + this.value;
+                this.value = '';
+            } else {
+                let prev_word = cities[cities.length - 1];
+                if (prev_word.slice(prev_word.length - 1, prev_word.length).toUpperCase() == this.value.slice(0, 1).toUpperCase() && cities.filter(el => el.toUpperCase() == this.value.toUpperCase()).length == 0) {
+                    cities.push(this.value);
+                    message.innerHTML += '<br>' + this.value;
+                    this.value = '';
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
