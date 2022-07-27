@@ -28,6 +28,7 @@
                 <li>Организовать проверку на ранее введённые города</li>
             </ul>
             <p>Реализуйте игру в соответствии с описанным алгоритмом.</p>
+            <p>Реализуйте игру человека против робота.</p>
         </td>
         <td colspan="2" class="view">
             <input id="field">
@@ -38,25 +39,44 @@
 <script>
     "use strict";
     let cities = [];
+    let allCities = ['Астрахань', 'Брест', 'Волгоград', 'Гродно', 'Дубна', 'Егорьевск', 'Звенигород', 'Женева', 'Истра'
+        , 'Коломна', 'Липецк', 'Москва', 'Новгород', 'Омск', 'Париж', 'Ржев', 'Саратов', 'Тверь', 'Ухань', 'Шымкент', 'Ярославль'];
     let field = document.querySelector('#field');
     let message = document.querySelector('#message');
 
-    field.addEventListener('keypress', function (ev) {
+    field.addEventListener('keypress', function func(ev) {
         if (ev.key === 'Enter') {
             if (cities.length == 0) {
                 cities.push(this.value);
                 message.innerHTML += '<br>' + this.value;
-                this.value = '';
             } else {
                 let prev_word = cities[cities.length - 1];
                 if (prev_word.slice(prev_word.length - 1, prev_word.length).toUpperCase() == this.value.slice(0, 1).toUpperCase() && cities.filter(el => el.toUpperCase() == this.value.toUpperCase()).length == 0) {
                     cities.push(this.value);
                     message.innerHTML += '<br>' + this.value;
-                    this.value = '';
+                }
+            }
+            turnComputer(this.value);
+            this.value = '';
+
+        }
+    });
+
+    function turnComputer(word) {
+        let el = word.slice(word.length - 1, word.length).toUpperCase();
+        let corrCities = allCities.filter(city => city.slice(0, 1) == el);
+        if (corrCities.length > 0) {
+            for (let city of corrCities) {
+                if (cities.filter(el => el.toUpperCase() == city.toUpperCase()).length == 0) {
+                    cities.push(city);
+                    message.innerHTML += '<br>' + city;
+                    return;
                 }
             }
         }
-    });
+        message.innerHTML += '<br>' + 'Вы выйграли!';
+        field.style.display = "none";
+    }
 
 </script>
 </body>
