@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Игра в города на JavaScript</title>
+    <title>Чеклист на JavaScript</title>
 </head>
 <style>
     .description {
@@ -29,22 +29,29 @@
     #list span {
         margin-right: 5px;
     }
+
     #list .remove, #list .mark {
         color: blue;
         cursor: pointer;
     }
+
     #list .remove:hover, #list .mark:hover {
         text-decoration: underline;
     }
+
+    #list .done {
+        text-decoration: line-through;
+    }
 </style>
 <body>
-<h1>Игра в города на JavaScript</h1>
+<h1>Чеклист на JavaScript</h1>
 <table border="1">
     <tr>
         <td class="description">
             <p>
                 Реализуйте чеклист. Чеклистом называется программа, которая позволяет сделать список
-                планируемых дел, а затем по мере выполнения этим дел отмечать эти дела сделанными или удалять и редактировать.
+                планируемых дел, а затем по мере выполнения этим дел отмечать эти дела сделанными или удалять и
+                редактировать.
             </p>
         </td>
         <td colspan="2" class="view">
@@ -61,23 +68,43 @@
     let input = document.querySelector('#input');
     let list = document.querySelector('#list');
 
-    input.addEventListener('keypress', function(event) {
+
+    input.addEventListener('keypress', function (event) {
         if (event.key == 'Enter') {
             let li = document.createElement('li');
 
             let task = document.createElement('span');
             task.classList.add('task');
             task.textContent = this.value;
+            task.addEventListener('dblclick', function () {
+                let text = this.textContent;
+                this.textContent = '';
+                let inp = document.createElement('input');
+                inp.value = text;
+                let self = this;
+                inp.addEventListener('keypress', function (event) {
+                    if (event.key == 'Enter') {
+                    self.textContent = this.value;
+                    }
+                });
+                this.appendChild(inp);
+            });
             li.appendChild(task);
 
             let remove = document.createElement('span');
             remove.classList.add('remove');
             remove.textContent = 'удалить';
+            remove.addEventListener('click', function () {
+                list.removeChild(li);
+            });
             li.appendChild(remove);
 
             let mark = document.createElement('span');
             mark.classList.add('mark');
             mark.textContent = 'сделано';
+            mark.addEventListener('click', function () {
+                task.classList.add('done');
+            });
             li.appendChild(mark);
 
             list.appendChild(li);
