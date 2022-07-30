@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Записная книжка на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 900px;
+    }
+
+    #wrapper {
+        width: 500px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #menu {
+        width: 150px;
+        position: absolute;
+        right: 105%;
+    }
+
+    #notes {
+        padding: 0;
+        margin: 0;
+    }
+
+    #notes li {
+        padding: 5px;
+        text-align: center;
+        margin-bottom: 10px;
+        border: 1px dashed gray;
+        list-style-type: none;
+        cursor: pointer;
+    }
+
+    #notes li:hover, #notes li.active {
+        background: #f1f1f1;
+    }
+
+    #create button {
+        width: 100%;
+        padding: 5px;
+    }
+
+    #text textarea {
+        width: 100%;
+        height: 400px;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    #text button {
+        width: 100%;
+        height: 30px;
+    }
+</style>
+<body>
+<h1>Записная книжка на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td colspan="3" class="view">
+            <div id="wrapper">
+                <div id="menu">
+                    <ul id="notes">
+                    </ul>
+                    <div id="create">
+                        <button>новая запись</button>
+                    </div>
+                </div>
+                <div id="text">
+                    <textarea></textarea>
+                    <button>сохранить</button>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let text = [];
+    let counter = 1;
+    let notes = document.querySelector('#notes');
+    let button_save_text = document.querySelector('#text button');
+    let button_add_note = document.querySelector('#create button');
+    let area = document.querySelector('#text textarea');
+
+    button_add_note.addEventListener('click', function () {
+        text.push('text_' + counter++);
+        let li = document.createElement('li');
+        li.textContent = text[text.length - 1];
+        notes.appendChild(li);
+    });
+
+    // button_save_text.addEventListener('click', function () {
+    //     if (area.value.trim() != '') {
+    //         text.push(area.value.trim());
+    //     }
+    // });
+
+
+</script>
+</body>
+</html>
