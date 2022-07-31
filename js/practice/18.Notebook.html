@@ -84,7 +84,8 @@
 </table>
 <script>
     "use strict";
-    let text = [];
+    let note_name = [];
+    let textarea = [];
     let counter = 1;
     let notes = document.querySelector('#notes');
     let button_save_text = document.querySelector('#text button');
@@ -92,17 +93,32 @@
     let area = document.querySelector('#text textarea');
 
     button_add_note.addEventListener('click', function () {
-        text.push('text_' + counter++);
+        note_name.push('text_' + counter);
         let li = document.createElement('li');
-        li.textContent = text[text.length - 1];
+        li.addEventListener('click', function () {
+            remove_all_active_li();
+            this.classList.add('active');
+            area.value = textarea[this.dataset.key - 1];
+        });
+        li.classList.add('active');
+        li.textContent = note_name[counter - 1];
+        li.dataset.key = counter;
+        textarea[counter - 1] = '';
+        counter++;
+        remove_all_active_li()
         notes.appendChild(li);
     });
 
-    // button_save_text.addEventListener('click', function () {
-    //     if (area.value.trim() != '') {
-    //         text.push(area.value.trim());
-    //     }
-    // });
+    function remove_all_active_li() {
+        notes.querySelectorAll('li').forEach(child => child.classList.remove('active'));
+    }
+
+    button_save_text.addEventListener('click', function () {
+        if (area.value.trim() != '') {
+            let current_note = notes.querySelector('.active');
+            textarea[current_note.dataset.key - 1] = area.value.trim();
+        }
+    });
 
 
 </script>
