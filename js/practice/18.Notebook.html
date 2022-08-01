@@ -39,6 +39,11 @@
         cursor: pointer;
     }
 
+    span:hover {
+        color: blue;
+        text-decoration: blue underline
+    }
+
     #notes li:hover, #notes li.active {
         background: #f1f1f1;
     }
@@ -93,15 +98,31 @@
     let area = document.querySelector('#text textarea');
 
     button_add_note.addEventListener('click', function () {
-        note_name.push('text_' + counter);
+        note_name.push('text' + counter);
         let li = document.createElement('li');
-        li.addEventListener('click', function () {
+
+        let span_open = document.createElement('span');
+        span_open.classList.add('open');
+        span_open.textContent = note_name[counter - 1];
+        li.appendChild(span_open);
+        span_open.addEventListener('click', function () {
             remove_all_active_li();
-            this.classList.add('active');
-            area.value = textarea[this.dataset.key - 1];
+            li.classList.add('active');
+            area.value = textarea[li.dataset.key - 1];
         });
+
+        let span_remove = document.createElement('span');
+        span_remove.classList.add('remove');
+        span_remove.textContent = ' x ';
+        li.appendChild(span_remove);
+        span_remove.addEventListener('click', function () {
+            remove_all_active_li();
+            notes.removeChild(li);
+            textarea.slice(li.dataset.key - 1, 1);
+            area.value = '';
+        });
+
         li.classList.add('active');
-        li.textContent = note_name[counter - 1];
         li.dataset.key = counter;
         textarea[counter - 1] = '';
         counter++;
@@ -119,8 +140,6 @@
             textarea[current_note.dataset.key - 1] = area.value.trim();
         }
     });
-
-
 </script>
 </body>
 </html>
