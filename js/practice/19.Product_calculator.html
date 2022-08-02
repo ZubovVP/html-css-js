@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор продуктов на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 900px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #parent {
+        margin: 0 auto;
+        width: 500px;
+    }
+
+    #form {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    #form input {
+        padding: 8px;
+        width: 24%;
+        margin: 0 0.5% 10px 0.5%;
+    }
+
+    h2 {
+        margin-top: 0;
+        margin-bottom: 7px;
+    }
+
+    #table {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #table td, #table th {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    #table td.remove {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    #table td.remove:hover {
+        text-decoration: none;
+    }
+
+    #result {
+        text-align: right;
+        margin-right: 10px;
+    }
+</style>
+<body>
+<h1>Калькулятор продуктов на JavaScript</h1>
+<div id="parent">
+    <div id="form">
+        <input id="name" placeholder="название">
+        <input id="price" placeholder="цена">
+        <input id="amount" placeholder="количество">
+        <input id="add" type="button" value="добавить">
+    </div>
+
+    <h2>Таблица продуктов:</h2>
+    <table id="table">
+        <tr>
+            <th>название</th>
+            <th>цена</th>
+            <th>кол-во</th>
+            <th>сумма</th>
+            <th>удалить</th>
+        </tr>
+    </table>
+    <div id="result">
+        общий итог: <span id="total">0</span>
+    </div>
+</div>
+<script>
+    "use strict";
+    let name = document.querySelector('#name');
+    let price = document.querySelector('#price');
+    let amount = document.querySelector('#amount');
+    let add = document.querySelector('#add');
+    let table = document.querySelector('#table');
+    let total = document.querySelector('#total');
+
+    function createCell(tr, value, name) {
+        let td = document.createElement('td');
+        td.textContent = value;
+        td.classList.add(name);
+        tr.appendChild(td);
+        table.appendChild(tr);
+        return td;
+    }
+
+    add.addEventListener('click', function () {
+        let tr = document.createElement('tr');
+
+        createCell(tr, name.value, 'name');
+        createCell(tr, price.value, 'price');
+        createCell(tr, amount.value, 'amount');
+        createCell(tr, price.value * amount.value, 'cost');
+        createCell(tr, 'удалить', 'remove');
+        recountTotal();
+        table.appendChild(tr);
+    });
+
+    function recountTotal() {
+        let costs = table.querySelectorAll('.cost');
+        let result = 0;
+
+        if (costs != undefined) {
+            costs.forEach(cost => result += Number(cost.textContent));
+        }
+        total.textContent = result;
+    }
+</script>
+</body>
+</html>
