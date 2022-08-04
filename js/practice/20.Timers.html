@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика на таймеры и работу с DOM в JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+
+</style>
+<body>
+<h1>Практика на таймеры и работу с DOM в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Дана кнопка. Дан абзац, текстом которого является число. По нажатию на кнопку запустите таймер, который
+                каждую секунду будет увеличивать текст абзаца на 1.
+
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p id="text_1"></p>
+            <button id="but_1">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дана кнопка. Дан абзац, текстом которого является число, например, 10. По нажатию на кнопку запустите
+                таймер, который каждую секунду будет уменьшать текст абзаца на 1. Как только значение абзаца станет
+                равно нулю - остановите таймер.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p id="text_2"></p>
+            <button id="but_2">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан инпут с числом. Сделайте так, чтобы каждую секунду в нем появлялся квадрат того числа, которое в нем
+                записано.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_3">
+            <button id="but_3">Click</button>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы в абзаце ниже начал тикать
+                обратный отсчет, начиная с введенного числа. Когда отсчет дойдет до нуля - он должен закончится.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_4">
+            <p id="text_4"></p>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let counter = 1;
+    let p = document.querySelector('#text_1');
+    document.querySelector('#but_1').addEventListener('click', function () {
+        setInterval(timer, 1000);
+    });
+
+    function timer() {
+        p.textContent = counter++;
+    }
+
+    let counter_2 = 10;
+    let p_2 = document.querySelector('#text_2');
+    let timer_id;
+
+    function timer_2() {
+        if (counter_2 >= 0) {
+            p_2.textContent = counter_2--;
+        } else {
+            clearInterval(timer_id);
+        }
+    }
+
+    document.querySelector('#but_2').addEventListener('click', function () {
+        timer_id = setInterval(timer_2, 1000);
+    });
+
+    let inp_3 = document.querySelector('#inp_3');
+    document.querySelector('#but_3').addEventListener('click', function () {
+        setInterval(function () {
+            inp_3.value = inp_3.value * inp_3.value;
+        }, 1000);
+    });
+
+    let timer_id_4;
+    let inp_4 = document.querySelector('#inp_4');
+    let p_4 = document.querySelector('#text_4');
+    document.querySelector('#inp_4').addEventListener('blur', function () {
+        p_4.textContent = inp_4.value;
+        timer_id_4 = setInterval(function () {
+            p_4.textContent = Number(p_4.textContent) - 1;
+            if (p_4.textContent <= 0) {
+                clearInterval(timer_id_4);
+            }
+        }, 1000);
+    });
+
+</script>
+</body>
+</html>
