@@ -68,6 +68,34 @@
             <p id="text_4"></p>
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан инпут, кнопка и абзац. В инпут вводится какое-то число. По нажатию на кнопку запишите введенное
+                число в текст абзаца и запустите обратный отсчет в абзаце: пусть каждую секунду число в абзаце
+                уменьшается на единицу, пока не дойдет до нуля.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <input id="inp_5">
+            <p id="text_5"></p>
+            <button id="but_5">Click</button>
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Дан абзац и две кнопки. Сделайте так, чтобы по нажатию на первую кнопку в абзаце начал тикать таймер от
+                1 до бесконечности, а по нажатию на вторую таймер останавливался.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <p id="text_6">0</p>
+            <button id="but_6_1">Start</button>
+            <button id="but_6_2">Stop</button>
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -117,6 +145,30 @@
         }, 1000);
     });
 
+    let timer_id_5;
+    let inp_5 = document.querySelector('#inp_5');
+    let p_5 = document.querySelector('#text_5');
+    document.querySelector('#but_5').addEventListener('click', function () {
+        p_5.textContent = inp_5.value;
+        timer_id_5 = setInterval(function () {
+            p_5.textContent = Number(p_5.textContent) - 1;
+            if (p_5.textContent <= 0) {
+                clearInterval(timer_id_5);
+            }
+        }, 1000);
+    });
+
+
+    let timer_id_6;
+    let p_6 = document.querySelector('#text_6');
+    document.querySelector('#but_6_1').addEventListener('click', function () {
+        timer_id_6 = setInterval(function () {
+            p_6.textContent = Number(p_6.textContent) + 1;
+        }, 1000);
+    });
+    document.querySelector('#but_6_2').addEventListener('click', function () {
+        clearInterval(timer_id_6);
+    });
 </script>
 </body>
 </html>
