@@ -33,19 +33,7 @@
         </td>
         <td colspan="2" class="view">
             <div id="test">
-                <div>
-                    <p>вопрос 1?</p>
-                    <input data-right="ответ 1">
-                </div>
-                <div>
-                    <p>вопрос 2?</p>
-                    <input data-right="ответ 2">
-                </div>
-                <div>
-                    <p>вопрос 3?</p>
-                    <input data-right="ответ 3">
-                </div>
-                <div>
+                <div id="div_but">
                     <br>
                     <button id="check_but">Проверить ответы</button>
                 </div>
@@ -55,18 +43,41 @@
 </table>
 <script>
     "use strict";
+    let questions = [
+        'вопрос 1?',
+        'вопрос 2?',
+        'вопрос 3?'
+    ];
+    let answers = [
+        'ответ 1',
+        'ответ 2',
+        'ответ 3',
+    ];
 
-    document.querySelector('#check_but').addEventListener('click', function () {
-        document.querySelectorAll('#test input').forEach(el => {
-            if (el.dataset.right == el.value) {
-                el.classList.add('right');
+    let but = document.querySelector('#check_but');
+    let test = document.querySelector('#test');
+    let div_but = document.querySelector('#div_but');
+
+    for (let i = 0; i < questions.length; i++) {
+        let div = document.createElement('div');
+        let p = document.createElement('p');
+        p.textContent = questions[i];
+        let input = document.createElement('input');
+        div.appendChild(p);
+        div.appendChild(input);
+        test.insertBefore(div, div_but);
+    }
+    let inputs = document.querySelectorAll('#test input');
+
+    but.addEventListener('click', function () {
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == answers[i]) {
+                inputs[i].classList.add('right');
             } else {
-                el.classList.add('wrong');
+                inputs[i].classList.add('wrong');
             }
-            el.blur();
-        })
+        }
     });
-
 
 </script>
 </body>
