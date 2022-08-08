@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест с вопросами и ответами в HTML коде на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    .right {
+        border: 1px solid green;
+    }
+
+    .wrong {
+        border: 1px solid red;
+    }
+</style>
+<body>
+<h1>Тест с вопросами и ответами в HTML коде на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте так, чтобы ввод ответа в инпут завершался нажатием клавиши Enter. Пусть в этом случае инпут
+                сразу проверяет ответ на правильность.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="test">
+                <div>
+                    <p>вопрос 1?</p>
+
+                    <label>
+                        <input type="radio" name="1" data-right>
+                        вариант 1
+                    </label>
+                    <label>
+                        <input type="radio" name="1">
+                        вариант 2
+                    </label>
+                    <label>
+                        <input type="radio" name="1">
+                        вариант 3
+                    </label>
+                </div>
+                <div>
+                    <p>вопрос 2?</p>
+
+                    <label>
+                        <input type="radio" name="2">
+                        вариант 1
+                    </label>
+                    <label>
+                        <input type="radio" name="2" data-right>
+                        вариант 2
+                    </label>
+                    <label>
+                        <input type="radio" name="2">
+                        вариант 3
+                    </label>
+                </div>
+                <div>
+                    <p>вопрос 3?</p>
+
+                    <label>
+                        <input type="radio" name="3">
+                        вариант 1
+                    </label>
+                    <label>
+                        <input type="radio" name="3">
+                        вариант 2
+                    </label>
+                    <label>
+                        <input type="radio" name="3" data-right>
+                        вариант 3
+                    </label>
+                </div>
+            </div>
+            <div>
+                <br>
+                <button id="check_but">Проверить ответы</button>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let but = document.querySelector('#check_but');
+    but.addEventListener('click', function () {
+        let one = document.querySelector('input[name="1"]:checked');
+        if (one.dataset.right == '') {
+            one.parentElement.classList.add('right');
+        } else {
+            one.parentElement.classList.add('wrong');
+        }
+        let two = document.querySelector('input[name="2"]:checked');
+        if (two.dataset.right == '') {
+            two.parentElement.classList.add('right');
+        } else {
+            two.parentElement.classList.add('wrong');
+        }
+        let three = document.querySelector('input[name="3"]:checked');
+        if (three.dataset.right == '') {
+            three.parentElement.classList.add('right');
+        } else {
+            three.parentElement.classList.add('wrong');
+        }
+    });
+
+
+</script>
+</body>
+</html>
