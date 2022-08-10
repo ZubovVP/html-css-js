@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест с вопросами и вариантами ответов в объекте на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    .right {
+        border: 1px solid green;
+    }
+
+    .wrong {
+        border: 1px solid red;
+    }
+</style>
+<body>
+<h1>Тест с вопросами и вариантами ответов в объекте на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте так, чтобы ввод ответа в инпут завершался нажатием клавиши Enter. Пусть в этом случае инпут
+                сразу проверяет ответ на правильность.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="test"></div>
+            <button id="check_but">проверить ответы</button>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let questions = [
+        {
+            text: 'вопрос 1?',
+            right: 0,
+            variants: [
+                'вариант 1',
+                'вариант 2',
+                'вариант 3'
+            ]
+        },
+        {
+            text: 'вопрос 2?',
+            right: 1,
+            variants: [
+                'вариант 1',
+                'вариант 2',
+                'вариант 3'
+            ]
+        },
+        {
+            text: 'вопрос 3?',
+            right: 2,
+            variants: [
+                'вариант 1',
+                'вариант 2',
+                'вариант 3'
+            ]
+        },
+    ];
+
+    let but = document.querySelector('#check_but');
+    let test = document.querySelector('#test');
+
+    for (let i = 0; i < questions.length; i++) {
+        let div = document.createElement('div');
+        let p = document.createElement('p');
+        p.textContent = questions[i].text;
+        div.appendChild(p);
+        for (let variant of questions[i].variants) {
+            let label = document.createElement('label');
+            let input = document.createElement('input');
+            input.name = Number(i) + 1;
+            input.type = 'radio';
+            label.innerHTML = variant;
+            label.appendChild(input);
+            div.appendChild(label);
+        }
+        test.appendChild(div);
+
+        but.addEventListener('click', function () {
+            let one = document.querySelectorAll('input[name="1"]');
+            if (one[questions[0].right].checked) {
+                one[questions[0].right].parentElement.classList.add('right');
+            } else {
+                one.forEach(el => {
+                    if (el.checked) {
+                        el.parentElement.classList.add('wrong');
+                    }
+                });
+            }
+
+            let two = document.querySelectorAll('input[name="2"]');
+            if (two[questions[1].right].checked) {
+                two[questions[1].right].parentElement.classList.add('right');
+            } else {
+                two.forEach(el => {
+                    if (el.checked) {
+                        el.parentElement.classList.add('wrong');
+                    }
+                });
+            }
+
+            let three = document.querySelectorAll('input[name="3"]');
+            if (three[questions[2].right].checked) {
+                three[questions[2].right].parentElement.classList.add('right');
+            } else {
+                three.forEach(el => {
+                    if (el.checked) {
+                        el.parentElement.classList.add('wrong');
+                    }
+                });
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
