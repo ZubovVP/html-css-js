@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест с вопросами и ответами в HTML коде на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+</style>
+<body>
+<h1>Тест с вопросами и ответами в HTML коде на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте слайдер текста. Этот слайдер будет представлять собой див, в котором каждую секунду будет
+                меняться текст.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="slider"></div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let texts = ['text1', 'text2', 'text3'];
+    let index = 0;
+    let slider = document.querySelector('#slider');
+    let text = document.createElement('p');
+    slider.appendChild(text);
+    let timerId = setInterval(function () {
+        if (index == texts.length) {
+            index = 0;
+        }
+        text.textContent = texts[index++];
+    }, 1000)
+
+</script>
+</body>
+</html>
