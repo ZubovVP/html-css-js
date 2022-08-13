@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Слайдер картинок через HTML на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+</style>
+<body>
+<h1>Слайдер картинок через HTML на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте так, чтобы картинки ходили по кругу через массив.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="slider_1">
+                <img id="slider_img" src="">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Модифицируйте предыдущую задачу так, чтобы над картинкой также появились стрелки вперед и назад. То есть
+                слайдер будет сам проматываться таймером, но при желании юзер также сможет промотать его ссылками. </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="slider_2">
+                <a href="" id="left">←</a>
+                <a href="" id="right">→</a>
+                <img id="slider_img_2" src="">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте сделаем так, чтобы по заходу на страницу показывалась первая картинка, затем через секунду -
+                вторая, и так далее по кругу.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="slider">
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let imgs = ['images/22.Image_slider_1.png', 'images/22.Image_slider_2.png', 'images/22.Image_slider_3.png'];
+    let index_1 = 0;
+    let img_1 = document.querySelector('#slider_img');
+    img_1.src = imgs[index_1++];
+    let timerId_1 = setInterval(function () {
+        if (index_1 > imgs.length - 1) {
+            index_1 = 0;
+        }
+        img_1.src = imgs[index_1++];
+    }, 1000);
+
+    let index_2 = 0;
+    let img_2 = document.querySelector('#slider_img_2');
+    img_2.src = imgs[index_2++];
+    let timerId_2 = setInterval(function () {
+        if (index_2 > imgs.length - 1) {
+            index_2 = 0;
+        }
+        img_2.src = imgs[index_2++];
+    }, 5000);
+    left.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (index_2 <= 0) {
+            return
+        }
+        img_2.src = imgs[--index_2];
+    });
+    right.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (index_2 >= imgs.length - 1) {
+            return
+        }
+        img_2.src = imgs[++index_2];
+    });
+
+    let index = 1;
+    let slider = document.querySelector('#slider');
+    let img = document.createElement('img');
+    img.src = 'images/22.Image_slider_' + index++ + '.png';
+    slider.appendChild(img);
+    let timerId = setInterval(function () {
+        if (index > 3) {
+            index = 1;
+        }
+        img.src = 'images/22.Image_slider_' + index++ + '.png';
+    }, 1000);
+
+</script>
+</body>
+</html>
