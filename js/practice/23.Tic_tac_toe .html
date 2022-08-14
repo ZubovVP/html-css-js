@@ -12,6 +12,7 @@
     .view {
         width: 300px;
     }
+
     #field td {
         width: 50px;
         height: 50px;
@@ -53,7 +54,19 @@
 <script>
     "use strict";
     let cells = document.querySelectorAll('#field td');
+    let i = 0; // начальное значение счетчика
+    let gamers = ['X', 'O'];
 
+    function start(cells) {
+        cells.forEach(cell => cell.addEventListener('click', function () {
+            if (this.textContent == '') {
+                this.textContent = gamers[i++ % 2];
+            }
+        }));
+
+    }
+
+    start(cells);
 </script>
 </body>
 </html>
