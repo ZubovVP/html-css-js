@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра смена цветов на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    #field td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .red {
+        background: red;
+    }
+
+    .green {
+        background: green;
+    }
+
+    .blue {
+        background: blue;
+    }
+</style>
+<body>
+<h1>Игра смена цветов на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуйте игру смена цветов.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <table id="field"></table>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let rows = 3;
+    let cols = 3;
+    let colors = ['red', 'green', 'blue'];
+
+    let table = document.querySelector('#field');
+    create_table(table);
+    paint_table(table);
+
+    function create_table(table) {
+        for (let i = 0; i < rows; i++) {
+            let tr = document.createElement('tr');
+            for (let j = 0; j < cols; j++) {
+                let td = document.createElement('td');
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    }
+
+    function paint_table(table) {
+        let tds = table.querySelectorAll('td');
+        tds.forEach(td => td.classList.add(chose_color(colors)));
+    }
+
+    function chose_color(colors) {
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+
+</script>
+</body>
+</html>
