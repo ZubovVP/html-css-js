@@ -43,6 +43,7 @@
             </p>
         </td>
         <td colspan="2" class="view">
+            <p>Ходов сделано: <span id="text"></span></p>
             <table id="field"></table>
         </td>
     </tr>
@@ -52,7 +53,8 @@
     let rows = 3;
     let cols = 3;
     let colors = ['red', 'green', 'blue'];
-
+    let turn_counter = 0;
+    let text = document.querySelector('#text');
     let table = document.querySelector('#field');
     create_table(table);
     paint_table(table);
@@ -62,6 +64,13 @@
             let tr = document.createElement('tr');
             for (let j = 0; j < cols; j++) {
                 let td = document.createElement('td');
+                td.addEventListener('click', function () {
+                    add_turn();
+                    change_color(this, colors[next_color(this.className, colors)]);
+                    if (check_win()) {
+                        alert("Победа!");
+                    }
+                });
                 tr.appendChild(td);
             }
             table.appendChild(tr);
@@ -77,6 +86,38 @@
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
+    function change_color(elem, new_color) {
+        elem.classList.remove(elem.className);
+        elem.classList.add(new_color);
+    }
+
+    function next_color(color, colors) {
+        for (let i = 0; i < colors.length; i++) {
+            if (color == colors[i]) {
+                if (i >= colors.length - 1) {
+                    return 0;
+                } else {
+                    return i + 1;
+                }
+            }
+        }
+        return 0;
+    }
+
+    function check_win() {
+        let tds = table.querySelectorAll('td');
+        let class_elem = tds[0].className;
+        for (let i = 1; i < tds.length; i++) {
+            if (tds[i].className != class_elem) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function add_turn() {
+        text.textContent = ++turn_counter;
+    }
 
 </script>
 </body>
