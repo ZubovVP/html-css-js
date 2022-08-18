@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра найди число на JavaScript</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    #parent {
+        text-align: center;
+    }
+
+    #field {
+        display: inline-block;
+    }
+
+    #field td {
+        padding: 20px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    .active {
+        background: red;
+    }
+</style>
+<body>
+<h1>Игра найди число на JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Реализуйте игру "Найди число".
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div id="parent">
+                <table id="field"></table>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+    let field = document.querySelector('#field');
+
+    function build(field, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let row = arr[i];
+            let tr = document.createElement('tr');
+            for (let j = 0; j < row.length; j++) {
+                let td = document.createElement('td');
+                td.textContent = arr[i][j];
+                tr.appendChild(td);
+            }
+            field.appendChild(tr);
+        }
+
+    }
+
+    function range(count) {
+        let arr = []
+        for (let i = 1; i <= count; i++) {
+            arr.push(i);
+        }
+        return arr;
+    }
+
+    function shuffle(arr) {
+        return arr.sort((a, b) => 0.5 - Math.random());
+    }
+
+    function chunk(arr, n) {
+        let array2 = [];
+        let section;
+
+        for (let [index, element] of arr.entries()) {
+            if (index % n == 0) array2.push(section = []);
+            section.push(element);
+        }
+
+        return array2;
+    }
+
+    function prepare(size) {
+        let arr = [];
+        arr = range(size * size);
+        arr = shuffle(arr);
+        arr = chunk(arr, size);
+        return arr;
+    }
+
+    build(field, prepare(2));
+
+</script>
+</body>
+</html>
