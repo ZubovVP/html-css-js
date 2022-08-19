@@ -49,10 +49,10 @@
 </table>
 <script>
     "use strict";
-    let field = document.querySelector('#field');
 
     function build(field, arr) {
-        clear_table(field.querySelectorAll('td'));
+        field.textContent = '';
+
         let arr_td = [];
         for (let i = 0; i < arr.length; i++) {
             let row = arr[i];
@@ -100,27 +100,29 @@
         return arr;
     }
 
-    function clear_table(arr) {
-        for (let td of arr) {
-            td.textContent = '';
-        }
-    }
-
-    function activate(cells) {
+    function activate(cells, size) {
         let counter = 1; // счетчик
+        let last = size * size; // последнее число
+
         for (let cell of cells) {
             cell.addEventListener('click', function () {
                 if (counter == this.textContent) {
                     this.classList.add('active');
                     counter++;
+                    if (last < counter) {
+                        start(size + 1);
+                    }
                 }
             });
         }
     }
 
-    let cells = build(field, prepare(2));
-    console.log(cells);
-    activate(cells);
+    let field = document.querySelector('#field');
+    start(2);
+
+    function start(size) {
+        activate(build(field, prepare(size)), size); // правка
+    }
 
 </script>
 </body>
