@@ -52,6 +52,8 @@
     let field = document.querySelector('#field');
 
     function build(field, arr) {
+        clear_table(field.querySelectorAll('td'));
+        let arr_td = [];
         for (let i = 0; i < arr.length; i++) {
             let row = arr[i];
             let tr = document.createElement('tr');
@@ -59,10 +61,11 @@
                 let td = document.createElement('td');
                 td.textContent = arr[i][j];
                 tr.appendChild(td);
+                arr_td.push(td);
             }
             field.appendChild(tr);
         }
-
+        return arr_td;
     }
 
     function range(count) {
@@ -97,7 +100,27 @@
         return arr;
     }
 
-    build(field, prepare(2));
+    function clear_table(arr) {
+        for (let td of arr) {
+            td.textContent = '';
+        }
+    }
+
+    function activate(cells) {
+        let counter = 1; // счетчик
+        for (let cell of cells) {
+            cell.addEventListener('click', function () {
+                if (counter == this.textContent) {
+                    this.classList.add('active');
+                    counter++;
+                }
+            });
+        }
+    }
+
+    let cells = build(field, prepare(2));
+    console.log(cells);
+    activate(cells);
 
 </script>
 </body>
