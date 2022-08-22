@@ -63,36 +63,63 @@
     let calendar = document.querySelector('#calendar');
     let body = calendar.querySelector('.body');
 
-    let date = new Date();
-    let year = date.getFullYear();
+    let date  = new Date();
+    let year  = date.getFullYear();
     let month = date.getMonth();
 
     function range(count) {
         let arr = [];
-        for (let i = 1; i < count; i++) {
+
+        for (let i = 1; i <= count; i++) {
             arr.push(i);
         }
+
         return arr;
     }
 
     function getLastDay(year, month) {
-        return new Date(year, month + 1, 0).getDate() + 1;
+        let date = new Date(year, month + 1, 0);
+        return date.getDate();
     }
 
     function getFirstWeekDay(year, month) {
-        return new Date(year, month).getDay();
+        let date = new Date(year, month, 1);
+        let num  = date.getDay();
+
+        if (num == 0) {
+            return 6;
+        } else {
+            return num - 1;
+        }
     }
 
     function getLastWeekDay(year, month) {
-        let date = new Date(year, month, getLastDay(year, month));
-        date.setHours(-1);
-        return date.getDay();
+        let date = new Date(year, month + 1, 0);
+        let num  = date.getDay();
+
+        if (num == 0) {
+            return 6;
+        } else {
+            return num - 1;
+        }
     }
 
-    console.log(range(getLastDay(2022, 7)));
-    console.log(getFirstWeekDay(2022, 7));
-    console.log(getLastWeekDay(2022, 7));
+    function normalize(arr, left, right) {
+        for (let i = 0; i < left; i++) {
+            arr.unshift('');
+        }
+        for (var i = 0; i < right; i++) {
+            arr.push('');
+        }
 
+        return arr;
+    }
+
+    console.log(range(getLastDay(year, month)));
+    console.log(getFirstWeekDay(year, month));
+    console.log(getLastWeekDay(year, month));
+    let res = normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month),  getLastWeekDay(year, month));
+    console.log(res);
 </script>
 </body>
 </html>
