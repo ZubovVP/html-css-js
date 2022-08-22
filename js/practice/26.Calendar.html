@@ -63,8 +63,8 @@
     let calendar = document.querySelector('#calendar');
     let body = calendar.querySelector('.body');
 
-    let date  = new Date();
-    let year  = date.getFullYear();
+    let date = new Date();
+    let year = date.getFullYear();
     let month = date.getMonth();
 
     function range(count) {
@@ -84,7 +84,7 @@
 
     function getFirstWeekDay(year, month) {
         let date = new Date(year, month, 1);
-        let num  = date.getDay();
+        let num = date.getDay();
 
         if (num == 0) {
             return 6;
@@ -95,7 +95,7 @@
 
     function getLastWeekDay(year, month) {
         let date = new Date(year, month + 1, 0);
-        let num  = date.getDay();
+        let num = date.getDay();
 
         if (num == 0) {
             return 6;
@@ -115,10 +115,13 @@
         return arr;
     }
 
+    console.log('Месяц ' + month);
+    console.log('Год ' + year);
+    console.log('День недели ' + date.getDay());
     console.log(range(getLastDay(year, month)));
     console.log(getFirstWeekDay(year, month));
     console.log(getLastWeekDay(year, month));
-    let res = normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month),  getLastWeekDay(year, month));
+    let res = normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month), 6 - getLastWeekDay(year, month));
     console.log(res);
 </script>
 </body>
