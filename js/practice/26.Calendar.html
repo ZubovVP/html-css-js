@@ -63,10 +63,6 @@
     let calendar = document.querySelector('#calendar');
     let body = calendar.querySelector('.body');
 
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth();
-
     function range(count) {
         let arr = [];
 
@@ -111,9 +107,47 @@
         for (var i = 0; i < right; i++) {
             arr.push('');
         }
-
         return arr;
     }
+
+    function chunk(arr, value_elem) {
+        let result = [];
+        for (let i = 0; i < arr.length; ) {
+            let week = [];
+            for (let j = 0; j < value_elem; j++, i++) {
+                week.push(arr[i]);
+            }
+            result.push(week);
+        }
+        return result;
+    }
+
+    function createTable(parent, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let row_elems = arr[i];
+            let tr = document.createElement('tr');
+            for (let j = 0; j < row_elems.length; j++) {
+                let td = document.createElement('td');
+                td.textContent = row_elems[j];
+                tr.appendChild(td);
+            }
+            parent.appendChild(tr);
+        }
+    }
+
+    function draw(body, year, month) {
+        let arr = range(getLastDay(year, month));
+
+        let firstWeekDay = getFirstWeekDay(year, month);
+        let lastWeekDay  = getLastWeekDay(year, month);
+
+        let nums = chunk(normalize(arr, firstWeekDay, 6 - lastWeekDay), 7);
+        createTable(body, nums)
+    }
+
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
 
     console.log('Месяц ' + month);
     console.log('Год ' + year);
@@ -123,6 +157,10 @@
     console.log(getLastWeekDay(year, month));
     let res = normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month), 6 - getLastWeekDay(year, month));
     console.log(res);
+    let res_2 = chunk(normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month), 6 - getLastWeekDay(year, month)), 7);
+    console.log(res_2);
+
+    draw(body, year, month);
 </script>
 </body>
 </html>
