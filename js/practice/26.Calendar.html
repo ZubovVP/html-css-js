@@ -26,6 +26,7 @@
         border: 1px solid black;
         text-align: center;
     }
+
 </style>
 <body>
 <h1>Игра найди число на JavaScript</h1>
@@ -39,6 +40,7 @@
         <td colspan="2" class="view">
             <div id="parent">
                 <div id="calendar">
+                    <div class="info"></div>
                     <table>
                         <thead>
                         <tr>
@@ -62,6 +64,7 @@
     "use strict";
     let calendar = document.querySelector('#calendar');
     let body = calendar.querySelector('.body');
+    let info = calendar.querySelector('.info');
 
     function range(count) {
         let arr = [];
@@ -148,7 +151,10 @@
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth();
-
+    let months = [
+        'Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн',
+        'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'
+    ];
     console.log('Месяц ' + month);
     console.log('Год ' + year);
     console.log('День недели ' + date.getDay());
@@ -159,7 +165,7 @@
     console.log(res);
     let res_2 = chunk(normalize(range(getLastDay(year, month)), getFirstWeekDay(year, month), 6 - getLastWeekDay(year, month)), 7);
     console.log(res_2);
-
+    info.textContent = months[month] + ' ' + year;
     draw(body, year, month);
 </script>
 </body>
