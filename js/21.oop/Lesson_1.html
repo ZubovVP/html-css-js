@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(1, 2, 3, 4, 5, 6, 7, 8, 9)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Классы и объекты в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Employee.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h1>Свойства объектов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                В объект класса Employee запишите свойства name, age и salary.
+                Получите данные из записанных свойств и выведите их на экран.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<h1>Несколько объектов одного класса в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Создайте несколько объектов класса Employee.
+                Запишите в свойство каждого работника его имя и зарплату.
+                Выведите на экран сумму зарплат созданных вами работников.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<h1>Методы классов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте в вашем классе Employee какой-нибудь тестовый метод. Вызовите его.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Передайте в ваш тестовый метод имя и зарплату работника.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                В объект класса Employee запишите свойства name и salary.
+                Сделайте метод, который выведет на экран имя работника.
+                Сделайте метод, который выведет на экран зарплату работника.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                В объект класса Student запишите свойства name и surname.
+                Сделайте вспомогательный метод, который будет получать первый символ строки и делать его заглавным.
+                Сделайте метод, который вернет инициалы студента, то есть первые буквы его имени и фамилии.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Объявите в классе Student свойства name и surname.
+                При объявлении добавьте вашим свойствам некоторые значения.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Employee {
+
+        say_hello() {
+            return 'Hello!';
+        }
+
+        say_hello_with_param(name, salary) {
+            return 'Hello! My name is ' + name + '. My salary is ' + salary;
+        }
+
+        say_hello_without_param() {
+            return 'Hello! My name is ' + this.name + '. My salary is ' + this.salary;
+        }
+
+        get_name() {
+            return this.name;
+        }
+
+        get_salary() {
+            return this.salary;
+        }
+    }
+
+    class Student {
+        name = 'default';
+        surname = 'default surn';
+
+        to_upper(value) {
+            return value.toUpperCase();
+        }
+
+        get_initials() {
+            return this.to_upper(this.name.slice(0, 1)) + '.' + this.to_upper(this.surname.slice(0, 1) + '.');
+        }
+
+    }
+
+    let employee_1 = new Employee();
+    employee_1.name = 'Sam';
+    employee_1.age = 20;
+    employee_1.salary = 3000;
+    console.log(employee_1);
+    console.log(employee_1.name);
+    console.log(employee_1.age);
+    console.log(employee_1.salary);
+
+    let employee_2 = new Employee();
+    employee_2.name = 'Tom';
+    employee_2.age = 25;
+    employee_2.salary = 5000;
+    console.log(employee_2);
+    console.log(employee_2.name);
+    console.log(employee_2.age);
+    console.log(employee_2.salary);
+
+    console.log('sum salary = ' + (Number(employee_1.salary) + Number(employee_2.salary)));
+
+    console.log(employee_1.say_hello());
+    console.log(employee_1.say_hello_with_param(employee_1.name, employee_1.salary));
+
+    console.log(employee_1.say_hello_without_param());
+    console.log(employee_1.get_name());
+    console.log(employee_1.get_salary());
+
+    let student = new Student();
+    student.name = 'kate';
+    student.surname = 'adams';
+    console.log(student.get_initials());
+
+</script>
+</body>
+</html>
