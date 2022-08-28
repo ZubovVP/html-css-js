@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(13, 14)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Свойства в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                В классе Employee сделайте три приватных свойства: имя, зарплату и возраст.
+                Передайте параметром конструктора значения этих свойств.
+                Сделайте метод, который выведет данные работника.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                В следующем коде сделайте вспомогательный метод приватным:
+            </p>
+            <p>
+                class Employee {
+            </p>
+            <p>
+                constructor(name, salary) {
+            </p>
+            <p>
+                this.name = name;
+            </p>
+            <p>
+                this.salary = salary;
+            </p>
+            <p>
+                }
+            </p>
+            <p>
+                getSalary() {
+            </p>
+            <p>
+                return this.addSign(this.salary);
+            </p>
+            <p>
+                }
+            </p>
+            <p>
+
+                addSign(num) {
+            </p>
+            <p>
+                return num + '$';
+            </p>
+            <p>
+                }
+            </p>
+            <p>
+                }
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Employee {
+        #name;
+        #age;
+        #salary;
+
+        constructor(name, age, salary) {
+            this.#name = name;
+            this.#age = age;
+            this.#salary = salary;
+        }
+        getSalary() {
+            return this.#addSign(this.#salary);
+        }
+
+        #addSign(num) {
+            return num + '$';
+        }
+
+        show() {
+            return this.#name + ' ' + this.#age + ' ' + this.#salary;
+        }
+    }
+
+    let employee = new Employee('Alex', 29, 3000);
+    console.log(employee.show());
+    console.log(employee.getSalary());
+
+
+</script>
+</body>
+</html>
