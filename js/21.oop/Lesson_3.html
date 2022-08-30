@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_3(21)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Оператор instanceof в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Переберите циклом массив объектов и выведите в консоль только имена работников.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<h1>Класс как набор методов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Validator, который будет выполнять проверку строк на корректность.
+            </p>
+            <p>
+                Сделайте в вашем классе метод isEmail, проверяющий строку на то, что она корректный email.
+            </p>
+            <p>
+                Сделайте в вашем классе метод isDomain, проверяющий строку на то, что она корректное имя домена.
+            </p>
+            <p>
+                Сделайте в вашем классе метод isNumber, проверяющий строку на то, что она содержит только числа.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Student {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    class Employee {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    let users = [
+        new Student('user1'),
+        new Employee('user2'),
+        new Student('user3'),
+        new Employee('user4'),
+        new Student('user5'),
+        new Employee('user6'),
+        new Student('user7'),
+    ];
+
+    for (let obj of users) {
+        if (obj instanceof Employee) {
+            console.log(obj.name);
+        }
+    }
+
+    class Validator {
+        #re = /\S+@\S+\.\S+/;
+        #domain = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/;
+
+        correct_line(line) {
+            return line != null && line.length > 0;
+        }
+
+        isEmail(line) {
+            return this.#re.test(line);
+        }
+
+        isDomain(line) {
+            return this.#domain.test(line);
+
+        }
+
+        isNumber(line) {
+            return line.test(/^\d+$/);
+        }
+    }
+
+    let validator = new Validator();
+    console.log(validator.correct_line(''));
+    console.log(validator.correct_line('abc'));
+    console.log(validator.isEmail('abc'));
+    console.log(validator.isEmail('abc@yandex.ru'));
+    console.log(validator.isDomain('123'));
+    console.log(validator.isNumber('123'));
+    console.log(validator.isNumber('123a'));
+
+
+</script>
+</body>
+</html>
