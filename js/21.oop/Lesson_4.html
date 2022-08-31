@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_4(23, 24, 25)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1> Объекты внутри классов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте так, чтобы во второй и третий параметры передавались объекты отдельных классов.
+            </p>
+            <p>
+                Создайте объект с работником с помощью класса из предыдущей задачи.
+            </p>
+            <p>
+                Выведите в консоль имя, должность и отдел для созданного работника.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте массив объектов класса Employee.
+            </p>
+            <p>
+                Переберите созданный массив циклом и выведите на экран имена и позиции каждого работника.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<h1> Манипуляция объектами в классах в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс EmployeesCollection, который будет содержать массив работников.
+            </p>
+            <p>
+                Сделайте в этом классе метод для добавления нового работника.
+            </p>
+            <p>
+                Сделайте в этом классе метод для вывода всех работников.
+            </p>
+            <p>
+                Сделайте в этом классе метод для расчета суммарной зарплаты всех работников.
+            </p>
+            <p>
+                Сделайте в этом классе метод для расчета средней зарплаты всех работников.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Employee {
+        constructor(name, position, department, salary) {
+            this.name = name;
+            this.position = position;
+            this.department = department;
+            this.salary = salary;
+        }
+    }
+
+    class Department {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    class Position {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    let employee = new Employee('Duke', new Position('develepor'), new Department('test_department'), 1000);
+    console.log(employee.name);
+    console.log(employee.position.name);
+    console.log(employee.department.name);
+
+    let empl_array = [
+        new Employee('Duke', new Position('develepor'), new Department('test_department'), 1000),
+        new Employee('Alex', new Position('middle'), new Department('test_department'), 2000),
+        new Employee('Tom', new Position('senior'), new Department('test_department'), 3000)
+    ];
+
+    empl_array.forEach(emp => console.log(emp.name + ' ' + emp.position.name));
+
+
+    class EmployeesCollection {
+        #employees;
+
+        constructor() {
+            this.#employees = [];
+        }
+
+        add(employee) {
+            this.#employees.push(employee);
+        }
+
+        show() {
+            this.#employees.forEach(emp => console.log(emp.name));
+        }
+
+        show_all_salary() {
+            let count = 0;
+            this.#employees.forEach(emp => count += emp.salary);
+            return count;
+        }
+
+        show_coverage_salary() {
+            let count = this.show_all_salary();
+            return count / this.#employees.length;
+        }
+    }
+
+    let emp = new EmployeesCollection();
+    emp.add(new Employee('Duke', new Position('develepor'), new Department('test_department'), 1000));
+    emp.add(new Employee('Alex', new Position('middle'), new Department('test_department'), 2000));
+    emp.add(new Employee('Tom', new Position('senior'), new Department('test_department'), 3000));
+    emp.show();
+    console.log(emp.show_all_salary());
+    console.log(emp.show_coverage_salary());
+</script>
+</body>
+</html>
