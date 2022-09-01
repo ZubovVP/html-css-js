@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(28, 29, 30)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Наследование классов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Employee, наследующий от класса User.
+            </p>
+            <p>
+                Проверьте, что ваш класс Employee наследует методы от класса User.
+            </p>
+            <p>
+                В классе Employee сделайте геттер и сеттер зарплаты.
+            </p>
+            <p>
+                Проверьте, что в классе Employee работают как его родные методы, так и унаследованные.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class User {
+        setName(name) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name;
+        }
+    }
+
+    class Employee extends User {
+
+        setSalary(salary) {
+            this.salary = salary;
+        }
+
+        getSalary() {
+            return this.salary;
+        }
+
+    }
+
+    let emp = new Employee();
+    emp.setName('John');
+    console.log(emp.getName());
+    emp.setSalary(1000);
+    console.log(emp.getSalary());
+</script>
+</body>
+</html>
