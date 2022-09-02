@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_1(28, 29, 30)</title>
+    <title>Lesson_1(28, 29, 30, 31, 32, 33, 34)</title>
 </head>
 <style>
     .description {
@@ -39,11 +39,39 @@
 
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                В классе Employee сделайте геттер и сеттер возраста.
+            </p>
+            <p>
+                В классе User переопределите сеттер возраста и сделайте в нем проверку на то, что возраст от 18 до
+                65 лет.
+            </p>
+            <p>
+                Пусть класс Employee наследует от класса User из данного урока.
+            </p>
+            <p>
+                Переопределите в класс Employee конструктор родителя, добавив в него параметр с возрастом и зарплатой.
+            </p>
+            <p>
+                Сделайте геттеры для возраста и зарплаты.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
 
     class User {
+
+        constructor(name) {
+            this.name = name;
+        }
+
         setName(name) {
             this.name = name;
         }
@@ -51,9 +79,23 @@
         getName() {
             return this.name;
         }
+
+        setAge(age) {
+            this.age = age;
+        }
+
+        getAge() {
+            return this.age;
+        }
     }
 
     class Employee extends User {
+
+        constructor(name, age, salary) {
+            super(name);
+            this.age = age;
+            this.salary = salary;
+        }
 
         setSalary(salary) {
             this.salary = salary;
@@ -63,6 +105,18 @@
             return this.salary;
         }
 
+        setAge(age) {
+            if (age >= 18 && age <= 65) {
+                super.setAge(age);
+            } else {
+                throw new Error("incorrect age");
+            }
+        }
+
+        getAge() {
+            return this.age;
+        }
+
     }
 
     let emp = new Employee();
@@ -70,6 +124,11 @@
     console.log(emp.getName());
     emp.setSalary(1000);
     console.log(emp.getSalary());
+    emp.setAge(20);
+
+    let emp_2 = new Employee('Alex', 29, 3000);
+    console.log(emp_2.getName());
+    console.log(emp_2.getSalary());
 </script>
 </body>
 </html>
