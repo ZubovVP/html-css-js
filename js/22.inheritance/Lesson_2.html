@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_2(39, 40)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Иерархия наследования классов в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Employee, который будет наследовать от класса User.
+            </p>
+            <p>
+                Сделайте класс Programmer, который будет наследовать от класса Employee.
+            </p>
+            <p>
+                Сделайте классы Designer, который будет наследовать от класса Employee.
+            </p>
+            <p>
+                Добавьте в созданные вами классы различные методы.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+            <div>
+                <p>text</p>
+                <p>text</p>
+                <p>text</p>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class User {
+
+        setName(name) {
+            this._name = name;
+        }
+
+        getName() {
+            return this._name;
+        }
+
+    }
+
+    class Employee extends User {
+
+        setSalary(salary) {
+            this._salary = salary;
+        }
+
+        getName() {
+            return this._salary;
+        }
+
+    }
+
+    class Programmer extends Employee {
+
+        write_code() {
+            return this.getName() + ' (Programmer) ' + 'write code';
+        }
+
+    }
+
+    class Designer extends Employee {
+
+        write() {
+            return this.getName() + ' (Designer)';
+        }
+
+    }
+
+    let designer = new Designer();
+    designer.setName('Tom');
+    designer.setSalary(1000);
+    console.log(designer.write());
+
+    let programmer = new Programmer();
+    programmer.setName('Alex');
+    programmer.setSalary(1000);
+    console.log(programmer.write_code());
+
+    let elem = document.querySelector('div');
+    let elems = elem.children;
+
+    console.dir(elems);
+</script>
+</body>
+</html>
