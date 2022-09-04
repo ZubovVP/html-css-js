@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson_1(41)</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Потеря контекста в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Исправьте ошибку, допущенную в следующем коде:
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Employee {
+        constructor(name, salary, coeffs) {
+            this.name = name;
+            this.salary = salary;
+            this.coeffs = coeffs;
+        }
+
+        getTotal() {
+            return this.coeffs.reduce((total, coeff) => {
+                total += coeff * this.salary;
+                return total;
+            }, 0)
+        }
+    }
+
+    let employee = new Employee('john', 1000, [1.1, 1.2, 1.3]);
+    let total = employee.getTotal();
+    console.log(total);
+</script>
+</body>
+</html>
