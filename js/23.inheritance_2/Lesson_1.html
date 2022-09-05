@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lesson_1(41)</title>
+    <title>Lesson_1(41, 42, 43, 44, 45)</title>
 </head>
 <style>
     .description {
@@ -30,6 +30,16 @@
 
         </td>
     </tr>
+    <tr>
+        <td class="description">
+            <p>
+                Выведите исходный код какого-нибудь метода класса Employee.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+
+        </td>
+    </tr>
 </table>
 <script>
     "use strict";
@@ -47,11 +57,18 @@
                 return total;
             }, 0)
         }
+
+        getSalary() {
+            return this.salary;
+        }
     }
 
     let employee = new Employee('john', 1000, [1.1, 1.2, 1.3]);
     let total = employee.getTotal();
     console.log(total);
+    console.log(employee.getTotal);
+    console.log(employee.getSalary());
+
 </script>
 </body>
 </html>
