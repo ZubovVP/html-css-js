@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Класс Text в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Text, который будет выполнять некоторые манипуляции над текстом. Пусть текст передается
+                параметром конструктора.
+            </p>
+            <p>
+                Сделайте метод, который вернет количество символов в тексте.
+            </p>
+            <p>
+                Сделайте метод, который вернет количество букв в тексте.
+            </p>
+            <p>
+                Сделайте метод, который вернет количество пробелов в тексте.
+            </p>
+            <p>
+                Сделайте метод, который вернет количество символов в тексте за вычетом пробелов.
+            </p>
+            <p>
+                Сделайте метод, который вернет массив слов.
+            </p>
+            <p>
+                Сделайте метод, который вернет массив предложений.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Text {
+        #text;
+
+        constructor(text) {
+            this.#text = text;
+        }
+
+        getLength() {
+            return this.#text.length;
+        }
+
+        getLetters() {
+            return this.#text.replaceAll(' ', '').length;
+        }
+
+        getSpaces() {
+            return this.#text.split(' ').length - 1;
+        }
+
+        getSymbolsWithoutSpace() {
+            return this.#text.length - this.getSpaces();
+        }
+
+        getWords() {
+            return this.#text.split(' ');
+        }
+
+        getSentences() {
+
+            return this.#text.split(/[.!?]/g).;
+
+        }
+    }
+
+    let text = new Text('t. ex. t!');
+    console.log(text.getLength());
+    console.log(text.getLetters());
+    console.log(text.getSpaces());
+    console.log(text.getSymbolsWithoutSpace());
+    console.log(text.getWords());
+    console.log(text.getSentences());
+
+
+</script>
+</body>
+</html>
