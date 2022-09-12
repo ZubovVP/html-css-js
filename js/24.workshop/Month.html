@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Month</title>
+</head>
+<style>
+    .description {
+        width: 600px;
+    }
+
+    .view {
+        width: 300px;
+    }
+
+    div {
+        width: 200px;
+    }
+</style>
+<body>
+<h1>Класс Month в ООП в JavaScript</h1>
+<table border="1">
+    <tr>
+        <td class="description">
+            <p>
+                Сделайте класс Month, который будет представлять собой месяц. Пусть конструктор этого класса параметром
+                принимает номер месяца.
+            </p>
+            <p>
+                Сделайте метод, который вернет номер месяца.
+            </p>
+            <p>
+                Сделайте метод, который вернет название месяца.
+            </p>
+            <p>
+                Сделайте метод, который вернет номер последнего дня месяца.
+            </p>
+            <p>
+                Сделайте метод, который вернет номер дня недели первого дня месяца.
+            </p>
+            <p>
+                Сделайте метод, который вернет номер дня недели последнего дня месяца.
+            </p>
+        </td>
+        <td colspan="2" class="view">
+        </td>
+    </tr>
+</table>
+<script>
+    "use strict";
+
+    class Month {
+        #month;
+        #name_months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+        #name_day_of_week = ['вс', 'пн', 'вт', 'ср', 'чт', 'пн', 'сб'];
+
+        constructor(month) {
+            this.#month = month;
+        }
+
+        getMonth() {
+            return this.#month;
+        }
+
+        getNameOfMonth() {
+            return this.#name_months[this.getMonth()];
+        }
+
+        getLastNumberOfMonth() {
+            return this.#name_months.length - 1;
+        }
+
+        getNumberOfWeekOfFirstDayOfMonth(){
+            let date = new Date();
+            date.setMonth(this.getMonth());
+            date.setDate(1);
+            return date.getDay();
+        }
+
+        getNumberOfWeekOfLastDayOfMonth(){
+            let date = new Date();
+            date.setMonth(this.getMonth() + 1);
+            date.setDate(0);
+            alert(date.getDate())
+            return date.getDay();
+        }
+
+
+    }
+
+    let month = new Month(2);
+
+    console.log(month.getMonth());
+    console.log(month.getNameOfMonth());
+    console.log(month.getLastNumberOfMonth());
+    console.log(month.getNumberOfWeekOfFirstDayOfMonth());
+    console.log(month.getNumberOfWeekOfLastDayOfMonth());
+
+</script>
+</body>
+</html>
